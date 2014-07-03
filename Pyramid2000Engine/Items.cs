@@ -9,23 +9,23 @@ namespace Pyramid2000Engine
     public class Items : IItems
     {
         private Item[] items = new Item[] {
-          new Item{ Name = "#bridge_15", LongDescription = "A STONE BRIDGE NOW SPANS THE BOTTOMLESS PIT." },
-          new Item{ Name = "#bridge_18", LongDescription = "A STONE BRIDGE NOW SPANS THE BOTTOMLESS PIT." },
+          new Item{ Name = "#bridge_15", LongDescription = Resources.Item_Description_Stone_Bridge },
+          new Item{ Name = "#bridge_18", LongDescription = Resources.Item_Description_Stone_Bridge },
           new Item{ Name = "#-3-" },
           new Item{ Name = "#-4-" },
           new Item{ Name = "#-5-" },
-          new Item{ Name = "#MACHINE", Location = "room_51", LongDescription = "THERE IS A MASSIVE VENDING MACHINE HERE. THE INSTRUCTIONS ON IT READ \"DROP COINS HERE TO RECEIVE FRESH BATTERIES\"." },
-          new Item{ Name = "#PLANT_A", Location = "room_81", LongDescription = "THERE IS A TINY PLANT IN THE PIT, MURMURING \"WATER, WATER, ...\"" },
-          new Item{ Name = "#PLANT_B", LongDescription = "THERE IS A TWELVE FOOT BEAN STALK STRETCHING UP OUT OF THE PIT, BELLOWING \"WATER... WATER...\"" },
-          new Item{ Name = "#PLANT_C", Location = "room_81", LongDescription = "THERE IS A GIGANTIC BEAN STALK STRETCHING ALL THE WAY UP TO THE HOLE." },
+          new Item{ Name = "#MACHINE", Location = Location.Room_51, LongDescription = Resources.Item_Description_Vending_Machine },
+          new Item{ Name = "#PLANT_A", Location = Location.Room_81, LongDescription = Resources.Item_Description_Tiny_Plant },
+          new Item{ Name = "#PLANT_B", LongDescription = Resources.Item_Description_Beanstalk },
+          new Item{ Name = "#PLANT_C", Location = Location.Room_81, LongDescription = Resources.Item_Description_Gigantic_Beanstalk },
           new Item{ Name = "#-10-" },
-          new Item{ Name = "#SERPENT", Location = "room_16", LongDescription = "A HUGE GREEN FIERCE SERPENT BARS THE WAY!" },
+          new Item{ Name = "#SERPENT", Location = Location.Room_16, LongDescription = Resources.Item_Descrption_Serpent },
           new Item{ Name = "#-12-" },
           new Item{ Name = "#-13-" },
-          new Item{ Name = "#LAMP_off", Location = "room_2", IsPackable = true, ShortDescription = "BRASS LANTERN", LongDescription = "THERE IS A SHINY BRASS LAMP NEARBY." },
-          new Item{ Name = "#LAMP_on", IsPackable = true, ShortDescription = "BRASS LANTERN", LongDescription = "THERE IS A LAMP SHINING NEARBY." },
-          new Item{ Name = "#FOOD", Location = "room_2", IsPackable = true, ShortDescription = "TASTY FOOD", LongDescription = "THERE IS FOOD HERE." },
-          new Item{ Name = "#BOTTLE", Location = "room_2", IsPackable = true, ShortDescription = "WATER IN THE BOTTLE", LongDescription = "THERE IS WATER IN THE BOTTLE." }
+          new Item{ Name = "#LAMP_off", Location = Location.Room_2, IsPackable = true, ShortDescription = Resources.Item_Description_Brass_Lantern, LongDescription = Resources.Item_Description_Shiny_Lamp },
+          new Item{ Name = "#LAMP_on", IsPackable = true, ShortDescription = Resources.Item_Description_Brass_Lantern, LongDescription = Resources.Item_Description_Shining_Lamp },
+          new Item{ Name = "#FOOD", Location = Location.Room_2, IsPackable = true, ShortDescription = Resources.Item_Description_Food, LongDescription = Resources.Item_Description_Food_Here },
+          new Item{ Name = "#BOTTLE", Location = Location.Room_2, IsPackable = true, ShortDescription = Resources.Item_Description_Water, LongDescription = Resources.Item_Description_Water_In_Bottle }
         };
 
         private IDictionary<Noun, string[]> NounItemMap = new Dictionary<Noun, string[]>();
@@ -59,7 +59,7 @@ namespace Pyramid2000Engine
             NounItemMap.Add(Noun.Pearl, new string[] { "#PEARL" });
         }
 
-        public Item GetInputItem(Noun noun, Predicate<string> locationPredicate)
+        public Item GetInputItem(Noun noun, Predicate<Location> locationPredicate)
         {
             foreach (var itemName in NounItemMap[noun])
             {
@@ -87,8 +87,8 @@ namespace Pyramid2000Engine
         public Item GetTopItemByName(string name)
         {
             var item = GetItemByName(name);
-            if (item != null && item.Location[0] == '#')
-                item = GetTopItemByName(item.Location);
+            if (item != null && item.Location is Location.Container)
+                item = GetTopItemByName(((Location.Container)item.Location).Item);
             return item;
         }
 
@@ -97,7 +97,7 @@ namespace Pyramid2000Engine
             return items.ToList<Item>();
         }
 
-        public IList<Item> GetItemsAtLocation(string location)
+        public IList<Item> GetItemsAtLocation(Location location)
         {
             return items.Where<Item>(item => item.Location == location).ToList<Item>();
         }

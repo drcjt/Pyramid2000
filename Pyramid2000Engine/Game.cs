@@ -8,8 +8,8 @@ namespace Pyramid2000Engine
 {
     public class Game
     {
-        public String CurrentRoom { get; set; }
-        public String LastRoom { get; set; }
+        public Location.Room CurrentRoom { get; set; }
+        public Location.Room LastRoom { get; set; }
         public int TurnCount { get; set; }
         public bool GameOver { get; set; }
         public int BatteryLife { get; set; }
@@ -24,7 +24,7 @@ namespace Pyramid2000Engine
         {
             this.printer = printer;
 
-            CurrentRoom = "room_1";
+            CurrentRoom = Location.Room_1;
             LastRoom = null;
             TurnCount = 0;
             GameOver = false;
@@ -38,11 +38,11 @@ namespace Pyramid2000Engine
             parser = new Parser(printer);
             scripter = new Scripter(printer, this);
 
-            printer.PrintLn("WELCOME TO PYRAMID 2000!!");
-            printer.PrintLn("");
+            printer.PrintLn(Resources.Message_Welcome);
+            printer.PrintLn(String.Empty);
 
             scripter.Look();
-            printer.Print(": ");
+            printer.Print(Resources.Message_Prompt);
         }
 
         public void ProcessPlayerInput(string input)
@@ -50,26 +50,24 @@ namespace Pyramid2000Engine
             ParsedCommand parsedCommand = parser.Parse(input);
             if (parsedCommand != null)
             {
-                var room = Room.Rooms[CurrentRoom];
-
                 var passed = false;
 
                 bool processCommand = true;
                 if (parsedCommand.Noun != null)
                 {
                     bool nounInSight = Parser.CanVerbBeUsedWithNounInSight(parsedCommand.Verb.Value);
-                    Predicate<string> itemPredicate = (l => l == "pack" || (nounInSight && l == CurrentRoom));
+                    Predicate<Location> itemPredicate = (l => l is Location.Pack || (nounInSight && l == CurrentRoom));
                     scripter.inputItem = Items.GetInputItem(parsedCommand.Noun.Value, itemPredicate);
 
                     if (scripter.inputItem == null)
                     {
                         if (nounInSight)
                         {
-                            printer.PrintLn("I SEE NO " + parsedCommand.OriginalNoun + " HERE.");
+                            printer.PrintLn(string.Format(Resources.Message_Not_Here, parsedCommand.OriginalNoun));
                         }
                         else
                         {
-                            printer.PrintLn("YOU AREN'T CARRYING IT.");
+                            printer.PrintLn(Resources.Message_Not_Carrying_It);
                         }
                         processCommand = false;
                     }
@@ -78,7 +76,7 @@ namespace Pyramid2000Engine
                 if (processCommand)
                 {
                     Script script;
-                    if (room.Commands.TryGetValue(parsedCommand.Verb.Value, out script))
+                    if (CurrentRoom.Commands.TryGetValue(parsedCommand.Verb.Value, out script))
                     {
                         passed = script(scripter);
                     }
@@ -94,14 +92,14 @@ namespace Pyramid2000Engine
 
                     if (!passed)
                     {
-                        printer.PrintLn("I DON'T KNOW HOW TO APPLY THAT WORD HERE.");
+                        printer.PrintLn(Resources.Message_Inapplicable_Word);
                     }                
 
                     AfterPlayerTurnProcessing();
                 }
             }
 
-            printer.Print(": ");
+            printer.Print(Resources.Message_Prompt);
         }
 
         public void AfterPlayerTurnProcessing()

@@ -12,19 +12,19 @@ namespace Pyramid2000Engine
 
         static DefaultScripter()
         {
-            defaultHandler[Verb.North] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.East] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.West] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.South] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.NorthEast] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.SouthEast] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.NorthWest] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.SouthWest] = new Script(s => s.PrintMessageX("THERE IS NO WAY FOR YOU TO GO THAT DIRECTION."));
-            defaultHandler[Verb.In] = new Script(s => s.PrintMessageX("I DON'T KNOW IN FROM OUT HERE. USE COMPASS POINTS."));
-            defaultHandler[Verb.Out] = new Script(s => s.PrintMessageX("I DON'T KNOW IN FROM OUT HERE. USE COMPASS POINTS."));
-            defaultHandler[Verb.Left] = new Script(s => s.PrintMessageX("I AM UNSURE HOW YOU ARE FACING. USE COMPASS POINTS."));
-            defaultHandler[Verb.Right] = new Script(s => s.PrintMessageX("I AM UNSURE HOW YOU ARE FACING. USE COMPASS POINTS."));
-            defaultHandler[Verb.Panel] = new Script(s => s.PrintMessageX("NOTHING HAPPENS."));
+            defaultHandler[Verb.North] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.East] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.West] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.South] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.NorthEast] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.SouthEast] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.NorthWest] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.SouthWest] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_That_Way));
+            defaultHandler[Verb.In] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_In_Or_Out));
+            defaultHandler[Verb.Out] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_In_Or_Out));
+            defaultHandler[Verb.Left] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_Left_Or_Right));
+            defaultHandler[Verb.Right] = new Script(s => s.PrintMessageX(Resources.Message_Cant_Go_Left_Or_Right));
+            defaultHandler[Verb.Panel] = new Script(s => s.PrintMessageX(Resources.Message_Nothing_Happens));
             defaultHandler[Verb.Back] = new Script(s => s.MoveToLastRoom());
             defaultHandler[Verb.Look] = new Script(s => s.PrintRoomDescription());
             defaultHandler[Verb.Score] = new Script(s => s.PrintScore());

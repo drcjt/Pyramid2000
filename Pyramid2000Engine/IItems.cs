@@ -8,9 +8,10 @@ namespace Pyramid2000Engine
 {
     public interface IItems
     {
+        Item GetInputItem(Noun noun, Predicate<Location> locationPredicate);
         Item GetItemByName(string name);      
         Item GetTopItemByName(string name);
         IList<Item> GetAllItems();
-        IList<Item> GetItemsAtLocation(string location);
+        IList<Item> GetItemsAtLocation(Location location);
     }
 }
