@@ -103,13 +103,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\..\Pyramid2000Engine\Pyramid2000Engine.csproj">
-      <Project>{ba784696-3815-4779-8100-76264519f4ae}</Project>
-      <Name>Pyramid2000Engine</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +125,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pyramid2000_StraightPort\Pyramid2000_StraightPort.csproj">
+      <Project>{31d53fce-9298-41c4-886a-ad2555da750e}</Project>
+      <Name>Pyramid2000_StraightPort</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

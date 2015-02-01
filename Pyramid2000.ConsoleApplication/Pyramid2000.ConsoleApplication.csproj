@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsolePrinter.cs" />
     <Compile Include="Pyramid2000.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -49,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pyramid2000Engine\Pyramid2000Engine.csproj">
-      <Project>{ba784696-3815-4779-8100-76264519f4ae}</Project>
-      <Name>Pyramid2000Engine</Name>
+    <ProjectReference Include="..\Pyramid2000_StraightPort\Pyramid2000_StraightPort.csproj">
+      <Project>{31d53fce-9298-41c4-886a-ad2555da750e}</Project>
+      <Name>Pyramid2000_StraightPort</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

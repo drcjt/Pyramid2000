@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using Pyramid2000Engine;
+using Pyramid2000_StraightPort;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,7 +25,8 @@ namespace Pyramid2000
     /// </summary>
     public sealed partial class MainPage : Page, IPrinter
     {
-        private Game game;
+        private IGame game;
+        private IGameState gameState;
 
         // Based on Chris Cantrell's Javascript implementation:
         // See http://www.computerarcheology.com/wiki/wiki/CoCo/Pyramid
@@ -34,9 +35,19 @@ namespace Pyramid2000
         {
             this.InitializeComponent();
 
-            game = new Game(this);
+            IPrinter printer = this;
+            IItems items = new Items();
+            IPlayer player = new Player();
+            player.CurrentRoom = "room_1";
+            IParser parser = new Parser(player, printer, items);
+            IRooms rooms = new Rooms(items);
+            gameState = new GameState();
+            IScripter scripter = new Scripter(printer, items, rooms, player, gameState);
+            IDefaultScripter defaultScripter = new DefaultScripter();
 
-            game.StartGame();
+            game = new Game(player, printer, parser, scripter, rooms, defaultScripter, items, gameState);
+
+            game.Init();
         }
 
         public void PrintLn(string text)
@@ -71,7 +82,7 @@ namespace Pyramid2000
 
             game.ProcessPlayerInput(Command.Text);
 
-            if (game.GameOver)
+            if (gameState.GameOver)
             {
                 Application.Current.Exit();
             }
