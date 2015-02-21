@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="f5e101d6-2880-463f-a06c-22691ef1c7b5" Publisher="CN=Colin" Version="1.0.0.0" />
+  <Identity Name="f5e101d6-2880-463f-a06c-22691ef1c7b5" Publisher="CN=Colin" Version="1.0.0.1" />
   <mp:PhoneIdentity PhoneProductId="f5e101d6-2880-463f-a06c-22691ef1c7b5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Pyramid2000.WindowsPhone</DisplayName>
@@ -22,6 +22,8 @@
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
         <m3:InitialRotationPreference>
           <m3:Rotation Preference="portrait" />
+          <m3:Rotation Preference="landscape" />
+          <m3:Rotation Preference="landscapeFlipped" />
         </m3:InitialRotationPreference>
       </m3:VisualElements>
     </Application>

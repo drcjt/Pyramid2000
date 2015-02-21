@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.ViewManagement;
 
 using Pyramid2000_StraightPort;
 
@@ -36,6 +37,14 @@ namespace Pyramid2000
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
+            SetupGame();
+
+            _inputPane.Showing += InputPaneShowing;
+            _inputPane.Hiding += InputPaneHiding;
+        }
+
+        private void SetupGame()
+        {
             IPrinter printer = this;
             IItems items = new Items();
             IPlayer player = new Player();
@@ -82,16 +91,73 @@ namespace Pyramid2000
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
+            ProcessCommand();
+        }
+
+        private void ProcessCommand()
+        {
             PrintLn(Command.Text);
 
             game.ProcessPlayerInput(Command.Text);
 
             if (gameState.GameOver)
             {
-                Application.Current.Exit();
+                Command.Visibility = Visibility.Collapsed;
+                Restart.Visibility = Visibility.Visible;
+                Command.IsEnabled = false;
             }
 
             Command.Text = "";
+        }
+
+        Windows.UI.ViewManagement.InputPane _inputPane = Windows.UI.ViewManagement.InputPane.GetForCurrentView();
+
+        private void InputPaneShowing(InputPane sender, InputPaneVisibilityEventArgs e)
+        {
+            e.EnsuredFocusedElementInView = true;
+
+            FooterPlaceHolder.Height = e.OccludedRect.Height;
+            FooterPlaceHolder.Visibility = Visibility.Visible;
+
+            BodyScroller.UpdateLayout();
+            BodyScroller.ScrollToVerticalOffset(BodyScroller.ExtentHeight);
+        }
+
+        private void InputPaneHiding(InputPane sender, InputPaneVisibilityEventArgs e)
+        {
+            FooterPlaceHolder.Height = 0;
+            FooterPlaceHolder.Visibility = Visibility.Collapsed;
+
+            BodyScroller.UpdateLayout();
+            BodyScroller.ScrollToVerticalOffset(BodyScroller.ExtentHeight);
+        }
+
+        private void Command_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                ProcessCommand();
+            }
+        }
+
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            Command.Visibility = Visibility.Visible;
+            Restart.Visibility = Visibility.Collapsed;
+            Command.IsEnabled = true;
+            Body.Text = "";
+
+            SetupGame();
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Settings));
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(About));
         }
     }
 }

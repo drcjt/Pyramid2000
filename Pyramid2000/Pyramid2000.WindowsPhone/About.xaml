@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="Pyramid2000.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Pyramid2000"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="PYRAMID 2000" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="about" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <TextBlock TextWrapping="Wrap"
+                    Style="{ThemeResource BodyTextBlockStyle}">Pyramid 2000<LineBreak/>Build 1.0.0.0<LineBreak/>
+                    <LineBreak/>This app is an emulator/interpreter for a 'classic' text adventure game originally released for the Radio Shack Model I Computer.
+                    <LineBreak/>
+                    <LineBreak/>Pyramid 2000 was written by Robert Arnstein and released by Radio Shack in 1979.
+                    <LineBreak/>
+                    <LineBreak/>This project would not have been possible without the information and code found on Christopher Cantrell's website:
+                    <LineBreak/>http://www.computerarcheology.com
+                    <LineBreak/>
+                    <LineBreak/>You can find a wealth of information about this game including a walk through solution on Sean Murphy's website:
+                    <LineBreak/>http://www.figmentfly.com
+                </TextBlock>
+        </Grid>
+    </Grid>
+</Page>
