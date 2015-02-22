@@ -31,7 +31,7 @@
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
                 <TextBlock TextWrapping="Wrap"
                     Style="{ThemeResource BodyTextBlockStyle}">Pyramid 2000<LineBreak/>Build 1.0.0.0<LineBreak/>
-                    <LineBreak/>This app is an emulator/interpreter for a 'classic' text adventure game originally released for the Radio Shack Model I Computer.
+                    <LineBreak/>This app is an implementation of a 'classic' text adventure game originally released for the Radio Shack Model I Computer.
                     <LineBreak/>
                     <LineBreak/>Pyramid 2000 was written by Robert Arnstein and released by Radio Shack in 1979.
                     <LineBreak/>

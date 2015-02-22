@@ -31,7 +31,7 @@
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Minimal">
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="settings" Click="SettingsButton_Click"/>
+<!--                <AppBarButton Label="settings" Click="SettingsButton_Click"/> -->
                 <AppBarButton Label="about" Click="AboutButton_Click"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
