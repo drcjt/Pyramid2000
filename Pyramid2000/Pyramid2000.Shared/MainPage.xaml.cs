@@ -163,5 +163,10 @@ namespace Pyramid2000
                 ProcessCommand();
             }
         }
+
+        private void InstructionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Instructions));
+        }
     }
 }

@@ -24,12 +24,12 @@ namespace Pyramid2000
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class About : Page
+    public sealed partial class Instructions : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public About()
+        public Instructions()
         {
             this.InitializeComponent();
 
@@ -40,7 +40,6 @@ namespace Pyramid2000
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
         /// </summary>
@@ -85,7 +84,7 @@ namespace Pyramid2000
         {
         }
 
-#region NavigationHelper registration
+        #region NavigationHelper registration
 
         /// <summary>
         /// The methods provided in this section are simply used to allow
@@ -115,15 +114,10 @@ namespace Pyramid2000
         private void InsertPageTitleUserControl()
         {
             PageTitleUserControl pageTitle = new PageTitleUserControl(this.navigationHelper);
-            pageTitle.PageTitle = "about";
+            pageTitle.PageTitle = "instructions";
             pageTitle.AppName = "PYRAMID 2000";
             LayoutRoot.Children.Add(pageTitle);
             Grid.SetRow(pageTitle, 0);
-        }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

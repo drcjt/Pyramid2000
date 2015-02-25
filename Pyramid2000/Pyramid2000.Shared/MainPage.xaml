@@ -19,7 +19,7 @@
             <ColumnDefinition Width="*"/>            
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="BodyScroller" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto">
-            <TextBlock x:Name="Body" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
+            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" x:Name="Body" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"/>
         </ScrollViewer>
         <TextBox Margin="5,5,5,5" Grid.Row="1" Grid.Column="0" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" KeyUp="Command_KeyUp"/>
         <Button Grid.Row="1" Grid.Column="1" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click"/>
@@ -28,10 +28,11 @@
     
     <Page.BottomAppBar>
         <CommandBar x:Name="CommandBar">
-            <CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
 <!--                <AppBarButton Label="settings" Click="SettingsButton_Click"/> -->
                 <AppBarButton Label="about" Click="AboutButton_Click"/>
-            </CommandBar.PrimaryCommands>
+                <AppBarButton Label="instructions" Click="InstructionsButton_Click"/>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
