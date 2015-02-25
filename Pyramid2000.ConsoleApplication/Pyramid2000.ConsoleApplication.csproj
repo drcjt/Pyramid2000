@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Pyramid2000_StraightPort\Pyramid2000_StraightPort.csproj">
-      <Project>{31d53fce-9298-41c4-886a-ad2555da750e}</Project>
-      <Name>Pyramid2000_StraightPort</Name>
+    <ProjectReference Include="..\Pyramid2000.Engine\Pyramid2000.Engine.csproj">
+      <Project>{ff7b38c1-36fe-4486-9e4d-77acc88dd5ad}</Project>
+      <Name>Pyramid2000.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

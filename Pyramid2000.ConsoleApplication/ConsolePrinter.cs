@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Pyramid2000_StraightPort;
+using Pyramid2000.Engine;
 
 namespace Pyramid2000.ConsoleApplication
 {
@@ -12,12 +12,12 @@ namespace Pyramid2000.ConsoleApplication
     {
         public void PrintLn(string text)
         {
-            Console.WriteLine(text);
+            Console.WriteLine(text.ToUpper());
         }
 
         public void Print(string text)
         {
-            Console.Write(text);
+            Console.Write(text.ToUpper());
         }
     }
 }

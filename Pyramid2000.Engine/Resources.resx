@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlreadyCarryingIt" xml:space="preserve">
+    <value>You are already carrying it.</value>
+  </data>
+  <data name="ArentCarryingIt" xml:space="preserve">
+    <value>You aren't carrying it.</value>
+  </data>
+  <data name="BarredBySerpent" xml:space="preserve">
+    <value>A huge green fierce serpent bars the way!</value>
+  </data>
+  <data name="BirdAlive" xml:space="preserve">
+    <value>The bird statue comes to life and attacks the serpent and in an astounding flurry, drives the serpent away. The bird turns back into a statue.</value>
+  </data>
+  <data name="BottleAlreadyFull" xml:space="preserve">
+    <value>Your bottle is already full.</value>
+  </data>
+  <data name="BrassLantern" xml:space="preserve">
+    <value>Brass Lantern</value>
+  </data>
+  <data name="BridgeAppears" xml:space="preserve">
+    <value>A stone bridge now spans the bottomless pit.</value>
+  </data>
+  <data name="BridgeRetracted" xml:space="preserve">
+    <value>The stone bridge has retracted!</value>
+  </data>
+  <data name="BrokenNeck" xml:space="preserve">
+    <value>You are at the bottom of the pit with a broken neck.</value>
+  </data>
+  <data name="CantCarryAnymore" xml:space="preserve">
+    <value>You can't carry anything more. You'll have to drop something first.</value>
+  </data>
+  <data name="CantCrossPit" xml:space="preserve">
+    <value>There is no way across the bottomless pit.</value>
+  </data>
+  <data name="CantFitThroughTwoInchSlit" xml:space="preserve">
+    <value>You don't fit through the two-inch slit!</value>
+  </data>
+  <data name="ClimbedPlant" xml:space="preserve">
+    <value>You've climbed up the plant and out of the pit.</value>
+  </data>
+  <data name="ClimbPlant" xml:space="preserve">
+    <value>You clamber up the plant and scurry through the hole at the top.</value>
+  </data>
+  <data name="CrackTooSmall" xml:space="preserve">
+    <value>The crack is far too small for you to follow.</value>
+  </data>
+  <data name="CrawledAround" xml:space="preserve">
+    <value>You have crawled around in some little holes and found your way blocked by a fallen slab. You are now back in the main passage.</value>
+  </data>
+  <data name="CrawledAroundBackToMainPassage" xml:space="preserve">
+    <value>You have crawled around in some little holes and wound up back in the main passage.</value>
+  </data>
+  <data name="CrawlToPassage" xml:space="preserve">
+    <value>You have crawled through a very low wide passage parallel to and north of the hall of gods.</value>
+  </data>
+  <data name="CrossDontJump" xml:space="preserve">
+    <value>I respectfully suggest you go across the bridge instead of jumping.</value>
+  </data>
+  <data name="DeadEnd" xml:space="preserve">
+    <value>Dead end.</value>
+  </data>
+  <data name="Desert" xml:space="preserve">
+    <value>You are in the desert.</value>
+  </data>
+  <data name="DidntMakeIt" xml:space="preserve">
+    <value>You didn't make it.</value>
+  </data>
+  <data name="DiscardedStatueBox" xml:space="preserve">
+    <value>There is a small statue box discarded nearby.</value>
+  </data>
+  <data name="DomeUnclimbable" xml:space="preserve">
+    <value>The dome is unclimbable.</value>
+  </data>
+  <data name="DontBeRidiculous" xml:space="preserve">
+    <value>Don't be ridiculous!</value>
+  </data>
+  <data name="DontKnowThatWord" xml:space="preserve">
+    <value>I don't know that word.</value>
+  </data>
+  <data name="DontKnowWhatYouMean" xml:space="preserve">
+    <value>I don't know what you mean.</value>
+  </data>
+  <data name="DontUnderstand" xml:space="preserve">
+    <value>I don't understand.</value>
+  </data>
+  <data name="DropSomething" xml:space="preserve">
+    <value>Something you're carrying won't fit through the tunnel with you. You'd best take inventory and drop something.</value>
+  </data>
+  <data name="FellIntoPit" xml:space="preserve">
+    <value>You fell into a pit and broke every bone in your body.</value>
+  </data>
+  <data name="FreshBatteries" xml:space="preserve">
+    <value>There are now some fresh batteries here.</value>
+  </data>
+  <data name="GiganticBeanStalk" xml:space="preserve">
+    <value>There is a gigantic beam stalk stretching all the way up to the hole.</value>
+  </data>
+  <data name="GottenKilled" xml:space="preserve">
+    <value>Oh dear, you seem to have gotten yourself killed.  I might be able to help you out, but I've never really done this before.</value>
+  </data>
+  <data name="ISeeNo" xml:space="preserve">
+    <value>I see no {0} here.</value>
+  </data>
+  <data name="ItsPitchDark" xml:space="preserve">
+    <value>It is now pitch dark.  If you proceed, you will likely fall into a pit.</value>
+  </data>
+  <data name="LampShining" xml:space="preserve">
+    <value>There is a lamp shining nearby.</value>
+  </data>
+  <data name="Maze" xml:space="preserve">
+    <value>You are in a maze of twisty passages, all alike.</value>
+  </data>
+  <data name="MummyStealsTreasures" xml:space="preserve">
+    <value>Suddenly, a mummy creeps up behind you!! "I'm the keeper of the tomb", he wails, "I take these treasures and put them in the chest deep in the maze!" He grabs your treasure and vanishes into the gloom.</value>
+  </data>
+  <data name="NoLongerRememberHowYouGotHere" xml:space="preserve">
+    <value>Sorry, but I no longer seem to remember how it was you got here.</value>
+  </data>
+  <data name="NotCarryingAnything" xml:space="preserve">
+    <value>You're not carrying anything.</value>
+  </data>
+  <data name="NothingToClimb" xml:space="preserve">
+    <value>There is nothing here to climb. Use up or out to leave the pit.</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="OverwateredPlant" xml:space="preserve">
+    <value>You've over-watered the plant! It's shrivelling up!</value>
+  </data>
+  <data name="PlantBellowing" xml:space="preserve">
+    <value>There is a twelve foot bean stalk stretching up out of the pit, bellowing "Water... Water..."</value>
+  </data>
+  <data name="PlantGrows" xml:space="preserve">
+    <value>The plant grows explosively, almost filling the bottom of the pit.</value>
+  </data>
+  <data name="PlantMurmuring" xml:space="preserve">
+    <value>There is a tiny plant in the pit, murmuring "Water, Water, ..."</value>
+  </data>
+  <data name="PlantSpurts" xml:space="preserve">
+    <value>The plant spurts into furious growth for a few seconds.</value>
+  </data>
+  <data name="Room1" xml:space="preserve">
+    <value>You are standing before the entrance of a pyramid. Around you is a desert.</value>
+  </data>
+  <data name="Room10" xml:space="preserve">
+    <value>You are in an awkward sloping east/west corridor.</value>
+  </data>
+  <data name="Room11" xml:space="preserve">
+    <value>You are in a splendid chamber thirty feet high. The walls are frozen rivers of orange stone. An awkward corridor and a good passage exit from the east and west sides of the chamber.</value>
+  </data>
+  <data name="Room12" xml:space="preserve">
+    <value>At your feet is a small pit breathing traces of white mist. An east passage ends here except for a small crack leading on. Rough stone steps lead down the pit.</value>
+  </data>
+  <data name="Room13" xml:space="preserve">
+    <value>You are at one end of a vast hall stretching forward out of sight to the west. There are openings to either side. Nearby, a wide stone staircase leads downward. The hall is very musty and a cold wind blows up the staircase. There is a passage at the top of a dome behind you. Rought stone steps lead up the dome.</value>
+  </data>
+  <data name="Room14" xml:space="preserve">
+    <value>This is a low room with a hieroglyph on the wall. It translates "You won't get it up the steps".</value>
+  </data>
+  <data name="Room15" xml:space="preserve">
+    <value>You are on the east bank of a bottomless pit stretching across the hall. The mist is quite thick here, and the pit is too wide to jump.</value>
+  </data>
+  <data name="Room16" xml:space="preserve">
+    <value>You are in the pharaoh's chamber, with passages off in all directions.</value>
+  </data>
+  <data name="Room17" xml:space="preserve">
+    <value>You are in the south side chamber.</value>
+  </data>
+  <data name="Room18" xml:space="preserve">
+    <value>You are on the west side of the bottomless pit in the hall of gods.</value>
+  </data>
+  <data name="Room19" xml:space="preserve">
+    <value>You are at the west end of the hall of gods. A low wide pass continues west and another goes north. To the south is a little passage six feet off the floor.</value>
+  </data>
+  <data name="Room2" xml:space="preserve">
+    <value>You are in the entrance to the pyramid. A hole in the floor leads to a passage beneath the surface.</value>
+  </data>
+  <data name="Room20" xml:space="preserve">
+    <value>You are at east end of a very long hall apparently without side chambers. To the east a low wide crawl slants up. To the north a round two foot hole slants down.</value>
+  </data>
+  <data name="Room21" xml:space="preserve">
+    <value>You are at the west end of a very long featureless hall. The hall joins up with a narrow north/south passage.</value>
+  </data>
+  <data name="Room22" xml:space="preserve">
+    <value>You are at a crossover of a high N/S passage and a low E/W one.</value>
+  </data>
+  <data name="Room24" xml:space="preserve">
+    <value>You are in the west throne chamber. A passage continues west and up from here.</value>
+  </data>
+  <data name="Room25" xml:space="preserve">
+    <value>You are in a low N/S passage at a hole in the floor. The hole goes down to an E/W passage.</value>
+  </data>
+  <data name="Room26" xml:space="preserve">
+    <value>You are in a large room, with a passage to the south, and a wall of broken rock to the east. There is a panel on the north wall.</value>
+  </data>
+  <data name="Room27" xml:space="preserve">
+    <value>You are in the chamber of Anubis.</value>
+  </data>
+  <data name="Room52" xml:space="preserve">
+    <value>You are on the brink of a large pit. You could climb down, but you would not be able to climb back up. The maze continues on this level.</value>
+  </data>
+  <data name="Room54" xml:space="preserve">
+    <value>You are in a dirty broken passage. To the east is a crawl. To the west is a large passage. Above you is a hole to another passage.</value>
+  </data>
+  <data name="Room55" xml:space="preserve">
+    <value>You are on the brink of a small clean climbable pit. A crawl leads west.</value>
+  </data>
+  <data name="Room56" xml:space="preserve">
+    <value>You are in the bottom of a small pit with a little stream, which enters and exits through tiny slits.</value>
+  </data>
+  <data name="Room57" xml:space="preserve">
+    <value>You are in the room of Bes, whose picture is on the wall. There is a big hole in the floor. There is a passage leading east.</value>
+  </data>
+  <data name="Room58" xml:space="preserve">
+    <value>You are at a complex junction. A low hands and knees passage from the north joins a higher crawl from the east to make a walking passage going west. There is also a large room above. The air is damp here.</value>
+  </data>
+  <data name="Room59" xml:space="preserve">
+    <value>You are in the underworld anteroom of Seker. Passages go east, west, and up. Human bones are strewn about on the floor. Hieroglyphics on the wall roughly translate to "Those who proceed east may never return.".</value>
+  </data>
+  <data name="Room60" xml:space="preserve">
+    <value>You are at the land of dead. Passages lead off in &gt;all&lt; directions.</value>
+  </data>
+  <data name="Room61" xml:space="preserve">
+    <value>You're in a large room with ancient drawings on all walls. The pictures depict Atum, a pharaoh wearing the double crown. A shallow passage proceeds downward, and a somewhat steeper one leads up. A low hands and knees passage enters from the south.</value>
+  </data>
+  <data name="Room62" xml:space="preserve">
+    <value>You are in a chamber whose wall contains a picture of a man wearing the lunar disk on his head. He is the god Khons, the moon god.</value>
+  </data>
+  <data name="Room63" xml:space="preserve">
+    <value>You are in a long sloping corridor with ragged walls.</value>
+  </data>
+  <data name="Room64" xml:space="preserve">
+    <value>You are in a cul-de-sac about eight feet across.</value>
+  </data>
+  <data name="Room65" xml:space="preserve">
+    <value>You are in the chamber of Horus, a long east/west passage with holes everywhere. To explore at random, select north, south, up, or down.</value>
+  </data>
+  <data name="Room66" xml:space="preserve">
+    <value>You are in a large low circular chamber whose floor is an immense slab fallen from the ceiling. East and west there once were large passages, but they are now filled with sand. Low small passages go north and south.</value>
+  </data>
+  <data name="Room68" xml:space="preserve">
+    <value>You are in the chamber of Nekhebet, a woman with the head of a vulture, wearing the crown of Egypt. A passage exits to the south.</value>
+  </data>
+  <data name="Room7" xml:space="preserve">
+    <value>You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, "Curse all who enter this sacred crypt.".
+
+</value>
+  </data>
+  <data name="Room70" xml:space="preserve">
+    <value>The passage here is blocked by a fallen block.</value>
+  </data>
+  <data name="Room71" xml:space="preserve">
+    <value>You are in the chamber of Osiris. The ceiling is too high up for your lamp to show it. Passages lead east, north, and south.</value>
+  </data>
+  <data name="Room72" xml:space="preserve">
+    <value>You are in the priest's bedroom. The walls are covered with curtains, the floor with a thick pile carpet. Moss covers the ceiling.</value>
+  </data>
+  <data name="Room73" xml:space="preserve">
+    <value>This is the chamber of the high priest. Ancient drawings cover the walls. An extremely tight tunnel leads west. It looks like a tight squeeze. Another passage leads SE.</value>
+  </data>
+  <data name="Room76" xml:space="preserve">
+    <value>You are in the high priest's treasure room lit by an eerie green light. A narrow tunnel exits to the east.</value>
+  </data>
+  <data name="Room77" xml:space="preserve">
+    <value>You are in a long, narrow corridor stretching out of sight to the west. At the eastern end is a hole through which you can see a profusion of leaves.</value>
+  </data>
+  <data name="Room78" xml:space="preserve">
+    <value>You are at the east end of the twopit room. The floor here is littered with thin rock slabs, which make it easy to descend the pits. There is a path here bypassing the pits to connect passages east and west. There are holes all over, but the only big one is on the wall directly over the west pit where you can't get to it.</value>
+  </data>
+  <data name="Room79" xml:space="preserve">
+    <value>You are at the bottom of the eastern pit in the twopit room.</value>
+  </data>
+  <data name="Room8" xml:space="preserve">
+    <value>You are crawling over pebbles in a low passage. There is a dim light at the east end of the passage.</value>
+  </data>
+  <data name="Room80" xml:space="preserve">
+    <value>You are at the west end of the twopit room. There is a large hole in the wall above the pit at this end of the room.</value>
+  </data>
+  <data name="Room81" xml:space="preserve">
+    <value>You are at the bottom of the west pit in the twopit room. There is a large hole in the wall about twenty five feet above you.</value>
+  </data>
+  <data name="Room9" xml:space="preserve">
+    <value>You are in a room filled with broken shards of ancient egyptian crafts. An awkward corridor leads upward and west.</value>
+  </data>
+  <data name="SarcophagusDoesntFit" xml:space="preserve">
+    <value>You can't fit this big sarcophagus through that little passage!</value>
+  </data>
+  <data name="SerpentBlocks" xml:space="preserve">
+    <value>You can't get by the serpent.</value>
+  </data>
+  <data name="ShinyBrassLamp" xml:space="preserve">
+    <value>There is a shiny brass lamp nearby.</value>
+  </data>
+  <data name="StatueBox" xml:space="preserve">
+    <value>Statue box</value>
+  </data>
+  <data name="TryToReincarnate" xml:space="preserve">
+    <value>Do you want me to try to reincarnate you?</value>
+  </data>
+  <data name="VendingMachine" xml:space="preserve">
+    <value>There is a massive vending machine here. The instructions on it read- "Drop coins here to receive fresh batteries".</value>
+  </data>
+  <data name="VerbWhat" xml:space="preserve">
+    <value>{0} What?</value>
+  </data>
+  <data name="What" xml:space="preserve">
+    <value>What?</value>
+  </data>
+  <data name="WhatDoYouWantToDoWith" xml:space="preserve">
+    <value>What do you want me to do with the {0} ?</value>
+  </data>
+  <data name="YouHaveScored" xml:space="preserve">
+    <value>You have scored {0: 0000;-0000} out of 0220, using {1:0000} turns.</value>
+  </data>
+</root>
