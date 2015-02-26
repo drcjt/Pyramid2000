@@ -12,12 +12,12 @@ namespace Pyramid2000.ConsoleApplication
     {
         public void PrintLn(string text)
         {
-            Console.WriteLine(text.ToUpper());
+            Console.WriteLine(text);
         }
 
         public void Print(string text)
         {
-            Console.Write(text.ToUpper());
+            Console.Write(text);
         }
     }
 }

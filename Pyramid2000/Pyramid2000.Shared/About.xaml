@@ -22,21 +22,20 @@
         </Grid.RowDefinitions>
     
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto">
+            <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite">
                 <StackPanel>
                     <Image Source="ms-appx:///Assets/Cover.scale-200.png" Stretch="None" HorizontalAlignment="Left"/>
-                    <TextBlock TextWrapping="Wrap"
-                    Style="{ThemeResource BodyTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged">Build 1.2.0.0<LineBreak/>
-                    <LineBreak/>This app is an implementation of a 'classic' text adventure game originally released for the Radio Shack Model I Computer.
-                    <LineBreak/>
-                    <LineBreak/>Pyramid 2000 was written by Robert Arnstein and released by Radio Shack in 1979.
-                    <LineBreak/>
-                    <LineBreak/>This project would not have been possible without the information and code found on Christopher Cantrell's website:
-                    <LineBreak/>http://www.computerarcheology.com
-                    <LineBreak/>
-                    <LineBreak/>You can find a wealth of information about this game including a walk through solution on Sean Murphy's website:
-                    <LineBreak/>http://www.figmentfly.com
-                    </TextBlock>
+                    <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}">
+                        <Paragraph>Build 1.2.0.0<LineBreak/>This app is an implementation of a 'classic' text adventure game originally released for the Radio Shack Model I Computer.<LineBreak/>
+                            <LineBreak/>Pyramid 2000 was written by Robert Arnstein and released by Radio Shack in 1979.
+                            <LineBreak/>
+                            <LineBreak/>This project would not have been possible without the information and code found on Christopher Cantrell's website:
+                            <LineBreak/><Hyperlink>http://www.computerarcheology.com</Hyperlink>
+                            <LineBreak/>
+                            <LineBreak/>You can find a wealth of information about this game including a walk through solution on Sean Murphy's website:
+                            <LineBreak/><Hyperlink>http://www.figmentfly.com</Hyperlink>
+                        </Paragraph>
+                    </RichTextBlock>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

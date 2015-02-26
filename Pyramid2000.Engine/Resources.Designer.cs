@@ -80,11 +80,56 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attacking the serpent both doesn&apos;t work and is very dangerous..
+        /// </summary>
+        internal static string AttackingSerpentFails {
+            get {
+                return ResourceManager.GetString("AttackingSerpentFails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A huge green fierce serpent bars the way!.
         /// </summary>
         internal static string BarredBySerpent {
             get {
                 return ResourceManager.GetString("BarredBySerpent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Batteries.
+        /// </summary>
+        internal static string Batteries {
+            get {
+                return ResourceManager.GetString("Batteries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are fresh batteries here..
+        /// </summary>
+        internal static string BatteriesFreshLongDesc {
+            get {
+                return ResourceManager.GetString("BatteriesFreshLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some worn-out batteries have been discarded nearby..
+        /// </summary>
+        internal static string BatteriesWornLongDesc {
+            get {
+                return ResourceManager.GetString("BatteriesWornLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is beyond your power to do that..
+        /// </summary>
+        internal static string BeyondYourPower {
+            get {
+                return ResourceManager.GetString("BeyondYourPower", resourceCulture);
             }
         }
         
@@ -98,11 +143,47 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It&apos;s not hungry. Besides, you have no bird seed..
+        /// </summary>
+        internal static string BirdNotHungry {
+            get {
+                return ResourceManager.GetString("BirdNotHungry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The bird statue is now dead. Its body disappears..
+        /// </summary>
+        internal static string BirdStatueDead {
+            get {
+                return ResourceManager.GetString("BirdStatueDead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small bottle.
+        /// </summary>
+        internal static string Bottle {
+            get {
+                return ResourceManager.GetString("Bottle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your bottle is already full..
         /// </summary>
         internal static string BottleAlreadyFull {
             get {
                 return ResourceManager.GetString("BottleAlreadyFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a bottle here..
+        /// </summary>
+        internal static string BottleLongDesc {
+            get {
+                return ResourceManager.GetString("BottleLongDesc", resourceCulture);
             }
         }
         
@@ -143,11 +224,29 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t be serious!.
+        /// </summary>
+        internal static string CantBeSerious {
+            get {
+                return ResourceManager.GetString("CantBeSerious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can&apos;t carry anything more. You&apos;ll have to drop something first..
         /// </summary>
         internal static string CantCarryAnymore {
             get {
                 return ResourceManager.GetString("CantCarryAnymore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can lift the statue, but you cannot carry it..
+        /// </summary>
+        internal static string CantCarryStatue {
+            get {
+                return ResourceManager.GetString("CantCarryStatue", resourceCulture);
             }
         }
         
@@ -161,11 +260,47 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t fill that..
+        /// </summary>
+        internal static string CantFillThat {
+            get {
+                return ResourceManager.GetString("CantFillThat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You don&apos;t fit through the two-inch slit!.
         /// </summary>
         internal static string CantFitThroughTwoInchSlit {
             get {
                 return ResourceManager.GetString("CantFitThroughTwoInchSlit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t pour that..
+        /// </summary>
+        internal static string CantPourThat {
+            get {
+                return ResourceManager.GetString("CantPourThat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Treasure chest.
+        /// </summary>
+        internal static string Chest {
+            get {
+                return ResourceManager.GetString("Chest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The pharaoh&apos;s treasure chest is here!.
+        /// </summary>
+        internal static string ChestLongDesc {
+            get {
+                return ResourceManager.GetString("ChestLongDesc", resourceCulture);
             }
         }
         
@@ -184,6 +319,24 @@ namespace Pyramid2000.Engine {
         internal static string ClimbPlant {
             get {
                 return ResourceManager.GetString("ClimbPlant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rare coins.
+        /// </summary>
+        internal static string Coins {
+            get {
+                return ResourceManager.GetString("Coins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are many coins here!.
+        /// </summary>
+        internal static string CoinsLongDesc {
+            get {
+                return ResourceManager.GetString("CoinsLongDesc", resourceCulture);
             }
         }
         
@@ -242,11 +395,38 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank you, it was delicious!.
+        /// </summary>
+        internal static string Delicious {
+            get {
+                return ResourceManager.GetString("Delicious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are in the desert..
         /// </summary>
         internal static string Desert {
             get {
                 return ResourceManager.GetString("Desert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Several diamonds.
+        /// </summary>
+        internal static string Diamonds {
+            get {
+                return ResourceManager.GetString("Diamonds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are diamonds here!.
+        /// </summary>
+        internal static string DiamondsLongDesc {
+            get {
+                return ResourceManager.GetString("DiamondsLongDesc", resourceCulture);
             }
         }
         
@@ -287,6 +467,33 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t know how..
+        /// </summary>
+        internal static string DontKnowHow {
+            get {
+                return ResourceManager.GetString("DontKnowHow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t know how to apply that word here..
+        /// </summary>
+        internal static string DontKnowHowToApplyWord {
+            get {
+                return ResourceManager.GetString("DontKnowHowToApplyWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t know how to lock or unlock such a thing..
+        /// </summary>
+        internal static string DontKnowHowToLockUnlock {
+            get {
+                return ResourceManager.GetString("DontKnowHowToLockUnlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I don&apos;t know that word..
         /// </summary>
         internal static string DontKnowThatWord {
@@ -314,6 +521,15 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have taken a drink from the stream. The water tastes strongly of minerals, but is not unpleasant. It is extremely cold..
+        /// </summary>
+        internal static string DrinkFromStream {
+            get {
+                return ResourceManager.GetString("DrinkFromStream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something you&apos;re carrying won&apos;t fit through the tunnel with you. You&apos;d best take inventory and drop something..
         /// </summary>
         internal static string DropSomething {
@@ -323,11 +539,83 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Egg-sized emerald.
+        /// </summary>
+        internal static string Emerald {
+            get {
+                return ResourceManager.GetString("Emerald", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is an emerald here the size of a plover&apos;s egg!.
+        /// </summary>
+        internal static string EmeraldLongDesc {
+            get {
+                return ResourceManager.GetString("EmeraldLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The bottle is now empty..
+        /// </summary>
+        internal static string EmptyBottle {
+            get {
+                return ResourceManager.GetString("EmptyBottle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your bottle is empty and the ground is wet..
+        /// </summary>
+        internal static string EmptyBottleWetGround {
+            get {
+                return ResourceManager.GetString("EmptyBottleWetGround", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The sarcophagus creaks open, revealing nothing inside. It promptly snaps shut again..
+        /// </summary>
+        internal static string EmptySarcophagus {
+            get {
+                return ResourceManager.GetString("EmptySarcophagus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You fell into a pit and broke every bone in your body..
         /// </summary>
         internal static string FellIntoPit {
             get {
                 return ResourceManager.GetString("FellIntoPit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The floor is littered with worthless shards of pottery..
+        /// </summary>
+        internal static string FloorLitteredWithShards {
+            get {
+                return ResourceManager.GetString("FloorLitteredWithShards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasty food.
+        /// </summary>
+        internal static string Food {
+            get {
+                return ResourceManager.GetString("Food", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is food here..
+        /// </summary>
+        internal static string FoodLongDesc {
+            get {
+                return ResourceManager.GetString("FoodLongDesc", resourceCulture);
             }
         }
         
@@ -350,11 +638,56 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Glistening pearl.
+        /// </summary>
+        internal static string GlisteningPearl {
+            get {
+                return ResourceManager.GetString("GlisteningPearl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off to one side lies a glistening pearl!.
+        /// </summary>
+        internal static string GlisteningPearlLongDesc {
+            get {
+                return ResourceManager.GetString("GlisteningPearlLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Large gold nugget.
+        /// </summary>
+        internal static string Gold {
+            get {
+                return ResourceManager.GetString("Gold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a large sparkling nugget of gold here!.
+        /// </summary>
+        internal static string GoldLongDesc {
+            get {
+                return ResourceManager.GetString("GoldLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oh dear, you seem to have gotten yourself killed.  I might be able to help you out, but I&apos;ve never really done this before..
         /// </summary>
         internal static string GottenKilled {
             get {
                 return ResourceManager.GetString("GottenKilled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I&apos;m game. Would you care to explain how?.
+        /// </summary>
+        internal static string ImGame {
+            get {
+                return ResourceManager.GetString("ImGame", resourceCulture);
             }
         }
         
@@ -377,11 +710,119 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Precious jewelry.
+        /// </summary>
+        internal static string Jewelry {
+            get {
+                return ResourceManager.GetString("Jewelry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is precious jewelry here!.
+        /// </summary>
+        internal static string JewelryLongDesc {
+            get {
+                return ResourceManager.GetString("JewelryLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jeweled key.
+        /// </summary>
+        internal static string Key {
+            get {
+                return ResourceManager.GetString("Key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a jewel-encrusted key here!.
+        /// </summary>
+        internal static string KeyLongDesc {
+            get {
+                return ResourceManager.GetString("KeyLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your lamp is getting dim. You&apos;d best start wrapping this up, unless you can find some fresh batteries. I seem to recall there is a vending machine in the maze. Bring some coins with you..
+        /// </summary>
+        internal static string LampGettingDim {
+            get {
+                return ResourceManager.GetString("LampGettingDim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your lamp is getting dim. I&apos;m taking the liberty of replacing the batteries..
+        /// </summary>
+        internal static string LampGettingDimChangingBatteries {
+            get {
+                return ResourceManager.GetString("LampGettingDimChangingBatteries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your lamp is now off..
+        /// </summary>
+        internal static string LampIsNowOff {
+            get {
+                return ResourceManager.GetString("LampIsNowOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your lamp is now on..
+        /// </summary>
+        internal static string LampIsNowOn {
+            get {
+                return ResourceManager.GetString("LampIsNowOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your lamp has run out of power..
+        /// </summary>
+        internal static string LampOutOfPower {
+            get {
+                return ResourceManager.GetString("LampOutOfPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is a lamp shining nearby..
         /// </summary>
         internal static string LampShining {
             get {
                 return ResourceManager.GetString("LampShining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I think I just lost my appetite..
+        /// </summary>
+        internal static string LostAppetite {
+            get {
+                return ResourceManager.GetString("LostAppetite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Egyptian weekly&quot;.
+        /// </summary>
+        internal static string Magazine {
+            get {
+                return ResourceManager.GetString("Magazine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are a few recent issues of &quot;Egyptian weekly&quot; magazine here..
+        /// </summary>
+        internal static string MagazineLongDesc {
+            get {
+                return ResourceManager.GetString("MagazineLongDesc", resourceCulture);
             }
         }
         
@@ -404,11 +845,38 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Golden eggs.
+        /// </summary>
+        internal static string Nest {
+            get {
+                return ResourceManager.GetString("Nest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a large nest here, full of golden eggs!.
+        /// </summary>
+        internal static string NestLongDesc {
+            get {
+                return ResourceManager.GetString("NestLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, but I no longer seem to remember how it was you got here..
         /// </summary>
         internal static string NoLongerRememberHowYouGotHere {
             get {
                 return ResourceManager.GetString("NoLongerRememberHowYouGotHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have no source of light..
+        /// </summary>
+        internal static string NoSourceOfLight {
+            get {
+                return ResourceManager.GetString("NoSourceOfLight", resourceCulture);
             }
         }
         
@@ -422,11 +890,47 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nothing happens..
+        /// </summary>
+        internal static string NothingHappens {
+            get {
+                return ResourceManager.GetString("NothingHappens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is nothing here to climb. Use up or out to leave the pit..
         /// </summary>
         internal static string NothingToClimb {
             get {
                 return ResourceManager.GetString("NothingToClimb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is nothing here with which to fill the bottle..
+        /// </summary>
+        internal static string NothingToFillBottleWith {
+            get {
+                return ResourceManager.GetString("NothingToFillBottleWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have anything strong enough to open the sarcophagus..
+        /// </summary>
+        internal static string NotStrongEnoughToOpenSarcophagus {
+            get {
+                return ResourceManager.GetString("NotStrongEnoughToOpenSarcophagus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no way for you to go that direction..
+        /// </summary>
+        internal static string NoWayToGoThatDirection {
+            get {
+                return ResourceManager.GetString("NoWayToGoThatDirection", resourceCulture);
             }
         }
         
@@ -449,11 +953,47 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A glistening pearl falls out of the sarcophagus and rolls away. The sarcophagus snaps shut again..
+        /// </summary>
+        internal static string PearlFallsOut {
+            get {
+                return ResourceManager.GetString("PearlFallsOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peculiar. Nothing unexpected happens..
+        /// </summary>
+        internal static string Peculiar {
+            get {
+                return ResourceManager.GetString("Peculiar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Velvet pillow.
+        /// </summary>
+        internal static string Pillow {
+            get {
+                return ResourceManager.GetString("Pillow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is a twelve foot bean stalk stretching up out of the pit, bellowing &quot;Water... Water...&quot;.
         /// </summary>
         internal static string PlantBellowing {
             get {
                 return ResourceManager.GetString("PlantBellowing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The plant has exceptionally deep roots and cannot be pulled free..
+        /// </summary>
+        internal static string PlantCantBePulledFree {
+            get {
+                return ResourceManager.GetString("PlantCantBePulledFree", resourceCulture);
             }
         }
         
@@ -481,6 +1021,24 @@ namespace Pyramid2000.Engine {
         internal static string PlantSpurts {
             get {
                 return ResourceManager.GetString("PlantSpurts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to : .
+        /// </summary>
+        internal static string Prompt {
+            get {
+                return ResourceManager.GetString("Prompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I&apos;d advise you to put down the sarcophagus before opening it!!.
+        /// </summary>
+        internal static string PutSarcophagusDown {
+            get {
+                return ResourceManager.GetString("PutSarcophagusDown", resourceCulture);
             }
         }
         
@@ -791,9 +1349,7 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, &quot;Curse all who enter this sacred crypt.&quot;.
-        ///
-        ///.
+        ///   Looks up a localized string similar to You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, &quot;Curse all who enter this sacred crypt.&quot;..
         /// </summary>
         internal static string Room7 {
             get {
@@ -910,11 +1466,47 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rubbing the electric lamp is not particularly rewarding. Anyway, nothing exciting happens..
+        /// </summary>
+        internal static string RubbingNothingHappens {
+            get {
+                return ResourceManager.GetString("RubbingNothingHappens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sarcophagus &gt;groan&lt;.
+        /// </summary>
+        internal static string Sarcophagus {
+            get {
+                return ResourceManager.GetString("Sarcophagus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can&apos;t fit this big sarcophagus through that little passage!.
         /// </summary>
         internal static string SarcophagusDoesntFit {
             get {
                 return ResourceManager.GetString("SarcophagusDoesntFit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a sarcophagus here with it&apos;s cover tightly closed..
+        /// </summary>
+        internal static string SarcophagusLongDesc {
+            get {
+                return ResourceManager.GetString("SarcophagusLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scepter.
+        /// </summary>
+        internal static string Scepter {
+            get {
+                return ResourceManager.GetString("Scepter", resourceCulture);
             }
         }
         
@@ -928,11 +1520,56 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The serpent has now devoured your bird statue..
+        /// </summary>
+        internal static string SerpentEatenBird {
+            get {
+                return ResourceManager.GetString("SerpentEatenBird", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is nothing here it wants to eat - except perhaps you..
+        /// </summary>
+        internal static string SerpentHasNothingToEat {
+            get {
+                return ResourceManager.GetString("SerpentHasNothingToEat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is a shiny brass lamp nearby..
         /// </summary>
         internal static string ShinyBrassLamp {
             get {
                 return ResourceManager.GetString("ShinyBrassLamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Silver bars.
+        /// </summary>
+        internal static string Silver {
+            get {
+                return ResourceManager.GetString("Silver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are bars of silver here!.
+        /// </summary>
+        internal static string SilverLongDesc {
+            get {
+                return ResourceManager.GetString("SilverLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A small velvet pillow lies on the floor..
+        /// </summary>
+        internal static string SmallVelvetPillow {
+            get {
+                return ResourceManager.GetString("SmallVelvetPillow", resourceCulture);
             }
         }
         
@@ -946,11 +1583,128 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to As you approach the statue, it comes to life and flies across the chamber where it lands and returns to stone..
+        /// </summary>
+        internal static string StatueComesToLife {
+            get {
+                return ResourceManager.GetString("StatueComesToLife", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a bird statue in the box..
+        /// </summary>
+        internal static string StatueInBox {
+            get {
+                return ResourceManager.GetString("StatueInBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A statue of the bird god is sitting here..
+        /// </summary>
+        internal static string StatueOfBirdGod {
+            get {
+                return ResourceManager.GetString("StatueOfBirdGod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The stone is very strong and is impervious to attack..
+        /// </summary>
+        internal static string StoneVeryStrong {
+            get {
+                return ResourceManager.GetString("StoneVeryStrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A three foot scepter with an ankh on an end lies nearby..
+        /// </summary>
+        internal static string ThreeFootScepter {
+            get {
+                return ResourceManager.GetString("ThreeFootScepter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want me to try to reincarnate you?.
         /// </summary>
         internal static string TryToReincarnate {
             get {
                 return ResourceManager.GetString("TryToReincarnate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am unsure how you are facing. Use compass points..
+        /// </summary>
+        internal static string UnsureHowYouAreFacing {
+            get {
+                return ResourceManager.GetString("UnsureHowYouAreFacing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t know in from out here. Use compass points..
+        /// </summary>
+        internal static string UseCompassPoints {
+            get {
+                return ResourceManager.GetString("UseCompassPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vase.
+        /// </summary>
+        internal static string Vase {
+            get {
+                return ResourceManager.GetString("Vase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The vase drops with a delicate crash..
+        /// </summary>
+        internal static string VaseDropsWithCrash {
+            get {
+                return ResourceManager.GetString("VaseDropsWithCrash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have taken the vase and hurled it delicately to the ground..
+        /// </summary>
+        internal static string VaseHurledToGround {
+            get {
+                return ResourceManager.GetString("VaseHurledToGround", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The vase is now resting, delicately, on a velvet pillow..
+        /// </summary>
+        internal static string VasePillowLongDesc {
+            get {
+                return ResourceManager.GetString("VasePillowLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The vase is now resting, delicately, on a velvet pillow..
+        /// </summary>
+        internal static string VaseRestingOnPillow {
+            get {
+                return ResourceManager.GetString("VaseRestingOnPillow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a delicate, precious, vase here!.
+        /// </summary>
+        internal static string VaseSoloLongDesc {
+            get {
+                return ResourceManager.GetString("VaseSoloLongDesc", resourceCulture);
             }
         }
         
@@ -964,11 +1718,38 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} What?.
+        ///   Looks up a localized string similar to {0} what?.
         /// </summary>
         internal static string VerbWhat {
             get {
                 return ResourceManager.GetString("VerbWhat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Water in the bottle.
+        /// </summary>
+        internal static string Water {
+            get {
+                return ResourceManager.GetString("Water", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is water in the bottle..
+        /// </summary>
+        internal static string WaterLongDesc {
+            get {
+                return ResourceManager.GetString("WaterLongDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to pyramid!!.
+        /// </summary>
+        internal static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
         

@@ -82,13 +82,13 @@ namespace Pyramid2000
 
         public void PrintLn(string text)
         {
-            Print(text.ToUpper());
+            Print(text);
             Print("\n");
         }
 
         public void Print(string text)
         {
-            Body.Text += text.ToUpper();
+            Body.Text += text;
             BodyScroller.Measure(BodyScroller.RenderSize);
             BodyScroller.ChangeView(0, BodyScroller.ScrollableHeight, 1);
         }

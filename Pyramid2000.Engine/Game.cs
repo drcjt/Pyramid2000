@@ -65,13 +65,13 @@ namespace Pyramid2000.Engine
                     
                     if (!handled)
                     {
-                        _printer.PrintLn("I DON'T KNOW HOW TO APPLY THAT WORD HERE.");
+                        _printer.PrintLn(Resources.DontKnowHowToApplyWord);
                     }
 
                     DoAfterPlayerTurn();
                 }
 
-                _printer.Print(": ");
+                _printer.Print(Resources.Prompt);
             }
         }
 
@@ -90,12 +90,12 @@ namespace Pyramid2000.Engine
                         var lampDead = _items.GetExactItemByName("#LAMP_dead");
                         lampDead.Location = lamp.Location;
                         lamp.Location = null;
-                        _printer.PrintLn("YOUR LAMP HAS RUN OUT OF POWER.");
+                        _printer.PrintLn(Resources.LampOutOfPower);
                     }
                 }
                 else if (_gameState.BatteryLife == 20)
                 {
-                    _printer.PrintLn("YOUR LAMP IS GETTING DIM. YOU'D BEST START WRAPPING THIS UP, UNLESS YOU CAN FIND SOME FRESH BATTERIES. I SEEM TO RECALL THERE IS A VENDING MACHINE IN THE MAZE. BRING SOME COINS WITH YOU.");
+                    _printer.PrintLn(Resources.LampGettingDim);
                 }
             }
             if (_gameState.BatteryLife <= 10)
@@ -109,7 +109,7 @@ namespace Pyramid2000.Engine
             var batteries = _items.GetExactItemByName("#BATTERIES_fresh");
             if (batteries.Location == "pack")
             {
-                _printer.PrintLn("YOUR LAMP IS GETTING DIM. I'M TAKING THE LIBERTY OF REPLACING THE BATTERIES.");
+                _printer.PrintLn(Resources.LampGettingDimChangingBatteries);
                 _gameState.BatteryLife = 310;
                 batteries.Location = null;
                 batteries = _items.GetExactItemByName("#BATTERIES_worn");
@@ -121,10 +121,10 @@ namespace Pyramid2000.Engine
 
         public void Init()
         {
-            _printer.PrintLn("WELCOME TO PYRAMID!!");
+            _printer.PrintLn(Resources.Welcome);
             _printer.PrintLn("");
             _scripter.Look();
-            _printer.Print(": ");
+            _printer.Print(Resources.Prompt);
         }
     }
 }

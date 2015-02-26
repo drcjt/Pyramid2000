@@ -361,9 +361,7 @@
     <value>You are in the chamber of Nekhebet, a woman with the head of a vulture, wearing the crown of Egypt. A passage exits to the south.</value>
   </data>
   <data name="Room7" xml:space="preserve">
-    <value>You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, "Curse all who enter this sacred crypt.".
-
-</value>
+    <value>You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, "Curse all who enter this sacred crypt.".</value>
   </data>
   <data name="Room70" xml:space="preserve">
     <value>The passage here is blocked by a fallen block.</value>
@@ -420,7 +418,7 @@
     <value>There is a massive vending machine here. The instructions on it read- "Drop coins here to receive fresh batteries".</value>
   </data>
   <data name="VerbWhat" xml:space="preserve">
-    <value>{0} What?</value>
+    <value>{0} what?</value>
   </data>
   <data name="What" xml:space="preserve">
     <value>What?</value>
@@ -430,5 +428,266 @@
   </data>
   <data name="YouHaveScored" xml:space="preserve">
     <value>You have scored {0: 0000;-0000} out of 0220, using {1:0000} turns.</value>
+  </data>
+  <data name="AttackingSerpentFails" xml:space="preserve">
+    <value>Attacking the serpent both doesn't work and is very dangerous.</value>
+  </data>
+  <data name="Batteries" xml:space="preserve">
+    <value>Batteries</value>
+  </data>
+  <data name="BatteriesFreshLongDesc" xml:space="preserve">
+    <value>There are fresh batteries here.</value>
+  </data>
+  <data name="BatteriesWornLongDesc" xml:space="preserve">
+    <value>Some worn-out batteries have been discarded nearby.</value>
+  </data>
+  <data name="BeyondYourPower" xml:space="preserve">
+    <value>It is beyond your power to do that.</value>
+  </data>
+  <data name="BirdNotHungry" xml:space="preserve">
+    <value>It's not hungry. Besides, you have no bird seed.</value>
+  </data>
+  <data name="BirdStatueDead" xml:space="preserve">
+    <value>The bird statue is now dead. Its body disappears.</value>
+  </data>
+  <data name="Bottle" xml:space="preserve">
+    <value>Small bottle</value>
+  </data>
+  <data name="BottleLongDesc" xml:space="preserve">
+    <value>There is a bottle here.</value>
+  </data>
+  <data name="CantBeSerious" xml:space="preserve">
+    <value>You can't be serious!</value>
+  </data>
+  <data name="CantCarryStatue" xml:space="preserve">
+    <value>You can lift the statue, but you cannot carry it.</value>
+  </data>
+  <data name="CantFillThat" xml:space="preserve">
+    <value>You can't fill that.</value>
+  </data>
+  <data name="CantPourThat" xml:space="preserve">
+    <value>You can't pour that.</value>
+  </data>
+  <data name="Chest" xml:space="preserve">
+    <value>Treasure chest</value>
+  </data>
+  <data name="ChestLongDesc" xml:space="preserve">
+    <value>The pharaoh's treasure chest is here!</value>
+  </data>
+  <data name="Coins" xml:space="preserve">
+    <value>Rare coins</value>
+  </data>
+  <data name="CoinsLongDesc" xml:space="preserve">
+    <value>There are many coins here!</value>
+  </data>
+  <data name="Delicious" xml:space="preserve">
+    <value>Thank you, it was delicious!</value>
+  </data>
+  <data name="Diamonds" xml:space="preserve">
+    <value>Several diamonds</value>
+  </data>
+  <data name="DiamondsLongDesc" xml:space="preserve">
+    <value>There are diamonds here!</value>
+  </data>
+  <data name="DontKnowHow" xml:space="preserve">
+    <value>I don't know how.</value>
+  </data>
+  <data name="DontKnowHowToApplyWord" xml:space="preserve">
+    <value>I don't know how to apply that word here.</value>
+  </data>
+  <data name="DontKnowHowToLockUnlock" xml:space="preserve">
+    <value>I don't know how to lock or unlock such a thing.</value>
+  </data>
+  <data name="DrinkFromStream" xml:space="preserve">
+    <value>You have taken a drink from the stream. The water tastes strongly of minerals, but is not unpleasant. It is extremely cold.</value>
+  </data>
+  <data name="Emerald" xml:space="preserve">
+    <value>Egg-sized emerald</value>
+  </data>
+  <data name="EmeraldLongDesc" xml:space="preserve">
+    <value>There is an emerald here the size of a plover's egg!</value>
+  </data>
+  <data name="EmptyBottle" xml:space="preserve">
+    <value>The bottle is now empty.</value>
+  </data>
+  <data name="EmptyBottleWetGround" xml:space="preserve">
+    <value>Your bottle is empty and the ground is wet.</value>
+  </data>
+  <data name="EmptySarcophagus" xml:space="preserve">
+    <value>The sarcophagus creaks open, revealing nothing inside. It promptly snaps shut again.</value>
+  </data>
+  <data name="FloorLitteredWithShards" xml:space="preserve">
+    <value>The floor is littered with worthless shards of pottery.</value>
+  </data>
+  <data name="Food" xml:space="preserve">
+    <value>Tasty food</value>
+  </data>
+  <data name="FoodLongDesc" xml:space="preserve">
+    <value>There is food here.</value>
+  </data>
+  <data name="GlisteningPearl" xml:space="preserve">
+    <value>Glistening pearl</value>
+  </data>
+  <data name="GlisteningPearlLongDesc" xml:space="preserve">
+    <value>Off to one side lies a glistening pearl!</value>
+  </data>
+  <data name="Gold" xml:space="preserve">
+    <value>Large gold nugget</value>
+  </data>
+  <data name="GoldLongDesc" xml:space="preserve">
+    <value>There is a large sparkling nugget of gold here!</value>
+  </data>
+  <data name="ImGame" xml:space="preserve">
+    <value>I'm game. Would you care to explain how?</value>
+  </data>
+  <data name="Jewelry" xml:space="preserve">
+    <value>Precious jewelry</value>
+  </data>
+  <data name="JewelryLongDesc" xml:space="preserve">
+    <value>There is precious jewelry here!</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Jeweled key</value>
+  </data>
+  <data name="KeyLongDesc" xml:space="preserve">
+    <value>There is a jewel-encrusted key here!</value>
+  </data>
+  <data name="LampGettingDim" xml:space="preserve">
+    <value>Your lamp is getting dim. You'd best start wrapping this up, unless you can find some fresh batteries. I seem to recall there is a vending machine in the maze. Bring some coins with you.</value>
+  </data>
+  <data name="LampGettingDimChangingBatteries" xml:space="preserve">
+    <value>Your lamp is getting dim. I'm taking the liberty of replacing the batteries.</value>
+  </data>
+  <data name="LampIsNowOff" xml:space="preserve">
+    <value>Your lamp is now off.</value>
+  </data>
+  <data name="LampIsNowOn" xml:space="preserve">
+    <value>Your lamp is now on.</value>
+  </data>
+  <data name="LampOutOfPower" xml:space="preserve">
+    <value>Your lamp has run out of power.</value>
+  </data>
+  <data name="LostAppetite" xml:space="preserve">
+    <value>I think I just lost my appetite.</value>
+  </data>
+  <data name="Magazine" xml:space="preserve">
+    <value>"Egyptian weekly"</value>
+  </data>
+  <data name="MagazineLongDesc" xml:space="preserve">
+    <value>There are a few recent issues of "Egyptian weekly" magazine here.</value>
+  </data>
+  <data name="Nest" xml:space="preserve">
+    <value>Golden eggs</value>
+  </data>
+  <data name="NestLongDesc" xml:space="preserve">
+    <value>There is a large nest here, full of golden eggs!</value>
+  </data>
+  <data name="NoSourceOfLight" xml:space="preserve">
+    <value>You have no source of light.</value>
+  </data>
+  <data name="NothingHappens" xml:space="preserve">
+    <value>Nothing happens.</value>
+  </data>
+  <data name="NothingToFillBottleWith" xml:space="preserve">
+    <value>There is nothing here with which to fill the bottle.</value>
+  </data>
+  <data name="NotStrongEnoughToOpenSarcophagus" xml:space="preserve">
+    <value>You don't have anything strong enough to open the sarcophagus.</value>
+  </data>
+  <data name="NoWayToGoThatDirection" xml:space="preserve">
+    <value>There is no way for you to go that direction.</value>
+  </data>
+  <data name="PearlFallsOut" xml:space="preserve">
+    <value>A glistening pearl falls out of the sarcophagus and rolls away. The sarcophagus snaps shut again.</value>
+  </data>
+  <data name="Peculiar" xml:space="preserve">
+    <value>Peculiar. Nothing unexpected happens.</value>
+  </data>
+  <data name="Pillow" xml:space="preserve">
+    <value>Velvet pillow</value>
+  </data>
+  <data name="PlantCantBePulledFree" xml:space="preserve">
+    <value>The plant has exceptionally deep roots and cannot be pulled free.</value>
+  </data>
+  <data name="Prompt" xml:space="preserve">
+    <value>: </value>
+  </data>
+  <data name="PutSarcophagusDown" xml:space="preserve">
+    <value>I'd advise you to put down the sarcophagus before opening it!!</value>
+  </data>
+  <data name="RubbingNothingHappens" xml:space="preserve">
+    <value>Rubbing the electric lamp is not particularly rewarding. Anyway, nothing exciting happens.</value>
+  </data>
+  <data name="Sarcophagus" xml:space="preserve">
+    <value>Sarcophagus &gt;groan&lt;</value>
+  </data>
+  <data name="SarcophagusLongDesc" xml:space="preserve">
+    <value>There is a sarcophagus here with it's cover tightly closed.</value>
+  </data>
+  <data name="Scepter" xml:space="preserve">
+    <value>Scepter</value>
+  </data>
+  <data name="SerpentEatenBird" xml:space="preserve">
+    <value>The serpent has now devoured your bird statue.</value>
+  </data>
+  <data name="SerpentHasNothingToEat" xml:space="preserve">
+    <value>There is nothing here it wants to eat - except perhaps you.</value>
+  </data>
+  <data name="Silver" xml:space="preserve">
+    <value>Silver bars</value>
+  </data>
+  <data name="SilverLongDesc" xml:space="preserve">
+    <value>There are bars of silver here!</value>
+  </data>
+  <data name="SmallVelvetPillow" xml:space="preserve">
+    <value>A small velvet pillow lies on the floor.</value>
+  </data>
+  <data name="StatueComesToLife" xml:space="preserve">
+    <value>As you approach the statue, it comes to life and flies across the chamber where it lands and returns to stone.</value>
+  </data>
+  <data name="StatueInBox" xml:space="preserve">
+    <value>There is a bird statue in the box.</value>
+  </data>
+  <data name="StatueOfBirdGod" xml:space="preserve">
+    <value>A statue of the bird god is sitting here.</value>
+  </data>
+  <data name="StoneVeryStrong" xml:space="preserve">
+    <value>The stone is very strong and is impervious to attack.</value>
+  </data>
+  <data name="ThreeFootScepter" xml:space="preserve">
+    <value>A three foot scepter with an ankh on an end lies nearby.</value>
+  </data>
+  <data name="UnsureHowYouAreFacing" xml:space="preserve">
+    <value>I am unsure how you are facing. Use compass points.</value>
+  </data>
+  <data name="UseCompassPoints" xml:space="preserve">
+    <value>I don't know in from out here. Use compass points.</value>
+  </data>
+  <data name="Vase" xml:space="preserve">
+    <value>Vase</value>
+  </data>
+  <data name="VaseDropsWithCrash" xml:space="preserve">
+    <value>The vase drops with a delicate crash.</value>
+  </data>
+  <data name="VaseHurledToGround" xml:space="preserve">
+    <value>You have taken the vase and hurled it delicately to the ground.</value>
+  </data>
+  <data name="VasePillowLongDesc" xml:space="preserve">
+    <value>The vase is now resting, delicately, on a velvet pillow.</value>
+  </data>
+  <data name="VaseRestingOnPillow" xml:space="preserve">
+    <value>The vase is now resting, delicately, on a velvet pillow.</value>
+  </data>
+  <data name="VaseSoloLongDesc" xml:space="preserve">
+    <value>There is a delicate, precious, vase here!</value>
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Water in the bottle</value>
+  </data>
+  <data name="WaterLongDesc" xml:space="preserve">
+    <value>There is water in the bottle.</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome to pyramid!!</value>
   </data>
 </root>

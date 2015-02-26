@@ -49,7 +49,7 @@ namespace Pyramid2000.Engine
             { "EGYPTI", new Word() { Grammar = "noun", Items = new List<string>() { "#MAGAZINES" } } },
             { "FOOD", new Word() { Grammar = "noun", Items = new List<string>() { "#FOOD" } } },
             { "BOTTLE", new Word() { Grammar = "noun", Items = new List<string>() { "#BOTTLE" } } },
-            { "WATER", new Word() { Grammar = "noun", Items = new List<string>() { "#WATER", "#STREAM_56" } } },
+            { "WATER", new Word() { Grammar = "noun", Items = new List<string>() { "#WATER", "#stream_56" } } },
             { "PLANT", new Word() { Grammar = "noun", Items = new List<string>() { "#PLANT_A", "#PLANT_B", "#PLANT_C" } } },
             { "BEANST", new Word() { Grammar = "noun", Items = new List<string>() { "#PLANT_A", "#PLANT_B", "#PLANT_C" } } },
             { "MACHIN", new Word() { Grammar = "noun", Items = new List<string>() { "#MACHINE" } } },
@@ -177,7 +177,7 @@ namespace Pyramid2000.Engine
         {
             // TODO : IMPLEMENT LOAD COMMAND HERE
 
-            var words = command.ToUpper().Trim().Split();
+            var words = command.Trim().Split();
 
             // Ignore blank input
             if (words.Length == 0)

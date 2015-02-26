@@ -11,55 +11,55 @@ namespace Pyramid2000.Engine
         private IDictionary<string, List<object>> _defaultHandler = new Dictionary<string, List<object>>()
         {
             {
-                "_n", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_n", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_e", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_e", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_s", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_s", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_w", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_w", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_ne", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_ne", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_se", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_se", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_sw", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_sw", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_nw", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_nw", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_u", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_u", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_d", new List<object> { "PrintMessageX", "THERE IS NO WAY FOR YOU TO GO THAT DIRECTION." }
+                "_d", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_in", new List<object> { "PrintMessageX", "I DON'T KNOW IN FROM OUT HERE. USE COMPASS POINTS." }
+                "_in", new List<object> { "PrintMessageX", Resources.UseCompassPoints }
             },
             {
-                "_out", new List<object> { "PrintMessageX", "I DON'T KNOW IN FROM OUT HERE. USE COMPASS POINTS." }
+                "_out", new List<object> { "PrintMessageX", Resources.UseCompassPoints }
             },
             {
-                "_left", new List<object> { "PrintMessageX", "I AM UNSURE HOW YOU ARE FACING. USE COMPASS POINTS." }
+                "_left", new List<object> { "PrintMessageX", Resources.UnsureHowYouAreFacing }
             },
             {
-                "_right", new List<object> { "PrintMessageX", "I AM UNSURE HOW YOU ARE FACING. USE COMPASS POINTS." }
+                "_right", new List<object> { "PrintMessageX", Resources.UnsureHowYouAreFacing }
             },
             {
-                "_panel", new List<object> { "PrintMessageX", "NOTHING HAPPENS." }
+                "_panel", new List<object> { "PrintMessageX", Resources.NothingHappens }
             },
             {
                 "_back", new List<object> { "MoveToLastRoom" }
             },
             {
-                "_swim", new List<object> { "PrintMessageX", "I DON'T KNOW HOW." }
+                "_swim", new List<object> { "PrintMessageX", Resources.DontKnowHow }
             },
             {
                 "_on", new List<object>
@@ -69,14 +69,14 @@ namespace Pyramid2000.Engine
                         "AssertItemXIsInPack", "#LAMP_off",
                         "MoveItemXToRoomY", "#LAMP_off", "room_0",
                         "MoveItemXToRoomY", "#LAMP_on", "pack",
-                        "PrintMessageX", "YOUR LAMP IS NOW ON."
+                        "PrintMessageX", Resources.LampIsNowOn
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXIsInPack", "#LAMP_on",
-                        "PrintMessageX", "YOUR LAMP IS NOW ON."
+                        "PrintMessageX", Resources.LampIsNowOn
                     },
-                    "PrintMessageX", "YOU HAVE NO SOURCE OF LIGHT."
+                    "PrintMessageX", Resources.NoSourceOfLight
                 }
             },
             {
@@ -87,14 +87,14 @@ namespace Pyramid2000.Engine
                         "AssertItemXIsInPack", "#LAMP_on",
                         "MoveItemXToRoomY", "#LAMP_on", "room_0",
                         "MoveItemXToRoomY", "#LAMP_off", "pack",
-                        "PrintMessageX", "YOUR LAMP IS NOW OFF."
+                        "PrintMessageX", Resources.LampIsNowOff
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXIsInPack", "#LAMP_off",
-                        "PrintMessageX", "YOUR LAMP IS NOW OFF."
+                        "PrintMessageX", Resources.LampIsNowOff
                     },
-                    "PrintMessageX", "YOU HAVE NO SOURCE OF LIGHT."
+                    "PrintMessageX", Resources.NoSourceOfLight
                 }
             },
             {
@@ -115,7 +115,7 @@ namespace Pyramid2000.Engine
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#PLANT_A",
-                        "PrintMessageX", "THE PLANT HAS EXCEPTIONALLY DEEP ROOTS AND CANNOT BE PULLED FREE."
+                        "PrintMessageX", Resources.PlantCantBePulledFree
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -123,7 +123,7 @@ namespace Pyramid2000.Engine
                         "SubScriptXAbortIfPass", new List<object>
                         {
                             "AssertItemXIsInPack", "#SCEPTER",
-                            "PrintMessageX", "AS YOU APPROACH THE STATUE, IT COMES TO LIFE AND FLIES ACROSS THE CHAMBER WHERE IT LANDS AND RETURNS TO STONE."
+                            "PrintMessageX", Resources.StatueComesToLife
                         },
                         "SubScriptXAbortIfPass", new List<object>
                         {
@@ -131,7 +131,7 @@ namespace Pyramid2000.Engine
                             "MoveItemXToRoomY", "#BIRD", "room_0",
                             "MoveItemXToLocationY", "#BIRD_boxed", "#BOX"
                         },
-                        "PrintMessageX", "YOU CAN LIFT THE STATUE, BUT YOU CANNOT CARRY IT."
+                        "PrintMessageX", Resources.CantCarryStatue
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -146,7 +146,7 @@ namespace Pyramid2000.Engine
                         "SubScriptXAbortIfPass", new List<object>
                         {
                             "AssertItemXIsInPack", "#WATER",
-                            "PrintMessageX", "YOUR BOTTLE IS ALREADY FULL."
+                            "PrintMessageX", Resources.BottleAlreadyFull
                         },
                         "MoveItemXToLocationY", "#WATER", "#BOTTLE"
                     },
@@ -172,10 +172,10 @@ namespace Pyramid2000.Engine
                         {
                             "AssertItemXIsInCurrentRoom", "#PILLOW",
                             "MoveItemXToCurrentRoom", "#VASE_pillow",
-                            "PrintMessageX", "THE VASE IS NOW RESTING, DELICATELY, ON A VELVET PILLOW."
+                            "PrintMessageX", Resources.VaseRestingOnPillow
                         },
                         "MoveItemXToCurrentRoom", "#POTTERY",
-                        "PrintMessageX", "THE VASE DROPS WITH A DELICATE CRASH."
+                        "PrintMessageX", Resources.VaseDropsWithCrash
                     },
                     "DropUserInputItem"
                 }
@@ -188,7 +188,7 @@ namespace Pyramid2000.Engine
                         "AssertItemXMatchesUserInput", "#VASE_solo",
                         "MoveItemXToRoomY", "#VASE_solo", "room_0",
                         "MoveItemXToCurrentRoom", "#POTTERY",
-                        "PrintMessageX", "YOU HAVE TAKEN THE VASE AND HURLED IT DELICATELY TO THE GROUND."
+                        "PrintMessageX", Resources.VaseHurledToGround
                     },
                     "DropUserInputItem"
                 }
@@ -202,17 +202,17 @@ namespace Pyramid2000.Engine
                         "SubScriptXAbortIfPass", new List<object>
                         {
                             "AssertItemXIsInPack", "#SARCOPH_full",
-                            "PrintMessageX", "I'D ADVISE YOU TO PUT DOWN THE SARCOPHAGUS BEFORE OPENING IT!!"
+                            "PrintMessageX", Resources.PutSarcophagusDown
                         },
                         "SubScriptXAbortIfPass", new List<object>
                         {
                             "AssertItemXIsInPack", "#KEY",
-                            "PrintMessageX", "A GLISTENING PEARL FALLS OUT OF THE SARCOPHAGUS AND ROLLS AWAY. THE SARCOPHAGUS SNAPS SHUT AGAIN.",
+                            "PrintMessageX", Resources.PearlFallsOut,
                             "MoveItemXToRoomY", "#PEARL", "room_64",
                             "MoveItemXToRoomY", "#SARCOPH_full", "room_0",
                             "MoveItemXToCurrentRoom", "#SARCOPH_empty",
                         },
-                        "PrintMessageX", "YOU DON'T HAVE ANYTHING STRONG ENOUGH TO OPEN THE SARCOPHAGUS."
+                        "PrintMessageX", Resources.NotStrongEnoughToOpenSarcophagus
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -220,20 +220,20 @@ namespace Pyramid2000.Engine
                         "SubScriptXAbortIfPass", new List<object>
                         {
                             "AssertItemXIsInPack", "#SARCOPH_empty",
-                            "PrintMessageX", "I'D ADVISE YOU TO PUT DOWN THE SARCOPHAGUS BEFORE OPENING IT!!",
+                            "PrintMessageX", Resources.PutSarcophagusDown,
                         },
                         "SubScriptXAbortIfPass", new List<object>
                         {
                             "AssertItemXIsInPack", "#KEY",
-                            "PrintMessageX", "THE SARCOPHAGUS CREAKS OPEN, REVEALING NOTHING INSIDE. IT PROMPTLY SNAPS SHUT AGAIN.",
+                            "PrintMessageX", Resources.EmptySarcophagus,
                         },
-                        "PrintMessageX", "YOU DON'T HAVE ANYTHING STRONG ENOUGH TO OPEN THE SARCOPHAGUS.",
+                        "PrintMessageX", Resources.NotStrongEnoughToOpenSarcophagus,
                     },
-                    "PrintMessageX", "I DON'T KNOW HOW TO LOCK OR UNLOCK SUCH A THING."
+                    "PrintMessageX", Resources.DontKnowHowToLockUnlock
                 }
             },
             {
-                "_wave", new List<object> { "PrintMessageX", "NOTHING HAPPENS." }
+                "_wave", new List<object> { "PrintMessageX", Resources.NothingHappens }
             },
             {
                 "_pour", new List<object>
@@ -242,9 +242,9 @@ namespace Pyramid2000.Engine
                     {
                         "AssertItemXMatchesUserInput", "#WATER",
                         "MoveItemXToRoomY", "#WATER", "room_0",
-                        "PrintMessageX", "YOUR BOTTLE IS EMPTY AND THE GROUND IS WET.",
+                        "PrintMessageX", Resources.EmptyBottleWetGround,
                     },
-                    "PrintMessageX","YOU CAN'T POUR THAT.",
+                    "PrintMessageX", Resources.CantPourThat,
                 }
             },
             {
@@ -253,14 +253,14 @@ namespace Pyramid2000.Engine
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#LAMP_off",
-                        "PrintMessageX", "RUBBING THE ELECTRIC LAMP IS NOT PARTICULARLY REWARDING. ANYWAY, NOTHING EXCITING HAPPENS."
+                        "PrintMessageX", Resources.RubbingNothingHappens
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#LAMP_on",
-                        "PrintMessageX", "RUBBING THE ELECTRIC LAMP IS NOT PARTICULARLY REWARDING. ANYWAY, NOTHING EXCITING HAPPENS."
+                        "PrintMessageX", Resources.RubbingNothingHappens
                     },
-                    "PrintMessageX", "PECULIAR. NOTHING UNEXPECTED HAPPENS."
+                    "PrintMessageX", Resources.Peculiar
                 }
             },
             {
@@ -269,14 +269,14 @@ namespace Pyramid2000.Engine
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#BOTTLE",
-                        "PrintMessageX", "THERE IS NOTHING HERE WITH WHICH TO FILL THE BOTTLE."
+                        "PrintMessageX", Resources.NothingToFillBottleWith
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#VASE_solo",
-                        "PrintMessageX", "DON'T BE RIDICULOUS!",
+                        "PrintMessageX", Resources.DontBeRidiculous,
                     },
-                    "PrintMessageX", "YOU CAN'T FILL THAT."
+                    "PrintMessageX", Resources.CantFillThat
                 }
             },
             {
@@ -286,34 +286,34 @@ namespace Pyramid2000.Engine
                     {
                         "AssertItemXMatchesUserInput", "#BIRD",
                         "MoveItemXToRoomY", "#BIRD", "room_0",
-                        "PrintMessageX", "THE BIRD STATUE IS NOW DEAD. ITS BODY DISAPPEARS."
+                        "PrintMessageX", Resources.BirdStatueDead
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#BIRD_boxed",
                         "MoveItemXToRoomY", "#BIRD_boxed", "room_0",
-                        "PrintMessageX", "THE BIRD STATUE IS NOW DEAD. ITS BODY DISAPPEARS."
+                        "PrintMessageX", Resources.BirdStatueDead
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#SARCOPH_full",
-                        "PrintMessageX", "THE STONE IS VERY STRONG AND IS IMPERVIOUS TO ATTACK."
+                        "PrintMessageX", Resources.StoneVeryStrong
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#SARCOPH_empty",
-                        "PrintMessageX", "THE STONE IS VERY STRONG AND IS IMPERVIOUS TO ATTACK."
+                        "PrintMessageX", Resources.StoneVeryStrong
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#SERPENT",
-                        "PrintMessageX", "ATTACKING THE SERPENT BOTH DOESN'T WORK AND IS VERY DANGEROUS."
+                        "PrintMessageX", Resources.AttackingSerpentFails
                     },
-                    "PrintMessageX", "YOU CAN'T BE SERIOUS!"
+                    "PrintMessageX", Resources.CantBeSerious
                 }
             },
             {
-                "_break", new List<object> { "PrintMessageX", "IT IS BEYOND YOUR POWER TO DO THAT." }
+                "_break", new List<object> { "PrintMessageX", Resources.BeyondYourPower }
             },
             {
                 "_eat", new List<object>
@@ -322,24 +322,24 @@ namespace Pyramid2000.Engine
                     {
                         "AssertItemXMatchesUserInput", "#FOOD",
                         "MoveItemXToRoomY", "#FOOD", "room_0",
-                        "PrintMessageX", "THANK YOU, IT WAS DELICIOUS!"
+                        "PrintMessageX", Resources.Delicious
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#-10-",
-                        "PrintMessageX", "I THINK I JUST LOST MY APPETITE."
+                        "PrintMessageX", Resources.LostAppetite
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#BIRD",
-                        "PrintMessageX", "I THINK I JUST LOST MY APPETITE."
+                        "PrintMessageX", Resources.LostAppetite
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#BIRD_boxed",
-                        "PrintMessageX", "I THINK I JUST LOST MY APPETITE."
+                        "PrintMessageX", Resources.LostAppetite
                     },
-                    "PrintMessageX","DON'T BE RIDICULOUS!"
+                    "PrintMessageX", Resources.DontBeRidiculous
                 }
             },
             {
@@ -349,14 +349,14 @@ namespace Pyramid2000.Engine
                     {
                         "AssertItemXMatchesUserInput", "#WATER",
                         "MoveItemXToRoomY", "#WATER", "room_0",
-                        "PrintMessageX", "THE BOTTLE IS NOW EMPTY."
+                        "PrintMessageX", Resources.EmptyBottle
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#stream_56",
-                        "PrintMessageX", "YOU HAVE TAKEN A DRINK FROM THE STREAM. THE WATER TASTES STRONGLY OF MINERALS, BUT IS NOT UNPLEASANT. IT IS EXTREMELY COLD."
+                        "PrintMessageX", Resources.DrinkFromStream
                     },
-                    "PrintMessageX", "YOU CAN'T BE SERIOUS!"
+                    "PrintMessageX", Resources.CantBeSerious
                 }
             },
             {
@@ -365,12 +365,12 @@ namespace Pyramid2000.Engine
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#BIRD",
-                        "PrintMessageX", "IT'S NOT HUNGRY. BESIDES, YOU HAVE NO BIRD SEED."
+                        "PrintMessageX", Resources.BirdNotHungry
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#BIRD_boxed",
-                        "PrintMessageX", "IT'S NOT HUNGRY. BESIDES, YOU HAVE NO BIRD SEED."
+                        "PrintMessageX", Resources.BirdNotHungry
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -379,26 +379,26 @@ namespace Pyramid2000.Engine
                         {
                             "AssertItemXIsInPack", "#BIRD_boxed",
                             "MoveItemXToRoomY", "#BIRD_boxed", "room_0",
-                            "PrintMessageX", "THE SERPENT HAS NOW DEVOURED YOUR BIRD STATUE."
+                            "PrintMessageX", Resources.SerpentEatenBird
                         },
-                        "PrintMessageX", "THERE IS NOTHING HERE IT WANTS TO EAT - EXCEPT PERHAPS YOU."
+                        "PrintMessageX", Resources.SerpentHasNothingToEat
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#SARCOPH_full",
-                        "PrintMessageX", "I'M GAME. WOULD YOU CARE TO EXPLAIN HOW?"
+                        "PrintMessageX", Resources.ImGame
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#SARCOPH_empty",
-                        "PrintMessageX", "I'M GAME. WOULD YOU CARE TO EXPLAIN HOW?"
+                        "PrintMessageX", Resources.ImGame
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
                         "AssertItemXMatchesUserInput", "#-13-",
-                        "PrintMessageX", "THERE IS NOTHING HERE IT WANTS TO EAT - EXCEPT PERHAPS YOU."
+                        "PrintMessageX", Resources.SerpentHasNothingToEat
                     },
-                    "PrintMessageX","DON'T BE RIDICULOUS!"
+                    "PrintMessageX", Resources.DontBeRidiculous
                 }
             },
             {
