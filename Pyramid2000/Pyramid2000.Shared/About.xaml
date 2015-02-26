@@ -30,10 +30,10 @@
                             <LineBreak/>Pyramid 2000 was written by Robert Arnstein and released by Radio Shack in 1979.
                             <LineBreak/>
                             <LineBreak/>This project would not have been possible without the information and code found on Christopher Cantrell's website:
-                            <LineBreak/><Hyperlink>http://www.computerarcheology.com</Hyperlink>
+                            <LineBreak/><Hyperlink NavigateUri="https://www.computerarcheology.com">http://www.computerarcheology.com</Hyperlink>
                             <LineBreak/>
                             <LineBreak/>You can find a wealth of information about this game including a walk through solution on Sean Murphy's website:
-                            <LineBreak/><Hyperlink>http://www.figmentfly.com</Hyperlink>
+                            <LineBreak/><Hyperlink NavigateUri="https://www.figmentfly.com">http://www.figmentfly.com</Hyperlink>
                         </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
