@@ -24,7 +24,7 @@
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto">
                 <StackPanel>
-                    <Image Source="Assets\Cover.scale-200.png" Stretch="None" HorizontalAlignment="Left"/>
+                    <Image Source="ms-appx:///Assets/Cover.scale-200.png" Stretch="None" HorizontalAlignment="Left"/>
                     <TextBlock TextWrapping="Wrap"
                     Style="{ThemeResource BodyTextBlockStyle}" SelectionChanged="TextBlock_SelectionChanged">Build 1.2.0.0<LineBreak/>
                     <LineBreak/>This app is an implementation of a 'classic' text adventure game originally released for the Radio Shack Model I Computer.
