@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WindowsRuntimeResourceManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)About.xaml">

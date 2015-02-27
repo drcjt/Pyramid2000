@@ -35,6 +35,7 @@ namespace Pyramid2000
         /// </summary>
         public App()
         {
+            Pyramid2000.Shared.WindowsRuntimeResourceManager.InjectIntoResxGeneratedApplicationResourcesClass(typeof(Pyramid2000.Engine.Resources));
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
         }
