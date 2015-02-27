@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="e6e2dea5-d238-4db9-8c0a-e1829acfed92" Publisher="CN=Colin" Version="1.0.0.0" />
+  <Identity Name="27451drcjt.Pyramid2000" Publisher="CN=0E993ABC-D6E6-4655-9242-30DC17674FD0" Version="1.2.0.1" />
   <Properties>
-    <DisplayName>Pyramid2000.Windows</DisplayName>
-    <PublisherDisplayName>Colin</PublisherDisplayName>
+    <DisplayName>Pyramid 2000</DisplayName>
+    <PublisherDisplayName>drcjt</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,13 +15,13 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Pyramid2000.Windows.App">
-      <m2:VisualElements DisplayName="Pyramid2000.Windows" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Pyramid2000.Windows" ForegroundText="light" BackgroundColor="#DE593A">
+      <m2:VisualElements DisplayName="Pyramid 2000" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Pyramid2000.Windows" ForegroundText="light" BackgroundColor="#FFD800">
         <m2:DefaultTile ShortName="Pyramid 2000">
           <m2:ShowNameOnTiles>
             <m2:ShowOn Tile="square150x150Logo" />
           </m2:ShowNameOnTiles>
         </m2:DefaultTile>
-        <m2:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#DE593A" />
+        <m2:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#FFD800" />
         <m2:InitialRotationPreference>
           <m2:Rotation Preference="portrait" />
           <m2:Rotation Preference="landscape" />
