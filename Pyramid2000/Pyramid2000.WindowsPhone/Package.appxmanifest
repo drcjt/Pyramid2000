@@ -16,10 +16,10 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Pyramid2000.WindowsPhone.App">
-      <m3:VisualElements DisplayName="Pyramid 2000" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Pyramid2000.WindowsPhone" ForegroundText="light" BackgroundColor="#FFD800">
+      <m3:VisualElements DisplayName="Pyramid 2000" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Pyramid2000.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
-        <m3:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#FF8D00" />
+        <m3:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="transparent" />
         <m3:InitialRotationPreference>
           <m3:Rotation Preference="portrait" />
           <m3:Rotation Preference="landscape" />
