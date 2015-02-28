@@ -11,11 +11,13 @@ namespace Pyramid2000.Engine
         private IPrinter _printer;
         private IItems _items;
         private IPlayer _player;
-        public Parser(IPlayer player, IPrinter printer, IItems items)
+        private bool _trs80Mode;
+        public Parser(IPlayer player, IPrinter printer, IItems items, bool trs80Mode = true)
         {
             _player = player;
-            _printer = printer;
+            _printer = new Printer(printer, trs80Mode);
             _items = items;
+            _trs80Mode = trs80Mode;
         }
 
         class Word
@@ -151,6 +153,11 @@ namespace Pyramid2000.Engine
             { "PLUGH", new Word() { Grammar = "alone", Function = "_plugh" } },
         };
 
+        private IDictionary<string, Word> _trs80words = new Dictionary<string, Word>()
+        {
+            { "HELP", new Word() { Grammar = "alone", Function = "_help" } },
+        };
+
         private int _errRoll = 0;
         private string[] _errors = new string[] { Resources.What, Resources.DontKnowThatWord, Resources.DontUnderstand, Resources.DontKnowWhatYouMean };
 
@@ -165,6 +172,10 @@ namespace Pyramid2000.Engine
                 keyToFind = keyToFind.Substring(0, 6);
             }
 
+            if (_trs80Mode && _trs80words.ContainsKey(keyToFind))
+            {
+                return new ParsedWord() { Original = input, Word = _words[keyToFind] };
+            }
             if (_words.ContainsKey(keyToFind))
             {
                 return new ParsedWord() { Original = input, Word = _words[keyToFind] };

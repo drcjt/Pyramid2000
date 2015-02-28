@@ -35,7 +35,11 @@ namespace Pyramid2000
         /// </summary>
         public App()
         {
-            Pyramid2000.Shared.WindowsRuntimeResourceManager.InjectIntoResxGeneratedApplicationResourcesClass(typeof(Pyramid2000.Engine.Resources));
+            // This makes the resources in the portable class library work properly
+            // see http://blogs.msdn.com/b/philliphoff/archive/2014/11/19/missingmanifestresourceexception-when-using-portable-class-libraries-in-winrt.aspx
+            var resourcestype = Type.GetType("Pyramid2000.Engine.Resources, Pyramid2000.Engine");
+            Pyramid2000.Shared.WindowsRuntimeResourceManager.InjectIntoResxGeneratedApplicationResourcesClass(resourcestype);
+
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
         }

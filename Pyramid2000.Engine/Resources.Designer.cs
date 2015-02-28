@@ -23,7 +23,7 @@ namespace Pyramid2000.Engine {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -139,6 +139,24 @@ namespace Pyramid2000.Engine {
         internal static string BirdAlive {
             get {
                 return ResourceManager.GetString("BirdAlive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bird statue in box.
+        /// </summary>
+        internal static string BirdBoxed {
+            get {
+                return ResourceManager.GetString("BirdBoxed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a bird statue in the box..
+        /// </summary>
+        internal static string BirdBoxedLongDesc {
+            get {
+                return ResourceManager.GetString("BirdBoxedLongDesc", resourceCulture);
             }
         }
         
@@ -683,6 +701,15 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I&apos;m as confused as you are!.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I&apos;m game. Would you care to explain how?.
         /// </summary>
         internal static string ImGame {
@@ -701,7 +728,7 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It is now pitch dark.  If you proceed, you will likely fall into a pit..
+        ///   Looks up a localized string similar to It is now pitch dark. If you proceed, you will likely fall into a pit..
         /// </summary>
         internal static string ItsPitchDark {
             get {
@@ -1349,7 +1376,7 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, &quot;Curse all who enter this sacred crypt.&quot;..
+        ///   Looks up a localized string similar to You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, &quot;Curse all who enter this sacred crypt.&quot;.
         /// </summary>
         internal static string Room7 {
             get {
@@ -1592,7 +1619,7 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is a bird statue in the box..
+        ///   Looks up a localized string similar to Bird statue in box..
         /// </summary>
         internal static string StatueInBox {
             get {
@@ -1772,7 +1799,16 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have scored {0: 0000;-0000} out of 0220, using {1:0000} turns..
+        ///   Looks up a localized string similar to You are currently holding the following:.
+        /// </summary>
+        internal static string YouAreHolding {
+            get {
+                return ResourceManager.GetString("YouAreHolding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have scored {0: 0000;-0000} out of a possible 0220, using {1:0000} turns..
         /// </summary>
         internal static string YouHaveScored {
             get {

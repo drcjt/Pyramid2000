@@ -409,6 +409,9 @@ namespace Pyramid2000.Engine
             },
             {
                 "_save", new List<object> { "SaveGame" }
+            },
+            {
+                "_help", new List<object> { "PrintMessageX", Resources.Help }
             }
         };
 

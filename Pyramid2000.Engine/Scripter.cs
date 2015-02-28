@@ -16,14 +16,16 @@ namespace Pyramid2000.Engine
         private IRooms _rooms;
         private IPlayer _player;
         private IGameState _gameState;
+        private bool _trs80Mode;
 
-        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState)
+        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, bool trs80Mode = true)
         {
-            _printer = printer;
+            _printer = new Printer(printer, trs80Mode);
             _items = items;
             _rooms = rooms;
             _player = player;
             _gameState = gameState;
+            _trs80Mode = trs80Mode;
         }
 
         public bool MoveToRoomX(string roomID)
@@ -125,11 +127,18 @@ namespace Pyramid2000.Engine
 
         public bool PlayerDied()
         {
-            // TODO IN TRS-80 VERSION IT LOOKS LIKE DYING SUBTRACTS FROM YOUR SCORE - NEED TO WORK THIS OUT
-            _printer.PrintLn(Resources.GottenKilled);
-            _printer.PrintLn(Resources.TryToReincarnate);
-            // TODO WHAT CAN USER DO TO BE REINCARNATED?
-            PrintScoreImpl(-10);
+            if (_trs80Mode)
+            {
+                // TODO WHAT CAN USER DO TO BE REINCARNATED?
+                _printer.PrintLn(Resources.GottenKilled);
+                _printer.PrintLn(Resources.TryToReincarnate);
+                // TODO need to get user input here as to what to do
+            }
+            if (_trs80Mode)
+            {
+                // TODO IN TRS-80 VERSION IT LOOKS LIKE DYING SUBTRACTS FROM YOUR SCORE - NEED TO WORK THIS OUT
+                PrintScoreImpl(-10);
+            }
             _gameState.GameOver = true;
             return true;
         }
@@ -236,6 +245,10 @@ namespace Pyramid2000.Engine
             }
             else
             {
+                if (_trs80Mode)
+                {
+                    _printer.PrintLn(Resources.YouAreHolding);
+                }
                 foreach (var item in items)
                 {
                     _printer.PrintLn(item.ShortDescription);

@@ -29,7 +29,7 @@ namespace Pyramid2000.Engine
             new Item() { Name = "#SCEPTER", Location = "room_9", Packable = true, Treasure = false, ShortDescription = Resources.Scepter, LongDescription = Resources.ThreeFootScepter },
             new Item() { Name = "#PILLOW", Location = "room_72", Packable = true, Treasure = false, ShortDescription = Resources.Pillow, LongDescription = Resources.SmallVelvetPillow },
             new Item() { Name = "#BIRD", Location = "room_11", Packable = true, Treasure = false, ShortDescription = Resources.StatueInBox, LongDescription = Resources.StatueOfBirdGod },
-            new Item() { Name = "#BIRD_boxed", Location = "", Packable = false, Treasure = false, ShortDescription = Resources.StatueInBox, LongDescription = Resources.StatueInBox },
+            new Item() { Name = "#BIRD_boxed", Location = "", Packable = false, Treasure = false, ShortDescription = Resources.BirdBoxed, LongDescription = Resources.BirdBoxedLongDesc },
             new Item() { Name = "#POTTERY", Location = "", Packable = false, Treasure = false, LongDescription = Resources.FloorLitteredWithShards },
             new Item() { Name = "#PEARL", Location = "", Packable = true, Treasure = true, ShortDescription = Resources.GlisteningPearl, LongDescription = Resources.GlisteningPearlLongDesc },
             new Item() { Name = "#SARCOPH_full", Location = "room_61", Packable = true, Treasure = false, ShortDescription = Resources.Sarcophagus, LongDescription = Resources.SarcophagusLongDesc },
@@ -50,7 +50,7 @@ namespace Pyramid2000.Engine
             new Item() { Name = "#DIAMONDS", Location = "room_17", Packable = true, Treasure = true, ShortDescription = Resources.Diamonds, LongDescription = Resources.DiamondsLongDesc },
             new Item() { Name = "#SILVER", Location = "room_25", Packable = true, Treasure = true, ShortDescription = Resources.Silver, LongDescription = Resources.SilverLongDesc },
             new Item() { Name = "#JEWELRY", Location = "room_18", Packable = true, Treasure = true, ShortDescription = Resources.Jewelry, LongDescription = Resources.JewelryLongDesc },
-            new Item() { Name = "#COINS", Location = "room_24", Packable = true, Treasure = true, ShortDescription = Resources.Coins, LongDescription = Resources.Coins },
+            new Item() { Name = "#COINS", Location = "room_24", Packable = true, Treasure = true, ShortDescription = Resources.Coins, LongDescription = Resources.CoinsLongDesc },
             new Item() { Name = "#CHEST", Location = "", Packable = true, Treasure = true, ShortDescription = Resources.Chest, LongDescription = Resources.ChestLongDesc },
             new Item() { Name = "#NEST", Location = "room_71", Packable = true, Treasure = true, ShortDescription = Resources.Nest, LongDescription = Resources.NestLongDesc },
             new Item() { Name = "#LAMP_dead", Location = "", Packable = true, Treasure = false, ShortDescription = Resources.BrassLantern, LongDescription = Resources.ShinyBrassLamp }

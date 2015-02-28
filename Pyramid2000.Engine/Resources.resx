@@ -220,7 +220,7 @@
     <value>I see no {0} here.</value>
   </data>
   <data name="ItsPitchDark" xml:space="preserve">
-    <value>It is now pitch dark.  If you proceed, you will likely fall into a pit.</value>
+    <value>It is now pitch dark. If you proceed, you will likely fall into a pit.</value>
   </data>
   <data name="LampShining" xml:space="preserve">
     <value>There is a lamp shining nearby.</value>
@@ -361,7 +361,7 @@
     <value>You are in the chamber of Nekhebet, a woman with the head of a vulture, wearing the crown of Egypt. A passage exits to the south.</value>
   </data>
   <data name="Room7" xml:space="preserve">
-    <value>You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, "Curse all who enter this sacred crypt.".</value>
+    <value>You are in a small chamber beneath a hole from the surface. A low crawl leads inward to the west. Hieroglyphics on the wall translate, "Curse all who enter this sacred crypt."</value>
   </data>
   <data name="Room70" xml:space="preserve">
     <value>The passage here is blocked by a fallen block.</value>
@@ -427,7 +427,7 @@
     <value>What do you want me to do with the {0} ?</value>
   </data>
   <data name="YouHaveScored" xml:space="preserve">
-    <value>You have scored {0: 0000;-0000} out of 0220, using {1:0000} turns.</value>
+    <value>You have scored {0: 0000;-0000} out of a possible 0220, using {1:0000} turns.</value>
   </data>
   <data name="AttackingSerpentFails" xml:space="preserve">
     <value>Attacking the serpent both doesn't work and is very dangerous.</value>
@@ -646,7 +646,7 @@
     <value>As you approach the statue, it comes to life and flies across the chamber where it lands and returns to stone.</value>
   </data>
   <data name="StatueInBox" xml:space="preserve">
-    <value>There is a bird statue in the box.</value>
+    <value>Bird statue in box.</value>
   </data>
   <data name="StatueOfBirdGod" xml:space="preserve">
     <value>A statue of the bird god is sitting here.</value>
@@ -689,5 +689,17 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to pyramid!!</value>
+  </data>
+  <data name="BirdBoxed" xml:space="preserve">
+    <value>Bird statue in box</value>
+  </data>
+  <data name="BirdBoxedLongDesc" xml:space="preserve">
+    <value>There is a bird statue in the box.</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>I'm as confused as you are!</value>
+  </data>
+  <data name="YouAreHolding" xml:space="preserve">
+    <value>You are currently holding the following:</value>
   </data>
 </root>

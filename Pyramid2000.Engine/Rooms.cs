@@ -572,7 +572,7 @@ namespace Pyramid2000.Engine
                 "room_27",
                 new Room()
                 {
-                    Description = Resources.Maze,
+                    Description = Resources.Room27,
                     Commands = new Dictionary<string, List<object>>()
                     {
                         { "_d", new List<object> { "MoveToRoomX", "room_26" } },

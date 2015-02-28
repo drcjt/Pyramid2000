@@ -17,10 +17,10 @@ namespace Pyramid2000.Engine
         private IItems _items;
         private IGameState _gameState;
 
-        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState)
+        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState, bool trs80Mode = true)
         {
             _player = player;
-            _printer = printer;
+            _printer = new Printer(printer, trs80Mode);
             _parser = parser;
             _scripter = scripter;
             _rooms = rooms;

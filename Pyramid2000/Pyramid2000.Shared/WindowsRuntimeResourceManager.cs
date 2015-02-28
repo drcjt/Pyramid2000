@@ -10,6 +10,8 @@ using Windows.ApplicationModel.Resources;
 
 namespace Pyramid2000.Shared
 {
+    // Workaround to deal with accessing resx resources in referenced portable class library from winrt
+    // See http://blogs.msdn.com/b/philliphoff/archive/2014/11/19/missingmanifestresourceexception-when-using-portable-class-libraries-in-winrt.aspx
     public class WindowsRuntimeResourceManager : ResourceManager
 
     {
