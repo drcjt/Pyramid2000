@@ -16,6 +16,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
+using Pyramid2000.Engine;
+using Pyramid2000.Engine.Interfaces;
+
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace Pyramid2000
@@ -42,6 +45,21 @@ namespace Pyramid2000
 
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+        }
+
+
+        private static ISettings _settings = null;
+        public static ISettings Settings
+        {
+            get
+            {
+                if (_settings == null)
+                {
+                    _settings = new Settings();
+                    _settings.Trs80Mode = true;
+                }
+                return _settings;
+            }
         }
 
         /// <summary>

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Pyramid2000.Engine.Interfaces
 {
-    public interface IScripter
+    public interface ISettings
     {
-        bool Look();
-        bool ParseScript(List<object> script, Item item);
-        bool ParseScriptRec(List<object> script);
+        bool Trs80Mode { get; set; }
+        bool AllCaps { get; set; }
+        bool ShowHeader { get; set; }
     }
 }

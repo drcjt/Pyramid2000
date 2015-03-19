@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Pyramid2000.Engine.Interfaces;
+
 namespace Pyramid2000.Engine
 {
     public class Parser : IParser
@@ -11,13 +13,14 @@ namespace Pyramid2000.Engine
         private IPrinter _printer;
         private IItems _items;
         private IPlayer _player;
-        private bool _trs80Mode;
-        public Parser(IPlayer player, IPrinter printer, IItems items, bool trs80Mode = true)
+        private ISettings _settings;
+
+        public Parser(IPlayer player, IPrinter printer, IItems items, ISettings settings)
         {
+            _settings = settings;
             _player = player;
-            _printer = new Printer(printer, trs80Mode);
+            _printer = new Printer(printer, _settings);
             _items = items;
-            _trs80Mode = trs80Mode;
         }
 
         class Word
@@ -172,7 +175,7 @@ namespace Pyramid2000.Engine
                 keyToFind = keyToFind.Substring(0, 6);
             }
 
-            if (_trs80Mode && _trs80words.ContainsKey(keyToFind))
+            if (_settings.Trs80Mode && _trs80words.ContainsKey(keyToFind))
             {
                 return new ParsedWord() { Original = input, Word = _words[keyToFind] };
             }

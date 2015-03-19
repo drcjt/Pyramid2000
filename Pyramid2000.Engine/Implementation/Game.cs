@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Pyramid2000.Engine.Interfaces;
+
 namespace Pyramid2000.Engine
 {
     public class Game : IGame
@@ -16,11 +18,14 @@ namespace Pyramid2000.Engine
         private IDefaultScripter _defaultScripter;
         private IItems _items;
         private IGameState _gameState;
+        private ISettings _settings;
 
-        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState, bool trs80Mode = true)
+        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState, ISettings settings)
         {
+            _settings = settings;
+
             _player = player;
-            _printer = new Printer(printer, trs80Mode);
+            _printer = printer;
             _parser = parser;
             _scripter = scripter;
             _rooms = rooms;

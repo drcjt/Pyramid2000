@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pyramid2000.Engine
+namespace Pyramid2000.Engine.Interfaces
 {
     public interface IGameState
     {

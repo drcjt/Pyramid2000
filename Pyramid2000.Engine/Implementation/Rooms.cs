@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Pyramid2000.Engine.Interfaces;
+
 namespace Pyramid2000.Engine
 {
     public class Rooms : IRooms
@@ -537,7 +539,7 @@ namespace Pyramid2000.Engine
                         { "_e", new List<object> { "MoveToRoomX", "room_16" } },
                         { "_out", new List<object> { "MoveToRoomX", "room_16" } },
                         { "_w", new List<object> { "MoveToRoomX", "room_22" } },
-                        { "_up", new List<object> { "MoveToRoomX", "room_22" } },
+                        { "_u", new List<object> { "MoveToRoomX", "room_22" } },
                     }
                 }
             },

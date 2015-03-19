@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Pyramid2000.Engine;
+using Pyramid2000.Engine.Interfaces;
 
 namespace Pyramid2000.ConsoleApplication
 {

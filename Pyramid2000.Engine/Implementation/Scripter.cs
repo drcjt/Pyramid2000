@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 using System.Reflection;
 
+using Pyramid2000.Engine.Interfaces;
+
 namespace Pyramid2000.Engine
 {
     public class Scripter : IScripter
@@ -16,16 +18,18 @@ namespace Pyramid2000.Engine
         private IRooms _rooms;
         private IPlayer _player;
         private IGameState _gameState;
-        private bool _trs80Mode;
+        private ISettings _settings;
 
-        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, bool trs80Mode = true)
+        public bool Trs80Mode { get; set; }
+
+        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, ISettings settings)
         {
-            _printer = new Printer(printer, trs80Mode);
+            _settings = settings;
+            _printer = new Printer(printer, _settings);
             _items = items;
             _rooms = rooms;
             _player = player;
             _gameState = gameState;
-            _trs80Mode = trs80Mode;
         }
 
         public bool MoveToRoomX(string roomID)
@@ -127,14 +131,14 @@ namespace Pyramid2000.Engine
 
         public bool PlayerDied()
         {
-            if (_trs80Mode)
+            if (_settings.Trs80Mode)
             {
                 // TODO WHAT CAN USER DO TO BE REINCARNATED?
                 _printer.PrintLn(Resources.GottenKilled);
                 _printer.PrintLn(Resources.TryToReincarnate);
                 // TODO need to get user input here as to what to do
             }
-            if (_trs80Mode)
+            if (_settings.Trs80Mode)
             {
                 // TODO IN TRS-80 VERSION IT LOOKS LIKE DYING SUBTRACTS FROM YOUR SCORE - NEED TO WORK THIS OUT
                 PrintScoreImpl(-10);
@@ -245,7 +249,7 @@ namespace Pyramid2000.Engine
             }
             else
             {
-                if (_trs80Mode)
+                if (_settings.Trs80Mode)
                 {
                     _printer.PrintLn(Resources.YouAreHolding);
                 }
@@ -286,7 +290,7 @@ namespace Pyramid2000.Engine
         public bool AssertRandomIsGreaterThanX(string number)
         {
             var val = GetRandomByte();
-            if (Convert.ToUInt16(number) <= val)
+            if (Convert.ToByte(number) <= val)
             {
                 _printer.PrintLn(Resources.CrawledAroundBackToMainPassage);
                 Look();
@@ -422,32 +426,10 @@ namespace Pyramid2000.Engine
             return true;
         }
 
-        private uint randomSeed = 0x00FACEDE;
-        public uint GetRandomByte()
+        private static Random _random = new Random();
+        public byte GetRandomByte()
         {
-            for (var x = 0; x < 8; x++)
-            {
-                var a = (randomSeed >> 16) & 255;
-                a = a & 0xE1;
-                var b = 0U;
-                for (var y = 0; y < 8; y++)
-                {
-                    a = a << 1;
-                    if (a > 255)
-                    {
-                        b += 1;
-                        a = a & 255;
-                    }
-                }
-
-
-                randomSeed = randomSeed << 1;
-                randomSeed = randomSeed & 0x00FFFFFF;
-                randomSeed = randomSeed | (b & 1);
-            }
-
-
-            return randomSeed & 255;
+            return (byte)(_random.Next(Byte.MaxValue + 1));
         }
     }
 }

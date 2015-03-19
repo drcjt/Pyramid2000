@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Pyramid2000.Engine.Interfaces;
+
 namespace Pyramid2000.Engine
 {
     public class Printer : IPrinter
     {
         IPrinter _printer;
-        bool _trs80Mode;
+        ISettings _settings;
 
-        public Printer(IPrinter printer, bool trs80Mode = true)
+        public Printer(IPrinter printer, ISettings settings)
         {
             _printer = printer;
-            _trs80Mode = trs80Mode;
+            _settings = settings;
         }
 
         public void Print(string text)
@@ -29,14 +31,10 @@ namespace Pyramid2000.Engine
 
         private string FormatText(string text)
         {
-            if (_trs80Mode)
-            {
-                return text.Replace(". ", ".  ");
-            }
-            else
-            {
-                return text;
-            }
+            var formattedText = text;
+            if (_settings.Trs80Mode) formattedText = formattedText.Replace(". ", ".  ");
+            if (_settings.AllCaps) formattedText = formattedText.ToUpper();
+            return formattedText;
         }
     }
 }

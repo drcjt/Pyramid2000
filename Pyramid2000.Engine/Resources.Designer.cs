@@ -1358,7 +1358,7 @@ namespace Pyramid2000.Engine {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are in a large low circular chamber whose floor is an immense slab fallen from the ceiling. East and west there once were large passages, but they are now filled with sand. Low small passages go north and south..
+        ///   Looks up a localized string similar to You are in a large low circular chamber whose floor is an immense slab fallen from the ceiling. East and west there once where large passages, but they are now filled with sand. Low small passages go north and south..
         /// </summary>
         internal static string Room66 {
             get {

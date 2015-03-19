@@ -24,12 +24,12 @@ namespace Pyramid2000
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Settings : Page
+    public sealed partial class SettingsPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public Settings()
+        public SettingsPage()
         {
             this.InitializeComponent();
 
@@ -70,6 +70,7 @@ namespace Pyramid2000
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            this.DataContext = App.Settings;
         }
 
         /// <summary>
@@ -118,6 +119,11 @@ namespace Pyramid2000
             pageTitle.AppName = "PYRAMID 2000";
             LayoutRoot.Children.Add(pageTitle);
             Grid.SetRow(pageTitle, 0);
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

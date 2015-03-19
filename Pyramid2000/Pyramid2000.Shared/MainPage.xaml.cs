@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.ViewManagement;
 
 using Pyramid2000.Engine;
+using Pyramid2000.Engine.Interfaces;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,8 +26,9 @@ namespace Pyramid2000
     /// </summary>
     public sealed partial class MainPage : Page, IPrinter
     {
-        private IGameState gameState;
-        private IGame game;
+        private IPrinter _printer;
+        private IGameState _gameState;
+        private IGame _game;
 
         // Based on Chris Cantrell's Javascript implementation:
         // See http://www.computerarcheology.com/wiki/wiki/CoCo/Pyramid
@@ -34,10 +36,6 @@ namespace Pyramid2000
         public MainPage()
         {
             this.InitializeComponent();
-
-#if WINDOWS_PHONE_APP
-            CommandBar.ClosedDisplayMode = AppBarClosedDisplayMode.Minimal;
-#endif
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
@@ -49,19 +47,19 @@ namespace Pyramid2000
 
         private void SetupGame()
         {
-            IPrinter printer = this;
+            _printer = new Printer(this, App.Settings);
             IItems items = new Items();
             IPlayer player = new Player();
             player.CurrentRoom = "room_1";
-            IParser parser = new Parser(player, printer, items);
+            IParser parser = new Parser(player, _printer, items, App.Settings);
             IRooms rooms = new Rooms(items);
-            gameState = new GameState();
-            IScripter scripter = new Scripter(printer, items, rooms, player, gameState);
+            _gameState = new GameState();
+            IScripter scripter = new Scripter(_printer, items, rooms, player, _gameState, App.Settings);
             IDefaultScripter defaultScripter = new DefaultScripter();
 
-            game = new Game(player, printer, parser, scripter, rooms, defaultScripter, items, gameState);
+            _game = new Game(player, _printer, parser, scripter, rooms, defaultScripter, items, _gameState, App.Settings);
 
-            game.Init();
+            _game.Init();
         }
 
         /// <summary>
@@ -98,13 +96,18 @@ namespace Pyramid2000
             ProcessCommand();
         }
 
-        private void ProcessCommand()
+        private void ProcessCommand(string command = null)
         {
-            PrintLn(Command.Text);
+            if (command != null)
+            {
+                Command.Text = command;
+            }
 
-            game.ProcessPlayerInput(Command.Text);
+            _printer.PrintLn(Command.Text);
 
-            if (gameState.GameOver)
+            _game.ProcessPlayerInput(Command.Text);
+
+            if (_gameState.GameOver)
             {
                 Command.Visibility = Visibility.Collapsed;
                 Restart.Visibility = Visibility.Visible;
@@ -125,6 +128,8 @@ namespace Pyramid2000
 
             BodyScroller.UpdateLayout();
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
+
+            CommandBar.Visibility = Visibility.Collapsed;
         }
 
         private void InputPaneHiding(InputPane sender, InputPaneVisibilityEventArgs e)
@@ -134,6 +139,8 @@ namespace Pyramid2000
 
             BodyScroller.UpdateLayout();
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
+
+            CommandBar.Visibility = Visibility.Visible;
         }
 
         private void Restart_Click(object sender, RoutedEventArgs e)
@@ -148,7 +155,7 @@ namespace Pyramid2000
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Settings));
+            Frame.Navigate(typeof(SettingsPage));
         }
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
@@ -167,6 +174,26 @@ namespace Pyramid2000
         private void InstructionsButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Instructions));
+        }
+
+        private void NorthButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessCommand("N");
+        }
+
+        private void SouthButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessCommand("S");
+        }
+
+        private void EastButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessCommand("E");
+        }
+
+        private void WestButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessCommand("W");
         }
     }
 }

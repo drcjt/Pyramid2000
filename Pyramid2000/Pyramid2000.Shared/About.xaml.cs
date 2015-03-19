@@ -29,9 +29,20 @@ namespace Pyramid2000
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        public String AppVersion
+        {
+            get
+            {
+                var packageVersion = Windows.ApplicationModel.Package.Current.Id.Version;
+                return String.Format("Build {0}.{1}.{2}.{3}", packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
+            }
+        }
+
         public About()
         {
             this.InitializeComponent();
+
+            this.LayoutRoot.DataContext = this;
 
             this.navigationHelper = new NavigationHelper(this);
             this.InsertPageTitleUserControl();

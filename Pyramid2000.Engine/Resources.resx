@@ -355,7 +355,7 @@
     <value>You are in the chamber of Horus, a long east/west passage with holes everywhere. To explore at random, select north, south, up, or down.</value>
   </data>
   <data name="Room66" xml:space="preserve">
-    <value>You are in a large low circular chamber whose floor is an immense slab fallen from the ceiling. East and west there once were large passages, but they are now filled with sand. Low small passages go north and south.</value>
+    <value>You are in a large low circular chamber whose floor is an immense slab fallen from the ceiling. East and west there once where large passages, but they are now filled with sand. Low small passages go north and south.</value>
   </data>
   <data name="Room68" xml:space="preserve">
     <value>You are in the chamber of Nekhebet, a woman with the head of a vulture, wearing the crown of Egypt. A passage exits to the south.</value>
