@@ -114,7 +114,7 @@ namespace Pyramid2000
         private void InsertPageTitleUserControl()
         {
             PageTitleUserControl pageTitle = new PageTitleUserControl(this.navigationHelper);
-            pageTitle.PageTitle = "instructions";
+            pageTitle.PageTitle = "help";
             pageTitle.AppName = "PYRAMID 2000";
             LayoutRoot.Children.Add(pageTitle);
             Grid.SetRow(pageTitle, 0);
