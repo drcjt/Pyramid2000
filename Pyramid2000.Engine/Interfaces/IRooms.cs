@@ -11,5 +11,7 @@ namespace Pyramid2000.Engine.Interfaces
         Room GetRoom(string roomName);
         bool IsRoomLit(string roomName);
         int CalculateScore();
+
+        IList<string> GetRoomNames();
     }
 }

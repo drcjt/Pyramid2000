@@ -151,8 +151,8 @@ namespace Pyramid2000.Engine
             { "BREAK", new Word() { Grammar = "withNounInSight", Function = "_break" } },
             { "SMASH", new Word() { Grammar = "withNounInSight", Function = "_break" } },
             //
-            { "LOAD", new Word() { Grammar = "alone", Function = "_load" } },
-            { "SAVE", new Word() { Grammar = "alone", Function = "_save" } },
+            //{ "LOAD", new Word() { Grammar = "alone", Function = "_load" } },
+            //{ "SAVE", new Word() { Grammar = "alone", Function = "_save" } },
             { "PLUGH", new Word() { Grammar = "alone", Function = "_plugh" } },
         };
 
@@ -160,6 +160,21 @@ namespace Pyramid2000.Engine
         {
             { "HELP", new Word() { Grammar = "alone", Function = "_help" } },
         };
+
+        public IList<String> GetNouns()
+        {
+            IList<String> nouns = new List<String>();
+            foreach (var entry in _words)
+            {
+                var word = entry.Value as Word;
+                if (word.Grammar == "noun")
+                {
+                    nouns.Add(entry.Key);
+                }
+            }
+
+            return nouns;
+        }
 
         private int _errRoll = 0;
         private string[] _errors = new string[] { Resources.What, Resources.DontKnowThatWord, Resources.DontUnderstand, Resources.DontKnowWhatYouMean };

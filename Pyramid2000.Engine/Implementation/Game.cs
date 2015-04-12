@@ -131,5 +131,69 @@ namespace Pyramid2000.Engine
             _scripter.Look();
             _printer.Print(Resources.Prompt);
         }
+
+        public string Save()
+        {
+            string state = "";
+            var items = _items.GetAllItems();
+            foreach (var item in items)
+            {
+                var locationOfItem = item.Location;
+                if (locationOfItem.IndexOf("room_") == 0)
+                {
+                    locationOfItem = locationOfItem.Substring(4);
+                }
+                state += locationOfItem + ",";
+            }
+
+            state = "LOAD " + state + _player.CurrentRoom + "," + _gameState.LastRoom + "," + _gameState.TurnCount + "," + _gameState.GameOver + "," + _gameState.BatteryLife;
+
+            return state;
+        }
+
+        public bool Load(string state)
+        {
+            // strip off the "LOAD " bit
+            state = state.Substring(5);
+
+            var splitstate = state.Split(',');
+
+            int index = 0;
+            var items = _items.GetAllItems();
+            foreach (var item in items)
+            {
+                var locationofitem = splitstate[index];
+                if (locationofitem.Length > 0 && locationofitem[0] == '_')
+                {
+                    locationofitem = "room" + locationofitem;
+                }
+                items[index].Location = locationofitem;
+
+                index++;
+            }
+
+            _player.CurrentRoom = splitstate[index++];
+            if (splitstate[index].Length == 0)
+            {
+                _gameState.LastRoom = null;
+            }
+            else
+            {
+                _gameState.LastRoom = splitstate[index];
+            }
+            index++;
+
+            _gameState.TurnCount = Convert.ToInt32(splitstate[index++]);
+            _gameState.GameOver = Convert.ToBoolean(splitstate[index++]);
+            _gameState.BatteryLife = Convert.ToInt32(splitstate[index++]);
+
+            _printer.Clear();
+
+            _printer.PrintLn("");
+            _scripter.Look();
+            _printer.Print(Resources.Prompt);
+
+            return true;
+        }
     }
 }

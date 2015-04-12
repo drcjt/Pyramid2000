@@ -195,11 +195,15 @@ namespace Pyramid2000.Engine
 
         public bool AssertItemXMatchesUserInput(string itemID)
         {
-            return (itemID == inputItem.Name);
+            return (itemID == (inputItem != null ? inputItem.Name : null));
         }
 
         public bool GetUserInputItem()
         {
+            if (inputItem == null)
+            {
+                return false;
+            }
             if (!inputItem.Packable)
             {
                 _printer.PrintLn(Resources.DontBeRidiculous);
@@ -223,6 +227,10 @@ namespace Pyramid2000.Engine
 
         public bool GetItemXFromRoom(string itemID)
         {
+            if (itemID == null)
+            {
+                return false;
+            }
             var items = _items.GetItemsAtLocation("pack");
             if (!inputItem.Packable)
             {
@@ -263,6 +271,10 @@ namespace Pyramid2000.Engine
 
         public bool DropUserInputItem()
         {
+            if (inputItem == null)
+            {
+                return false;
+            }
             _items.GetTopItemByName(inputItem.Name).Location = _player.CurrentRoom;
             _printer.PrintLn(Resources.Ok);
             return true;
@@ -328,9 +340,6 @@ namespace Pyramid2000.Engine
             if (items[0].Name != "#EMERALD") return false;
             return true;
         }
-
-        //TODO SaveGame
-        //TODO LoadGame
 
         private bool abortScript;
         public bool SubScriptXAbortIfPass(List<object> script)

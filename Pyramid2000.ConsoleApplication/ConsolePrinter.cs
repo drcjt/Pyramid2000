@@ -20,5 +20,10 @@ namespace Pyramid2000.ConsoleApplication
         {
             Console.Write(text);
         }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
     }
 }

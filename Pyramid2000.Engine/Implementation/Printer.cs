@@ -29,6 +29,11 @@ namespace Pyramid2000.Engine
             _printer.PrintLn(FormatText(text));
         }
 
+        public void Clear()
+        {
+            _printer.Clear();
+        }
+
         private string FormatText(string text)
         {
             var formattedText = text;

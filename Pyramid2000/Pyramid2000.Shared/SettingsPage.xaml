@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Pyramid2000"
-    DataContext="{Binding Settings, RelativeSource={RelativeSource Self}}"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -21,7 +20,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
 
             <Grid>
@@ -48,7 +47,7 @@
 
                     <CheckBox IsChecked="{Binding AllCaps, Mode=TwoWay}">All caps</CheckBox>
                     <CheckBox IsChecked="{Binding Trs80Mode, Mode=TwoWay}">Trs-80 mode</CheckBox>
-                    <!-- <CheckBox IsChecked="{Binding ShowHeader, Mode=TwoWay}">Show Header</CheckBox> -->
+                    <CheckBox IsChecked="{Binding ClearDialogueOnRoomChange, Mode=TwoWay}">Clear dialogue on room change</CheckBox>
                 </StackPanel>
                
             </Grid>

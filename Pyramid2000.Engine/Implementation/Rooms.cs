@@ -27,6 +27,11 @@ namespace Pyramid2000.Engine
             return null;
         }
 
+        public IList<string> GetRoomNames()
+        {
+            return _rooms.Keys.ToList<string>();
+        }
+
         public bool IsRoomLit(string roomName)
         {
             var ro = GetRoom(roomName);
@@ -53,12 +58,13 @@ namespace Pyramid2000.Engine
             return score;
         }
 
-        private IDictionary<string, Room> _rooms = new Dictionary<string, Room>() 
+        private IDictionary<string, Room> _rooms = new Dictionary<string, Room>()
         {
             {
                 "room_1",
-                new Room() 
+                new Room()
                 {
+                    ShortDescription = "Before entrance to Pyramid",
                     Description = Resources.Room1,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -75,6 +81,7 @@ namespace Pyramid2000.Engine
                 "room_2",
                 new Room() 
                 {
+                    ShortDescription = "In Pyramid entrance",
                     Description = Resources.Room2,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -90,6 +97,7 @@ namespace Pyramid2000.Engine
                 "room_3",
                 new Room() 
                 {
+                    ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -105,6 +113,7 @@ namespace Pyramid2000.Engine
                 "room_4",
                 new Room() 
                 {
+                    ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -120,6 +129,7 @@ namespace Pyramid2000.Engine
                 "room_5",
                 new Room() 
                 {
+                    ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -135,6 +145,7 @@ namespace Pyramid2000.Engine
                 "room_6",
                 new Room() 
                 {
+                    ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -150,6 +161,7 @@ namespace Pyramid2000.Engine
                 "room_7",
                 new Room() 
                 {
+                    ShortDescription = "Small chamber beneath hole",
                     Description = Resources.Room7,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -165,6 +177,7 @@ namespace Pyramid2000.Engine
                 "room_8",
                 new Room()
                 {
+                    ShortDescription = "Crawling over pebbles",
                     Description = Resources.Room8,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -179,6 +192,7 @@ namespace Pyramid2000.Engine
                 "room_9",
                 new Room()
                 {
+                    ShortDescription = "Broken Pottery Shards",
                     Description = Resources.Room9,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -193,6 +207,7 @@ namespace Pyramid2000.Engine
                 "room_10",
                 new Room()
                 {
+                    ShortDescription = "Awkward sloping corridor",
                     Description = Resources.Room10,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -208,6 +223,7 @@ namespace Pyramid2000.Engine
                 "room_11",
                 new Room()
                 {
+                    ShortDescription = "Splendid chamber",
                     Description = Resources.Room11,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -220,6 +236,7 @@ namespace Pyramid2000.Engine
                 "room_12",
                 new Room()
                 {
+                    ShortDescription = "Small pit",
                     Description = Resources.Room12,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -243,6 +260,7 @@ namespace Pyramid2000.Engine
                 "room_13",
                 new Room()
                 {
+                    ShortDescription = "One end of vast hall",
                     Description = Resources.Room13,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -277,6 +295,7 @@ namespace Pyramid2000.Engine
                 "room_14",
                 new Room()
                 {
+                    ShortDescription = "Low room",
                     Description = Resources.Room14,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -289,6 +308,7 @@ namespace Pyramid2000.Engine
                 "room_15",
                 new Room()
                 {
+                    ShortDescription = "East bank of bottomless pit",
                     Description = Resources.Room15,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -342,6 +362,7 @@ namespace Pyramid2000.Engine
                 "room_16",
                 new Room()
                 {
+                    ShortDescription = "Pharaoh's chamber",
                     Description = Resources.Room16,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -394,6 +415,7 @@ namespace Pyramid2000.Engine
                 "room_17",
                 new Room()
                 {
+                    ShortDescription = "South side chamber",
                     Description = Resources.Room17,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -406,6 +428,7 @@ namespace Pyramid2000.Engine
                 "room_18",
                 new Room()
                 {
+                    ShortDescription = "West side of bottomless pit",
                     Description = Resources.Room18,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -464,6 +487,7 @@ namespace Pyramid2000.Engine
                 "room_19",
                 new Room()
                 {
+                    ShortDescription = "West end of hall of gods",
                     Description = Resources.Room19,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -480,6 +504,7 @@ namespace Pyramid2000.Engine
                 "room_20",
                 new Room()
                 {
+                    ShortDescription = "East end of very long hall",
                     Description = Resources.Room20,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -495,6 +520,7 @@ namespace Pyramid2000.Engine
                 "room_21",
                 new Room()
                 {
+                    ShortDescription = "West end of very long hall",
                     Description = Resources.Room21,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -507,6 +533,7 @@ namespace Pyramid2000.Engine
                 "room_22",
                 new Room()
                 {
+                    ShortDescription = "Crossover of high N/S and low E/W",
                     Description = Resources.Room22,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -521,6 +548,7 @@ namespace Pyramid2000.Engine
                 "room_23",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -533,6 +561,7 @@ namespace Pyramid2000.Engine
                 "room_24",
                 new Room()
                 {
+                    ShortDescription = "West throne chamber",
                     Description = Resources.Room24,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -547,6 +576,7 @@ namespace Pyramid2000.Engine
                 "room_25",
                 new Room()
                 {
+                    ShortDescription = "Low N/S passage at hole in floor",
                     Description = Resources.Room25,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -561,6 +591,7 @@ namespace Pyramid2000.Engine
                 "room_26",
                 new Room()
                 {
+                    ShortDescription = "Large room with panel",
                     Description = Resources.Room26,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -574,6 +605,7 @@ namespace Pyramid2000.Engine
                 "room_27",
                 new Room()
                 {
+                    ShortDescription = "Chamber of Anubis",
                     Description = Resources.Room27,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -586,6 +618,7 @@ namespace Pyramid2000.Engine
                 "room_28",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -601,6 +634,7 @@ namespace Pyramid2000.Engine
                 "room_29",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -615,6 +649,7 @@ namespace Pyramid2000.Engine
                 "room_30",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -631,6 +666,7 @@ namespace Pyramid2000.Engine
                 "room_31",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -643,6 +679,7 @@ namespace Pyramid2000.Engine
                 "room_32",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -656,6 +693,7 @@ namespace Pyramid2000.Engine
                 "room_33",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -670,6 +708,7 @@ namespace Pyramid2000.Engine
                 "room_34",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -684,6 +723,7 @@ namespace Pyramid2000.Engine
                 "room_35",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -700,6 +740,7 @@ namespace Pyramid2000.Engine
                 "room_36",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -714,6 +755,7 @@ namespace Pyramid2000.Engine
                 "room_37",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -726,6 +768,7 @@ namespace Pyramid2000.Engine
                 "room_38",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -740,6 +783,7 @@ namespace Pyramid2000.Engine
                 "room_39",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -753,6 +797,7 @@ namespace Pyramid2000.Engine
                 "room_40",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -766,6 +811,7 @@ namespace Pyramid2000.Engine
                 "room_41",
                 new Room()
                 {
+                    ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -779,6 +825,7 @@ namespace Pyramid2000.Engine
                 "room_42",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -790,6 +837,7 @@ namespace Pyramid2000.Engine
                 "room_43",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -801,6 +849,7 @@ namespace Pyramid2000.Engine
                 "room_44",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -812,6 +861,7 @@ namespace Pyramid2000.Engine
                 "room_45",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -823,6 +873,7 @@ namespace Pyramid2000.Engine
                 "room_46",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -834,6 +885,7 @@ namespace Pyramid2000.Engine
                 "room_47",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -845,6 +897,7 @@ namespace Pyramid2000.Engine
                 "room_48",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -856,6 +909,7 @@ namespace Pyramid2000.Engine
                 "room_49",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -867,6 +921,7 @@ namespace Pyramid2000.Engine
                 "room_50",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -878,6 +933,7 @@ namespace Pyramid2000.Engine
                 "room_51",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -897,6 +953,7 @@ namespace Pyramid2000.Engine
                 "room_52",
                 new Room()
                 {
+                    ShortDescription = "Brink of pit",
                     Description = Resources.Room52,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -912,6 +969,7 @@ namespace Pyramid2000.Engine
                 "room_53",
                 new Room()
                 {
+                    ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -923,6 +981,7 @@ namespace Pyramid2000.Engine
                 "room_54",
                 new Room()
                 {
+                    ShortDescription = "Dirty broken passage",
                     Description = Resources.Room54,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -936,6 +995,7 @@ namespace Pyramid2000.Engine
                 "room_55",
                 new Room()
                 {
+                    ShortDescription = "Brink of small clean pit",
                     Description = Resources.Room55,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -949,6 +1009,7 @@ namespace Pyramid2000.Engine
                 "room_56",
                 new Room()
                 {
+                    ShortDescription = "Bottom of small pit with stream",
                     Description = Resources.Room56,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -973,6 +1034,7 @@ namespace Pyramid2000.Engine
                 "room_57",
                 new Room()
                 {
+                    ShortDescription = "Room of Bes",
                     Description = Resources.Room57,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -985,6 +1047,7 @@ namespace Pyramid2000.Engine
                 "room_58",
                 new Room()
                 {
+                    ShortDescription = "Complex Junction",
                     Description = Resources.Room58,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1000,6 +1063,7 @@ namespace Pyramid2000.Engine
                 "room_59",
                 new Room()
                 {
+                    ShortDescription = "Anteroom of Seker",
                     Description = Resources.Room59,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1013,6 +1077,7 @@ namespace Pyramid2000.Engine
                 "room_60",
                 new Room()
                 {
+                    ShortDescription = "Land of the dead",
                     Description = Resources.Room60,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1059,6 +1124,7 @@ namespace Pyramid2000.Engine
                 "room_61",
                 new Room()
                 {
+                    ShortDescription = "Large room with ancient drawings",
                     Description = Resources.Room61,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1086,6 +1152,7 @@ namespace Pyramid2000.Engine
                 "room_62",
                 new Room()
                 {
+                    ShortDescription = "Chamber of Khons",
                     Description = Resources.Room62,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1098,6 +1165,7 @@ namespace Pyramid2000.Engine
                 "room_63",
                 new Room()
                 {
+                    ShortDescription = "Long sloping corridor",
                     Description = Resources.Room63,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1110,6 +1178,7 @@ namespace Pyramid2000.Engine
                 "room_64",
                 new Room()
                 {
+                    ShortDescription = "Cul-de-sac",
                     Description = Resources.Room64,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1122,6 +1191,7 @@ namespace Pyramid2000.Engine
                 "room_65",
                 new Room()
                 {
+                    ShortDescription = "Chamber of Horus",
                     Description = Resources.Room65,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1138,6 +1208,7 @@ namespace Pyramid2000.Engine
                 "room_66",
                 new Room()
                 {
+                    ShortDescription = "Large low circular chamber",
                     Description = Resources.Room66,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1151,6 +1222,7 @@ namespace Pyramid2000.Engine
                 "room_68",
                 new Room()
                 {
+                    ShortDescription = "Chamber of Nekhebet",
                     Description = Resources.Room68,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1163,6 +1235,7 @@ namespace Pyramid2000.Engine
                 "room_70",
                 new Room()
                 {
+                    ShortDescription = "Fallen block",
                     Description = Resources.Room70,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1175,6 +1248,7 @@ namespace Pyramid2000.Engine
                 "room_71",
                 new Room()
                 {
+                    ShortDescription = "Chamber of Osiris",
                     Description = Resources.Room71,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1188,6 +1262,7 @@ namespace Pyramid2000.Engine
                 "room_72",
                 new Room()
                 {
+                    ShortDescription = "Priest's bedroom",
                     Description = Resources.Room72,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1200,6 +1275,7 @@ namespace Pyramid2000.Engine
                 "room_73",
                 new Room()
                 {
+                    ShortDescription = "Chamber of high priest",
                     Description = Resources.Room73,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1223,6 +1299,7 @@ namespace Pyramid2000.Engine
                 "room_76",
                 new Room()
                 {
+                    ShortDescription = "High priest's treasure room",
                     Description = Resources.Room76,
                     Lit = true,
                     Commands = new Dictionary<string, List<object>>()
@@ -1254,6 +1331,7 @@ namespace Pyramid2000.Engine
                 "room_77",
                 new Room()
                 {
+                    ShortDescription = "Long narrow corridor",
                     Description = Resources.Room77,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1270,6 +1348,7 @@ namespace Pyramid2000.Engine
                 "room_78",
                 new Room()
                 {
+                    ShortDescription = "East end of twopit room",
                     Description = Resources.Room78,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1283,6 +1362,7 @@ namespace Pyramid2000.Engine
                 "room_79",
                 new Room()
                 {
+                    ShortDescription = "Bottom of eastern pit",
                     Description = Resources.Room79,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1295,6 +1375,7 @@ namespace Pyramid2000.Engine
                 "room_80",
                 new Room()
                 {
+                    ShortDescription = "West end of twopit room",
                     Description = Resources.Room80,
                     Commands = new Dictionary<string, List<object>>()
                     {
@@ -1308,6 +1389,7 @@ namespace Pyramid2000.Engine
                 "room_81",
                 new Room()
                 {
+                    ShortDescription = "Bottom of western pit",
                     Description = Resources.Room81,
                     Commands = new Dictionary<string, List<object>>()
                     {

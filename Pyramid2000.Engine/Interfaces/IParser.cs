@@ -9,5 +9,7 @@ namespace Pyramid2000.Engine.Interfaces
     public interface IParser
     {
         ParsedCommand ParseInput(string command);
+
+        IList<String> GetNouns();
     }
 }
