@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="27451drcjt.Pyramid2000" Publisher="CN=0E993ABC-D6E6-4655-9242-30DC17674FD0" Version="1.4.0.0" />
+  <Identity Name="27451drcjt.Pyramid2000" Publisher="CN=0E993ABC-D6E6-4655-9242-30DC17674FD0" Version="1.5.0.0" />
   <mp:PhoneIdentity PhoneProductId="1c24bb3d-1ea0-42d6-ac77-e013ff0e1cd3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Pyramid 2000</DisplayName>
