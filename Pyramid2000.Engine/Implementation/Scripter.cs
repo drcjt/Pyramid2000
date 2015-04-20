@@ -20,8 +20,6 @@ namespace Pyramid2000.Engine
         private IGameState _gameState;
         private ISettings _settings;
 
-        public bool Trs80Mode { get; set; }
-
         public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, ISettings settings)
         {
             _settings = settings;
@@ -296,6 +294,76 @@ namespace Pyramid2000.Engine
 
         public bool JumpToTopOfGameLoop()
         {
+            if (_settings.Trs80Mode)
+            {
+                _printer.PrintLn("Oh, no!  I lost my compass. I no longer seem to know which way is north!");
+
+                // Run through scripts for all rooms and roll north, south, east, west directions by random offset
+
+                // Generate random number from 0-3
+                int random = GetRandomByte();
+                random = random & 3;
+
+                /* If script is a "_n", "_e", "_s", "_w" script then
+                   Add random number to direction, taking
+                            "_n" as 1
+                            "_e" as 2
+                            "_s" as 3
+                            "_w" as 4
+                   And result with 0x03
+                   Change original room script using new number interpreting
+                            0 as "_w"
+                            1 as "_n"
+                            2 as "_e"
+                            3 as "_s"
+                */
+
+
+                foreach (var roomName in _rooms.GetRoomNames())
+                {
+                    var reKeyedCommands = new Dictionary<string, List<object>>();
+                    var keysToDelete = new List<string>();
+
+                    var room = _rooms.GetRoom(roomName);
+                    var commands = room.Commands;
+                    foreach (var key in commands.Keys)
+                    {
+                        if (key == "_n" || key == "_e" || key == "_s" || key == "_w")
+                        {
+                            var currentKeyIndex = 0;
+                            switch (key)
+                            {
+                                case "_n": currentKeyIndex = 1; break;
+                                case "_e": currentKeyIndex = 2; break;
+                                case "_s": currentKeyIndex = 3; break;
+                                case "_w": currentKeyIndex = 4; break;
+                            }
+                            var newKeyIndex = currentKeyIndex + random;
+                            newKeyIndex = newKeyIndex & 3;
+
+                            var newKey = "";
+                            switch (newKeyIndex)
+                            {
+                                case 0: newKey = "_w"; break;
+                                case 1: newKey = "_n"; break;
+                                case 2: newKey = "_e"; break;
+                                case 3: newKey = "_s"; break;
+                            }
+
+                            keysToDelete.Add(key);
+                            reKeyedCommands.Add(newKey, commands[key]);
+                        }
+                    }
+                    foreach (var keyToDelete in keysToDelete)
+                    {
+                        commands.Remove(keyToDelete);
+                    }
+                    foreach (var kvp in reKeyedCommands)
+                    {
+                        commands.Add(kvp.Key, kvp.Value);
+                    }
+                }
+            }
             return true;
         }
 

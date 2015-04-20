@@ -15,10 +15,12 @@ namespace Pyramid2000EngineTests
     [TestFixture]
     public class ScripterTests
     {
-        [Test]
-        public void TestRoomScripts()
+        [TestCase(false)]
+        [TestCase(true)]
+        public void TestRoomScripts(bool trs80Mode)
         {
             ISettings settings = new Settings();
+            settings.Trs80Mode = trs80Mode;
             IPrinter printer = new Mock<IPrinter>().Object;
             IItems items = new Items();
             IPlayer player = new Player();
