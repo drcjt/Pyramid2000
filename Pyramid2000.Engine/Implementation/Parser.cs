@@ -192,7 +192,7 @@ namespace Pyramid2000.Engine
 
             if (_settings.Trs80Mode && _trs80words.ContainsKey(keyToFind))
             {
-                return new ParsedWord() { Original = input, Word = _words[keyToFind] };
+                return new ParsedWord() { Original = input, Word = _trs80words[keyToFind] };
             }
             if (_words.ContainsKey(keyToFind))
             {
