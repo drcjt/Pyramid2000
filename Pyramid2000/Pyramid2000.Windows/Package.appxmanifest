@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="27451drcjt.Pyramid2000" Publisher="CN=0E993ABC-D6E6-4655-9242-30DC17674FD0" Version="1.6.0.0" />
+  <Identity Name="27451drcjt.Pyramid2000" Publisher="CN=0E993ABC-D6E6-4655-9242-30DC17674FD0" Version="1.7.0.0" />
   <Properties>
     <DisplayName>Pyramid 2000</DisplayName>
     <PublisherDisplayName>drcjt</PublisherDisplayName>
