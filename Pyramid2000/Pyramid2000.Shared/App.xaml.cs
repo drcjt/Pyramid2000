@@ -58,6 +58,7 @@ namespace Pyramid2000
                     _settings = new Settings();
                     _settings.Trs80Mode = true;
                     _settings.ClearDialogueOnRoomChange = true;
+                    _settings.TextSize = 20;
                 }
                 return _settings;
             }

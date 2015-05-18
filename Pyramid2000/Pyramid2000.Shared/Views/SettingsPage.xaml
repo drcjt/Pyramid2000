@@ -34,6 +34,14 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <TextBlock Text="Text size" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    <Border Height="60" BorderThickness="1" BorderBrush="Gray" Margin="10,10,10,10">
+                        <TextBlock Text="Sample" VerticalAlignment="Bottom" FontSize="{Binding ElementName=TextSize, Path=Value}" Style="{ThemeResource BodyTextBlockStyle}" Margin="10,10,10,10"/>
+                    </Border>
+                    <Slider Minimum="15" Maximum="39" TickFrequency="4" Name="TextSize" Value="{Binding TextSize, Mode=TwoWay}"></Slider>
+                </StackPanel>
+                
                 <StackPanel Grid.Row="1" Orientation="Vertical">
                     <!--
                     <TextBlock Grid.Row="0" Text="Theme" Style="{ThemeResource SubheaderTextBlockStyle}"/>

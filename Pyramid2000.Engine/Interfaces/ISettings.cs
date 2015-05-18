@@ -11,5 +11,6 @@ namespace Pyramid2000.Engine.Interfaces
         bool Trs80Mode { get; set; }
         bool AllCaps { get; set; }
         bool ClearDialogueOnRoomChange { get; set; }
+        int TextSize { get; set; }
     }
 }

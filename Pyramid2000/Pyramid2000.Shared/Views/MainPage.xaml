@@ -26,11 +26,11 @@
             <ColumnDefinition Width="*"/>            
         </Grid.ColumnDefinitions>
         <Border Background="White" Margin="2">
-            <TextBlock Grid.Row="0" x:Name="Header" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold" Foreground="Black" Visibility="{Binding ClearDialogueOnRoomChange, Converter={StaticResource BoolToVisConv}, Mode=OneWay}"/>
+            <TextBlock Grid.Row="0" x:Name="Header" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold" Foreground="Black" Visibility="{Binding ClearDialogueOnRoomChange, Converter={StaticResource BoolToVisConv}, Mode=OneWay}" FontSize="{Binding TextSize}" LineHeight="0"/>
         </Border>
         <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="BodyScroller" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto">
             <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" x:Name="BodyTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top">
-                <Paragraph x:Name="BodyParagraph">
+                <Paragraph x:Name="BodyParagraph" FontSize="{Binding TextSize}" LineHeight="0">
                     <Run x:Name="Body"/>
                 </Paragraph>
             </RichTextBlock>
