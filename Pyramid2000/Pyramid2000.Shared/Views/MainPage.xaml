@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:Pyramid2000.Common"
+    xmlns:controls="using:Pyramid2000.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -28,7 +29,7 @@
         <Border Background="White" Margin="2">
             <TextBlock Grid.Row="0" x:Name="Header" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold" Foreground="Black" Visibility="{Binding ClearDialogueOnRoomChange, Converter={StaticResource BoolToVisConv}, Mode=OneWay}" FontSize="{Binding TextSize}" LineHeight="0"/>
         </Border>
-        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="BodyScroller" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto">
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="BodyScroller" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto" KeyDown="BodyScroller_KeyDown">
             <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" x:Name="BodyTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top">
                 <Paragraph x:Name="BodyParagraph" FontSize="{Binding TextSize}" LineHeight="0">
                     <Run x:Name="Body"/>
@@ -38,27 +39,40 @@
         <TextBox Margin="5,5,5,5" Grid.Row="2" Grid.Column="0" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" KeyUp="Command_KeyUp"/>
         <Button Grid.Row="2" Grid.Column="2" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click"/>
         <Grid Grid.Row="3" x:Name="FooterPlaceHolder"/>
+        <Viewbox Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="200" Width="200">
+            <controls:CompassControl x:Name="Compass" Opacity="0.7" IsTabStop="False"
+                ClickNorth="CompassControl_ClickNorth" 
+                ClickSouth="CompassControl_ClickSouth" 
+                ClickEast="CompassControl_ClickEast" 
+                ClickWest="CompassControl_ClickWest"
+                ClickNorthEast="Compass_ClickNorthEast"
+                ClickNorthWest="Compass_ClickNorthWest"
+                ClickSouthEast="Compass_ClickSouthEast"
+                ClickSouthWest="Compass_ClickSouthWest"
+                ClickUp="CompassControl_ClickUp"
+                ClickDown="CompassControl_ClickDown"/>
+        </Viewbox>
     </Grid>
     
     <Page.BottomAppBar>
         <CommandBar x:Name="CommandBar">
             <CommandBar.PrimaryCommands>
-                <AppBarButton Click="NorthButton_Click">
+                <AppBarButton Click="NorthButton_Click" x:Name="AppBar_NorthButton">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x004e;"/>
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarButton Click="SouthButton_Click">
+                <AppBarButton Click="SouthButton_Click" x:Name="AppBar_SouthButton">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x0053;"/>
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarButton Click="EastButton_Click">
+                <AppBarButton Click="EastButton_Click" x:Name="AppBar_EastButton">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x0045;"/>
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarButton Click="WestButton_Click">
+                <AppBarButton Click="WestButton_Click" x:Name="AppBar_WestButton">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x0057;"/>
                     </AppBarButton.Icon>

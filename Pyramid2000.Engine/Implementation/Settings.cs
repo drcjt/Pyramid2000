@@ -14,5 +14,6 @@ namespace Pyramid2000.Engine
         public bool AllCaps { get; set; }
         public bool ClearDialogueOnRoomChange { get; set; }
         public int TextSize { get; set; }
+        public bool ShowCompass { get; set; }
     }
 }

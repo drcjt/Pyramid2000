@@ -56,6 +56,7 @@
                     <CheckBox IsChecked="{Binding AllCaps, Mode=TwoWay}">All caps</CheckBox>
                     <CheckBox IsChecked="{Binding Trs80Mode, Mode=TwoWay}">Trs-80 mode</CheckBox>
                     <CheckBox IsChecked="{Binding ClearDialogueOnRoomChange, Mode=TwoWay}">Clear dialogue on room change</CheckBox>
+                    <CheckBox IsChecked="{Binding ShowCompass, Mode=TwoWay}">Show Compass</CheckBox>
                 </StackPanel>
                
             </Grid>

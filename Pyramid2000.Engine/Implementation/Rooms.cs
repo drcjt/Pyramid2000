@@ -331,7 +331,7 @@ namespace Pyramid2000.Engine
                                         "AssertItemXIsInCurrentRoomOrPack", "#bridge_15",
                                         "MoveToRoomX", "room_18"
                                     },
-                                    "PrintMessageX", Resources.BridgeRetracted
+                                    "PrintMessageX", Resources.CantCrossPit,
                                 }
                         },
                         { "_cross", new List<object>

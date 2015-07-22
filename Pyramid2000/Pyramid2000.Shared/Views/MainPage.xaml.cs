@@ -102,7 +102,19 @@ namespace Pyramid2000
 
             this.DataContext = null;
             this.DataContext = App.Settings;
-            
+
+            Compass.Visibility = App.Settings.ShowCompass ? Visibility.Visible : Visibility.Collapsed;
+            AppBar_NorthButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
+            AppBar_SouthButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
+            AppBar_EastButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
+            AppBar_WestButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
+
+#if WINDOWS_PHONE_APP
+            CommandBar cmdBar = CommandBar as CommandBar;
+            cmdBar.ClosedDisplayMode = App.Settings.ShowCompass ? AppBarClosedDisplayMode.Minimal : AppBarClosedDisplayMode.Compact;
+#else
+            Command.Focus(FocusState.Keyboard);
+#endif
         }
 
         // Experimental setting to show nouns as hyperlinks
@@ -213,6 +225,10 @@ namespace Pyramid2000
 
             Command.Text = "";
             UpdateHeader();
+
+#if !WINDOWS_PHONE_APP
+            Command.Focus(FocusState.Keyboard);
+#endif
         }
 
         Windows.UI.ViewManagement.InputPane _inputPane = Windows.UI.ViewManagement.InputPane.GetForCurrentView();
@@ -224,6 +240,8 @@ namespace Pyramid2000
             FooterPlaceHolder.Height = e.OccludedRect.Height;
             FooterPlaceHolder.Visibility = Visibility.Visible;
 
+            Compass.Visibility = Visibility.Collapsed;
+
             BodyScroller.UpdateLayout();
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
 
@@ -234,6 +252,8 @@ namespace Pyramid2000
         {
             FooterPlaceHolder.Height = 0;
             FooterPlaceHolder.Visibility = Visibility.Collapsed;
+
+            Compass.Visibility = Visibility.Visible;
 
             BodyScroller.UpdateLayout();
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
@@ -247,7 +267,10 @@ namespace Pyramid2000
             Restart.Visibility = Visibility.Collapsed;
             Command.IsEnabled = true;
             Body.Text = "";
+
+#if !WINDOWS_PHONE_APP
             Command.Focus(FocusState.Keyboard);
+#endif
 
             SetupGame();
         }
@@ -306,11 +329,19 @@ namespace Pyramid2000
 
         private async void SaveState(string state)
         {
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SAVE_STATE_FILE, CreationCollisionOption.ReplaceExisting);
-            await FileIO.WriteTextAsync(file, state);
+            try
+            {
+                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(SAVE_STATE_FILE, CreationCollisionOption.ReplaceExisting);
+                await FileIO.WriteTextAsync(file, state);
 
-            MessageDialog md = new MessageDialog("Game Saved");
-            await md.ShowAsync();
+                MessageDialog md = new MessageDialog("Game Saved");
+                await md.ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                //MessageDialog md = new MessageDialog("Unable to save game");
+                //await md.ShowAsync();
+            }
         }
 
         private async Task<string> LoadState()
@@ -321,15 +352,78 @@ namespace Pyramid2000
 
         private async void Load()
         {
-            var state = await LoadState();
-            _game.Load(state);
-            MessageDialog md = new MessageDialog("Game loaded");
-            await md.ShowAsync();
+            try
+            {
+                var state = await LoadState();
+                _game.Load(state);
+                MessageDialog md = new MessageDialog("Game loaded");
+                await md.ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                //MessageDialog md = new MessageDialog("Unable to load game");
+                //await md.ShowAsync();
+            }
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             Load();
+        }
+
+        private void CompassControl_ClickNorth(object sender, EventArgs e)
+        {
+            ProcessCommand("N");
+        }
+
+        private void CompassControl_ClickSouth(object sender, EventArgs e)
+        {
+            ProcessCommand("S");
+        }
+
+        private void CompassControl_ClickEast(object sender, EventArgs e)
+        {
+            ProcessCommand("E");
+        }
+
+        private void CompassControl_ClickWest(object sender, EventArgs e)
+        {
+            ProcessCommand("W");
+        }
+
+        private void CompassControl_ClickUp(object sender, EventArgs e)
+        {
+            ProcessCommand("Up");
+        }
+
+        private void CompassControl_ClickDown(object sender, EventArgs e)
+        {
+            ProcessCommand("Down");
+        }
+
+        private void BodyScroller_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            Command.Focus(FocusState.Keyboard);
+        }
+
+        private void Compass_ClickNorthEast(object sender, EventArgs e)
+        {
+            ProcessCommand("NE");
+        }
+
+        private void Compass_ClickNorthWest(object sender, EventArgs e)
+        {
+            ProcessCommand("NW");
+        }
+
+        private void Compass_ClickSouthEast(object sender, EventArgs e)
+        {
+            ProcessCommand("SE");
+        }
+
+        private void Compass_ClickSouthWest(object sender, EventArgs e)
+        {
+            ProcessCommand("SW");
         }
     }
 }

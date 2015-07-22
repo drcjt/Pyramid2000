@@ -12,5 +12,6 @@ namespace Pyramid2000.Engine.Interfaces
         bool AllCaps { get; set; }
         bool ClearDialogueOnRoomChange { get; set; }
         int TextSize { get; set; }
+        bool ShowCompass { get; set; }
     }
 }

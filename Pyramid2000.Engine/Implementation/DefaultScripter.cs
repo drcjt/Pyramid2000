@@ -376,7 +376,7 @@ namespace Pyramid2000.Engine
                     },
                     "SubScriptXAbortIfPass", new List<object>
                     {
-                        "AssertObjectXMatchesUserInput", "#SERPENT",
+                        "AssertItemXMatchesUserInput", "#SERPENT",
                         "SubScriptXAbortIfPass", new List<object>
                         {
                             "AssertItemXIsInPack", "#BIRD_boxed",

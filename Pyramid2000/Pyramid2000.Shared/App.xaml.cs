@@ -58,7 +58,12 @@ namespace Pyramid2000
                     _settings = new Settings();
                     _settings.Trs80Mode = true;
                     _settings.ClearDialogueOnRoomChange = true;
+#if WINDOWS_PHONE_APP
                     _settings.TextSize = 20;
+#else
+                    _settings.TextSize = 25;
+#endif
+                    _settings.ShowCompass = true;
                 }
                 return _settings;
             }
