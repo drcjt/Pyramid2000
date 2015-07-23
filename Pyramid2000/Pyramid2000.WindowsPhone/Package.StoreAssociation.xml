@@ -189,12 +189,16 @@
       <ReservedName>Pyramid 2000</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
-  <AccountPackageIdentityNames />
-  <PackageInfoList LandingUrl="https://dev.windowsphone.com/AppSubmission/AssociationLanding?windowsProductId=fe210521-fbbc-41b4-bb4c-747dd4871836">
+  <AccountPackageIdentityNames>
+    <MainPackageIdentityName>27451drcjt.1-PixelPacman</MainPackageIdentityName>
+    <MainPackageIdentityName>27451drcjt.LambdaCalculus</MainPackageIdentityName>
+    <MainPackageIdentityName>27451drcjt.NBerzerk</MainPackageIdentityName>
+  </AccountPackageIdentityNames>
+  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9NBLGGGZFNTH">
     <PackageInfo>
       <OsMinVersion>6.3.0.0</OsMinVersion>
-      <PackageArchitecture>neutral</PackageArchitecture>
-      <PackageMaxArchitectureVersion>1.2.0.1</PackageMaxArchitectureVersion>
+      <PackageArchitecture>Neutral</PackageArchitecture>
+      <PackageMaxArchitectureVersion>1.7.0.0</PackageMaxArchitectureVersion>
     </PackageInfo>
   </PackageInfoList>
 </StoreAssociation>

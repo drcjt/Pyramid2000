@@ -493,8 +493,15 @@ namespace Pyramid2000.Engine
 
                 Type scripterType = this.GetType();
                 MethodInfo method = scripterType.GetTypeInfo().GetDeclaredMethod(com);
-                object result = method.Invoke(this, parameters);
-                if (!((bool)result))
+                if (method != null)
+                {
+                    object result = method.Invoke(this, parameters);
+                    if (!((bool)result))
+                    {
+                        return false;
+                    }
+                }
+                else
                 {
                     return false;
                 }
