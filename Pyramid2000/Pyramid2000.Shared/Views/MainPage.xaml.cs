@@ -337,7 +337,7 @@ namespace Pyramid2000
                 MessageDialog md = new MessageDialog("Game Saved");
                 await md.ShowAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //MessageDialog md = new MessageDialog("Unable to save game");
                 //await md.ShowAsync();
@@ -359,7 +359,7 @@ namespace Pyramid2000
                 MessageDialog md = new MessageDialog("Game loaded");
                 await md.ShowAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //MessageDialog md = new MessageDialog("Unable to load game");
                 //await md.ShowAsync();
