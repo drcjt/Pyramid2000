@@ -120,13 +120,36 @@
     <None Include="Pyramid2000.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\largelogo.scale-100.png" />
+    <Content Include="Assets\largelogo.scale-140.png" />
+    <Content Include="Assets\largelogo.scale-180.png" />
+    <Content Include="Assets\largelogo.scale-80.png" />
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\logo.scale-140.png" />
+    <Content Include="Assets\logo.scale-180.png" />
+    <Content Include="Assets\Logo.scale-80.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\smalllogo.scale-140.png" />
+    <Content Include="Assets\smalllogo.scale-180.png" />
+    <Content Include="Assets\smalllogo.scale-80.png" />
+    <Content Include="Assets\smalltilelogo.scale-140.png" />
+    <Content Include="Assets\smalltilelogo.scale-180.png" />
+    <Content Include="Assets\smalltilelogo.scale-80.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\splashscreen.scale-140.png" />
+    <Content Include="Assets\splashscreen.scale-180.png" />
     <Content Include="Assets\Square70x70Logo.scale-100.png" />
+    <Content Include="Assets\Square70x70Logo.scale-140.png" />
+    <Content Include="Assets\Square70x70Logo.scale-180.png" />
+    <Content Include="Assets\Square70x70Logo.scale-80.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-140.png" />
     <Content Include="Assets\StoreLogo.scale-180.png" />
+    <Content Include="Assets\storelogo.scale-240.png" />
+    <Content Include="Assets\widelogo.scale-100.png" />
+    <Content Include="Assets\widelogo.scale-140.png" />
+    <Content Include="Assets\widelogo.scale-180.png" />
+    <Content Include="Assets\widelogo.scale-80.png" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
