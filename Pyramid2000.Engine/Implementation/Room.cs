@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pyramid2000.Engine.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,50 +7,34 @@ using System.Threading.Tasks;
 
 namespace Pyramid2000.Engine
 {
-    public class Room
+    public class Room : IRoom
     {
-        public enum Exit
-        {
-            North,
-            South,
-            East,
-            West,
-            NorthEast,
-            SouthEast,
-            NorthWest,
-            SouthWest,
-            Up,
-            Down,
-            In,
-            Out
-        }
-
         public string ShortDescription { get; set; }
         public string Description { get; set; }
         public bool Lit { get; set; }
-        public IDictionary<string, List<object>> Commands { get; set; }
+        public IDictionary<Function, List<object>> Commands { get; set; }
 
-        public IList<Exit> Exits
+        public IList<ExitType> Exits
         {
             get
             {
-                var exits = new List<Exit>();
+                var exits = new List<ExitType>();
                 foreach (var command in Commands)
                 {
                     switch (command.Key)
                     {
-                        case "_n": exits.Add(Exit.North); break;
-                        case "_s": exits.Add(Exit.South); break;
-                        case "_e": exits.Add(Exit.East); break;
-                        case "_w": exits.Add(Exit.West); break;
-                        case "_ne": exits.Add(Exit.NorthEast); break;
-                        case "_se": exits.Add(Exit.SouthEast); break;
-                        case "_nw": exits.Add(Exit.NorthWest); break;
-                        case "_sw": exits.Add(Exit.SouthWest); break;
-                        case "_u": exits.Add(Exit.Up); break;
-                        case "_d": exits.Add(Exit.Down); break;
-                        case "_in": exits.Add(Exit.In); break;
-                        case "_out": exits.Add(Exit.Out); break;
+                        case Function.North: exits.Add(ExitType.North); break;
+                        case Function.South: exits.Add(ExitType.South); break;
+                        case Function.East: exits.Add(ExitType.East); break;
+                        case Function.West: exits.Add(ExitType.West); break;
+                        case Function.NorthEast: exits.Add(ExitType.NorthEast); break;
+                        case Function.SouthEast: exits.Add(ExitType.SouthEast); break;
+                        case Function.NorthWest: exits.Add(ExitType.NorthWest); break;
+                        case Function.SouthWest: exits.Add(ExitType.SouthWest); break;
+                        case Function.Up: exits.Add(ExitType.Up); break;
+                        case Function.Down: exits.Add(ExitType.Down); break;
+                        case Function.In: exits.Add(ExitType.In); break;
+                        case Function.Out: exits.Add(ExitType.Out); break;
                     }
                 }
 

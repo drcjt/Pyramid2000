@@ -10,61 +10,61 @@ namespace Pyramid2000.Engine
 {
     public class DefaultScripter : IDefaultScripter
     {
-        private IDictionary<string, List<object>> _defaultHandler = new Dictionary<string, List<object>>()
+        private IDictionary<Function, List<object>> _defaultHandler = new Dictionary<Function, List<object>>()
         {
             {
-                "_n", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.North, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_e", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.East, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_s", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.South, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_w", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.West, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_ne", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.NorthEast, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_se", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.SouthEast, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_sw", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.SouthWest, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_nw", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.NorthWest, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_u", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.Up, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_d", new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
+                Function.Down, new List<object> { "PrintMessageX", Resources.NoWayToGoThatDirection }
             },
             {
-                "_in", new List<object> { "PrintMessageX", Resources.UseCompassPoints }
+                Function.In, new List<object> { "PrintMessageX", Resources.UseCompassPoints }
             },
             {
-                "_out", new List<object> { "PrintMessageX", Resources.UseCompassPoints }
+                Function.Out, new List<object> { "PrintMessageX", Resources.UseCompassPoints }
             },
             {
-                "_left", new List<object> { "PrintMessageX", Resources.UnsureHowYouAreFacing }
+                Function.Left, new List<object> { "PrintMessageX", Resources.UnsureHowYouAreFacing }
             },
             {
-                "_right", new List<object> { "PrintMessageX", Resources.UnsureHowYouAreFacing }
+                Function.Right, new List<object> { "PrintMessageX", Resources.UnsureHowYouAreFacing }
             },
             {
-                "_panel", new List<object> { "PrintMessageX", Resources.NothingHappens }
+                Function.Panel, new List<object> { "PrintMessageX", Resources.NothingHappens }
             },
             {
-                "_back", new List<object> { "MoveToLastRoom" }
+                Function.Back, new List<object> { "MoveToLastRoom" }
             },
             {
-                "_swim", new List<object> { "PrintMessageX", Resources.DontKnowHow }
+                Function.Swim, new List<object> { "PrintMessageX", Resources.DontKnowHow }
             },
             {
-                "_on", new List<object>
+                Function.On, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -82,7 +82,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_off", new List<object>
+                Function.Off, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -100,19 +100,19 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_quit", new List<object> { "Quit" }
+                Function.Quit, new List<object> { "Quit" }
             },
             {
-                "_score", new List<object> { "PrintScore" }
+                Function.Score, new List<object> { "PrintScore" }
             },
             {
-                "_inv", new List<object> { "PrintInventory" }
+                Function.Inventory, new List<object> { "PrintInventory" }
             },
             {
-                "_look", new List<object> { "PrintRoomDescription" }
+                Function.Look, new List<object> { "PrintRoomDescription" }
             },
             {
-                "_get", new List<object>
+                Function.Get, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -164,7 +164,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_drop", new List<object>
+                Function.Drop, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -183,7 +183,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_throw", new List<object>
+                Function.Throw, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -196,7 +196,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_open", new List<object>
+                Function.Open, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -235,10 +235,10 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_wave", new List<object> { "PrintMessageX", Resources.NothingHappens }
+                Function.Wave, new List<object> { "PrintMessageX", Resources.NothingHappens }
             },
             {
-                "_pour", new List<object>
+                Function.Pour, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -250,7 +250,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_rub", new List<object>
+                Function.Rub, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -266,7 +266,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_fill", new List<object>
+                Function.Fill, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -282,7 +282,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_attack", new List<object>
+                Function.Attack, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -315,10 +315,10 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_break", new List<object> { "PrintMessageX", Resources.BeyondYourPower }
+                Function.Break, new List<object> { "PrintMessageX", Resources.BeyondYourPower }
             },
             {
-                "_eat", new List<object>
+                Function.Eat, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -345,7 +345,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_drink", new List<object>
+                Function.Drink, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -362,7 +362,7 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_feed", new List<object>
+                Function.Feed, new List<object>
                 {
                     "SubScriptXAbortIfPass", new List<object>
                     {
@@ -404,20 +404,20 @@ namespace Pyramid2000.Engine
                 }
             },
             {
-                "_plugh", new List<object> { "JumpToTopOfGameLoop" }
+                Function.Plugh, new List<object> { "JumpToTopOfGameLoop" }
             },
             {
-                "_load", new List<object> { "LoadGame" }
+                Function.Load, new List<object> { "LoadGame" }
             },
             {
-                "_save", new List<object> { "SaveGame" }
+                Function.Save, new List<object> { "SaveGame" }
             },
             {
-                "_help", new List<object> { "PrintMessageX", Resources.Help }
+                Function.Help, new List<object> { "PrintMessageX", Resources.Help }
             }
         };
 
-        public List<object> GetDefaultScript(string verb)
+        public List<object> GetDefaultScript(Function verb)
         {
             if (_defaultHandler.ContainsKey(verb))
             {

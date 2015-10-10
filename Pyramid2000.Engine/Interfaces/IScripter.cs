@@ -9,7 +9,7 @@ namespace Pyramid2000.Engine.Interfaces
     public interface IScripter
     {
         bool Look();
-        bool ParseScript(List<object> script, Item item);
+        bool ParseScript(List<object> script, IItem item);
         bool ParseScriptRec(List<object> script);
     }
 }

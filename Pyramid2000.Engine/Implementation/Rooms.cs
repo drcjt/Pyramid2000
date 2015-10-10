@@ -67,13 +67,13 @@ namespace Pyramid2000.Engine
                     ShortDescription = "Before entrance to Pyramid",
                     Description = Resources.Room1,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_2" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_3" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_4" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_5" } },
-                        { "_in", new List<object> { "MoveToRoomX", "room_2" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_2" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_3" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_4" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_5" } },
+                        { Function.In, new List<object> { "MoveToRoomX", "room_2" } },
                     }
                 }
             },
@@ -84,12 +84,12 @@ namespace Pyramid2000.Engine
                     ShortDescription = "In Pyramid entrance",
                     Description = Resources.Room2,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object> { "MoveToRoomX", "room_1" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_7" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_1" } },
-                        { "_panel", new List<object> { "MoveToRoomX", "room_26" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_1" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_7" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_1" } },
+                        { Function.Panel, new List<object> { "MoveToRoomX", "room_26" } },
                     }
                 }
             },
@@ -100,12 +100,12 @@ namespace Pyramid2000.Engine
                     ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_6" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_3" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_4" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_1" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_6" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_3" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_4" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_1" } },
                     }
                 }
             },
@@ -116,12 +116,12 @@ namespace Pyramid2000.Engine
                     ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_1" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_3" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_4" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_5" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_1" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_3" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_4" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_5" } },
                     }
                 }
             },
@@ -132,12 +132,12 @@ namespace Pyramid2000.Engine
                     ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_6" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_1" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_4" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_5" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_6" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_1" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_4" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_5" } },
                     }
                 }
             },
@@ -148,12 +148,12 @@ namespace Pyramid2000.Engine
                     ShortDescription = "Desert",
                     Description = Resources.Desert,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_6" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_3" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_1" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_5" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_6" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_3" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_1" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_5" } },
                     }
                 }
             },
@@ -164,12 +164,12 @@ namespace Pyramid2000.Engine
                     ShortDescription = "Small chamber beneath hole",
                     Description = Resources.Room7,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_2" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_2" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_8" } },
-                        { "_in", new List<object> { "MoveToRoomX", "room_8" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_2" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_2" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_8" } },
+                        { Function.In, new List<object> { "MoveToRoomX", "room_8" } },
                     }
                 }
             },
@@ -179,12 +179,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Crawling over pebbles",
                     Description = Resources.Room8,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_7" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_7" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_9" } },
-                        { "_in", new List<object> { "MoveToRoomX", "room_9" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_7" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_7" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_9" } },
+                        { Function.In, new List<object> { "MoveToRoomX", "room_9" } },
                     }
                 }
             },
@@ -194,12 +194,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Broken Pottery Shards",
                     Description = Resources.Room9,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_8" } },
-                        { "_in", new List<object> { "MoveToRoomX", "room_10" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_10" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_10" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_8" } },
+                        { Function.In, new List<object> { "MoveToRoomX", "room_10" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_10" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_10" } },
                     }
                 }
             },
@@ -209,13 +209,13 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Awkward sloping corridor",
                     Description = Resources.Room10,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_d", new List<object> { "MoveToRoomX", "room_9" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_9" } },
-                        { "_in", new List<object> { "MoveToRoomX", "room_11" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_11" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_11" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_9" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_9" } },
+                        { Function.In, new List<object> { "MoveToRoomX", "room_11" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_11" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_11" } },
                     }
                 }
             },
@@ -225,10 +225,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Splendid chamber",
                     Description = Resources.Room11,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_10" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_12" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_10" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_12" } },
                     }
                 }
             },
@@ -238,10 +238,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Small pit",
                     Description = Resources.Room12,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_11" } },
-                        { "_d", new List<object>
+                        { Function.East, new List<object> { "MoveToRoomX", "room_11" } },
+                        { Function.Down, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -252,7 +252,7 @@ namespace Pyramid2000.Engine
                                     "MoveToRoomX", "room_13"
                                 }
                         },
-                        { "_w", new List<object> { "PrintMessageX", Resources.CrackTooSmall } },
+                        { Function.West, new List<object> { "PrintMessageX", Resources.CrackTooSmall } },
                     }
                 }
             },
@@ -262,13 +262,13 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "One end of vast hall",
                     Description = Resources.Room13,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object> { "MoveToRoomX", "room_14" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_15" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_16" } },
-                        { "_n", new List<object> { "MoveToRoomX", "room_16" } },
-                        { "_u", new List<object>
+                        { Function.South, new List<object> { "MoveToRoomX", "room_14" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_15" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.Up, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -278,7 +278,7 @@ namespace Pyramid2000.Engine
                                     "MoveToRoomX", "room_12"
                                 }
                         },
-                        { "_e", new List<object>
+                        { Function.East, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -297,10 +297,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Low room",
                     Description = Resources.Room14,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_out", new List<object> { "MoveToRoomX", "room_13" } },
-                        { "_n", new List<object> { "MoveToRoomX", "room_13" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_13" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_13" } },
                     }
                 }
             },
@@ -310,10 +310,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "East bank of bottomless pit",
                     Description = Resources.Room15,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_13" } },
-                        { "_jump", new List<object>
+                        { Function.East, new List<object> { "MoveToRoomX", "room_13" } },
+                        { Function.Jump, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -324,7 +324,7 @@ namespace Pyramid2000.Engine
                                     "PlayerDied"
                                 }
                         },
-                        { "_w", new List<object>
+                        { Function.West, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -334,13 +334,13 @@ namespace Pyramid2000.Engine
                                     "PrintMessageX", Resources.CantCrossPit,
                                 }
                         },
-                        { "_cross", new List<object>
+                        { Function.Cross, new List<object>
                                 {
                                     "AssertItemXIsInCurrentRoomOrPack", "#bridge_15",
                                     "MoveToRoomX", "room_18"
                                 }
                         },
-                        { "_wave", new List<object>
+                        { Function.Wave, new List<object>
                                 {
                                     "AssertItemXMatchesUserInput", "#SCEPTER",
                                     "SubScriptXAbortIfPass", new List<object>
@@ -364,11 +364,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Pharaoh's chamber",
                     Description = Resources.Room16,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_13" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_13" } },
-                        { "_s", new List<object>
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_13" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_13" } },
+                        { Function.South, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -378,7 +378,7 @@ namespace Pyramid2000.Engine
                                     "MoveToRoomX", "room_17"
                                 }
                         },
-                        { "_n", new List<object>
+                        { Function.North, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -388,7 +388,7 @@ namespace Pyramid2000.Engine
                                     "MoveToRoomX", "room_25"
                                 }
                         },
-                        { "_w", new List<object>
+                        { Function.West, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -398,7 +398,7 @@ namespace Pyramid2000.Engine
                                     "MoveToRoomX", "room_24"
                                 }
                         },
-                        { "_throw", new List<object>
+                        { Function.Throw, new List<object>
                                 {
                                     "AssertItemXMatchesUserInput", "#BIRD_boxed",
                                     "AssertItemXIsInCurrentRoomOrPack", "#SERPENT",
@@ -417,10 +417,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "South side chamber",
                     Description = Resources.Room17,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_16" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_16" } },
                     }
                 }
             },
@@ -430,9 +430,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "West side of bottomless pit",
                     Description = Resources.Room18,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_jump", new List<object>
+                        { Function.Jump, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -443,7 +443,7 @@ namespace Pyramid2000.Engine
                                     "PlayerDied"
                                 }
                         },
-                        { "_e", new List<object>
+                        { Function.East, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -453,19 +453,19 @@ namespace Pyramid2000.Engine
                                     "PrintMessageX", Resources.CantCrossPit
                                 }
                         },
-                        { "_n", new List<object>
+                        { Function.North, new List<object>
                                 {
                                     "PrintMessageX", Resources.CrawlToPassage,
                                     "MoveToRoomX", "room_19"
                                 }
                         },
-                        { "_cross", new List<object>
+                        { Function.Cross, new List<object>
                                 {
                                     "AssertItemXIsInCurrentRoomOrPack", "#bridge_18",
                                     "MoveToRoomX", "room_15"
                                 }
                         },
-                        { "_wave", new List<object>
+                        { Function.Wave, new List<object>
                                 {
                                     "AssertItemXMatchesUserInput", "#SCEPTER",
                                     "SubScriptXAbortIfPass", new List<object>
@@ -489,14 +489,14 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "West end of hall of gods",
                     Description = Resources.Room19,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object> { "MoveToRoomX", "room_28" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_28" } },
-                        { "_climb", new List<object> { "MoveToRoomX", "room_28" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_18" } },
-                        { "_n", new List<object> { "MoveToRoomX", "room_18" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_20" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_28" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_28" } },
+                        { Function.Climb, new List<object> { "MoveToRoomX", "room_28" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_18" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_18" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_20" } },
                     }
                 }
             },
@@ -506,13 +506,13 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "East end of very long hall",
                     Description = Resources.Room20,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_19" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_19" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_21" } },
-                        { "_n", new List<object> { "MoveToRoomX", "room_22" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_22" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_19" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_19" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_21" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_22" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_22" } },
                     }
                 }
             },
@@ -522,10 +522,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "West end of very long hall",
                     Description = Resources.Room21,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_20" } },
-                        { "_n", new List<object> { "MoveToRoomX", "room_22" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_20" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_22" } },
                     }
                 }
             },
@@ -535,12 +535,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Crossover of high N/S and low E/W",
                     Description = Resources.Room22,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_w", new List<object> { "MoveToRoomX", "room_20" } },
-                        { "_n", new List<object> { "MoveToRoomX", "room_23" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_24" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_21" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_20" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_23" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_24" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_21" } },
                     }
                 }
             },
@@ -550,10 +550,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object> { "MoveToRoomX", "room_22" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_22" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_22" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_22" } },
                     }
                 }
             },
@@ -563,12 +563,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "West throne chamber",
                     Description = Resources.Room24,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_16" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_16" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_22" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_22" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_22" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_22" } },
                     }
                 }
             },
@@ -578,12 +578,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Low N/S passage at hole in floor",
                     Description = Resources.Room25,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_out", new List<object> { "MoveToRoomX", "room_16" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_16" } },
-                        { "_n", new List<object> { "MoveToRoomX", "room_26" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_54" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_16" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_26" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_54" } },
                     }
                 }
             },
@@ -593,11 +593,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Large room with panel",
                     Description = Resources.Room26,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_panel", new List<object> { "MoveToRoomX", "room_2" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_25" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_27" } },
+                        { Function.Panel, new List<object> { "MoveToRoomX", "room_2" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_25" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_27" } },
                     }
                 }
             },
@@ -607,10 +607,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Chamber of Anubis",
                     Description = Resources.Room27,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_d", new List<object> { "MoveToRoomX", "room_26" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_13" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_26" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_13" } },
                     }
                 }
             },
@@ -620,13 +620,13 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_28" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_32" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_30" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_29" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_19" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_28" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_32" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_30" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_29" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_19" } },
                     }
                 }
             },
@@ -636,12 +636,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_28" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_51" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_29" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_29" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_28" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_51" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_29" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_29" } },
                     }
                 }
             },
@@ -651,14 +651,14 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_32" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_42" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_43" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_28" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_31" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_31" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_32" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_42" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_43" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_28" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_31" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_31" } },
                     }
                 }
             },
@@ -668,10 +668,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_30" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_30" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_30" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_30" } },
                     }
                 }
             },
@@ -681,11 +681,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_30" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_33" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_28" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_30" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_33" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_28" } },
                     }
                 }
             },
@@ -695,12 +695,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_44" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_32" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_34" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_45" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_44" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_32" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_34" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_45" } },
                     }
                 }
             },
@@ -710,12 +710,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_33" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_35" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_37" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_38" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_33" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_35" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_37" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_38" } },
                     }
                 }
             },
@@ -725,14 +725,14 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_36" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_38" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_35" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_34" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_39" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_47" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_36" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_38" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_35" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_34" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_39" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_47" } },
                     }
                 }
             },
@@ -742,12 +742,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_36" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_52" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_35" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_48" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_36" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_52" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_35" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_48" } },
                     }
                 }
             },
@@ -757,10 +757,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_34" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_38" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_34" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_38" } },
                     }
                 }
             },
@@ -770,12 +770,12 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_35" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_39" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_37" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_34" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_35" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_39" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_37" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_34" } },
                     }
                 }
             },
@@ -785,11 +785,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_35" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_46" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_38" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_35" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_46" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_38" } },
                     }
                 }
             },
@@ -799,11 +799,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_52" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_41" } },
-                        { "_nw", new List<object> { "MoveToRoomX", "room_53" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_52" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_41" } },
+                        { Function.NorthWest, new List<object> { "MoveToRoomX", "room_53" } },
                     }
                 }
             },
@@ -813,11 +813,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Maze of twisty passages",
                     Description = Resources.Maze,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_40" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_52" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_50" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_40" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_52" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_50" } },
                     }
                 }
             },
@@ -827,9 +827,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_w", new List<object> { "MoveToRoomX", "room_30" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_30" } },
                     }
                 }
             },
@@ -839,9 +839,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_30" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_30" } },
                     }
                 }
             },
@@ -851,9 +851,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object> { "MoveToRoomX", "room_33" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_33" } },
                     }
                 }
             },
@@ -863,9 +863,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_33" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_33" } },
                     }
                 }
             },
@@ -875,9 +875,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_w", new List<object> { "MoveToRoomX", "room_39" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_39" } },
                     }
                 }
             },
@@ -887,9 +887,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_35" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_35" } },
                     }
                 }
             },
@@ -899,9 +899,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_36" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_36" } },
                     }
                 }
             },
@@ -911,9 +911,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_52" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_52" } },
                     }
                 }
             },
@@ -923,9 +923,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_41" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_41" } },
                     }
                 }
             },
@@ -935,10 +935,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_w", new List<object> { "MoveToRoomX", "room_29" } },
-                        { "_drop", new List<object>
+                        { Function.West, new List<object> { "MoveToRoomX", "room_29" } },
+                        { Function.Drop, new List<object>
                                 {
                                     "AssertItemXMatchesUserInput", "#COINS",
                                     "MoveItemXToRoomY", "#COINS", "room_0",
@@ -955,13 +955,13 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Brink of pit",
                     Description = Resources.Room52,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_41" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_40" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_49" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_36" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_11" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_41" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_40" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_49" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_36" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_11" } },
                     }
                 }
             },
@@ -971,9 +971,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dead end",
                     Description = Resources.DeadEnd,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_se", new List<object> { "MoveToRoomX", "room_40" } },
+                        { Function.SouthEast, new List<object> { "MoveToRoomX", "room_40" } },
                     }
                 }
             },
@@ -983,11 +983,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Dirty broken passage",
                     Description = Resources.Room54,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_55" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_57" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_25" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_55" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_57" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_25" } },
                     }
                 }
             },
@@ -997,11 +997,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Brink of small clean pit",
                     Description = Resources.Room55,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_w", new List<object> { "MoveToRoomX", "room_54" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_56" } },
-                        { "_climb", new List<object> { "MoveToRoomX", "room_56" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_54" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_56" } },
+                        { Function.Climb, new List<object> { "MoveToRoomX", "room_56" } },
                     }
                 }
             },
@@ -1011,13 +1011,13 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Bottom of small pit with stream",
                     Description = Resources.Room56,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_55" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_55" } },
-                        { "_climb", new List<object> { "MoveToRoomX", "room_55" } },
-                        { "_d", new List<object> { "PrintMessageX", Resources.CantFitThroughTwoInchSlit } },
-                        { "_fill", new List<object>
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_55" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_55" } },
+                        { Function.Climb, new List<object> { "MoveToRoomX", "room_55" } },
+                        { Function.Down, new List<object> { "PrintMessageX", Resources.CantFitThroughTwoInchSlit } },
+                        { Function.Fill, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -1036,10 +1036,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Room of Bes",
                     Description = Resources.Room57,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_54" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_58" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_54" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_58" } },
                     }
                 }
             },
@@ -1049,13 +1049,13 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Complex Junction",
                     Description = Resources.Room58,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_61" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_59" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_65" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_57" } },
-                        { "_climb", new List<object> { "MoveToRoomX", "room_57" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_61" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_59" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_65" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_57" } },
+                        { Function.Climb, new List<object> { "MoveToRoomX", "room_57" } },
                     }
                 }
             },
@@ -1065,11 +1065,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Anteroom of Seker",
                     Description = Resources.Room59,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_60" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_65" } },
-                        { "_u", new List<object> { "MoveToRoomX", "room_58" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_60" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_65" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_58" } },
                     }
                 }
             },
@@ -1079,41 +1079,41 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Land of the dead",
                     Description = Resources.Room60,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> {
+                        { Function.North, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_e", new List<object> {
+                        { Function.East, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_s", new List<object> {
+                        { Function.South, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_ne", new List<object> {
+                        { Function.NorthEast, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_se", new List<object> {
+                        { Function.SouthEast, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_sw", new List<object> {
+                        { Function.SouthWest, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_nw", new List<object> {
+                        { Function.NorthWest, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_u", new List<object> {
+                        { Function.Up, new List<object> {
                             "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "240" },
                             "MoveToRoomX","room_59" }
                         },
-                        { "_w", new List<object> {
+                        { Function.West, new List<object> {
                             "PrintMessageX", Resources.CrawledAround,
                             "MoveToRoomX", "room_60" }
                         },
@@ -1126,9 +1126,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Large room with ancient drawings",
                     Description = Resources.Room61,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object>
+                        { Function.South, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -1143,8 +1143,8 @@ namespace Pyramid2000.Engine
                                     "MoveToRoomX", "room_58"
                                 }
                         },
-                        { "_u", new List<object> { "MoveToRoomX", "room_62" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_63" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_62" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_63" } },
                     }
                 }
             },
@@ -1154,10 +1154,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Chamber of Khons",
                     Description = Resources.Room62,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_d", new List<object> { "MoveToRoomX", "room_61" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_61" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_61" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_61" } },
                     }
                 }
             },
@@ -1167,10 +1167,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Long sloping corridor",
                     Description = Resources.Room63,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_61" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_64" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_61" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_64" } },
                     }
                 }
             },
@@ -1180,10 +1180,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Cul-de-sac",
                     Description = Resources.Room64,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_63" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_63" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_63" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_63" } },
                     }
                 }
             },
@@ -1193,14 +1193,14 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Chamber of Horus",
                     Description = Resources.Room65,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_58" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_78" } },
-                        { "_u", new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_72" } },
-                        { "_n", new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_73" } },
-                        { "_s", new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_66" } },
-                        { "_d", new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_59" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_58" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_78" } },
+                        { Function.Up, new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_72" } },
+                        { Function.North, new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_73" } },
+                        { Function.South, new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_66" } },
+                        { Function.Down, new List<object> { "SubScriptXAbortIfPass", new List<object> { "AssertRandomIsGreaterThanX", "204" }, "MoveToRoomX", "room_59" } },
                     }
                 }
             },
@@ -1210,10 +1210,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Large low circular chamber",
                     Description = Resources.Room66,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_65" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_80" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_65" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_80" } },
                     }
                 }
             },
@@ -1224,10 +1224,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Chamber of Nekhebet",
                     Description = Resources.Room68,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object> { "MoveToRoomX", "room_71" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_71" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_71" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_71" } },
                     }
                 }
             },
@@ -1237,10 +1237,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Fallen block",
                     Description = Resources.Room70,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_s", new List<object> { "MoveToRoomX", "room_71" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_71" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_71" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_71" } },
                     }
                 }
             },
@@ -1250,11 +1250,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Chamber of Osiris",
                     Description = Resources.Room71,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_n", new List<object> { "MoveToRoomX", "room_68" } },
-                        { "_e", new List<object> { "MoveToRoomX", "room_70" } },
-                        { "_s", new List<object> { "MoveToRoomX", "room_77" } },
+                        { Function.North, new List<object> { "MoveToRoomX", "room_68" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_70" } },
+                        { Function.South, new List<object> { "MoveToRoomX", "room_77" } },
                     }
                 }
             },            
@@ -1264,10 +1264,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Priest's bedroom",
                     Description = Resources.Room72,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_w", new List<object> { "MoveToRoomX", "room_65" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_65" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_65" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_65" } },
                     }
                 }
             },
@@ -1277,9 +1277,9 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Chamber of high priest",
                     Description = Resources.Room73,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_w", new List<object>
+                        { Function.West, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -1289,7 +1289,7 @@ namespace Pyramid2000.Engine
                                     "PrintMessageX", Resources.DropSomething
                                 }
                         },
-                        { "_se", new List<object> { "MoveToRoomX", "room_65" } },
+                        { Function.SouthEast, new List<object> { "MoveToRoomX", "room_65" } },
                     }
                 }
             },
@@ -1302,9 +1302,9 @@ namespace Pyramid2000.Engine
                     ShortDescription = "High priest's treasure room",
                     Description = Resources.Room76,
                     Lit = true,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object>
+                        { Function.East, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -1314,7 +1314,7 @@ namespace Pyramid2000.Engine
                                     "PrintMessageX", Resources.DropSomething
                                 }
                         },
-                        { "_out", new List<object>
+                        { Function.Out, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -1333,14 +1333,14 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Long narrow corridor",
                     Description = Resources.Room77,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_81" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_81" } },
-                        { "_climb", new List<object> { "MoveToRoomX", "room_81" } },
-                        { "_jump", new List<object> { "PrintMessageX", Resources.BrokenNeck,
+                        { Function.East, new List<object> { "MoveToRoomX", "room_81" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_81" } },
+                        { Function.Climb, new List<object> { "MoveToRoomX", "room_81" } },
+                        { Function.Jump, new List<object> { "PrintMessageX", Resources.BrokenNeck,
                                                       "PlayerDied" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_71" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_71" } },
                     }
                 }
             },
@@ -1350,11 +1350,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "East end of twopit room",
                     Description = Resources.Room78,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_65" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_80" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_79" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_65" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_80" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_79" } },
                     }
                 }
             },
@@ -1364,10 +1364,10 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Bottom of eastern pit",
                     Description = Resources.Room79,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_78" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_78" } },
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_78" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_78" } },
                     }
                 }
             },
@@ -1377,11 +1377,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "West end of twopit room",
                     Description = Resources.Room80,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_e", new List<object> { "MoveToRoomX", "room_78" } },
-                        { "_w", new List<object> { "MoveToRoomX", "room_66" } },
-                        { "_d", new List<object> { "MoveToRoomX", "room_81" } },
+                        { Function.East, new List<object> { "MoveToRoomX", "room_78" } },
+                        { Function.West, new List<object> { "MoveToRoomX", "room_66" } },
+                        { Function.Down, new List<object> { "MoveToRoomX", "room_81" } },
                     }
                 }
             },
@@ -1391,11 +1391,11 @@ namespace Pyramid2000.Engine
                 {
                     ShortDescription = "Bottom of western pit",
                     Description = Resources.Room81,
-                    Commands = new Dictionary<string, List<object>>()
+                    Commands = new Dictionary<Function, List<object>>()
                     {
-                        { "_u", new List<object> { "MoveToRoomX", "room_80" } },
-                        { "_out", new List<object> { "MoveToRoomX", "room_80" } },
-                        { "_climb", new List<object>
+                        { Function.Up, new List<object> { "MoveToRoomX", "room_80" } },
+                        { Function.Out, new List<object> { "MoveToRoomX", "room_80" } },
+                        { Function.Climb, new List<object>
                                 {
                                     "SubScriptXAbortIfPass", new List<object>
                                     {
@@ -1412,7 +1412,7 @@ namespace Pyramid2000.Engine
                                     "PrintMessageX", Resources.NothingToClimb
                                 }
                         },
-                        { "_pour", new List<object>
+                        { Function.Pour, new List<object>
                                 {
                                     "AssertItemXMatchesUserInput", "#WATER",
                                     "MoveItemXToRoomY", "#WATER", "room_0",

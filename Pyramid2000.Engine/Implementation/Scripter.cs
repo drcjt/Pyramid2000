@@ -321,33 +321,33 @@ namespace Pyramid2000.Engine
 
                 foreach (var roomName in _rooms.GetRoomNames())
                 {
-                    var reKeyedCommands = new Dictionary<string, List<object>>();
-                    var keysToDelete = new List<string>();
+                    var reKeyedCommands = new Dictionary<Function, List<object>>();
+                    var keysToDelete = new List<Function>();
 
                     var room = _rooms.GetRoom(roomName);
                     var commands = room.Commands;
                     foreach (var key in commands.Keys)
                     {
-                        if (key == "_n" || key == "_e" || key == "_s" || key == "_w")
+                        if (key == Function.North || key == Function.East || key == Function.South || key == Function.West)
                         {
                             var currentKeyIndex = 0;
                             switch (key)
                             {
-                                case "_n": currentKeyIndex = 1; break;
-                                case "_e": currentKeyIndex = 2; break;
-                                case "_s": currentKeyIndex = 3; break;
-                                case "_w": currentKeyIndex = 4; break;
+                                case Function.North: currentKeyIndex = 1; break;
+                                case Function.East: currentKeyIndex = 2; break;
+                                case Function.South: currentKeyIndex = 3; break;
+                                case Function.West: currentKeyIndex = 4; break;
                             }
                             var newKeyIndex = currentKeyIndex + random;
                             newKeyIndex = newKeyIndex & 3;
 
-                            var newKey = "";
+                            Function newKey = Function.North;
                             switch (newKeyIndex)
                             {
-                                case 0: newKey = "_w"; break;
-                                case 1: newKey = "_n"; break;
-                                case 2: newKey = "_e"; break;
-                                case 3: newKey = "_s"; break;
+                                case 0: newKey = Function.West; break;
+                                case 1: newKey = Function.North; break;
+                                case 2: newKey = Function.East; break;
+                                case 3: newKey = Function.South; break;
                             }
 
                             keysToDelete.Add(key);
@@ -445,9 +445,9 @@ namespace Pyramid2000.Engine
             return true;
         }
 
-        private Item inputItem;
+        private IItem inputItem;
 
-        public bool ParseScript(List<object> script, Item item)
+        public bool ParseScript(List<object> script, IItem item)
         {
             inputItem = item;
             abortScript = false;

@@ -50,10 +50,13 @@
     <Compile Include="Interfaces\IDefaultScripter.cs" />
     <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IItems.cs" />
+    <Compile Include="Interfaces\IParsedCommand.cs" />
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IPrinter.cs" />
+    <Compile Include="Interfaces\IRoom.cs" />
     <Compile Include="Interfaces\IRooms.cs" />
     <Compile Include="Interfaces\IScripter.cs" />
     <Compile Include="Interfaces\ISettings.cs" />

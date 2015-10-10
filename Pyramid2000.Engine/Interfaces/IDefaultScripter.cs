@@ -8,6 +8,6 @@ namespace Pyramid2000.Engine.Interfaces
 {
     public interface IDefaultScripter
     {
-        List<object> GetDefaultScript(string verb);
+        List<object> GetDefaultScript(Function verb);
     }
 }

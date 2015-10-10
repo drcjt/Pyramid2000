@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pyramid2000.Engine.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pyramid2000.Engine
 {
-    public class Item
+    public class Item : IItem
     {
         public string Name { get; set; }
         public string Location { get; set; }
