@@ -5,9 +5,14 @@
     xmlns:local="using:Pyramid2000"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Pyramid2000.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <vm:SettingsPageViewModel/>
+    </Page.DataContext>
+    
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
@@ -41,18 +46,8 @@
                     </Border>
                     <Slider Minimum="15" Maximum="39" TickFrequency="4" Name="TextSize" Value="{Binding TextSize, Mode=TwoWay}"></Slider>
                 </StackPanel>
-                
+
                 <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <!--
-                    <TextBlock Grid.Row="0" Text="Theme" Style="{ThemeResource SubheaderTextBlockStyle}"/>
-
-                    <TextBlock Text="Background" Style="{ThemeResource ControlContextualInfoTextBlockStyle}"/>
-                    <ComboBox>
-                        <ComboBoxItem>dark</ComboBoxItem>
-                        <ComboBoxItem>light</ComboBoxItem>
-                    </ComboBox>
-                    -->
-
                     <CheckBox IsChecked="{Binding AllCaps, Mode=TwoWay}">All caps</CheckBox>
                     <CheckBox IsChecked="{Binding Trs80Mode, Mode=TwoWay}">Trs-80 mode</CheckBox>
                     <CheckBox IsChecked="{Binding ClearDialogueOnRoomChange, Mode=TwoWay}">Clear dialogue on room change</CheckBox>

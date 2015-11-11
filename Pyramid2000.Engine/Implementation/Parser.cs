@@ -13,9 +13,9 @@ namespace Pyramid2000.Engine
         private IPrinter _printer;
         private IItems _items;
         private IPlayer _player;
-        private ISettings _settings;
+        private IGameSettings _settings;
 
-        public Parser(IPlayer player, IPrinter printer, IItems items, ISettings settings)
+        public Parser(IPlayer player, IPrinter printer, IItems items, IGameSettings settings)
         {
             _settings = settings;
             _player = player;

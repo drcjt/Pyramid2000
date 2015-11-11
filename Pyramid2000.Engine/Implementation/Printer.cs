@@ -11,9 +11,9 @@ namespace Pyramid2000.Engine
     public class Printer : IPrinter
     {
         IPrinter _printer;
-        ISettings _settings;
+        IGameSettings _settings;
 
-        public Printer(IPrinter printer, ISettings settings)
+        public Printer(IPrinter printer, IGameSettings settings)
         {
             _printer = printer;
             _settings = settings;

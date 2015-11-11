@@ -1,4 +1,5 @@
 ﻿<Page
+    x:Name="Page"
     x:Class="Pyramid2000.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,9 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:Pyramid2000.Common"
     xmlns:controls="using:Pyramid2000.Controls"
+    xmlns:vm="using:Pyramid2000.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <vm:MainPageViewModel/>
+    </Page.DataContext>
+    
     <Page.Resources>
         <common:BooleanToVisibilityConverter x:Key="BoolToVisConv"/>
     </Page.Resources>
@@ -24,21 +30,54 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>            
+            <ColumnDefinition Width="3*"/>            
+            <ColumnDefinition Width="1*" x:Name="RightPanelWidth"/>
         </Grid.ColumnDefinitions>
-        <Border Background="White" Margin="2">
-            <TextBlock Grid.Row="0" x:Name="Header" Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold" Foreground="Black" Visibility="{Binding ClearDialogueOnRoomChange, Converter={StaticResource BoolToVisConv}, Mode=OneWay}" FontSize="{Binding TextSize}" LineHeight="0"/>
-        </Border>
-        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="BodyScroller" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto" KeyDown="BodyScroller_KeyDown">
-            <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" x:Name="BodyTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top">
-                <Paragraph x:Name="BodyParagraph" FontSize="{Binding TextSize}" LineHeight="0">
+
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="InventoryPanel" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Background="White" Grid.Row="0">
+                    <TextBlock VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" FontSize="{Binding SettingsPartViewModel.TextSize}">Inventory</TextBlock>
+                </Grid>
+                <ListView x:Name="InventoryListView" ItemsSource="{Binding GamePartViewModel.InventoryItems}" Grid.Row="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource BodyTextBlockStyle}" FontSize="{Binding ElementName=Page, Path=DataContext.SettingsPartViewModel.TextSize}" TextWrapping="NoWrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <StackPanel x:Name="HistoryPanel" Grid.Row="1">
+                <Border Background="White" Margin="2">
+                    <TextBlock FontWeight="Bold" Foreground="Black" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0">Achievements</TextBlock>
+                </Border>
+                <ListView x:Name="HistoryListView"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Background="White" Grid.Row="0">
+            <TextBlock Grid.Row="0" x:Name="Header" FontWeight="Bold" Foreground="Black" Visibility="{Binding GamePartViewModel.Settings.ClearDialogueOnRoomChange, Converter={StaticResource BoolToVisConv}, Mode=OneWay}" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0"/>
+        </Grid>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" x:Name="BodyScroller" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto" KeyDown="BodyScroller_KeyDown" GotFocus="BodyTextBlock_GotFocus">
+            <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" x:Name="BodyTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="BodyTextBlock_GotFocus">
+                <Paragraph x:Name="BodyParagraph" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0">
                     <Run x:Name="Body"/>
                 </Paragraph>
             </RichTextBlock>
         </ScrollViewer>
-        <TextBox Margin="5,5,5,5" Grid.Row="2" Grid.Column="0" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" KeyUp="Command_KeyUp"/>
-        <Button Grid.Row="2" Grid.Column="2" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click"/>
-        <Grid Grid.Row="3" x:Name="FooterPlaceHolder"/>
+        <TextBox Margin="5,5,5,5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" KeyUp="Command_KeyUp" FontSize="{Binding SettingsPartViewModel.TextSize}"/>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click"/>
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="FooterPlaceHolder"/>
         <Viewbox Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="200" Width="200">
             <controls:CompassControl x:Name="Compass" Opacity="0.7" IsTabStop="False"
                 ClickNorth="CompassControl_ClickNorth" 
@@ -89,6 +128,7 @@
                 <AppBarButton Label="help" Icon="Help" Click="InstructionsButton_Click"/>
                 <AppBarButton Label="save" Icon="Save" Click="SaveButton_Click"/>
                 <AppBarButton Label="load" Icon="OpenLocal" Click="LoadButton_Click"/>
+                <AppBarButton Label="rate and review" Icon="Favorite" Click="RateAndReviewButton_Click"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

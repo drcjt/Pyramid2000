@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Script = System.Collections.Generic.List<System.Func<Pyramid2000.Engine.Interfaces.IScripter, bool>>;
+
 namespace Pyramid2000.Engine
 {
     public class Room : IRoom
@@ -12,7 +14,7 @@ namespace Pyramid2000.Engine
         public string ShortDescription { get; set; }
         public string Description { get; set; }
         public bool Lit { get; set; }
-        public IDictionary<Function, List<object>> Commands { get; set; }
+        public IDictionary<Function, Script> Commands { get; set; }
 
         public IList<ExitType> Exits
         {

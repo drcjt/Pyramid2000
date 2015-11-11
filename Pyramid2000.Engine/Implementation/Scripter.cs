@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Reflection;
 
 using Pyramid2000.Engine.Interfaces;
+using Pyramid2000.Engine.Implementation;
+
+using Script = System.Collections.Generic.List<System.Func<Pyramid2000.Engine.Interfaces.IScripter, bool>>;
 
 namespace Pyramid2000.Engine
 {
@@ -18,9 +21,9 @@ namespace Pyramid2000.Engine
         private IRooms _rooms;
         private IPlayer _player;
         private IGameState _gameState;
-        private ISettings _settings;
+        private IGameSettings _settings;
 
-        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, ISettings settings)
+        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, IGameSettings settings)
         {
             _settings = settings;
             _printer = new Printer(printer, _settings);
@@ -28,6 +31,12 @@ namespace Pyramid2000.Engine
             _rooms = rooms;
             _player = player;
             _gameState = gameState;
+        }
+
+        public bool AwardAchievementX(string achievementName)
+        {
+            _gameState.AwardAchievement(Achievements.GetAchievement(achievementName));
+            return true;
         }
 
         public bool MoveToRoomX(string roomID)
@@ -56,6 +65,11 @@ namespace Pyramid2000.Engine
             _gameState.LastRoom = _player.CurrentRoom;
             _player.CurrentRoom = roomID;
             Look();
+
+            if (_player.CurrentRoom == "room_2")
+            {
+                _gameState.AwardAchievement(Achievements.EnterThePyramid);
+            }
 
             var chest = _items.GetExactItemByName("#CHEST");
             if (chest.Location == "")
@@ -321,7 +335,7 @@ namespace Pyramid2000.Engine
 
                 foreach (var roomName in _rooms.GetRoomNames())
                 {
-                    var reKeyedCommands = new Dictionary<Function, List<object>>();
+                    var reKeyedCommands = new Dictionary<Function, Script>();
                     var keysToDelete = new List<Function>();
 
                     var room = _rooms.GetRoom(roomName);
@@ -410,7 +424,7 @@ namespace Pyramid2000.Engine
         }
 
         private bool abortScript;
-        public bool SubScriptXAbortIfPass(List<object> script)
+        public bool SubScriptXAbortIfPass(Script script)
         {
             var handled = ParseScriptRec(script);
             if (!handled)
@@ -447,14 +461,14 @@ namespace Pyramid2000.Engine
 
         private IItem inputItem;
 
-        public bool ParseScript(List<object> script, IItem item)
+        public bool ParseScript(Script script, IItem item)
         {
             inputItem = item;
             abortScript = false;
             return ParseScriptRec(script);
         }
 
-        public bool ParseScriptRec(List<object> script)
+        public bool ParseScriptRec(Script script)
         {
             var ptr = 0;
             while (ptr < script.Count)
@@ -464,44 +478,9 @@ namespace Pyramid2000.Engine
                     return true;
                 }
 
-                var com = script[ptr++] as string;
+                var com = script[ptr++];
 
-                object paramX = null;
-                object paramY = null;
-                if (com.IndexOf("X") >= 0)
-                {
-                    paramX = script[ptr++];
-                }
-                if (com.IndexOf("Y") >= 0)
-                {
-                    paramY = script[ptr++];
-                }
-
-                object[] parameters = null;
-                if (paramX == null && paramY == null)
-                {
-                    parameters = null;
-                }
-                else if (paramX != null && paramY == null)
-                {
-                    parameters = new object[] { paramX };
-                }
-                else if (paramX != null && paramY != null)
-                {
-                    parameters = new object[] { paramX, paramY };
-                }
-
-                Type scripterType = this.GetType();
-                MethodInfo method = scripterType.GetTypeInfo().GetDeclaredMethod(com);
-                if (method != null)
-                {
-                    object result = method.Invoke(this, parameters);
-                    if (!((bool)result))
-                    {
-                        return false;
-                    }
-                }
-                else
+                if (!(bool)com(this))
                 {
                     return false;
                 }

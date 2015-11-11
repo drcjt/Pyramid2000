@@ -18,12 +18,9 @@ namespace Pyramid2000.Engine
         private IDefaultScripter _defaultScripter;
         private IItems _items;
         private IGameState _gameState;
-        private ISettings _settings;
 
-        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState, ISettings settings)
+        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState)
         {
-            _settings = settings;
-
             _player = player;
             _printer = printer;
             _parser = parser;
@@ -132,7 +129,19 @@ namespace Pyramid2000.Engine
             _printer.Print(Resources.Prompt);
         }
 
-        public string Save()
+        public string State
+        {
+            get
+            {
+                return Save();
+            }
+            set
+            {
+                Load(value);
+            }
+        }
+
+        private string Save()
         {
             string state = "";
             var items = _items.GetAllItems();
@@ -151,7 +160,7 @@ namespace Pyramid2000.Engine
             return state;
         }
 
-        public bool Load(string state)
+        private bool Load(string state)
         {
             // strip off the "LOAD " bit
             state = state.Substring(5);

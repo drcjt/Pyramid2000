@@ -23,6 +23,8 @@ using System.Text.RegularExpressions;
 using Pyramid2000.Engine;
 using Pyramid2000.Engine.Interfaces;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using Pyramid2000.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,56 +35,25 @@ namespace Pyramid2000
     /// </summary>
     public sealed partial class MainPage : Page, IPrinter
     {
-        private IPrinter _printer;
-        private IGameState _gameState;
-        private IGame _game;
-        private IPlayer _player;
-        private IRooms _rooms;
-
-        private Regex _nounsRegex;
-
         // Based on Chris Cantrell's Javascript implementation:
         // See http://www.computerarcheology.com/wiki/wiki/CoCo/Pyramid
+
+        public MainPageViewModel ViewModel => this.DataContext as MainPageViewModel;
 
         public MainPage()
         {
             this.InitializeComponent();
-
+#if WINDOWS_PHONE_APP
+            RightPanelWidth.Width = new GridLength(0);
+#endif
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
-            SetupGame();
+            ViewModel.GamePartViewModel.SetupGame(this);
+
+            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
 
             _inputPane.Showing += InputPaneShowing;
             _inputPane.Hiding += InputPaneHiding;
-        }
-
-        private void SetupGame()
-        {
-            _printer = new Printer(this, App.Settings);
-            IItems items = new Items();
-            _player = new Player();
-            _player.CurrentRoom = "room_1";
-            IParser parser = new Parser(_player, _printer, items, App.Settings);
-            _rooms = new Rooms(items);
-            _gameState = new GameState();
-            IScripter scripter = new Scripter(_printer, items, _rooms, _player, _gameState, App.Settings);
-            IDefaultScripter defaultScripter = new DefaultScripter();
-
-            _game = new Game(_player, _printer, parser, scripter, _rooms, defaultScripter, items, _gameState, App.Settings);
-
-            IList<string> nouns = parser.GetNouns();
-            _nounsRegex = new Regex(string.Join("|", nouns), RegexOptions.IgnoreCase);
-
-            _game.Init();
-
-            UpdateHeader();
-        }
-
-        private void UpdateHeader()
-        {
-            var roomDetail = _rooms.GetRoom(_player.CurrentRoom);
-
-            Header.Text = roomDetail.ShortDescription;
         }
 
         /// <summary>
@@ -100,25 +71,19 @@ namespace Pyramid2000
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
 
-            this.DataContext = null;
-            this.DataContext = App.Settings;
-
-            Compass.Visibility = App.Settings.ShowCompass ? Visibility.Visible : Visibility.Collapsed;
-            AppBar_NorthButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
-            AppBar_SouthButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
-            AppBar_EastButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
-            AppBar_WestButton.Visibility = App.Settings.ShowCompass ? Visibility.Collapsed : Visibility.Visible;
+            Compass.Visibility = ViewModel.SettingsPartViewModel.ShowCompass ? Visibility.Visible : Visibility.Collapsed;
+            AppBar_NorthButton.Visibility = Compass.Visibility;
+            AppBar_SouthButton.Visibility = Compass.Visibility;
+            AppBar_EastButton.Visibility = Compass.Visibility;
+            AppBar_WestButton.Visibility = Compass.Visibility;
 
 #if WINDOWS_PHONE_APP
             CommandBar cmdBar = CommandBar as CommandBar;
-            cmdBar.ClosedDisplayMode = App.Settings.ShowCompass ? AppBarClosedDisplayMode.Minimal : AppBarClosedDisplayMode.Compact;
+            cmdBar.ClosedDisplayMode = ViewModel.SettingsPartViewModel.ShowCompass ? AppBarClosedDisplayMode.Minimal : AppBarClosedDisplayMode.Compact;
 #else
             Command.Focus(FocusState.Keyboard);
 #endif
         }
-
-        // Experimental setting to show nouns as hyperlinks
-        private bool _makeNounsClickable = true;
 
         public void PrintLn(string text)
         {
@@ -129,44 +94,14 @@ namespace Pyramid2000
         public void Print(string text)
         {
             // If player changed room then clear previous dialogue
-            if (App.Settings.ClearDialogueOnRoomChange && _currentRoom != _player.CurrentRoom)
+            if (App.GameSettings.ClearDialogueOnRoomChange && _currentRoom != ViewModel.GamePartViewModel.CurrentRoomName)
             {
                 BodyParagraph.Inlines.Clear();
-                _currentRoom = _player.CurrentRoom;
+                _currentRoom = ViewModel.GamePartViewModel.CurrentRoomName;
             }
 
-            Run run;
-            int index = 0;
-
-            // Experimental setting to show nouns as hyperlinks
-            if (_makeNounsClickable)
-            {
-                /*
-                var matches = _nounsRegex.Matches(text);
-                foreach (Match match in matches)
-                {
-                    int matchIndex = match.Index;
-                    run = new Run();
-                    run.Text = text.Substring(index, matchIndex - index);
-                    BodyParagraph.Inlines.Add(run);
-
-                    string hyper = match.Value;
-                    var link = new Hyperlink();                                                            
-                    link.Click += Link_Click;
-                    run = new Run();
-                    run.Text = hyper;
-                    
-                    
-                    link.Inlines.Add(run);
-                    BodyParagraph.Inlines.Add(link);
-
-                    index = matchIndex + match.Length;
-                }
-                */
-            }
-
-            run = new Run();
-            run.Text = text.Substring(index, text.Length - index);
+            var run = new Run();
+            run.Text = text.Substring(0, text.Length);
             BodyParagraph.Inlines.Add(run);
 
             BodyScroller.Measure(BodyScroller.RenderSize);
@@ -176,24 +111,6 @@ namespace Pyramid2000
         public void Clear()
         {
             BodyParagraph.Inlines.Clear();
-        }
-
-        private void Link_Click(Hyperlink sender, HyperlinkClickEventArgs args)
-        {
-            
-            MenuFlyout menuflyout = new MenuFlyout();
-            MenuFlyoutItem item1 = new MenuFlyoutItem();
-            item1.Text = "Item1";
-            MenuFlyoutItem item2 = new MenuFlyoutItem();
-            item2.Text = "Item2";
-            menuflyout.Items.Add(item1);
-            menuflyout.Items.Add(item2);
-            menuflyout.ShowAt(sender.ContentStart.VisualParent);
-            
-            
-            Run run = sender.Inlines[0] as Run;
-            //Command.Focus(FocusState.Programmatic);
-            Command.SelectedText = run.Text;            
         }
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
@@ -210,13 +127,11 @@ namespace Pyramid2000
                 Command.Text = command;
             }
 
-            _makeNounsClickable = false;
-            _printer.PrintLn(Command.Text);
-            _makeNounsClickable = true;
+            ViewModel.GamePartViewModel.PrintLn(Command.Text);
 
-            _game.ProcessPlayerInput(Command.Text);
+            ViewModel.GamePartViewModel.ProcessPlayerInputCommand.Execute(Command.Text);
 
-            if (_gameState.GameOver)
+            if (ViewModel.GamePartViewModel.GameOver)
             {
                 Command.Visibility = Visibility.Collapsed;
                 Restart.Visibility = Visibility.Visible;
@@ -224,7 +139,8 @@ namespace Pyramid2000
             }
 
             Command.Text = "";
-            UpdateHeader();
+
+            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
 
 #if !WINDOWS_PHONE_APP
             Command.Focus(FocusState.Keyboard);
@@ -271,8 +187,11 @@ namespace Pyramid2000
 #if !WINDOWS_PHONE_APP
             Command.Focus(FocusState.Keyboard);
 #endif
+            ViewModel.GamePartViewModel.SetupGame(this);
+            this.DataContext = null;
+            this.DataContext = ViewModel;
 
-            SetupGame();
+            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -322,9 +241,7 @@ namespace Pyramid2000
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            string state = _game.Save();
-
-            SaveState(state);            
+            SaveState(ViewModel.GamePartViewModel.State);            
         }
 
         private async void SaveState(string state)
@@ -355,7 +272,7 @@ namespace Pyramid2000
             try
             {
                 var state = await LoadState();
-                _game.Load(state);
+                ViewModel.GamePartViewModel.State = state;
                 MessageDialog md = new MessageDialog("Game loaded");
                 await md.ShowAsync();
             }
@@ -424,6 +341,16 @@ namespace Pyramid2000
         private void Compass_ClickSouthWest(object sender, EventArgs e)
         {
             ProcessCommand("SW");
+        }
+
+        private async void RateAndReviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=33ddb4b9-5fc5-4a4d-bec3-5adc282c6b3a"));
+        }
+
+        private void BodyTextBlock_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Command.Focus(FocusState.Keyboard);
         }
     }
 }

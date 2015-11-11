@@ -13,5 +13,7 @@ namespace Pyramid2000.Engine.Interfaces
         int CalculateScore();
 
         IList<string> GetRoomNames();
+
+        IScripter Scripter { get; set; }
     }
 }

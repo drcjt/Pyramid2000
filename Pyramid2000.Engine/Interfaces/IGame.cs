@@ -11,7 +11,6 @@ namespace Pyramid2000.Engine.Interfaces
         void ProcessPlayerInput(string input);
         void Init();
 
-        string Save();
-        bool Load(string state);
+        string State { get; set; }
     }
 }

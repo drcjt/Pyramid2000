@@ -44,9 +44,12 @@
     <Content Include="OriginalJS\SCRIPTER.js" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\Achievement.cs" />
+    <Compile Include="Implementation\Achievements.cs" />
     <Compile Include="Implementation\DefaultScripter.cs" />
     <Compile Include="Implementation\Game.cs" />
     <Compile Include="Implementation\GameState.cs" />
+    <Compile Include="Interfaces\IAchievement.cs" />
     <Compile Include="Interfaces\IDefaultScripter.cs" />
     <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
@@ -59,7 +62,7 @@
     <Compile Include="Interfaces\IRoom.cs" />
     <Compile Include="Interfaces\IRooms.cs" />
     <Compile Include="Interfaces\IScripter.cs" />
-    <Compile Include="Interfaces\ISettings.cs" />
+    <Compile Include="Interfaces\IGameSettings.cs" />
     <Compile Include="Implementation\Item.cs" />
     <Compile Include="Implementation\Items.cs" />
     <Compile Include="Implementation\ParsedCommand.cs" />
@@ -75,7 +78,7 @@
     <Compile Include="Implementation\Room.cs" />
     <Compile Include="Implementation\Rooms.cs" />
     <Compile Include="Implementation\Scripter.cs" />
-    <Compile Include="Implementation\Settings.cs" />
+    <Compile Include="Implementation\GameSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">

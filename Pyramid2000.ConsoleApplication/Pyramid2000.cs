@@ -13,10 +13,10 @@ namespace Pyramid2000.ConsoleApplication
     {
         static void Main(string[] args)
         {
-            ISettings settings = new Settings();
+            IGameSettings settings = new GameSettings();
             IPrinter printer = new ConsolePrinter();
-            IItems items = new Items();
             IPlayer player = new Player();
+            IItems items = new Items(player);
             player.CurrentRoom = "room_1";
             IParser parser = new Parser(player, printer, items, settings);
             IRooms rooms = new Rooms(items);
@@ -24,7 +24,7 @@ namespace Pyramid2000.ConsoleApplication
             IScripter scripter = new Scripter(printer, items, rooms, player, gameState, settings);
             IDefaultScripter defaultScripter = new DefaultScripter();
 
-            IGame game = new Game(player, printer, parser, scripter, rooms, defaultScripter, items, gameState, settings);
+            IGame game = new Game(player, printer, parser, scripter, rooms, defaultScripter, items, gameState);
 
             game.Init();
 

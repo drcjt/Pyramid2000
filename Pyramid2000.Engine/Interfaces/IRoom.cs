@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Script = System.Collections.Generic.List<System.Func<Pyramid2000.Engine.Interfaces.IScripter, bool>>;
+
 namespace Pyramid2000.Engine.Interfaces
 {
     public enum ExitType
@@ -27,7 +29,8 @@ namespace Pyramid2000.Engine.Interfaces
         string ShortDescription { get; set; }
         string Description { get; set; }
         bool Lit { get; set; }
-        IDictionary<Function, List<object>> Commands { get; set; }
+        IDictionary<Function, Script> Commands { get; set; }
+
         IList<ExitType> Exits { get; }
     }
 }

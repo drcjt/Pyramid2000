@@ -1,5 +1,6 @@
 ﻿using Pyramid2000.Common;
 using Pyramid2000.UserControls;
+using Pyramid2000.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -70,7 +71,6 @@ namespace Pyramid2000
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            this.DataContext = App.Settings;
         }
 
         /// <summary>

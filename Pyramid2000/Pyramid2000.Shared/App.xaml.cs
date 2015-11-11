@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 using Pyramid2000.Engine;
 using Pyramid2000.Engine.Interfaces;
+using Pyramid2000.Services;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -32,6 +33,8 @@ namespace Pyramid2000
         private TransitionCollection transitions;
 #endif
 
+        ISettingsService _settings;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -45,27 +48,28 @@ namespace Pyramid2000
 
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            _settings = SettingsService.Instance;
+#if WINDOWS_PHONE_APP
+            _settings.TextSize = 20;
+#else
+            _settings.TextSize = 28;
+#endif
+            _settings.ShowCompass = true;
         }
 
-
-        private static ISettings _settings = null;
-        public static ISettings Settings
+        private static IGameSettings _gameSettings = null;
+        public static IGameSettings GameSettings
         {
             get
             {
-                if (_settings == null)
+                if (_gameSettings == null)
                 {
-                    _settings = new Settings();
-                    _settings.Trs80Mode = true;
-                    _settings.ClearDialogueOnRoomChange = true;
-#if WINDOWS_PHONE_APP
-                    _settings.TextSize = 20;
-#else
-                    _settings.TextSize = 25;
-#endif
-                    _settings.ShowCompass = true;
+                    _gameSettings = new GameSettings();
+                    _gameSettings.Trs80Mode = true;
+                    _gameSettings.ClearDialogueOnRoomChange = true;
                 }
-                return _settings;
+                return _gameSettings;
             }
         }
 
@@ -130,9 +134,14 @@ namespace Pyramid2000
                     throw new Exception("Failed to create initial page");
                 }
             }
-
+            
             // Ensure the current window is active
             Window.Current.Activate();
+
+#if WINDOWS_PHONE_APP
+            var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+            statusbar.HideAsync();
+#endif
         }
 
 #if WINDOWS_PHONE_APP

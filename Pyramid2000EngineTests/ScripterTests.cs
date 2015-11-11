@@ -19,11 +19,11 @@ namespace Pyramid2000EngineTests
         [TestCase(true)]
         public void TestRoomScripts(bool trs80Mode)
         {
-            ISettings settings = new Settings();
+            IGameSettings settings = new GameSettings();
             settings.Trs80Mode = trs80Mode;
             IPrinter printer = new Mock<IPrinter>().Object;
-            IItems items = new Items();
             IPlayer player = new Player();
+            IItems items = new Items(player);
             player.CurrentRoom = "room_1";
             IParser parser = new Parser(player, printer, items, settings);
             IRooms rooms = new Rooms(items);
