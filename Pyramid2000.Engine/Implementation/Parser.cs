@@ -292,7 +292,7 @@ namespace Pyramid2000.Engine
             }
 
             // We have a valid verb and noun. Determine the item the noun refers to.
-            Item nounItem = null;
+            IItem nounItem = null;
             if (verb.Word.Grammar == Grammar.withNounInSight)
             {
                 // Requires an item in either the player's pack or the current room

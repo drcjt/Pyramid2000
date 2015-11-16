@@ -11,10 +11,13 @@ namespace Pyramid2000.Engine
 {
     public class Player : IPlayer
     {
+        private IItems _items;
+        public Player(IItems items)
+        {
+            _items = items;
+        }
         public string CurrentRoom { get; set; }
 
-        private ObservableCollection<IItem> _Items = new ObservableCollection<IItem>();
-
-        public ObservableCollection<IItem> Items { get { return _Items; } }
+        public IList<IItem> Items { get { return _items.GetItemsAtLocation("pack"); } }
     }
 }

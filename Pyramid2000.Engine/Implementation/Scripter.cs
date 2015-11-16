@@ -75,7 +75,7 @@ namespace Pyramid2000.Engine
             if (chest.Location == "")
             {
                 var pack = _items.GetItemsAtLocation("pack");
-                List<Item> packTreasureItems = new List<Item>();
+                List<IItem> packTreasureItems = new List<IItem>();
                 foreach (var packItem in pack)
                 {
                     if (packItem.Treasure)

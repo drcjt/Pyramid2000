@@ -10,7 +10,6 @@ namespace Pyramid2000.Engine.Interfaces
     public interface IPlayer
     {
         string CurrentRoom { get; set; }
-
-        ObservableCollection<IItem> Items { get; } 
+        IList<IItem> Items { get; }
     }
 }

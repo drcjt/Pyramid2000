@@ -76,7 +76,7 @@
             </RichTextBlock>
         </ScrollViewer>
         <TextBox Margin="5,5,5,5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" KeyUp="Command_KeyUp" FontSize="{Binding SettingsPartViewModel.TextSize}"/>
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click"/>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click" FontSize="{Binding SettingsPartViewModel.TextSize}"/>
         <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="FooterPlaceHolder"/>
         <Viewbox Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="200" Width="200">
             <controls:CompassControl x:Name="Compass" Opacity="0.7" IsTabStop="False"

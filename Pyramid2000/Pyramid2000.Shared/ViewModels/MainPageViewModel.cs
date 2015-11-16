@@ -36,10 +36,8 @@ namespace Pyramid2000.ViewModels
         public void SetupGame(IPrinter printer)
         {
             _printer = new Printer(printer, App.GameSettings);
-            _player = new Player();
-            //App.Settings.InventoryItems = _player.Items;
-
-            _items = new Items(_player);
+            _items = new Items();
+            _player = new Player(_items);
             _player.CurrentRoom = "room_1";
             IParser parser = new Parser(_player, _printer, _items, App.GameSettings);
             _rooms = new Rooms(_items);
@@ -48,6 +46,8 @@ namespace Pyramid2000.ViewModels
             _rooms.Scripter = scripter;
 
             IDefaultScripter defaultScripter = new DefaultScripter();
+
+            _inventoryItems.Clear();
 
             _game = new Game(_player, _printer, parser, scripter, _rooms, defaultScripter, _items, _gameState);
 
@@ -72,7 +72,33 @@ namespace Pyramid2000.ViewModels
                         command =>
                         {
                             _game.ProcessPlayerInput(command);
+                            UpdateInventoryItems();
                         }));
+            }
+        }
+
+        private void UpdateInventoryItems()
+        {
+            var items = _player.Items;
+            var toRemove = new List<IItem>();
+            foreach (var item in _inventoryItems)
+            {
+                if (!items.Contains(item))
+                {
+                    toRemove.Add(item);
+                }
+            }
+            foreach (var item in toRemove)
+            {
+                _inventoryItems.Remove(item);
+            }
+
+            foreach (var item in items)
+            {
+                if (!_inventoryItems.Contains(item))
+                {
+                    _inventoryItems.Add(item);
+                }
             }
         }
 
@@ -86,6 +112,8 @@ namespace Pyramid2000.ViewModels
 
         public IGameSettings Settings { get { return App.GameSettings; } }
 
-        public ObservableCollection<IItem> InventoryItems { get { return _player.Items; } }
+
+        private ObservableCollection<IItem> _inventoryItems = new ObservableCollection<IItem>();
+        public ObservableCollection<IItem> InventoryItems { get { return _inventoryItems; } }
     }
 }

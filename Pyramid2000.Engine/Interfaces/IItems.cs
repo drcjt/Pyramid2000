@@ -8,9 +8,9 @@ namespace Pyramid2000.Engine.Interfaces
 {
     public interface IItems
     {
-        Item GetExactItemByName(string name);
-        Item GetTopItemByName(string name);
-        Item[] GetAllItems();
-        IList<Item> GetItemsAtLocation(string location);
+        IItem GetExactItemByName(string name);
+        IItem GetTopItemByName(string name);
+        IItem[] GetAllItems();
+        IList<IItem> GetItemsAtLocation(string location);
     }
 }

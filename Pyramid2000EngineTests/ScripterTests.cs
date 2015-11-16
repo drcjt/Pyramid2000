@@ -22,8 +22,8 @@ namespace Pyramid2000EngineTests
             IGameSettings settings = new GameSettings();
             settings.Trs80Mode = trs80Mode;
             IPrinter printer = new Mock<IPrinter>().Object;
-            IPlayer player = new Player();
-            IItems items = new Items(player);
+            IItems items = new Items();
+            IPlayer player = new Player(items);
             player.CurrentRoom = "room_1";
             IParser parser = new Parser(player, printer, items, settings);
             IRooms rooms = new Rooms(items);

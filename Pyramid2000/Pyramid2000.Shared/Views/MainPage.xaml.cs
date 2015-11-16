@@ -188,8 +188,6 @@ namespace Pyramid2000
             Command.Focus(FocusState.Keyboard);
 #endif
             ViewModel.GamePartViewModel.SetupGame(this);
-            this.DataContext = null;
-            this.DataContext = ViewModel;
 
             Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
         }

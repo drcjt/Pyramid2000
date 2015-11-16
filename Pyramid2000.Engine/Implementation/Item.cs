@@ -9,34 +9,12 @@ namespace Pyramid2000.Engine
 {
     public class Item : IItem
     {
-        private IPlayer _player;
-        public Item(IPlayer player)
+        public Item()
         {
-            _player = player;
         }
 
         public string Name { get; set; }
-
-        private string _location;
-        public string Location
-        {
-            get
-            {
-                return _location;
-            }
-            set
-            {
-                _location = value;
-                if (_location == "pack")
-                {
-                    _player.Items.Add(this);
-                }
-                else
-                {
-                    _player.Items.Remove(this);
-                }
-            }
-        }
+        public string Location { get; set; }
         public bool Packable { get; set; }
         public bool Treasure { get; set; }
         public string LongDescription { get; set; }
