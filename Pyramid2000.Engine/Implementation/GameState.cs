@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 using Pyramid2000.Engine.Interfaces;
 
@@ -15,7 +11,7 @@ namespace Pyramid2000.Engine
         public bool GameOver { get; set; }
         public int BatteryLife { get; set; }
 
-        public IList<IAchievement> GetAchievements() { return null;  }
+        public IList<IAchievement> GetAchievements() { return _awardedAchievements;  }
 
         private IList<IAchievement> _awardedAchievements = new List<IAchievement>();
 

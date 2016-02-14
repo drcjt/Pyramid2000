@@ -10,9 +10,9 @@
     d:DesignWidth="400">
     
     <Grid>
-        <Path Data="M200, 50 L200,200 L50, 200 L170, 170 L200, 50 L230, 170 L350, 200 L50, 200 L170, 230 L200,350 L200, 200 L350,200 L230, 230 L200, 350" Stroke="White" Width="400" Height="400"/>
-        <Path Data="M120, 120 L185,215 L280, 280 L215, 185 z" Stroke="White" Width="400" Height="400" Fill="White"/>
-        <Path Data="M120, 280 L215,215 L280, 120 L185, 185 z" Stroke="White" Width="400" Height="400" Fill="White"/>
+        <Path Data="M200, 50 L200,200 L50, 200 L170, 170 L200, 50 L230, 170 L350, 200 L50, 200 L170, 230 L200,350 L200, 200 L350,200 L230, 230 L200, 350" Stroke="{ThemeResource ApplicationForegroundThemeBrush}" Width="400" Height="400"/>
+        <Path Data="M120, 120 L185,215 L280, 280 L215, 185 z" Stroke="White" Width="400" Height="400" Fill="{ThemeResource ApplicationForegroundThemeBrush}"/>
+        <Path Data="M120, 280 L215,215 L280, 120 L185, 185 z" Stroke="White" Width="400" Height="400" Fill="{ThemeResource ApplicationForegroundThemeBrush}"/>
         <Button x:Name="NorthButton" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0" FontSize="30">N</Button>
         <Button x:Name="SouthButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderThickness="0" FontSize="30">S</Button>
         <Button x:Name="WestButton" HorizontalAlignment="Left" VerticalAlignment="Center" BorderThickness="0" FontSize="30">W</Button>

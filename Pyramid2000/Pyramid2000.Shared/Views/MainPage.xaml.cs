@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
@@ -16,22 +10,18 @@ using Windows.UI.Xaml.Documents;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.Storage;
-
-using System.Text.RegularExpressions;
-
-
-using Pyramid2000.Engine;
 using Pyramid2000.Engine.Interfaces;
 using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using Pyramid2000.ViewModels;
+using Windows.UI;
+using Pyramid2000.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Pyramid2000
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The main page in Pyramid 2000
     /// </summary>
     public sealed partial class MainPage : Page, IPrinter
     {
@@ -40,20 +30,69 @@ namespace Pyramid2000
 
         public MainPageViewModel ViewModel => this.DataContext as MainPageViewModel;
 
+        #region Initialisation
         public MainPage()
         {
             this.InitializeComponent();
-#if WINDOWS_PHONE_APP
+//#if WINDOWS_PHONE_APP
+            // Hide achievements panel - when fully working need to only do this for phone
             RightPanelWidth.Width = new GridLength(0);
-#endif
+//#endif
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
+            // Setup the game engine
             ViewModel.GamePartViewModel.SetupGame(this);
 
+            // Setup the initial room description as the dialogue header
             Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
 
+            // Add handlers for showing/hiding the input pane (on screen keyboard)
             _inputPane.Showing += InputPaneShowing;
             _inputPane.Hiding += InputPaneHiding;
+
+            /* Setup words for touch selection.*/
+            /*
+            var verbs = ViewModel.GamePartViewModel.GetWords(false);
+            SetButtonList(verbs, VerbWords, VerbButton_Click);
+            VerbWords.Visibility = Visibility.Visible;
+
+            var nouns = ViewModel.GamePartViewModel.GetWords(true);
+            SetButtonList(nouns, NounWords, NounButton_Click);     
+            */
+
+            // Ensure all input goes to the textbox
+            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
+        }
+
+        /// <summary>
+        /// Handles all key presses whilst on this page and ensures focus is set on the textbox
+        /// </summary>
+        /// <param name="sender">sender of event</param>
+        /// <param name="args">event arguments</param>
+        private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
+        {
+            if (FocusManager.GetFocusedElement()!= Command)
+            {
+                Command.Focus(FocusState.Programmatic);
+                Command.Select(0, Command.Text.Length);
+            }
+        }
+
+        /// <summary>
+        /// Logic for when the page is loaded
+        /// </summary>
+        /// <param name="sender">event sender</param>
+        /// <param name="e">event arguments</param>
+        public void Loaded(object sender, RoutedEventArgs e)
+        {
+            // Setup the navigation service frame
+            ViewModel.GamePartViewModel.NavigationService.Frame = Frame;
+
+#if !WINDOWS_PHONE_APP
+            // If not running on windows phone then set text in the text box to indicate to user
+            // that this is where they need to type commands
+            Command.Text = "Enter Command Here";
+#endif
         }
 
         /// <summary>
@@ -63,34 +102,97 @@ namespace Pyramid2000
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
-
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
-
+            // Show the compass if configured to be visible
             Compass.Visibility = ViewModel.SettingsPartViewModel.ShowCompass ? Visibility.Visible : Visibility.Collapsed;
-            AppBar_NorthButton.Visibility = Compass.Visibility;
-            AppBar_SouthButton.Visibility = Compass.Visibility;
-            AppBar_EastButton.Visibility = Compass.Visibility;
-            AppBar_WestButton.Visibility = Compass.Visibility;
+
+            // Hide the appbar compass buttons if the compass is visible            
+            var appBarCompasssButtonVisibility = Compass.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+            AppBar_NorthButton.Visibility = appBarCompasssButtonVisibility;
+            AppBar_SouthButton.Visibility = appBarCompasssButtonVisibility;
+            AppBar_EastButton.Visibility = appBarCompasssButtonVisibility;
+            AppBar_WestButton.Visibility = appBarCompasssButtonVisibility;
 
 #if WINDOWS_PHONE_APP
+            // For phone if the compass is visible then make the app bar minimal otherwise compact
             CommandBar cmdBar = CommandBar as CommandBar;
             cmdBar.ClosedDisplayMode = ViewModel.SettingsPartViewModel.ShowCompass ? AppBarClosedDisplayMode.Minimal : AppBarClosedDisplayMode.Compact;
-#else
-            Command.Focus(FocusState.Keyboard);
 #endif
         }
+        #endregion
 
+        #region Verb and Noun Selection
+        /// <summary>
+        /// Create buttons in the specified stack panel from the supplied list
+        /// </summary>
+        /// <param name="words">words to create buttons for</param>
+        /// <param name="p">stackpanel to put buttons into</param>
+        /// <param name="eh">handler to fire when buttons pressed</param>
+        private void SetButtonList(IList<string> words, StackPanel p, RoutedEventHandler eh)
+        {
+            foreach (var word in words)
+            {
+                var button = new Button();
+                button.Content = word;
+                button.MinWidth = 0;
+                button.BorderBrush = new SolidColorBrush(Colors.Transparent);
+                button.Click += eh;
+                var fontSizeBinding = new Binding();
+                fontSizeBinding.Path = new PropertyPath("SettingsPartViewModel.TextSize");
+                button.SetBinding(Button.FontSizeProperty, fontSizeBinding);
+                p.Children.Add(button);
+            }
+        }
+
+        /// <summary>
+        /// When a verb button is pressed set the text in the command and change
+        /// to noun entry mode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VerbButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            Command.Text = b.Content.ToString() + " ";
+
+            VerbWords.Visibility = Visibility.Collapsed;
+            NounWords.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// When a noun is pressed add the noun to the verb already entered in the
+        /// command text box and process the command
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NounButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            Command.Text += b.Content.ToString();
+
+            ProcessCommand();
+        }
+        #endregion
+
+        #region IPrinter implementation
+        /// <summary>
+        /// Print the specified text followed by a new line in the main dialogue
+        /// </summary>
+        /// <param name="text"></param>
         public void PrintLn(string text)
         {
             Print(text);
             Print("\n");
         }
 
+        /// <summary>
+        /// The current room the player is in - used to decide if the dialogue needs clearing if the player changes room
+        /// </summary>
+        private string _currentRoom;
+
+        /// <summary>
+        /// Print the specified text in the main dialogue
+        /// </summary>
+        /// <param name="text"></param>
         public void Print(string text)
         {
             // If player changed room then clear previous dialogue
@@ -108,29 +210,35 @@ namespace Pyramid2000
             BodyScroller.ChangeView(0, BodyScroller.ScrollableHeight, 1);
         }
 
+        /// <summary>
+        /// Clear the dialogue
+        /// </summary>
         public void Clear()
         {
             BodyParagraph.Inlines.Clear();
         }
+        #endregion
 
-        private void Confirm_Click(object sender, RoutedEventArgs e)
-        {
-            ProcessCommand();
-        }
-
-        private string _currentRoom;
-
+        #region Command Handling
+        /// <summary>
+        /// Process the specified command
+        /// </summary>
+        /// <param name="command"></param>
         private void ProcessCommand(string command = null)
         {
+            // Make sure the command is shown in the textbox
             if (command != null)
             {
                 Command.Text = command;
             }
 
+            // Add the command to the dialogue
             ViewModel.GamePartViewModel.PrintLn(Command.Text);
 
+            // Process the command using the game engine
             ViewModel.GamePartViewModel.ProcessPlayerInputCommand.Execute(Command.Text);
 
+            // If the game is over then show the restart button in place of the command text box
             if (ViewModel.GamePartViewModel.GameOver)
             {
                 Command.Visibility = Visibility.Collapsed;
@@ -138,70 +246,30 @@ namespace Pyramid2000
                 Command.IsEnabled = false;
             }
 
+            // Set the dialogue header to match the room description which may have changed
+            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
+
+            // Experimental feature for touch selection of verbs/nouns
+            /*
+            VerbWords.Visibility = Visibility.Visible;
+            NounWords.Visibility = Visibility.Collapsed;
+            */
+
+            // Clear the command text box
             Command.Text = "";
 
-            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
-
 #if !WINDOWS_PHONE_APP
-            Command.Focus(FocusState.Keyboard);
+            // For non phone set the command text box to have the focus
+            Command.Focus(FocusState.Programmatic);
 #endif
         }
 
-        Windows.UI.ViewManagement.InputPane _inputPane = Windows.UI.ViewManagement.InputPane.GetForCurrentView();
-
-        private void InputPaneShowing(InputPane sender, InputPaneVisibilityEventArgs e)
-        {
-            e.EnsuredFocusedElementInView = true;
-
-            FooterPlaceHolder.Height = e.OccludedRect.Height;
-            FooterPlaceHolder.Visibility = Visibility.Visible;
-
-            Compass.Visibility = Visibility.Collapsed;
-
-            BodyScroller.UpdateLayout();
-            BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
-
-            CommandBar.Visibility = Visibility.Collapsed;
-        }
-
-        private void InputPaneHiding(InputPane sender, InputPaneVisibilityEventArgs e)
-        {
-            FooterPlaceHolder.Height = 0;
-            FooterPlaceHolder.Visibility = Visibility.Collapsed;
-
-            Compass.Visibility = Visibility.Visible;
-
-            BodyScroller.UpdateLayout();
-            BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
-
-            CommandBar.Visibility = Visibility.Visible;
-        }
-
-        private void Restart_Click(object sender, RoutedEventArgs e)
-        {
-            Command.Visibility = Visibility.Visible;
-            Restart.Visibility = Visibility.Collapsed;
-            Command.IsEnabled = true;
-            Body.Text = "";
-
-#if !WINDOWS_PHONE_APP
-            Command.Focus(FocusState.Keyboard);
-#endif
-            ViewModel.GamePartViewModel.SetupGame(this);
-
-            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
-        }
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(SettingsPage));
-        }
-
-        private void AboutButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(About));
-        }
-
+        /// <summary>
+        /// Hook enter being pressed in the command text box and use this as
+        /// a trigger to process the command
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Command_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
@@ -209,12 +277,91 @@ namespace Pyramid2000
                 ProcessCommand();
             }
         }
+        #endregion
 
-        private void InstructionsButton_Click(object sender, RoutedEventArgs e)
+        #region Input Pane Handling
+        // Input pane for touch enabled devices capable of showing on screen keyboards
+        Windows.UI.ViewManagement.InputPane _inputPane = Windows.UI.ViewManagement.InputPane.GetForCurrentView();
+
+        /// <summary>
+        /// Handler for the input pane being shown
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InputPaneShowing(InputPane sender, InputPaneVisibilityEventArgs e)
         {
-            Frame.Navigate(typeof(Instructions));
+            e.EnsuredFocusedElementInView = true;
+
+            // Show the footer to force the dialogue to not appear beneath the input pane
+            FooterPlaceHolder.Height = e.OccludedRect.Height;
+            FooterPlaceHolder.Visibility = Visibility.Visible;
+
+            // Hide the compass
+            Compass.Visibility = Visibility.Collapsed;
+
+            BodyScroller.UpdateLayout();
+            BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
+
+            // Hide the command bar
+            CommandBar.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Handler for the input pane being hidden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InputPaneHiding(InputPane sender, InputPaneVisibilityEventArgs e)
+        {
+            // Hide the footer to make the dialogue flow to the bottom of the window
+            FooterPlaceHolder.Height = 0;
+            FooterPlaceHolder.Visibility = Visibility.Collapsed;
+
+            // Show the compass if required
+            Compass.Visibility = ViewModel.SettingsPartViewModel.ShowCompass? Visibility.Visible: Visibility.Collapsed;
+            
+            BodyScroller.UpdateLayout();
+            BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
+
+            // Show the command bar
+            CommandBar.Visibility = Visibility.Visible;
+        }
+        #endregion
+
+        #region Restart the game
+        /// <summary>
+        /// Handler for restarting the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            // Make the command text box visible
+            Command.Visibility = Visibility.Visible;
+
+            // Hide the restart button
+            Restart.Visibility = Visibility.Collapsed;
+
+            // Enable the command text box
+            Command.IsEnabled = true;
+
+            // Clear the dialogue
+            Body.Text = "";
+
+#if !WINDOWS_PHONE_APP
+            Command.Focus(FocusState.Programmatic);
+            Command.Text = "Enter Command Here";
+#endif
+
+            // Re-setup the game engine
+            ViewModel.GamePartViewModel.SetupGame(this);
+
+            // Setup the header text as the initial room decription
+            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
+        }
+        #endregion
+
+        #region Compass Buttons
         private void NorthButton_Click(object sender, RoutedEventArgs e)
         {
             ProcessCommand("N");
@@ -234,7 +381,9 @@ namespace Pyramid2000
         {
             ProcessCommand("W");
         }
+        #endregion
 
+        #region Load and Save
         private static string SAVE_STATE_FILE = "SAVEDSTATE";
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -285,70 +434,13 @@ namespace Pyramid2000
         {
             Load();
         }
+        #endregion
 
-        private void CompassControl_ClickNorth(object sender, EventArgs e)
+        #region Compass Control Handlers
+        private void CompassControl_ClickHandler(object sender, CompassClickEventArgs e)
         {
-            ProcessCommand("N");
+            ProcessCommand(e.Direction);
         }
-
-        private void CompassControl_ClickSouth(object sender, EventArgs e)
-        {
-            ProcessCommand("S");
-        }
-
-        private void CompassControl_ClickEast(object sender, EventArgs e)
-        {
-            ProcessCommand("E");
-        }
-
-        private void CompassControl_ClickWest(object sender, EventArgs e)
-        {
-            ProcessCommand("W");
-        }
-
-        private void CompassControl_ClickUp(object sender, EventArgs e)
-        {
-            ProcessCommand("Up");
-        }
-
-        private void CompassControl_ClickDown(object sender, EventArgs e)
-        {
-            ProcessCommand("Down");
-        }
-
-        private void BodyScroller_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            Command.Focus(FocusState.Keyboard);
-        }
-
-        private void Compass_ClickNorthEast(object sender, EventArgs e)
-        {
-            ProcessCommand("NE");
-        }
-
-        private void Compass_ClickNorthWest(object sender, EventArgs e)
-        {
-            ProcessCommand("NW");
-        }
-
-        private void Compass_ClickSouthEast(object sender, EventArgs e)
-        {
-            ProcessCommand("SE");
-        }
-
-        private void Compass_ClickSouthWest(object sender, EventArgs e)
-        {
-            ProcessCommand("SW");
-        }
-
-        private async void RateAndReviewButton_Click(object sender, RoutedEventArgs e)
-        {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=33ddb4b9-5fc5-4a4d-bec3-5adc282c6b3a"));
-        }
-
-        private void BodyTextBlock_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Command.Focus(FocusState.Keyboard);
-        }
+        #endregion
     }
 }

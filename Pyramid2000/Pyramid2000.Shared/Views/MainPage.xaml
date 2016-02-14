@@ -10,8 +10,9 @@
     xmlns:controls="using:Pyramid2000.Controls"
     xmlns:vm="using:Pyramid2000.ViewModels"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Loaded">
+    
     <Page.DataContext>
         <vm:MainPageViewModel/>
     </Page.DataContext>
@@ -27,6 +28,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -37,59 +39,62 @@
         <Grid Grid.Column="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="3*"/>
+<!--                Experimental row for word selection on touch devices -->
+<!--                <RowDefinition Height="3*"/> -->
             </Grid.RowDefinitions>
             <Grid x:Name="InventoryPanel" Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Background="White" Grid.Row="0">
-                    <TextBlock VerticalAlignment="Center" FontWeight="Bold" Foreground="Black" FontSize="{Binding SettingsPartViewModel.TextSize}">Inventory</TextBlock>
+                <Grid Grid.Row="0">
+                    <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="{Binding SettingsPartViewModel.TextSize}">Inventory</TextBlock>
                 </Grid>
-                <ListView x:Name="InventoryListView" ItemsSource="{Binding GamePartViewModel.InventoryItems}" Grid.Row="1">
+                <ItemsControl x:Name="InventoryListView" ItemsSource="{Binding GamePartViewModel.InventoryItems}" Grid.Row="1">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Margin="5" Text="{Binding ShortDescription}" Style="{ThemeResource BodyTextBlockStyle}" FontSize="{Binding ElementName=Page, Path=DataContext.SettingsPartViewModel.TextSize}" TextWrapping="NoWrap"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            <StackPanel x:Name="AchievementsPanel" Grid.Row="1">
+                <Border Margin="2" x:Name="AchievementsPanelBorder">
+                    <TextBlock FontWeight="Bold" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0">Achievements</TextBlock>
+                </Border>
+                <ListView x:Name="AchievementsListView" ItemsSource="{Binding GamePartViewModel.Achievements}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource BodyTextBlockStyle}" FontSize="{Binding ElementName=Page, Path=DataContext.SettingsPartViewModel.TextSize}" TextWrapping="NoWrap"/>
+                                <TextBlock Text="{Binding Title}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </Grid>
-            <StackPanel x:Name="HistoryPanel" Grid.Row="1">
-                <Border Background="White" Margin="2">
-                    <TextBlock FontWeight="Bold" Foreground="Black" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0">Achievements</TextBlock>
-                </Border>
-                <ListView x:Name="HistoryListView"/>
             </StackPanel>
         </Grid>
 
-        <Grid Background="White" Grid.Row="0">
-            <TextBlock Grid.Row="0" x:Name="Header" FontWeight="Bold" Foreground="Black" Visibility="{Binding GamePartViewModel.Settings.ClearDialogueOnRoomChange, Converter={StaticResource BoolToVisConv}, Mode=OneWay}" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0"/>
+        <Grid Grid.Row="0">
+            <TextBlock Grid.Row="0" x:Name="Header" FontWeight="Bold" Visibility="{Binding GamePartViewModel.Settings.ClearDialogueOnRoomChange, Converter={StaticResource BoolToVisConv}, Mode=OneWay}" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0">Pyramid 2000</TextBlock>
         </Grid>
-        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" x:Name="BodyScroller" VerticalScrollBarVisibility="Auto" BorderBrush="AntiqueWhite" Height="Auto" KeyDown="BodyScroller_KeyDown" GotFocus="BodyTextBlock_GotFocus">
-            <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" x:Name="BodyTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" GotFocus="BodyTextBlock_GotFocus">
+        <ScrollViewer x:Name="BodyScroller" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" VerticalScrollBarVisibility="Auto" Height="Auto">
+            <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" x:Name="BodyTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top">
                 <Paragraph x:Name="BodyParagraph" FontSize="{Binding SettingsPartViewModel.TextSize}" LineHeight="0">
                     <Run x:Name="Body"/>
                 </Paragraph>
             </RichTextBlock>
         </ScrollViewer>
-        <TextBox Margin="5,5,5,5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" KeyUp="Command_KeyUp" FontSize="{Binding SettingsPartViewModel.TextSize}"/>
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click" FontSize="{Binding SettingsPartViewModel.TextSize}"/>
-        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="FooterPlaceHolder"/>
-        <Viewbox Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="200" Width="200">
-            <controls:CompassControl x:Name="Compass" Opacity="0.7" IsTabStop="False"
-                ClickNorth="CompassControl_ClickNorth" 
-                ClickSouth="CompassControl_ClickSouth" 
-                ClickEast="CompassControl_ClickEast" 
-                ClickWest="CompassControl_ClickWest"
-                ClickNorthEast="Compass_ClickNorthEast"
-                ClickNorthWest="Compass_ClickNorthWest"
-                ClickSouthEast="Compass_ClickSouthEast"
-                ClickSouthWest="Compass_ClickSouthWest"
-                ClickUp="CompassControl_ClickUp"
-                ClickDown="CompassControl_ClickDown"/>
+        <TextBox Margin="5,5,5,5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="{Binding SettingsPartViewModel.TextSize}" KeyUp="Command_KeyUp"/>
+        <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <StackPanel x:Name="VerbWords" Orientation="Horizontal" Visibility="Collapsed"/>
+                <StackPanel x:Name="NounWords" Orientation="Horizontal" Visibility="Collapsed"/>
+            </Grid>
+        </ScrollViewer>
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Restart" Content="Restart" HorizontalAlignment="Stretch" Visibility="Collapsed" Click="Restart_Click" FontSize="{Binding SettingsPartViewModel.TextSize}"/>
+        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="FooterPlaceHolder"/>
+        <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="200" Width="200">
+            <controls:CompassControl x:Name="Compass" Opacity="0.7" IsTabStop="False" ClickHandler="CompassControl_ClickHandler"/>
         </Viewbox>
     </Grid>
     
@@ -119,16 +124,16 @@
 
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="settings" Icon="Setting" Click="SettingsButton_Click"/>
-                <AppBarButton Label="about" Click="AboutButton_Click">
+                <AppBarButton Label="settings" Icon="Setting" Command="{Binding GamePartViewModel.GotoSettingsPage}"/>
+                <AppBarButton Label="about" Command="{Binding GamePartViewModel.GotoAboutPage}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <AppBarButton.Icon>
-                        <FontIcon FontFamily="Segoe UI Symbol" FontStyle="Italic" Glyph="&#x0069;"/>
+                        <PathIcon Data="M19.7599983215332,9.8799991607666L21.7511615753174,10.0807256698608 23.6057395935059,10.6564197540283 26.7462120056152,12.7737865447998 28.8635787963867,15.9142589569092 29.4392719268799,17.768835067749 29.6399993896484,19.7599983215332 29.4392719268799,21.7511615753174 28.8635787963867,23.6057395935059 26.7462120056152,26.7462120056152 23.6057395935059,28.8635787963867 21.7511615753174,29.4392719268799 19.7599983215332,29.6399993896484 17.768835067749,29.4392719268799 15.9142589569092,28.8635787963867 12.7737865447998,26.7462120056152 10.6564197540283,23.6057395935059 10.0807256698608,21.7511615753174 9.8799991607666,19.7599983215332 10.0807256698608,17.768835067749 10.6564197540283,15.9142589569092 12.7737865447998,12.7737865447998 15.9142589569092,10.6564197540283 17.768835067749,10.0807256698608 19.7599983215332,9.8799991607666z M17.2899990081787,17.2899990081787L17.2899990081787,18.9366817474365 18.9366302490234,18.9366817474365 18.9366302490234,24.6999988555908 17.2899990081787,24.6999988555908 17.2899990081787,26.3466815948486 23.053316116333,26.3466815948486 23.053316116333,24.6999988555908 21.4066314697266,24.6999988555908 21.4066314697266,18.9366817474365 21.4066314697266,17.2899990081787 17.2899990081787,17.2899990081787z M20.1716823577881,13.1733150482178L19.2984008789063,13.5350532531738 18.9366817474365,14.4083156585693 19.2984008789063,15.2815971374512 20.1716823577881,15.6433153152466 21.0449447631836,15.2815971374512 21.4066829681396,14.4083156585693 21.0449447631836,13.5350532531738 20.1716823577881,13.1733150482178z"/>
                     </AppBarButton.Icon>
                 </AppBarButton>
-                <AppBarButton Label="help" Icon="Help" Click="InstructionsButton_Click"/>
+                <AppBarButton Label="rate" Icon="Favorite" Command="{Binding GamePartViewModel.RateAndReviewCommand}"/>
+                <AppBarButton Label="help" Icon="Help" Command="{Binding GamePartViewModel.GotoInstructionsPage}"/>
                 <AppBarButton Label="save" Icon="Save" Click="SaveButton_Click"/>
                 <AppBarButton Label="load" Icon="OpenLocal" Click="LoadButton_Click"/>
-                <AppBarButton Label="rate and review" Icon="Favorite" Click="RateAndReviewButton_Click"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

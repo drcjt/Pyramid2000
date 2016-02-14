@@ -17,18 +17,20 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Pyramid2000.Controls
 {
+    public class CompassClickEventArgs : EventArgs
+    {
+        public string Direction { get; internal set; }
+        public CompassClickEventArgs(string direction)
+        {
+            Direction = direction;
+        }
+    }
+
+    public delegate void CompassClickHandler(object sender, CompassClickEventArgs e);
+
     public sealed partial class CompassControl : UserControl
     {
-        public event EventHandler ClickNorth;
-        public event EventHandler ClickSouth;
-        public event EventHandler ClickEast;
-        public event EventHandler ClickWest;
-        public event EventHandler ClickNorthEast;
-        public event EventHandler ClickNorthWest;
-        public event EventHandler ClickSouthEast;
-        public event EventHandler ClickSouthWest;
-        public event EventHandler ClickUp;
-        public event EventHandler ClickDown;
+        public event CompassClickHandler ClickHandler;
 
         public CompassControl()
         {
@@ -58,52 +60,52 @@ namespace Pyramid2000.Controls
 
         private void Down_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickDown);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("Down"));
         }
 
         private void Up_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickUp);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("Up"));
         }
 
         private void WestButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickWest);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("W"));
         }
 
         private void EastButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickEast);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("E"));
         }
 
         private void SouthButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickSouth);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("S"));
         }
 
         private void NorthButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickNorth);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("N"));
         }
 
         private void NorthEastButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickNorthEast);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("NE"));
         }
 
         private void NorthWestButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickNorthWest);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("NW"));
         }
 
         private void SouthEastButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickSouthEast);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("SE"));
         }
 
         private void SouthWestButton_Click(object sender, RoutedEventArgs e)
         {
-            ProcessClick(this.ClickSouthWest);
+            ClickHandler?.Invoke(this, new CompassClickEventArgs("SW"));
         }
     }
 }
