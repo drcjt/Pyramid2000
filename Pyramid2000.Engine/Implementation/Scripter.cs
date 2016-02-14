@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Reflection;
 
 using Pyramid2000.Engine.Interfaces;
 using Pyramid2000.Engine.Implementation;
@@ -23,7 +17,9 @@ namespace Pyramid2000.Engine
         private IGameState _gameState;
         private IGameSettings _settings;
 
-        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, IGameSettings settings)
+        private IResources Resources { get; set; }
+
+        public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, IGameSettings settings, IResources resources)
         {
             _settings = settings;
             _printer = new Printer(printer, _settings);
@@ -31,6 +27,7 @@ namespace Pyramid2000.Engine
             _rooms = rooms;
             _player = player;
             _gameState = gameState;
+            Resources = resources;
         }
 
         public bool AwardAchievementX(string achievementName)
@@ -92,6 +89,7 @@ namespace Pyramid2000.Engine
                     }
                     _printer.PrintLn(Resources.MummyStealsTreasures);
                     chest.Location = "room_53";
+                    AwardAchievementX("TreasureStolen");
                 }
             }
 

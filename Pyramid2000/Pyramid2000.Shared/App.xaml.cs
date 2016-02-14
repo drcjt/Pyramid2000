@@ -34,18 +34,13 @@ namespace Pyramid2000
 #endif
 
         ISettingsService _settings;
-
+        
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
-            // This makes the resources in the portable class library work properly
-            // see http://blogs.msdn.com/b/philliphoff/archive/2014/11/19/missingmanifestresourceexception-when-using-portable-class-libraries-in-winrt.aspx
-            var resourcestype = Type.GetType("Pyramid2000.Engine.Resources, Pyramid2000.Engine");
-            Pyramid2000.Shared.WindowsRuntimeResourceManager.InjectIntoResxGeneratedApplicationResourcesClass(resourcestype);
-
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
 
@@ -138,6 +133,9 @@ namespace Pyramid2000
             // Ensure the current window is active
             Window.Current.Activate();
 
+            // Uncomment this to aid in debugging focus issues
+            //ZagStudio.Helpers.FocusWatcher.Start();
+
 #if WINDOWS_PHONE_APP
             var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
             statusbar.HideAsync();
@@ -172,5 +170,7 @@ namespace Pyramid2000
             // TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+       
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Pyramid2000.Engine.Interfaces;
 
@@ -15,12 +12,22 @@ namespace Pyramid2000.Engine
         private IPlayer _player;
         private IGameSettings _settings;
 
-        public Parser(IPlayer player, IPrinter printer, IItems items, IGameSettings settings)
+        private IResources Resources { get; set; }
+
+        public Parser(IPlayer player, IPrinter printer, IItems items, IGameSettings settings, IResources resources)
         {
             _settings = settings;
             _player = player;
             _printer = new Printer(printer, _settings);
             _items = items;
+            Resources = resources;
+
+            BuildErrors();
+        }
+
+        private void BuildErrors()
+        {
+            _errors = new string[] { Resources.What, Resources.DontKnowThatWord, Resources.DontUnderstand, Resources.DontKnowWhatYouMean };
         }
 
         enum Grammar
@@ -169,23 +176,23 @@ namespace Pyramid2000.Engine
             { "HELP", new Word { Grammar = Grammar.alone, Function = Function.Help } },
         };
 
-        public IList<String> GetNouns()
-        {
-            IList<String> nouns = new List<String>();
-            foreach (var entry in _words)
-            {
-                var word = entry.Value as Word;
-                if (word.Grammar == Grammar.noun)
-                {
-                    nouns.Add(entry.Key);
-                }
-            }
+        IList<string> verbs = new List<string> { "N", "E", "S", "W", "NE", "SE", "SW", "NW", "UP", "DOWN", "IN", "OUT", "CROSS", "LEFT", "RIGHT", "JUMP", "CLIMB", "PANEL", "BACK", "SWIM", "ON", "OFF", "QUIT", "STOP", "SCORE", "INVENTORY", "LOOK", "DROP", "WAVE", "POUR", "RUB", "THROW", "FILL", "GET", "OPEN", "ATTACK", "FEED", "EAT", "DRINK", "BREAK", "PLUGH", "HELP" };
+        IList<string> nouns = new List<string> { "LAMP", "BOX", "SCEPTER", "BIRD", "PILLOW", "SERPENT", "SARCOPHAGUS", "MAGAZINES", "FOOD", "BOTTLE", "WATER", "PLANT", "MACHINE", "BATTERIES", "GOLD", "DIAMONDS", "SILVER", "JEWELRY", "COINS", "CHEST", "NEST", "KEY", "VASE", "POTTERY", "EMERALD", "PEARL" };
 
-            return nouns;
+        public  IList<string> GetWords(bool getNouns)
+        {
+            if (getNouns)
+            {
+                return nouns;
+            }
+            else
+            {
+                return verbs;
+            }
         }
 
         private int _errRoll = 0;
-        private string[] _errors = new string[] { Resources.What, Resources.DontKnowThatWord, Resources.DontUnderstand, Resources.DontKnowWhatYouMean };
+        private string[] _errors;
 
         private ParsedWord _heldNoun = null;
         private ParsedWord _heldVerb = null;

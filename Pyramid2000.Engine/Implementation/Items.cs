@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 using Pyramid2000.Engine.Interfaces;
 
@@ -10,8 +6,10 @@ namespace Pyramid2000.Engine
 {
     public class Items : IItems
     {
-        public Items()
+        private IResources Resources { get; set; }
+        public Items(IResources resources)
         {
+            Resources = resources;
             CreateItems();
         }
 

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Pyramid2000.Engine.Interfaces;
+using Pyramid2000.Engine.Implementation;
 
 namespace Pyramid2000.Engine
 {
@@ -18,8 +15,9 @@ namespace Pyramid2000.Engine
         private IDefaultScripter _defaultScripter;
         private IItems _items;
         private IGameState _gameState;
+        private IResources Resources { get; set; }
 
-        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState)
+        public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState, IResources resources = null)
         {
             _player = player;
             _printer = printer;
@@ -29,6 +27,14 @@ namespace Pyramid2000.Engine
             _defaultScripter = defaultScripter;
             _items = items;
             _gameState = gameState;
+            if (resources != null)
+            {
+                Resources = resources;
+            }
+            else
+            {
+                Resources = new Resources();
+            }
 
             _gameState.BatteryLife = 310;
         }
