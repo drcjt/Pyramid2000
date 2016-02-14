@@ -74,7 +74,7 @@ namespace Pyramid2000.Engine.Implementation
         public string Food { get { return "Tasty food"; } }
         public string FoodLongDesc { get { return "There is food here."; } }
         public string FreshBatteries { get { return "There are now some fresh batteries here."; } }
-        public string GiganticBeanStalk { get { return "There is a gigantic beam stalk stretching all the way up to the hole."; } }
+        public string GiganticBeanStalk { get { return "There is a gigantic bean stalk stretching all the way up to the hole."; } }
         public string GlisteningPearl { get { return "Glistening pearl"; } }
         public string GlisteningPearlLongDesc { get { return "Off to one side lies a glistening pearl!"; } }
         public string Gold { get { return "Large gold nugget"; } }
