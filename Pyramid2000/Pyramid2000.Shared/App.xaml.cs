@@ -74,7 +74,7 @@ namespace Pyramid2000
         /// search results, and so forth.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -138,7 +138,7 @@ namespace Pyramid2000
 
 #if WINDOWS_PHONE_APP
             var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-            statusbar.HideAsync();
+            await statusbar.HideAsync();
 #endif
         }
 

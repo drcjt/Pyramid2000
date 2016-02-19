@@ -83,7 +83,7 @@ namespace Pyramid2000
         /// </summary>
         /// <param name="sender">event sender</param>
         /// <param name="e">event arguments</param>
-        public void Loaded(object sender, RoutedEventArgs e)
+        public new void Loaded(object sender, RoutedEventArgs e)
         {
             // Setup the navigation service frame
             ViewModel.GamePartViewModel.NavigationService.Frame = Frame;
