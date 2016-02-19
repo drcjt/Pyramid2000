@@ -48,6 +48,8 @@ namespace Pyramid2000EngineTests
 
             // Create scripter
             // Enumerate rooms and run all scripts
+
+            Assert.Fail("Testing VSTS build");
         }
     }
 }
