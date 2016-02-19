@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using Pyramid2000.Engine;
 using Pyramid2000.Engine.Interfaces;
 using Pyramid2000.Services;
+using System.Threading.Tasks;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -140,6 +141,8 @@ namespace Pyramid2000
             var statusbar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
             await statusbar.HideAsync();
 #endif
+            // Await a dummy task to ensure no compiler warnings due to await on HideAsync above for phone only
+            await Task.FromResult(0);
         }
 
 #if WINDOWS_PHONE_APP
