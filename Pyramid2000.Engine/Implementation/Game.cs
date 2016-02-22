@@ -43,43 +43,54 @@ namespace Pyramid2000.Engine
         {
             if (input != null)
             {
-                var commands = input.Split(';');
-                foreach(var command in commands)
+                if (!_gameState.AskToReincarnate)
                 {
-                    var parsedCommand = _parser.ParseInput(command);
-                    if (parsedCommand == null)
+                    var commands = input.Split(';');
+                    foreach (var command in commands)
                     {
-                        _printer.Print(": ");
-                        return;
-                    }
-
-                    var handled = false;
-
-                    var room = _rooms.GetRoom(_player.CurrentRoom);
-                    if (room.Commands != null && room.Commands.ContainsKey(parsedCommand.Function))
-                    {
-                        var script = room.Commands[parsedCommand.Function];
-                        handled = _scripter.ParseScript(script, parsedCommand.Item);
-                    }
-
-                    if (!handled)
-                    {
-                        var script = _defaultScripter.GetDefaultScript(parsedCommand.Function);
-                        if (script != null)
+                        var parsedCommand = _parser.ParseInput(command);
+                        if (parsedCommand == null)
                         {
+                            _printer.Print(": ");
+                            return;
+                        }
+
+                        var handled = false;
+
+                        var room = _rooms.GetRoom(_player.CurrentRoom);
+                        if (room.Commands != null && room.Commands.ContainsKey(parsedCommand.Function))
+                        {
+                            var script = room.Commands[parsedCommand.Function];
                             handled = _scripter.ParseScript(script, parsedCommand.Item);
                         }
+
+                        if (!handled)
+                        {
+                            var script = _defaultScripter.GetDefaultScript(parsedCommand.Function);
+                            if (script != null)
+                            {
+                                handled = _scripter.ParseScript(script, parsedCommand.Item);
+                            }
+                        }
+
+                        if (!handled)
+                        {
+                            _printer.PrintLn(Resources.DontKnowHowToApplyWord);
+                        }
+
+                        DoAfterPlayerTurn();
                     }
-                    
-                    if (!handled)
+
+                    // Only print a prompt for more input if the player is not being asked to reincarnate and hasn't died
+                    if (!_gameState.AskToReincarnate && !_gameState.GameOver)
                     {
-                        _printer.PrintLn(Resources.DontKnowHowToApplyWord);
+                        _printer.Print(Resources.Prompt);
                     }
-
-                    DoAfterPlayerTurn();
                 }
-
-                _printer.Print(Resources.Prompt);
+                else
+                {
+                    _scripter.ProcessReincarnation(input);
+                }
             }
         }
 

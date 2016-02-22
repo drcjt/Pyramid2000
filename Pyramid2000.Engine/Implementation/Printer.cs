@@ -31,7 +31,11 @@ namespace Pyramid2000.Engine
         private string FormatText(string text)
         {
             var formattedText = text;
-            if (_settings.Trs80Mode) formattedText = formattedText.Replace(". ", ".  ");
+            if (_settings.Trs80Mode)
+            {
+                formattedText = formattedText.Replace(". ", ".  ");
+                formattedText = formattedText.Replace("! ", "!  ");
+            }
             if (_settings.AllCaps) formattedText = formattedText.ToUpper();
             return formattedText;
         }

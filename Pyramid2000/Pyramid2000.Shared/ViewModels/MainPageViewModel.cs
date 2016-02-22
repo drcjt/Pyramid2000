@@ -168,9 +168,13 @@ namespace Pyramid2000.ViewModels
 
         public string State { get { return _game.State; } set { _game.State = value; } }
 
-        public string CurrentRoomName { get { return _player.CurrentRoom; } }
+        public bool IsReincarnating { get { return _gameState.AskToReincarnate; } }
+
+        public string CurrentRoomName {  get { return _player.CurrentRoom;  } }
 
         public IRoom CurrentRoom { get { return _rooms.GetRoom(_player.CurrentRoom); } }
+
+        public bool IsRoomLit { get { return _rooms.IsRoomLit(CurrentRoomName); } }
 
         public IGameSettings Settings { get { return App.GameSettings; } }
 

@@ -143,18 +143,71 @@ namespace Pyramid2000.Engine
         {
             if (_settings.Trs80Mode)
             {
-                // TODO WHAT CAN USER DO TO BE REINCARNATED?
-                _printer.PrintLn(Resources.GottenKilled);
-                _printer.PrintLn(Resources.TryToReincarnate);
-                // TODO need to get user input here as to what to do
+                _gameState.ReincarnateCount++;
+                if (_gameState.ReincarnateCount == 1)
+                {
+                    _printer.PrintLn(Resources.GottenKilled);
+                    _gameState.AskToReincarnate = true;
+                }
+                else if (_gameState.ReincarnateCount == 2)
+                {
+                    _printer.PrintLn(Resources.ClumsyOaf);
+                    _gameState.AskToReincarnate = true;
+                }
+                else
+                {
+                    _printer.PrintLn(Resources.CantReincarnate);
+                    PrintScore();
+                    _gameState.GameOver = true;
+                }
             }
-            if (_settings.Trs80Mode)
+            else
             {
-                // TODO IN TRS-80 VERSION IT LOOKS LIKE DYING SUBTRACTS FROM YOUR SCORE - NEED TO WORK THIS OUT
-                PrintScoreImpl(-10);
+                PrintScore();
+                _gameState.GameOver = true;
             }
-            _gameState.GameOver = true;
             return true;
+        }
+
+        public void ProcessReincarnation(string input)
+        {
+            var trimmedInput = input.Trim().ToUpper();
+            if (trimmedInput == "Y" || trimmedInput == "YES")
+            {
+                if (_gameState.ReincarnateCount == 1)
+                {
+                    _printer.PrintLn(Resources.DontBlameMe);
+                }
+                else if (_gameState.ReincarnateCount == 2)
+                {
+                    _printer.PrintLn(Resources.WhereDidIPutMyOrangeSmoke);
+                }
+                if (_gameState.ReincarnateCount < 3)
+                {
+                    // Move lamp to room 1
+                    var itemX = _items.GetExactItemByName("#LAMP_off");
+                    itemX.Location = "room_1";
+
+                    // Anything player is carrying apart from lamp is dropped in current player's location
+                    var items = _items.GetItemsAtLocation("pack");
+                    foreach (var item in items)
+                    {
+                        item.Location = _player.CurrentRoom;
+                    }
+
+                    // Reset game by moving player to "In pyramid entrance" room
+                    _gameState.LastRoom = _player.CurrentRoom;
+                    _player.CurrentRoom = "room_2";
+
+                    Look();
+                }
+            }
+            else
+            {
+                PrintScore();
+                _gameState.GameOver = true;
+            }
+            _gameState.AskToReincarnate = false;
         }
 
         public bool MoveItemXToLocationY(string itemID, string locationID)
@@ -174,13 +227,7 @@ namespace Pyramid2000.Engine
 
         public bool PrintScore()
         {
-            return PrintScoreImpl(0);
-        }
-
-        private bool PrintScoreImpl(int initialScore)
-        {
-            var score = initialScore;
-
+            int score = 0;
             var items = _items.GetAllItems();
             foreach (var item in items)
             {
@@ -196,6 +243,12 @@ namespace Pyramid2000.Engine
                         score += 5;
                     }
                 }
+            }
+
+            if (_settings.Trs80Mode)
+            {
+                // In TRS-80 version score is decremented by 10 for each time the player has died
+                score -= (_gameState.ReincarnateCount * 10);
             }
 
             _printer.PrintLn(String.Format(Resources.YouHaveScored, score, _gameState.TurnCount));

@@ -36,10 +36,12 @@ namespace Pyramid2000.Engine.Implementation
         public string CantFillThat { get { return "You can't fill that."; } }
         public string CantFitThroughTwoInchSlit { get { return "You don't fit through the two-inch slit!"; } }
         public string CantPourThat { get { return "You can't pour that."; } }
+        public string CantReincarnate { get { return "I seem to be out of orange smoke. How can I reincarnate you without orange smoke?"; } }
         public string Chest { get { return "Treasure chest"; } }
         public string ChestLongDesc { get { return "The pharaoh's treasure chest is here!"; } }
         public string ClimbedPlant { get { return "You've climbed up the plant and out of the pit."; } }
         public string ClimbPlant { get { return "You clamber up the plant and scurry through the hole at the top."; } }
+        public string ClumsyOaf { get { return "You clumsy oaf, you've done it again! I don't know how long I can keep this up. Do you want me to try reincarnating you again?"; } }
         public string Coins { get { return "Rare coins"; } }
         public string CoinsLongDesc { get { return "There are many coins here!"; } }
         public string CrackTooSmall { get { return "The crack is far too small for you to follow."; } }
@@ -56,6 +58,7 @@ namespace Pyramid2000.Engine.Implementation
         public string DiscardedStatueBox { get { return "There is a small statue box discarded nearby."; } }
         public string DomeUnclimbable { get { return "The dome is unclimbable."; } }
         public string DontBeRidiculous { get { return "Don't be ridiculous!"; } }
+        public string DontBlameMe { get { return "All right. But don't blame me if something goes wr.............\n                     ----  Poof !!  ----\nYou are engulfed in a cloud of orange smoke. Coughing and gasping, you emerge from the smoke."; } }
         public string DontKnowHow { get { return "I don't know how."; } }
         public string DontKnowHowToApplyWord { get { return "I don't know how to apply that word here."; } }
         public string DontKnowHowToLockUnlock { get { return "I don't know how to lock or unlock such a thing."; } }
@@ -79,7 +82,7 @@ namespace Pyramid2000.Engine.Implementation
         public string GlisteningPearlLongDesc { get { return "Off to one side lies a glistening pearl!"; } }
         public string Gold { get { return "Large gold nugget"; } }
         public string GoldLongDesc { get { return "There is a large sparkling nugget of gold here!"; } }
-        public string GottenKilled { get { return "Oh dear, you seem to have gotten yourself killed.  I might be able to help you out, but I've never really done this before."; } }
+        public string GottenKilled { get { return "Oh dear, you seem to have gotten yourself killed.  I might be able to help you out, but I've never really done this before. Do you want me to try to reincarnate you?"; } }
         public string Help { get { return "I'm as confused as you are!"; } }
         public string ImGame { get { return "I'm game. Would you care to explain how?"; } }
         public string ISeeNo { get { return "I see no {0} here."; } }
@@ -202,6 +205,7 @@ namespace Pyramid2000.Engine.Implementation
         public string Welcome { get { return "Welcome to pyramid!!"; } }
         public string What { get { return "What?"; } }
         public string WhatDoYouWantToDoWith { get { return "What do you want me to do with the {0} ?"; } }
+        public string WhereDidIPutMyOrangeSmoke { get { return "Okay, Now where did I put my orange smoke?... >Poof!< Everything disappears in  a dense cloud of orange smoke."; } }
         public string YouAreHolding { get { return "You are currently holding the following:"; } }
         public string YouHaveScored { get { return "You have scored {0: 0000;-0000} out of a possible 0220, using {1:0000} turns."; } }
     }

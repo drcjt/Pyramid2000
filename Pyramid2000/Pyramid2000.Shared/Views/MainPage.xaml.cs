@@ -198,7 +198,10 @@ namespace Pyramid2000
             // If player changed room then clear previous dialogue
             if (App.GameSettings.ClearDialogueOnRoomChange && _currentRoom != ViewModel.GamePartViewModel.CurrentRoomName)
             {
-                BodyParagraph.Inlines.Clear();
+                if (!ViewModel.GamePartViewModel.IsReincarnating)
+                {
+                    BodyParagraph.Inlines.Clear();
+                }
                 _currentRoom = ViewModel.GamePartViewModel.CurrentRoomName;
             }
 
@@ -247,7 +250,15 @@ namespace Pyramid2000
             }
 
             // Set the dialogue header to match the room description which may have changed
-            Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
+            if (ViewModel.GamePartViewModel.IsRoomLit)
+            {
+                Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
+            }
+            else
+            {
+                // TODO: Need to localise this text
+                Header.Text = "In the dark";
+            }
 
             // Experimental feature for touch selection of verbs/nouns
             /*

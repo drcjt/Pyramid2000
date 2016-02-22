@@ -35,10 +35,12 @@ namespace Pyramid2000.Engine.Interfaces
         string CantFillThat { get; }
         string CantFitThroughTwoInchSlit { get; }
         string CantPourThat { get; }
+        string CantReincarnate { get; }
         string Chest { get; }
         string ChestLongDesc { get; }
         string ClimbedPlant { get; }
         string ClimbPlant { get; }
+        string ClumsyOaf { get; }
         string Coins { get; }
         string CoinsLongDesc { get; }
         string CrackTooSmall { get; }
@@ -55,6 +57,7 @@ namespace Pyramid2000.Engine.Interfaces
         string DiscardedStatueBox { get; }
         string DomeUnclimbable { get; }
         string DontBeRidiculous { get; }
+        string DontBlameMe { get; }
         string DontKnowHow { get; }
         string DontKnowHowToApplyWord { get; }
         string DontKnowHowToLockUnlock { get; }
@@ -201,6 +204,7 @@ namespace Pyramid2000.Engine.Interfaces
         string Welcome { get; }
         string What { get; }
         string WhatDoYouWantToDoWith { get; }
+        string WhereDidIPutMyOrangeSmoke { get; }
         string YouAreHolding { get; }
         string YouHaveScored { get; }
     }

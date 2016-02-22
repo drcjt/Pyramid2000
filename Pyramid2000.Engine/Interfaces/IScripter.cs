@@ -31,6 +31,7 @@ namespace Pyramid2000.Engine.Interfaces
         bool AssertPackIsEmptyExceptForEmerald();
         bool SubScriptXAbortIfPass(Script script);
         bool Look();
+        void ProcessReincarnation(string input);
 
         bool ParseScript(Script script, IItem item);
         bool ParseScriptRec(Script script);

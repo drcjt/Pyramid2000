@@ -9,6 +9,8 @@ namespace Pyramid2000.Engine.Interfaces
         string LastRoom { get; set; }
         int TurnCount { get; set; }
         bool GameOver { get; set; }
+        bool AskToReincarnate { get; set; }
+        int ReincarnateCount { get; set; }
         int BatteryLife { get; set; }
         IList<IAchievement> GetAchievements();
 
