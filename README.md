@@ -15,7 +15,7 @@ The Pyramid2000 team is using [Appveyor](http://www.appveyor.com/) for automated
 
 The current Pyramid2000 coverage can be viewed here
 
-[Code Coverage via Coveralls](https://coveralls.io/github/drcjt/pyramid2000)
+[Code Coverage via Coveralls](https://coveralls.io/github/drcjt/Pyramid2000?branch=master)
 
 ###Thanks
 
