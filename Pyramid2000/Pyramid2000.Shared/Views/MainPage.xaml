@@ -84,7 +84,7 @@
                 </Paragraph>
             </RichTextBlock>
         </ScrollViewer>
-        <TextBox Margin="5,5,5,5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="{Binding SettingsPartViewModel.TextSize}" KeyUp="Command_KeyUp"/>
+        <TextBox Margin="5,5,5,5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="Command" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="{Binding SettingsPartViewModel.TextSize}" KeyUp="Command_KeyUp" GotFocus="Command_GotFocus"/>
         <ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
             <Grid>
                 <StackPanel x:Name="VerbWords" Orientation="Horizontal" Visibility="Collapsed"/>

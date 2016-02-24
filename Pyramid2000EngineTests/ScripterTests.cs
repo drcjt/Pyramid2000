@@ -15,7 +15,115 @@ namespace Pyramid2000EngineTests
 {
     [TestFixture]
     public class ScripterTests
-    {
+    {   
+        [Test]
+        public void PlayerDied_WhenPlayerFirstDies_ShouldAskPlayerIfTheyWantToReincarnate()
+        {
+            // Arrange
+            var resources = new Resources();
+            var settings = Mock.Of<IGameSettings>();
+            var printer = Mock.Of<IPrinter>();
+            var items = Mock.Of<IItems>();
+            var rooms = Mock.Of<IRooms>();
+            var player = Mock.Of<IPlayer>();
+            var gameState = Mock.Of<IGameState>();
+
+            settings.Trs80Mode = true;
+
+            var scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
+
+            // Act
+            var result = scripter.PlayerDied();
+
+            // Assert
+            Assert.IsTrue(result);
+            Assert.IsTrue(gameState.AskToReincarnate);
+            Assert.IsFalse(gameState.GameOver);
+            Mock.Get(printer).Verify(p => p.PrintLn(resources.GottenKilled));
+        }
+
+        [Test]
+        public void PlayerDied_WhenPlayerDiesForSecondTime_ShouldAskPlayerIfTheyWantToReincarnate()
+        {
+            // Arrange
+            var resources = new Resources();
+            var settings = Mock.Of<IGameSettings>();
+            var printer = Mock.Of<IPrinter>();
+            var items = Mock.Of<IItems>();
+            var rooms = Mock.Of<IRooms>();
+            var player = Mock.Of<IPlayer>();
+            var gameState = Mock.Of<IGameState>();
+
+            settings.Trs80Mode = true;
+            gameState.ReincarnateCount = 1;
+
+            var scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
+
+            // Act
+            var result = scripter.PlayerDied();
+
+            // Assert
+            Assert.IsTrue(result);
+            Assert.IsTrue(gameState.AskToReincarnate);
+            Assert.IsFalse(gameState.GameOver);
+            Mock.Get(printer).Verify(p => p.PrintLn(resources.ClumsyOaf));
+        }
+
+        [Test]
+        public void PlayerDied_WhenPlayerDiesForThirdTime_PlayerIsntAskedToReincarnate()
+        {
+            // Arrange
+            var resources = new Resources();
+            var settings = Mock.Of<IGameSettings>();
+            var printer = Mock.Of<IPrinter>();
+            var items = Mock.Of<IItems>();
+            var rooms = Mock.Of<IRooms>();
+            var player = Mock.Of<IPlayer>();
+            var gameState = Mock.Of<IGameState>();
+
+            settings.Trs80Mode = true;
+            gameState.ReincarnateCount = 2;
+
+            var scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
+
+            // Act
+            var result = scripter.PlayerDied();
+
+            // Assert
+            Assert.IsTrue(result);
+            Assert.IsFalse(gameState.AskToReincarnate);
+            Assert.IsTrue(gameState.GameOver);
+            Mock.Get(printer).Verify(p => p.PrintLn(resources.CantReincarnate));
+
+            // TODO Verify score is printed
+        }
+
+        [Test]
+        public void PlayerDied_WhenNotTrs80Mode_ScoreIsPrintedAndGameIsOver()
+        {
+            // Arrange
+            var resources = new Resources();
+            var settings = Mock.Of<IGameSettings>();
+            var printer = Mock.Of<IPrinter>();
+            var items = Mock.Of<IItems>();
+            var rooms = Mock.Of<IRooms>();
+            var player = Mock.Of<IPlayer>();
+            var gameState = Mock.Of<IGameState>();
+
+            settings.Trs80Mode = false;
+
+            var scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
+
+            // Act
+            var result = scripter.PlayerDied();
+
+            // Assert
+            Assert.IsTrue(result);
+            Assert.IsTrue(gameState.GameOver);
+
+            // TODO Verify score is printed
+        }
+
         [TestCase(false)]
         [TestCase(true)]
         public void TestRoomScripts(bool trs80Mode)

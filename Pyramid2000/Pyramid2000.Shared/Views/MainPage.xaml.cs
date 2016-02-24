@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Pyramid2000.ViewModels;
 using Windows.UI;
 using Pyramid2000.Controls;
+using Pyramid2000.Engine;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -41,7 +42,8 @@ namespace Pyramid2000
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             // Setup the game engine
-            ViewModel.GamePartViewModel.SetupGame(this);
+            IPrinter printer = new Printer(this, App.GameSettings);
+            ViewModel.GamePartViewModel.SetupGame(printer);
 
             // Setup the initial room description as the dialogue header
             Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
@@ -71,7 +73,7 @@ namespace Pyramid2000
         /// <param name="args">event arguments</param>
         private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
         {
-            if (FocusManager.GetFocusedElement()!= Command)
+            if (FocusManager.GetFocusedElement() != Command)
             {
                 Command.Focus(FocusState.Programmatic);
                 Command.Select(0, Command.Text.Length);
@@ -365,7 +367,8 @@ namespace Pyramid2000
 #endif
 
             // Re-setup the game engine
-            ViewModel.GamePartViewModel.SetupGame(this);
+            IPrinter printer = new Printer(this, App.GameSettings);
+            ViewModel.GamePartViewModel.SetupGame(printer);
 
             // Setup the header text as the initial room decription
             Header.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
@@ -453,5 +456,13 @@ namespace Pyramid2000
             ProcessCommand(e.Direction);
         }
         #endregion
+
+        private void Command_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Command.Text == "Enter Command Here")
+            {
+                Command.Text = "";
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Pyramid2000.ConsoleApplication
         {
             IResources resources = new Resources();
             IGameSettings settings = new GameSettings();
-            IPrinter printer = new ConsolePrinter();
+            IPrinter printer = new Printer(new ConsolePrinter(), settings);
             IItems items = new Items(resources);
             IPlayer player = new Player(items);
             player.CurrentRoom = "room_1";

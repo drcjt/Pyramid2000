@@ -18,7 +18,7 @@ namespace Pyramid2000.Engine
         {
             _settings = settings;
             _player = player;
-            _printer = new Printer(printer, _settings);
+            _printer = printer;
             _items = items;
             Resources = resources;
 

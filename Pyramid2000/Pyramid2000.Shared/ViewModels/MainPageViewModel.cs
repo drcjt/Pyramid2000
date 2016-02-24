@@ -52,7 +52,7 @@ namespace Pyramid2000.ViewModels
         public void SetupGame(IPrinter printer)
         {
             IResources resources = new Resources();
-            _printer = new Printer(printer, App.GameSettings);
+            _printer = printer;
             _items = new Items(resources);
             _player = new Player(_items);
             _player.CurrentRoom = "room_1";

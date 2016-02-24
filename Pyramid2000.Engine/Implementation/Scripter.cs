@@ -22,7 +22,7 @@ namespace Pyramid2000.Engine
         public Scripter(IPrinter printer, IItems items, IRooms rooms, IPlayer player, IGameState gameState, IGameSettings settings, IResources resources)
         {
             _settings = settings;
-            _printer = new Printer(printer, _settings);
+            _printer = printer;
             _items = items;
             _rooms = rooms;
             _player = player;
