@@ -13,7 +13,7 @@ build:
   verbosity: minimal
 
 test_script:
-    - packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"packages\NUnit.Console.3.0.1\tools\nunit3-console.exe" -targetargs:"/noshadow /domain:single  Pyramid2000EngineTests\bin\debug\Pyramid2000EngineTests.dll" -output:coverage.xml
+    - packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"packages\NUnit.Console.3.0.1\tools\nunit3-console.exe" -targetargs:"/domain:single  Pyramid2000EngineTests\bin\debug\Pyramid2000EngineTests.dll" -output:coverage.xml
 
 after_test: 
     - packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover coverage.xml
