@@ -1,5 +1,10 @@
 Pyramid2000
 ===========
-<img Src="https://drcjt.visualstudio.com/DefaultCollection/_apis/public/build/definitions/879ede9b-6255-4d62-a55e-b7472be72bbc/3/badge" /> 
+
+| | |
+| --- | --- |
+| **Build** | [![Build status](https://img.shields.io/appveyor/ci/drcjt/pyramid2000.svg)](https://ci.appveyor.com/project/drcjt/pyramid2000) |
+| **Coverage** | |
+[![Build History](https://buildstats.info/appveyor/chart/drcjt/pyramid2000)](https://ci.appveyor.com/project/drcjt/pyramid2000)
 
 Windows version of classic TRS-80 Pyramid 2000 adventure game
