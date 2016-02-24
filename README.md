@@ -1,5 +1,3 @@
-Pyramid2000
-===========
 
 | | |
 | --- | --- |
@@ -8,3 +6,20 @@ Pyramid2000
 [![Build History](https://buildstats.info/appveyor/chart/drcjt/pyramid2000)](https://ci.appveyor.com/project/drcjt/pyramid2000)
 
 Windows version of classic TRS-80 Pyramid 2000 adventure game
+
+###Build Server
+
+The Pyramid2000 team is using [Appveyor](http://www.appveyor.com/) for automated building.
+
+###Coverage
+
+The current Pyramid2000 coverage can be viewed here
+
+[Code Coverage via Coveralls](https://coveralls.io/github/drcjt/pyramid2000)
+
+###Thanks
+
+I would like to thank
+
+* [AppVeyor](https://ci.appveyor.com/project/drcjt/pyramid2000) for allowing free build CI services for Open Source projects
+* [Coveralls](https://coveralls.io/github/drcjt/pyramid2000) for allowing free services for Open Source projects
