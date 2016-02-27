@@ -128,19 +128,18 @@ namespace Pyramid2000EngineTests
         [TestCase(true)]
         public void TestRoomScripts(bool trs80Mode)
         {
-            IResources resources = new Resources();
-            IGameSettings settings = new GameSettings();
+            var resources = new Resources();
+            var settings = new GameSettings();
             settings.Trs80Mode = trs80Mode;
-            IPrinter printer = new Mock<IPrinter>().Object;
-            IItems items = new Items(resources);
-            IPlayer player = new Player(items);
+            var printer = new Mock<IPrinter>().Object;
+            var items = new Items(resources);
+            var player = new Player(items);
             player.CurrentRoom = "room_1";
-            IParser parser = new Parser(player, printer, items, settings, resources);
-            IRooms rooms = new Rooms(items, resources);
-            IGameState gameState = new GameState();
-            IScripter scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
-            IDefaultScripter defaultScripter = new DefaultScripter(resources);
+            var parser = new Parser(player, printer, items, settings, resources);
+            var rooms = new Rooms(items, resources);
+            var gameState = new GameState();
 
+            // Enumerate rooms and run all scripts
             var roomNames = rooms.GetRoomNames();
             foreach (var roomName in roomNames)
             {
@@ -150,12 +149,11 @@ namespace Pyramid2000EngineTests
                 var commands = room.Commands;
                 foreach (var command in commands.Values)
                 {
+                    // Create scripter
+                    var scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
                     scripter.ParseScriptRec(command);
                 }
             }
-
-            // Create scripter
-            // Enumerate rooms and run all scripts
         }
     }
 }
