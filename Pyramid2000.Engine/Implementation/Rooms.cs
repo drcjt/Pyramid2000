@@ -25,7 +25,7 @@ namespace Pyramid2000.Engine
 
         public Room GetRoom(string roomName)
         {
-            if (_rooms.ContainsKey(roomName))
+            if (roomName !=null && _rooms.ContainsKey(roomName))
             {
                 return _rooms[roomName];
             }
@@ -42,16 +42,20 @@ namespace Pyramid2000.Engine
         {
             var ro = GetRoom(roomName);
 
-            if (ro.Lit)
+            if (ro != null)
             {
-                return true;
-            }
+                if (ro.Lit)
+                {
+                    return true;
+                }
 
-            var lamp = _items.GetTopItemByName("#LAMP_on");
+                var lamp = _items.GetTopItemByName("#LAMP_on");
 
-            if (lamp.Location == roomName || lamp.Location == "pack")
-            {
-                return true;
+                if (lamp.Location == roomName || lamp.Location == "pack")
+                {
+                    return true;
+                }
+
             }
 
             return false;

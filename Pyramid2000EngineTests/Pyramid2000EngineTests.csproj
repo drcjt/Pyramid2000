@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultScripterTests.cs" />
     <Compile Include="ItemsTests.cs" />
     <Compile Include="ParserTests.cs" />
     <Compile Include="PlayerTests.cs" />
