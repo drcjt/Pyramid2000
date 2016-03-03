@@ -174,8 +174,10 @@ namespace Pyramid2000EngineTests
 
             var room2 = new Room() { Description = "Room 2 Description" };
 
+            var itemInPack = new Item();
+
             Mock.Get(items).Setup(i => i.GetExactItemByName("#LAMP_off")).Returns(lampOffItem);
-            Mock.Get(items).Setup(i => i.GetItemsAtLocation("pack")).Returns(new List<IItem>());
+            Mock.Get(items).Setup(i => i.GetItemsAtLocation("pack")).Returns(new List<IItem> { itemInPack });
             Mock.Get(rooms).Setup(r => r.GetRoom("room_2")).Returns(room2);
             Mock.Get(rooms).Setup(r => r.IsRoomLit(It.IsAny<string>())).Returns(true);
             Mock.Get(items).Setup(i => i.GetItemsAtLocation("room_2")).Returns(new List<IItem>());
@@ -189,6 +191,7 @@ namespace Pyramid2000EngineTests
             Assert.AreEqual("room_1", lampOffItem.Location);
             Assert.AreEqual("CurrentRoom", gameState.LastRoom);
             Assert.AreEqual("room_2", player.CurrentRoom);
+            Assert.AreEqual("CurrentRoom", itemInPack.Location);
 
             Mock.Get(printer).Verify(p => p.PrintLn(expectedMessage));
             Mock.Get(printer).Verify(p => p.PrintLn(room2.Description));
