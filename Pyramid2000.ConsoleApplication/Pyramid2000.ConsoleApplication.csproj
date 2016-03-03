@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandLineArgs.cs" />
     <Compile Include="ConsolePrinter.cs" />
     <Compile Include="Pyramid2000.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
