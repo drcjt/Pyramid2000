@@ -42,7 +42,7 @@ namespace Pyramid2000
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             // Setup the game engine
-            IPrinter printer = new Printer(this, App.GameSettings);
+            var printer = new Printer(this, App.GameSettings);
             ViewModel.GamePartViewModel.SetupGame(printer);
 
             // Setup the initial room description as the dialogue header

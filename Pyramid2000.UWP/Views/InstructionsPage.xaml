@@ -1,0 +1,82 @@
+﻿<Page x:Class="Pyramid2000.UWP.Views.InstructionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Behaviors="using:Template10.Behaviors"
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:c="using:Pyramid2000.UWP.Converters"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Pyramid2000.UWP.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Pyramid2000.UWP.ViewModels" mc:Ignorable="d">
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <!--  header  -->
+        <controls:PageHeader x:Name="pageHeader" Content="Instructions"
+                             Frame="{x:Bind Frame}"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True" />
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      BorderBrush="AntiqueWhite" 
+                      Height="Auto"
+                      Margin="5,5,5,5"
+                      RelativePanel.Below="pageHeader">
+            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" TextWrapping="Wrap">
+                	<Run Text="Before you lies the tip of the Great Lost Pyramid, its giant body concealed beneath a mountain of dry, shifting desert sand. Only the eroded tip stands as a mute tribute to the ancient ones-the builders of old, who wrought this silent crypt from stone dragged hundreds of miles under the ceaseless blazing heat of a contemptuous sun god. "/>
+                	<LineBreak/>
+                	<LineBreak/>
+                    <Run Text="The seal on the entrance is still unbroken-perhaps the tomb is still intact, untouched by the passage of time, impervious to the elements, still settled in quiet repose. There must be treasures. If even half of the stories about the Lost Pyramid are true. . . . . But why dwell on that now-you are here, and adventure awaits just a step away. "/>
+                	<LineBreak/>
+                	<LineBreak/>
+                	<Run Text="What? You say you've never used a computer to explore a pyramid before? Really, how interesting. That means you probably are not familiar with the Astral Projection technique that is required for exploration. Well, you look like an adventurous person, so I'll just briefly explain, and then you're on your own. The computer projects your Astral Image anywhere you wish, and you simply direct your image from the comfort of your keyboard. Of course you know that during the Astral Projection period; your Astral body is solid, vulnerable, and limited in understanding. "/>
+                	<LineBreak/>
+                	<LineBreak/>
+                	<Run Text="Because this technique is still new, there are many difficulties in using the procedure. For example, your Astral Image will only respond to one or two word commands, usually a verb and a noun (such as [GET LAMP]), or a verb and something else (such as [GO UP] or [GO EAST]). You will have to experiment to see which word combinations work. Usually directions can be just a single letter, such as [N] for North, [U] for Up, [NW] for Northwest, etc. You know, of course, that you must press [ENTER] after each complete command. "/>
+                	<LineBreak/>
+                	<LineBreak/>
+                	<Run Text="If you find treasures, you must return them to the entrance of the Pyramid in order to be credited with the discovery. Picking up a treasure within the Pyramid will earn you credits, but not as many as when you deposit the treasures at the entrance. To find the number of credits you have earned at any point, type [SCORE] and press [ENTER]. If you forget your location, simply type [LOOK] and press [ENTER] to find your present location. Type [INVENTORY] for a listing of the items you are currently holding. "/>
+                	<LineBreak/>
+                	<LineBreak/>
+                	<Run Text="There are certain key words that will help you on your great adventure. For instance, to pick something up, you might have to [GET] or [TAKE] it. Or you may have to [DROP] or [THROW] something. There is even a chance you might have to [CLIMB] once or twice, but where you do these things, you will have to figure out for yourself. Also, some things interact with others. For example, some objects cannot be caught because of something you might already be carrying-and some objects cannot be carried until you [GET] a box to hold the object. "/>
+                	<LineBreak/>
+                	<LineBreak/>
+                	<Run Text="It won't be easy, but it will be fascinating and interesting. You might consider making a map as you explore each of the rooms and corridors in the Pyramid. It will save you from retracing your steps-it can't hurt, and it might help."/>
+            </TextBlock>
+        </ScrollViewer>
+
+    </RelativePanel>
+
+</Page>

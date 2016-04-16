@@ -1,108 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using System.Threading.Tasks;
+using Pyramid2000.UWP.Services.SettingsServices;
+using Windows.ApplicationModel.Activation;
+using Template10.Controls;
+using Template10.Common;
+using System;
+using System.Linq;
+using Pyramid2000.Engine.Interfaces;
+using Pyramid2000.Engine;
 
 namespace Pyramid2000.UWP
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
-    sealed partial class App : Application
+    /// Documentation on APIs used in this page:
+    /// https://github.com/Windows-XAML/Template10/wiki
+
+    sealed partial class App : Template10.Common.BootStrapper
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public App()
         {
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
-            this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            InitializeComponent();
+            SplashFactory = (e) => new Views.Splash(e);
+
+            #region App settings
+
+            var _settings = SettingsService.Instance;
+            RequestedTheme = _settings.AppTheme;
+            CacheMaxDuration = _settings.CacheMaxDuration;
+            ShowShellBackButton = true;
+
+            #endregion
         }
 
-        /// <summary>
-        /// Invoked when the application is launched normally by the end user.  Other entry points
-        /// will be used such as when the application is launched to open a specific file.
-        /// </summary>
-        /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        private static IGameSettings _gameSettings = null;
+        public static IGameSettings GameSettings
         {
-
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
+            get
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
-
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
-            {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (_gameSettings == null)
                 {
-                    //TODO: Load state from previously suspended application
+                    _gameSettings = new GameSettings();
+                    _gameSettings.Trs80Mode = true;
+                    _gameSettings.ClearDialogueOnRoomChange = true;
                 }
-
-                // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
+                return _gameSettings;
             }
+        }
 
-            if (rootFrame.Content == null)
+        public override async Task OnInitializeAsync(IActivatedEventArgs args)
+        {
+            if (Window.Current.Content as ModalDialog == null)
             {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                // create a new frame 
+                var nav = NavigationServiceFactory(BackButton.Attach, ExistingContent.Include);
+                // create modal root
+                Window.Current.Content = new ModalDialog
+                {
+                    DisableBackButtonWhenModal = true,
+                    Content = new Views.Shell(nav),
+                    ModalContent = new Views.Busy(),
+                };
             }
-            // Ensure the current window is active
-            Window.Current.Activate();
+            await Task.CompletedTask;
         }
 
-        /// <summary>
-        /// Invoked when Navigation to a certain page fails
-        /// </summary>
-        /// <param name="sender">The Frame which failed navigation</param>
-        /// <param name="e">Details about the navigation failure</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
-        }
+            // long-running startup tasks go here
 
-        /// <summary>
-        /// Invoked when application execution is being suspended.  Application state is saved
-        /// without knowing whether the application will be terminated or resumed with the contents
-        /// of memory still intact.
-        /// </summary>
-        /// <param name="sender">The source of the suspend request.</param>
-        /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
-        {
-            var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
-            deferral.Complete();
+            NavigationService.Navigate(typeof(Views.MainPage));
+            await Task.CompletedTask;
+
+            // hide phone statusbar
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
+            }
+
         }
     }
 }
+
