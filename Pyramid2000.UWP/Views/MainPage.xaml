@@ -61,7 +61,7 @@
 
         <ScrollViewer x:Name="BodyScroller" 
                       RelativePanel.Below="pageHeader" 
-                      RelativePanel.Above="FooterPlaceHolder"
+                      RelativePanel.Above="Command"
                       RelativePanel.AlignLeftWithPanel="True"
                       RelativePanel.AlignRightWithPanel="True"
                       Margin="5,5,5,5"
@@ -70,7 +70,7 @@
                            x:Name="BodyTextBlock" HorizontalAlignment="Left" 
                            TextWrapping="Wrap" VerticalAlignment="Top">
                 <Paragraph x:Name="BodyParagraph" 
-                           FontSize="{Binding SettingsPartViewModel.TextSize}" 
+                           FontSize="{Binding TextSize}" 
                            LineHeight="0">
                     <Run x:Name="Body"/>
                 </Paragraph>
@@ -83,7 +83,7 @@
                  RelativePanel.Above="FooterPlaceHolder"
                  x:Name="Command" HorizontalAlignment="Stretch" 
                  TextWrapping="Wrap" VerticalAlignment="Center" 
-                 FontSize="{Binding SettingsPartViewModel.TextSize}"
+                 FontSize="{Binding TextSize}"
                  KeyUp="Command_KeyUp"/>
 
         <Grid x:Name="FooterPlaceHolder"

@@ -38,7 +38,7 @@ namespace Pyramid2000.UWP.ViewModels
         public int TextSize
         {
             get { return _settings.TextSize; }
-            set { _settings.TextSize = value; }
+            set { _settings.TextSize = value; base.RaisePropertyChanged(); }
         }
     }
 

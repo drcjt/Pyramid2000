@@ -65,14 +65,26 @@
             <PivotItem DataContext="{Binding SettingsPartViewModel}" Header="Settings">
                 <ScrollViewer Margin="0,12,-12,0" HorizontalContentAlignment="Left"
                               VerticalScrollBarVisibility="Auto">
-                    <RelativePanel HorizontalAlignment="Left">
+                    <RelativePanel HorizontalAlignment="Stretch">
 
                         <ToggleSwitch x:Name="UseLightThemeToggleSwitch" Header="Use Light Theme"
                                       IsOn="{Binding UseLightThemeButton, Mode=TwoWay}"
                                       OffContent="Dark theme" OnContent="Light theme"
                                       RelativePanel.AlignLeftWithPanel="True"
                                       RelativePanel.AlignTopWithPanel="True" />
-                       
+
+                        <StackPanel Orientation="Vertical" 
+                                    RelativePanel.Below="UseLightThemeToggleSwitch"
+                                    RelativePanel.AlignLeftWithPanel="True"
+                                    RelativePanel.AlignRightWithPanel="True">
+                            <TextBlock Text="Text size" Style="{ThemeResource BodyTextBlockStyle}"/>
+                            <Border Height="60" BorderThickness="1" BorderBrush="Gray" Margin="10,10,10,10">
+                                <TextBlock Text="Sample" VerticalAlignment="Bottom" FontSize="{Binding ElementName=TextSize, Path=Value}" Style="{ThemeResource BodyTextBlockStyle}" Margin="10,10,10,10"/>
+                            </Border>
+                            <Slider Minimum="15" Maximum="39" TickFrequency="4" Name="TextSize" Value="{Binding TextSize, Mode=TwoWay}"></Slider>
+                        </StackPanel>
+
+
                     </RelativePanel>
 
                 </ScrollViewer>

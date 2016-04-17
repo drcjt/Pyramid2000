@@ -9,16 +9,20 @@ using Pyramid2000.Engine.Interfaces;
 using Pyramid2000.Engine.Implementation;
 using Pyramid2000.Engine;
 using System.Collections.ObjectModel;
+using Windows.Foundation;
+using Windows.Storage;
 
 namespace Pyramid2000.UWP.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
+        Services.SettingsServices.SettingsService _SettingService;
+
         public GamePartViewModel GamePartViewModel { get; } = new GamePartViewModel();
-        public SettingsPartViewModel SettingsPartViewModel { get; } = new SettingsPartViewModel();
 
         public MainPageViewModel()
         {
+            _SettingService = Services.SettingsServices.SettingsService.Instance;
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
             }
@@ -26,6 +30,9 @@ namespace Pyramid2000.UWP.ViewModels
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
+            // Ensure setting changes are respected
+            SettingsChanged(null, null);
+
             if (suspensionState.Any())
             {
                 //Value = suspensionState[nameof(Value)]?.ToString();
@@ -48,12 +55,18 @@ namespace Pyramid2000.UWP.ViewModels
             await Task.CompletedTask;
         }
 
+        private void SettingsChanged(Windows.Storage.ApplicationData sender, object args)
+        {
+            RaisePropertyChanged(nameof(TextSize));
+        }
+
         public void GotoSettings() =>
             NavigationService.Navigate(typeof(Views.SettingsPage), 0);
 
         public void GotoAbout() =>
             NavigationService.Navigate(typeof(Views.SettingsPage), 1);
 
+        public int TextSize { get { return _SettingService.TextSize; } }
     }
 
     public class GamePartViewModel : ViewModelBase
