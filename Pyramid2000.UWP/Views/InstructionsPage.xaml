@@ -54,7 +54,7 @@
                       Height="Auto"
                       Margin="5,5,5,5"
                       RelativePanel.Below="pageHeader">
-            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" TextWrapping="Wrap">
+            <TextBlock x:Name="Instructions" Style="{ThemeResource BodyTextBlockStyle}" TextWrapping="Wrap">
                 	<Run Text="Before you lies the tip of the Great Lost Pyramid, its giant body concealed beneath a mountain of dry, shifting desert sand. Only the eroded tip stands as a mute tribute to the ancient ones-the builders of old, who wrought this silent crypt from stone dragged hundreds of miles under the ceaseless blazing heat of a contemptuous sun god. "/>
                 	<LineBreak/>
                 	<LineBreak/>

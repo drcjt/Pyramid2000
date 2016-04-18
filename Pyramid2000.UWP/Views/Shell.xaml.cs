@@ -18,6 +18,11 @@ namespace Pyramid2000.UWP.Views
         {
             Instance = this;
             InitializeComponent();
+
+            #region Temporary Fix for Template10 dark/light theme settings not working properly. Should be fixed in Template10 1.1.9
+            Services.SettingsServices.SettingsService _settings = Services.SettingsServices.SettingsService.Instance;
+            HamburgerMenu.RefreshStyles(_settings.AppTheme);
+            #endregion
         }
 
         public Shell(INavigationService navigationService) : this()

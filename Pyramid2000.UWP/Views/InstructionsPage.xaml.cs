@@ -27,5 +27,17 @@ namespace Pyramid2000.UWP.Views
             this.InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            UpdateInstructionsFontSize();
+            base.OnNavigatedTo(e);
+        }
+
+        private void UpdateInstructionsFontSize()
+        {
+            Services.SettingsServices.SettingsService _settings = Services.SettingsServices.SettingsService.Instance;
+            this.Instructions.FontSize = _settings.TextSize;
+        }
     }
 }
