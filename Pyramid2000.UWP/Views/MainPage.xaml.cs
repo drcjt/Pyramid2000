@@ -1,9 +1,5 @@
-using System;
-using Pyramid2000.UWP.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using System.Collections.ObjectModel;
 using Pyramid2000.Engine.Interfaces;
 using Windows.UI.Xaml.Documents;
 using Pyramid2000.Engine;
@@ -104,7 +100,7 @@ namespace Pyramid2000.UWP.Views
             if (ViewModel.GamePartViewModel.GameOver)
             {
                 Command.Visibility = Visibility.Collapsed;
-                //Restart.Visibility = Visibility.Visible;
+                Restart.Visibility = Visibility.Visible;
                 Command.IsEnabled = false;
             }
 
@@ -119,15 +115,38 @@ namespace Pyramid2000.UWP.Views
                 pageHeader.Text = "In the dark";
             }
 
-            // Experimental feature for touch selection of verbs/nouns
-            /*
-            VerbWords.Visibility = Visibility.Visible;
-            NounWords.Visibility = Visibility.Collapsed;
-            */
-
             // Clear the command text box
             Command.Text = "";
         }
+
+        #region Restart the game
+        /// <summary>
+        /// Handler for restarting the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            // Make the command text box visible
+            Command.Visibility = Visibility.Visible;
+
+            // Hide the restart button
+            Restart.Visibility = Visibility.Collapsed;
+
+            // Enable the command text box
+            Command.IsEnabled = true;
+
+            // Clear the dialogue
+            Body.Text = "";
+
+            // Re-setup the game engine
+            IPrinter printer = new Printer(this, App.GameSettings);
+            ViewModel.GamePartViewModel.SetupGame(printer);
+
+            // Setup the header text as the initial room decription
+            pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
+        }
+        #endregion
 
         /// <summary>
         /// Hook enter being pressed in the command text box and use this as
@@ -161,14 +180,8 @@ namespace Pyramid2000.UWP.Views
             FooterPlaceHolder.Height = e.OccludedRect.Height;
             FooterPlaceHolder.Visibility = Visibility.Visible;
 
-            // Hide the compass
-            //Compass.Visibility = Visibility.Collapsed;
-
             BodyScroller.UpdateLayout();
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
-
-            // Hide the command bar
-            //CommandBar.Visibility = Visibility.Collapsed;
         }
 
         /// <summary>
@@ -182,14 +195,8 @@ namespace Pyramid2000.UWP.Views
             FooterPlaceHolder.Height = 0;
             FooterPlaceHolder.Visibility = Visibility.Collapsed;
 
-            // Show the compass if required
-            //Compass.Visibility = ViewModel.SettingsPartViewModel.ShowCompass ? Visibility.Visible : Visibility.Collapsed;
-
             BodyScroller.UpdateLayout();
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
-
-            // Show the command bar
-            //CommandBar.Visibility = Visibility.Visible;
         }
         #endregion
 

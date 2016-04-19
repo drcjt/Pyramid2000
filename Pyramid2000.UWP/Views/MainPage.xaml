@@ -86,6 +86,17 @@
                  FontSize="{Binding TextSize}"
                  KeyUp="Command_KeyUp"/>
 
+        <Button x:Name="Restart" 
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Above="FooterPlaceHolder"
+                Content="Restart" 
+                HorizontalAlignment="Stretch" 
+                Visibility="Collapsed" 
+                Margin="5,5,5,5"
+                Click="Restart_Click" 
+                FontSize="{Binding TextSize}"/>
+
         <Grid x:Name="FooterPlaceHolder"
               RelativePanel.AlignBottomWithPanel="True"/>
 
