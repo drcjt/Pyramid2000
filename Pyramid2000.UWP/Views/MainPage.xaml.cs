@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Documents;
 using Pyramid2000.Engine;
 using Windows.UI.Xaml.Input;
 using Windows.UI.ViewManagement;
+using Windows.UI.Xaml.Navigation;
 
 namespace Pyramid2000.UWP.Views
 {
@@ -26,6 +27,22 @@ namespace Pyramid2000.UWP.Views
             // Setup the initial room description as the dialogue header
             pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
 
+            // Ensure all input goes to the textbox
+            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
+        }
+
+        /// <summary>
+        /// Handles all key presses whilst on this page and ensures focus is set on the textbox
+        /// </summary>
+        /// <param name="sender">sender of event</param>
+        /// <param name="args">event arguments</param>
+        private void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
+        {
+            if (FocusManager.GetFocusedElement() != Command)
+            {
+                Command.Focus(FocusState.Programmatic);
+                //Command.Select(0, Command.Text.Length);
+            }
         }
 
         #region IPrinter implementation
@@ -139,6 +156,8 @@ namespace Pyramid2000.UWP.Views
             // Clear the dialogue
             Body.Text = "";
 
+            Command.Focus(FocusState.Programmatic);
+
             // Re-setup the game engine
             IPrinter printer = new Printer(this, App.GameSettings);
             ViewModel.GamePartViewModel.SetupGame(printer);
@@ -199,6 +218,5 @@ namespace Pyramid2000.UWP.Views
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
         }
         #endregion
-
     }
 }
