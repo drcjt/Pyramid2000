@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Documents;
 using Pyramid2000.Engine;
 using Windows.UI.Xaml.Input;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml.Navigation;
+using Pyramid2000.UWP.Services.GameSettingsServices;
 
 namespace Pyramid2000.UWP.Views
 {
@@ -21,7 +21,7 @@ namespace Pyramid2000.UWP.Views
             _inputPane.Hiding += InputPaneHiding;
 
             // Setup the game engine
-            var printer = new Printer(this, App.GameSettings);
+            var printer = new Printer(this, GameSettingsService.Instance);
             ViewModel.GamePartViewModel.SetupGame(printer);
 
             // Setup the initial room description as the dialogue header
@@ -68,7 +68,7 @@ namespace Pyramid2000.UWP.Views
         public void Print(string text)
         {
             // If player changed room then clear previous dialogue
-            if (App.GameSettings.ClearDialogueOnRoomChange && _currentRoom != ViewModel.GamePartViewModel.CurrentRoomName)
+            if (GameSettingsService.Instance.ClearDialogueOnRoomChange && _currentRoom != ViewModel.GamePartViewModel.CurrentRoomName)
             {
                 if (!ViewModel.GamePartViewModel.IsReincarnating)
                 {
@@ -159,7 +159,7 @@ namespace Pyramid2000.UWP.Views
             Command.Focus(FocusState.Programmatic);
 
             // Re-setup the game engine
-            IPrinter printer = new Printer(this, App.GameSettings);
+            IPrinter printer = new Printer(this, GameSettingsService.Instance);
             ViewModel.GamePartViewModel.SetupGame(printer);
 
             // Setup the header text as the initial room decription
@@ -184,7 +184,7 @@ namespace Pyramid2000.UWP.Views
 
         #region Input Pane Handling
         // Input pane for touch enabled devices capable of showing on screen keyboards
-        Windows.UI.ViewManagement.InputPane _inputPane = Windows.UI.ViewManagement.InputPane.GetForCurrentView();
+        InputPane _inputPane = InputPane.GetForCurrentView();
 
         /// <summary>
         /// Handler for the input pane being shown

@@ -8,6 +8,7 @@ using System;
 using System.Linq;
 using Pyramid2000.Engine.Interfaces;
 using Pyramid2000.Engine;
+using Pyramid2000.UWP.Services.GameSettingsServices;
 
 namespace Pyramid2000.UWP
 {
@@ -31,22 +32,12 @@ namespace Pyramid2000.UWP
             CacheMaxDuration = _settings.CacheMaxDuration;
             ShowShellBackButton = true;
 
-            #endregion
-        }
-
-        private static IGameSettings _gameSettings = null;
-        public static IGameSettings GameSettings
-        {
-            get
+            // On Mobile set Clear Dialog on Room change to true
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
-                if (_gameSettings == null)
-                {
-                    _gameSettings = new GameSettings();
-                    _gameSettings.Trs80Mode = true;
-                    _gameSettings.ClearDialogueOnRoomChange = true;
-                }
-                return _gameSettings;
+                GameSettingsService.Instance.ClearDialogueOnRoomChange = true;
             }
+            #endregion
         }
 
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
@@ -78,7 +69,6 @@ namespace Pyramid2000.UWP
             {
                 await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
             }
-
         }
     }
 }

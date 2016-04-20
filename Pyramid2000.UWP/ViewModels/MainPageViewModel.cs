@@ -11,6 +11,7 @@ using Pyramid2000.Engine;
 using System.Collections.ObjectModel;
 using Windows.Foundation;
 using Windows.Storage;
+using Pyramid2000.UWP.Services.GameSettingsServices;
 
 namespace Pyramid2000.UWP.ViewModels
 {
@@ -86,10 +87,10 @@ namespace Pyramid2000.UWP.ViewModels
             _items = new Items(resources);
             _player = new Player(_items);
             _player.CurrentRoom = "room_1";
-            _parser = new Parser(_player, _printer, _items, App.GameSettings, resources);
+            _parser = new Parser(_player, _printer, _items, GameSettingsService.Instance, resources);
             _rooms = new Rooms(_items, resources);
             _gameState = new GameState();
-            IScripter scripter = new Scripter(_printer, _items, _rooms, _player, _gameState, App.GameSettings, resources);
+            IScripter scripter = new Scripter(_printer, _items, _rooms, _player, _gameState, GameSettingsService.Instance, resources);
             _rooms.Scripter = scripter;
 
             IDefaultScripter defaultScripter = new DefaultScripter(resources);
@@ -207,7 +208,7 @@ namespace Pyramid2000.UWP.ViewModels
 
         public bool IsRoomLit { get { return _rooms.IsRoomLit(CurrentRoomName); } }
 
-        public IGameSettings Settings { get { return App.GameSettings; } }
+        public IGameSettings Settings { get { return GameSettingsService.Instance; } }
 
         private ObservableCollection<IAchievement> _achievements = new ObservableCollection<IAchievement>();
         public ObservableCollection<IAchievement> Achievements { get { return _achievements; } }

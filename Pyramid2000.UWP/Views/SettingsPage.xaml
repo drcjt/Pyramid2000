@@ -67,16 +67,11 @@
                               VerticalScrollBarVisibility="Auto">
                     <RelativePanel HorizontalAlignment="Stretch">
 
-                        <ToggleSwitch x:Name="UseLightThemeToggleSwitch" Header="Use Light Theme"
-                                      IsOn="{Binding UseLightThemeButton, Mode=TwoWay}"
-                                      OffContent="Dark theme" OnContent="Light theme"
-                                      RelativePanel.AlignLeftWithPanel="True"
-                                      RelativePanel.AlignTopWithPanel="True" />
-
-                        <StackPanel Orientation="Vertical" 
-                                    RelativePanel.Below="UseLightThemeToggleSwitch"
+                        <StackPanel x:Name="TextSizePanel"
+                                    Orientation="Vertical" 
                                     RelativePanel.AlignLeftWithPanel="True"
-                                    RelativePanel.AlignRightWithPanel="True">
+                                    RelativePanel.AlignRightWithPanel="True"
+                                    RelativePanel.AlignTopWithPanel="True">
                             <TextBlock Text="Text size" Style="{ThemeResource BodyTextBlockStyle}"/>
                             <Border Height="60" BorderThickness="1" BorderBrush="Gray" Margin="10,10,10,10">
                                 <TextBlock Text="Sample" VerticalAlignment="Bottom" FontSize="{Binding ElementName=TextSize, Path=Value}" Style="{ThemeResource BodyTextBlockStyle}" Margin="10,10,10,10"/>
@@ -84,6 +79,32 @@
                             <Slider Minimum="15" Maximum="39" TickFrequency="4" Name="TextSize" Value="{Binding TextSize, Mode=TwoWay}"></Slider>
                         </StackPanel>
 
+                        <ToggleSwitch x:Name="UseLightThemeToggleSwitch" Header="Use Light Theme"
+                                      IsOn="{Binding UseLightThemeButton, Mode=TwoWay}"
+                                      OffContent="Dark theme" OnContent="Light theme"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="TextSizePanel"/>
+                        
+                        <ToggleSwitch x:Name="UseAllCaps" Header="Use All Caps"
+                                      IsOn="{Binding UseAllCaps, Mode=TwoWay}"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="UseLightThemeToggleSwitch"/>
+
+                        <ToggleSwitch x:Name="UseTRS80Mode" Header="Use TRS-80 Mode"
+                                      IsOn="{Binding UseTrs80Mode, Mode=TwoWay}"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="UseAllCaps"/>
+
+                        <ToggleSwitch x:Name="ClearDialogueOnRoomChange" 
+                                      Header="Clear Dialogue on room change"
+                                      IsOn="{Binding ClearDialogueOnRoomChange, Mode=TwoWay}"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="UseTRS80Mode"/>
+
+                        <ToggleSwitch x:Name="ShowCompass" Header="Show Compass"
+                                      IsOn="{Binding ShowCompass, Mode=TwoWay}"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.Below="ClearDialogueOnRoomChange"/>
 
                     </RelativePanel>
 
