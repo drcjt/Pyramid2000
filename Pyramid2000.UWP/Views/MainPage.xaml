@@ -7,6 +7,7 @@
       xmlns:controls="using:Template10.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:Pyramid2000.UWP.Views"
+      xmlns:pyramidcontrols="using:Pyramid2000.Controls"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:vm="using:Pyramid2000.UWP.ViewModels" mc:Ignorable="d">
 
@@ -61,7 +62,7 @@
 
         <ScrollViewer x:Name="BodyScroller" 
                       RelativePanel.Below="pageHeader" 
-                      RelativePanel.Above="Command"
+                      RelativePanel.Above="BottomPanel"
                       RelativePanel.AlignLeftWithPanel="True"
                       RelativePanel.AlignRightWithPanel="True"
                       Margin="5,5,5,5"
@@ -77,7 +78,11 @@
             </RichTextBlock>
         </ScrollViewer>
 
-        <TextBox Margin="5,5,5,5" 
+        <RelativePanel x:Name="BottomPanel"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.AlignBottomWithPanel="True">
+            <TextBox Margin="5,5,5,5" 
                  RelativePanel.AlignLeftWithPanel="True"
                  RelativePanel.AlignRightWithPanel="True"
                  RelativePanel.Above="FooterPlaceHolder"
@@ -86,7 +91,7 @@
                  FontSize="{Binding TextSize}"
                  KeyUp="Command_KeyUp"/>
 
-        <Button x:Name="Restart" 
+            <Button x:Name="Restart" 
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.Above="FooterPlaceHolder"
@@ -97,8 +102,26 @@
                 Click="Restart_Click" 
                 FontSize="{Binding TextSize}"/>
 
-        <Grid x:Name="FooterPlaceHolder"
+            <Grid x:Name="FooterPlaceHolder"
               RelativePanel.AlignBottomWithPanel="True"/>
+
+        </RelativePanel>
+
+        <Viewbox 
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Bottom" 
+            Height="200" 
+            Width="200"
+            RelativePanel.Below="pageHeader"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignBottomWith="BodyScroller"
+            >
+            <pyramidcontrols:CompassControl 
+                x:Name="Compass" 
+                Opacity="0.7" 
+                IsTabStop="False"
+                ClickHandler="CompassControl_ClickHandler"/>
+        </Viewbox>
 
     </RelativePanel>
 </Page>

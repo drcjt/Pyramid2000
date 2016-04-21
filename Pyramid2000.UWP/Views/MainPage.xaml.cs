@@ -6,6 +6,8 @@ using Pyramid2000.Engine;
 using Windows.UI.Xaml.Input;
 using Windows.UI.ViewManagement;
 using Pyramid2000.UWP.Services.GameSettingsServices;
+using Pyramid2000.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace Pyramid2000.UWP.Views
 {
@@ -14,7 +16,7 @@ namespace Pyramid2000.UWP.Views
         public MainPage()
         {
             InitializeComponent();
-            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            NavigationCacheMode = NavigationCacheMode.Enabled;
 
             // Add handlers for showing/hiding the input pane (on screen keyboard)
             _inputPane.Showing += InputPaneShowing;
@@ -119,6 +121,7 @@ namespace Pyramid2000.UWP.Views
                 Command.Visibility = Visibility.Collapsed;
                 Restart.Visibility = Visibility.Visible;
                 Command.IsEnabled = false;
+                Compass.IsEnabled = false;
             }
 
             // Set the dialogue header to match the room description which may have changed
@@ -136,12 +139,25 @@ namespace Pyramid2000.UWP.Views
             Command.Text = "";
         }
 
-        #region Restart the game
         /// <summary>
-        /// Handler for restarting the game
+        /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // Show the compass if configured to be visible
+            Compass.Visibility = ViewModel.ShowCompass ? Visibility.Visible : Visibility.Collapsed;
+
+            base.OnNavigatedTo(e);
+        }
+
+        #region Restart the game
+            /// <summary>
+            /// Handler for restarting the game
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
         private void Restart_Click(object sender, RoutedEventArgs e)
         {
             // Make the command text box visible
@@ -152,6 +168,8 @@ namespace Pyramid2000.UWP.Views
 
             // Enable the command text box
             Command.IsEnabled = true;
+
+            Compass.IsEnabled = true;
 
             // Clear the dialogue
             Body.Text = "";
@@ -193,6 +211,7 @@ namespace Pyramid2000.UWP.Views
         /// <param name="e"></param>
         private void InputPaneShowing(InputPane sender, InputPaneVisibilityEventArgs e)
         {
+            Compass.Visibility = Visibility.Collapsed;
             e.EnsuredFocusedElementInView = true;
 
             // Show the footer to force the dialogue to not appear beneath the input pane
@@ -216,6 +235,18 @@ namespace Pyramid2000.UWP.Views
 
             BodyScroller.UpdateLayout();
             BodyScroller.ChangeView(null, BodyScroller.ExtentHeight, null);
+
+            if (ViewModel.ShowCompass)
+            {
+                Compass.Visibility = Visibility.Visible;
+            }
+        }
+        #endregion
+
+        #region Compass Control Handlers
+        private void CompassControl_ClickHandler(object sender, CompassClickEventArgs e)
+        {
+            ProcessCommand(e.Direction);
         }
         #endregion
     }

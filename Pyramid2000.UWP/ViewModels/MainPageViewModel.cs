@@ -68,6 +68,7 @@ namespace Pyramid2000.UWP.ViewModels
             NavigationService.Navigate(typeof(Views.SettingsPage), 1);
 
         public int TextSize { get { return _SettingService.TextSize; } }
+        public bool ShowCompass { get { return _SettingService.ShowCompass; } }
     }
 
     public class GamePartViewModel : ViewModelBase
