@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Linq;
 using Template10.Common;
@@ -34,6 +35,10 @@ namespace Pyramid2000.UWP.Views
         {
             MyHamburgerMenu.NavigationService = navigationService;
         }
+
+        private async void RateAndReviewTapped(object sender, RoutedEventArgs e)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=33ddb4b9-5fc5-4a4d-bec3-5adc282c6b3a"));
+        }
     }
 }
-

@@ -36,7 +36,7 @@ namespace Pyramid2000.UWP.ViewModels
 
             if (suspensionState.Any())
             {
-                //Value = suspensionState[nameof(Value)]?.ToString();
+                GamePartViewModel.State = suspensionState["GameState"]?.ToString();
             }
             await Task.CompletedTask;
         }
@@ -45,7 +45,7 @@ namespace Pyramid2000.UWP.ViewModels
         {
             if (suspending)
             {
-                //suspensionState[nameof(Value)] = Value;
+                suspensionState["GameState"] = GamePartViewModel.State;
             }
             await Task.CompletedTask;
         }

@@ -35,10 +35,10 @@
 
         <Controls:HamburgerMenu.SecondaryButtons>
             <!--  settingspage button  -->
-            <Controls:HamburgerButtonInfo x:Name="RateAndReviewButton">
+            <Controls:HamburgerButtonInfo x:Name="RateAndReviewButton" ButtonType="Command" Tapped="RateAndReviewTapped">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Width="48" Height="48"
-                                Symbol="Like"/>
+                                Symbol="Emoji2"/>
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
                                Text="Rate and Review"/>
                 </StackPanel>
