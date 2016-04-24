@@ -172,7 +172,14 @@ namespace Pyramid2000.Engine
                 state += locationOfItem + ",";
             }
 
-            state = "LOAD " + state + _player.CurrentRoom + "," + _gameState.LastRoom + "," + _gameState.TurnCount + "," + _gameState.GameOver + "," + _gameState.BatteryLife;
+            state = "LOAD " 
+                + state 
+                + _player.CurrentRoom 
+                + "," + _gameState.LastRoom 
+                + "," + _gameState.TurnCount 
+                + "," + _gameState.GameOver 
+                + "," + _gameState.BatteryLife 
+                + "," + _gameState.ReincarnateCount;
 
             return state;
         }
@@ -212,6 +219,7 @@ namespace Pyramid2000.Engine
             _gameState.TurnCount = Convert.ToInt32(splitstate[index++]);
             _gameState.GameOver = Convert.ToBoolean(splitstate[index++]);
             _gameState.BatteryLife = Convert.ToInt32(splitstate[index++]);
+            _gameState.ReincarnateCount = Convert.ToInt32(splitstate[index++]);
 
             _printer.Clear();
 

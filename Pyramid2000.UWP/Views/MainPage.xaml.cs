@@ -8,6 +8,7 @@ using Windows.UI.ViewManagement;
 using Pyramid2000.UWP.Services.GameSettingsServices;
 using Pyramid2000.Controls;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
 
 namespace Pyramid2000.UWP.Views
 {
@@ -24,7 +25,8 @@ namespace Pyramid2000.UWP.Views
 
             // Setup the game engine
             var printer = new Printer(this, GameSettingsService.Instance);
-            ViewModel.GamePartViewModel.SetupGame(printer);
+            string state = ApplicationData.Current.LocalSettings.Values["GameState"] as string;
+            ViewModel.GamePartViewModel.SetupGame(printer, state);
 
             // Setup the initial room description as the dialogue header
             pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
@@ -115,6 +117,9 @@ namespace Pyramid2000.UWP.Views
             // Process the command using the game engine
             ViewModel.GamePartViewModel.ProcessPlayerInputCommand.Execute(Command.Text);
 
+            // Save the application state
+            ApplicationData.Current.LocalSettings.Values["GameState"] = ViewModel.GamePartViewModel.State;
+
             // If the game is over then show the restart button in place of the command text box
             if (ViewModel.GamePartViewModel.GameOver)
             {
@@ -122,6 +127,9 @@ namespace Pyramid2000.UWP.Views
                 Restart.Visibility = Visibility.Visible;
                 Command.IsEnabled = false;
                 Compass.IsEnabled = false;
+
+                // Null out application state
+                ApplicationData.Current.LocalSettings.Values["GameState"] = null;
             }
 
             // Set the dialogue header to match the room description which may have changed
@@ -179,6 +187,9 @@ namespace Pyramid2000.UWP.Views
             // Re-setup the game engine
             IPrinter printer = new Printer(this, GameSettingsService.Instance);
             ViewModel.GamePartViewModel.SetupGame(printer);
+
+            // Save the application state
+            ApplicationData.Current.LocalSettings.Values["GameState"] = ViewModel.GamePartViewModel.State;
 
             // Setup the header text as the initial room decription
             pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;

@@ -81,7 +81,7 @@ namespace Pyramid2000.UWP.ViewModels
         private IItems _items;
         private IParser _parser;
 
-        public void SetupGame(IPrinter printer)
+        public void SetupGame(IPrinter printer, string state = null)
         {
             IResources resources = new Resources();
             _printer = printer;
@@ -100,7 +100,14 @@ namespace Pyramid2000.UWP.ViewModels
 
             _game = new Game(_player, _printer, _parser, scripter, _rooms, defaultScripter, _items, _gameState);
 
-            _game.Init();
+            if (state != null)
+            {
+                State = state;
+            }
+            else
+            {
+                _game.Init();
+            }
         }
 
         public void PrintLn(string line)
