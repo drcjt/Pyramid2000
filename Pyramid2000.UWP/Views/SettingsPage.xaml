@@ -129,21 +129,34 @@
 
                     <TextBlock x:Name="DisplayNameTextBlock" Margin="0,0,0,12"
                                FontSize="24" RelativePanel.AlignLeftWithPanel="True"
-                               RelativePanel.AlignRightWith="LogoImage"
                                RelativePanel.AlignTopWithPanel="True"
+                               RelativePanel.AlignRightWith="LogoImage"
                                Text="{Binding DisplayName}" />
-
-                    <TextBlock x:Name="PublisherTextBlock"
-                               RelativePanel.AlignLeftWithPanel="True"
-                               RelativePanel.Below="DisplayNameTextBlock"
-                               Text="{Binding Publisher}" />
 
                     <TextBlock x:Name="VersionTextBlock"
                                RelativePanel.AlignLeftWithPanel="True"
-                               RelativePanel.Below="PublisherTextBlock">
+                               RelativePanel.Below="DisplayNameTextBlock">
                         <Run>Version</Run>
                         <Run Text="{Binding Version}" />
                     </TextBlock>
+                    
+                    <RichTextBlock x:Name="AboutText"
+                                   RelativePanel.AlignLeftWithPanel="True"
+                                   RelativePanel.Below="VersionTextBlock">
+                        <Paragraph>
+                            <LineBreak/> This app is an implementation of a 'classic' text adventure game originally released for the Radio Shack TRS-80 Model I Computer.
+                            <LineBreak/>
+                            <LineBreak/> Pyramid 2000 was originally written by Robert Arnstein and released by Radio Shack in 1979.
+                            <LineBreak/>
+                            <LineBreak/> This project would not have been possible without the information and code found on Christopher Cantrell's website:
+                            <LineBreak/>
+                            <Hyperlink NavigateUri="http://www.computerarcheology.com">http://www.computerarcheology.com</Hyperlink>
+                            <LineBreak/>
+                            <LineBreak/> You can find a wealth of information about this game including a walk through solution on Sean Murphy's website:
+                            <LineBreak/>
+                            <Hyperlink NavigateUri="http://www.figmentfly.com/pyramid2000/pyramid.html">http://www.figmentfly.com/pyramid2000/pyramid.html</Hyperlink>
+                        </Paragraph>
+                    </RichTextBlock>
 
                 </RelativePanel>
             </PivotItem>
