@@ -3,12 +3,10 @@ using System.Threading.Tasks;
 using Pyramid2000.UWP.Services.SettingsServices;
 using Windows.ApplicationModel.Activation;
 using Template10.Controls;
-using Template10.Common;
 using System;
-using System.Linq;
-using Pyramid2000.Engine.Interfaces;
-using Pyramid2000.Engine;
 using Pyramid2000.UWP.Services.GameSettingsServices;
+using Windows.Devices.Input;
+using Windows.Foundation.Metadata;
 
 namespace Pyramid2000.UWP
 {
@@ -33,9 +31,16 @@ namespace Pyramid2000.UWP
             ShowShellBackButton = true;
 
             // On Mobile set Clear Dialog on Room change to true
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1))
             {
-                GameSettingsService.Instance.ClearDialogueOnRoomChange = true;
+                GameSettingsService.Instance.ClearDialogueOnRoomChangeDefault = true;
+            }
+
+            // Show compass by default on touch devices
+            var touchCapabilities = new TouchCapabilities();
+            if (touchCapabilities.TouchPresent > 0)
+            {
+                SettingsService.Instance.ShowCompassDefault = true;
             }
             #endregion
         }

@@ -26,9 +26,11 @@ namespace Pyramid2000.UWP.Services.SettingsServices
             set { _helper.Write(nameof(TextSize), value); }
         }
 
+        public bool ShowCompassDefault { get; set; } = false;
+
         public bool ShowCompass
         {
-            get { return _helper.Read<bool>(nameof(ShowCompass), true); }
+            get { return _helper.Read<bool>(nameof(ShowCompass), ShowCompassDefault); }
             set { _helper.Write(nameof(ShowCompass), value); }
         }
 

@@ -34,9 +34,10 @@ namespace Pyramid2000.UWP.Services.GameSettingsServices
             set { _helper.Write(nameof(Trs80Mode), value); }
         }
 
+        public bool ClearDialogueOnRoomChangeDefault { get; set; } = false;
         public bool ClearDialogueOnRoomChange
         {
-            get { return _helper.Read<bool>(nameof(ClearDialogueOnRoomChange), false); }
+            get { return _helper.Read<bool>(nameof(ClearDialogueOnRoomChange), ClearDialogueOnRoomChangeDefault); }
             set { _helper.Write(nameof(ClearDialogueOnRoomChange), value); }
         }
     }
