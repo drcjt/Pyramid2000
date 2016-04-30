@@ -9,6 +9,7 @@ using Pyramid2000.UWP.Services.GameSettingsServices;
 using Pyramid2000.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
+using Pyramid2000.UWP.Services.SettingsServices;
 
 namespace Pyramid2000.UWP.Views
 {
@@ -27,6 +28,8 @@ namespace Pyramid2000.UWP.Views
             var printer = new Printer(this, GameSettingsService.Instance);
             string state = ApplicationData.Current.LocalSettings.Values["GameState"] as string;
             ViewModel.GamePartViewModel.SetupGame(printer, state);
+
+            UpdateCompassExits();
 
             // Setup the initial room description as the dialogue header
             pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
@@ -145,6 +148,46 @@ namespace Pyramid2000.UWP.Views
 
             // Clear the command text box
             Command.Text = "";
+
+            // Update the compass exits
+            UpdateCompassExits();
+        }
+
+        private void UpdateCompassExits()
+        {
+            // Really need to get this to work by binding from the VM to the compass control directly
+            if (SettingsService.Instance.HidePossibleExitsOnCompass)
+            {
+                // Show available exits on the compass control
+                var exits = ViewModel.GamePartViewModel.CurrentRoom.Exits;
+                Compass.EnableNorthButton(exits.Contains(ExitType.North));
+                Compass.EnableSouthButton(exits.Contains(ExitType.South));
+                Compass.EnableEastButton(exits.Contains(ExitType.East));
+                Compass.EnableWestButton(exits.Contains(ExitType.West));
+
+                Compass.EnableNorthEastButton(exits.Contains(ExitType.NorthEast));
+                Compass.EnableNorthWestButton(exits.Contains(ExitType.NorthWest));
+                Compass.EnableSouthEastButton(exits.Contains(ExitType.SouthEast));
+                Compass.EnableSouthWestButton(exits.Contains(ExitType.SouthWest));
+
+                Compass.EnableUpButton(exits.Contains(ExitType.Up));
+                Compass.EnableDownButton(exits.Contains(ExitType.Down));
+            }
+            else
+            {
+                Compass.EnableNorthButton(true);
+                Compass.EnableSouthButton(true);
+                Compass.EnableEastButton(true);
+                Compass.EnableWestButton(true);
+
+                Compass.EnableNorthEastButton(true);
+                Compass.EnableNorthWestButton(true);
+                Compass.EnableSouthEastButton(true);
+                Compass.EnableSouthWestButton(true);
+
+                Compass.EnableUpButton(true);
+                Compass.EnableDownButton(true);
+            }
         }
 
         /// <summary>
