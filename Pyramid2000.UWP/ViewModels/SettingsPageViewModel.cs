@@ -65,6 +65,12 @@ namespace Pyramid2000.UWP.ViewModels
             get { return _settings.ShowCompass; }
             set { _settings.ShowCompass = value;  base.RaisePropertyChanged(); }
         }
+
+        public bool HidePossibleExitsOnCompass
+        {
+            get { return _settings.HidePossibleExitsOnCompass; }
+            set { _settings.HidePossibleExitsOnCompass = value;  base.RaisePropertyChanged(); }
+        }
     }
 
     public class AboutPartViewModel : ViewModelBase

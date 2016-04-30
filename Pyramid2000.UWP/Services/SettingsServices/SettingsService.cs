@@ -34,6 +34,13 @@ namespace Pyramid2000.UWP.Services.SettingsServices
             set { _helper.Write(nameof(ShowCompass), value); }
         }
 
+        public bool HidePossibleExitsOnCompassDefault { get; set; } = true;
+        public bool HidePossibleExitsOnCompass
+        {
+            get { return _helper.Read<bool>(nameof(HidePossibleExitsOnCompass), HidePossibleExitsOnCompassDefault); }
+            set { _helper.Write(nameof(HidePossibleExitsOnCompass), value); }
+        }
+
         public ApplicationTheme AppTheme
         {
             get
