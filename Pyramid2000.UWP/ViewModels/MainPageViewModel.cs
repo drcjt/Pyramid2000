@@ -103,6 +103,7 @@ namespace Pyramid2000.UWP.ViewModels
             if (state != null)
             {
                 State = state;
+                UpdateInventoryItems();
             }
             else
             {

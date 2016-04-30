@@ -25,6 +25,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!--  TODO: change properties for narrow view  -->
+                        <Setter Target="InventoryPanel.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateNormal">
@@ -33,6 +34,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!--  TODO: change properties for normal view  -->
+                        <Setter Target="InventoryPanel.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateWide">
@@ -41,6 +43,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!--  TODO: change properties for wide view  -->
+                        <Setter Target="InventoryPanel.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -49,34 +52,77 @@
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Main Page">
-
-            <!--  secondary commands  -->
-            <!--
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Click="{x:Bind ViewModel.GotoSettings}" Label="Settings" />
-                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
-            </controls:PageHeader.SecondaryCommands>
-            -->
-
         </controls:PageHeader>
 
-        <ScrollViewer x:Name="BodyScroller" 
-                      RelativePanel.Below="pageHeader" 
-                      RelativePanel.Above="BottomPanel"
+        <RelativePanel x:Name="MainContentPanel"
+                       RelativePanel.Below="pageHeader"
+                       RelativePanel.Above="BottomPanel"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True">
+
+            <ScrollViewer x:Name="BodyScroller"
                       RelativePanel.AlignLeftWithPanel="True"
-                      RelativePanel.AlignRightWithPanel="True"
+                      RelativePanel.AlignTopWithPanel="True"
+                      RelativePanel.AlignBottomWithPanel="True"
+                      RelativePanel.LeftOf="InventoryPanel"
                       Margin="5,5,5,5"
                       VerticalScrollBarVisibility="Auto" Height="Auto">
-            <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" 
+                <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}" 
                            x:Name="BodyTextBlock" HorizontalAlignment="Left" 
                            TextWrapping="Wrap" VerticalAlignment="Top">
-                <Paragraph x:Name="BodyParagraph" 
+                    <Paragraph x:Name="BodyParagraph" 
                            FontSize="{Binding TextSize}" 
                            LineHeight="0">
-                    <Run x:Name="Body"/>
-                </Paragraph>
-            </RichTextBlock>
-        </ScrollViewer>
+                        <Run x:Name="Body"/>
+                    </Paragraph>
+                </RichTextBlock>
+            </ScrollViewer>
+
+            <Viewbox x:Name="CompassControl"
+                HorizontalAlignment="Right" 
+                     VerticalAlignment="Bottom" 
+                     Height="200" 
+                     Width="200"
+                     Margin="0,0,10,0"
+                     RelativePanel.AlignRightWithPanel="True"
+                     RelativePanel.AlignBottomWithPanel="True">
+                <pyramidcontrols:CompassControl 
+                x:Name="Compass" 
+                Opacity="0.7" 
+                IsTabStop="False"
+                ClickHandler="CompassControl_ClickHandler"/>
+            </Viewbox>
+
+            <RelativePanel x:Name="InventoryPanel"
+                           RelativePanel.AlignTopWithPanel="True"
+                           RelativePanel.AlignRightWithPanel="True"
+                           RelativePanel.Above="CompassControl"
+                           Width="200">
+                <TextBlock x:Name="InventoryHeader" 
+                           VerticalAlignment="Center" 
+                           FontWeight="Bold" 
+                           FontSize="{Binding TextSize}" Text="Inventory">
+                </TextBlock>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="Auto"
+                              RelativePanel.Below="InventoryHeader">
+                    <ItemsControl x:Name="InventoryListView" 
+                              RelativePanel.Below="InventoryHeader"
+                              ItemsSource="{Binding GamePartViewModel.InventoryItems}"
+                              Tag="{Binding .}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="5" 
+                                       Text="{Binding ShortDescription}" 
+                                       FontSize="{Binding ElementName=InventoryListView,Path=DataContext.TextSize}" 
+                                       TextWrapping="NoWrap"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </RelativePanel>
+            
+        </RelativePanel>
 
         <RelativePanel x:Name="BottomPanel"
                        RelativePanel.AlignLeftWithPanel="True"
@@ -107,22 +153,6 @@
 
         </RelativePanel>
 
-        <Viewbox 
-            HorizontalAlignment="Right" 
-            VerticalAlignment="Bottom" 
-            Height="200" 
-            Width="200"
-            Margin="0,0,10,0"
-            RelativePanel.Below="pageHeader"
-            RelativePanel.AlignRightWithPanel="True"
-            RelativePanel.AlignBottomWith="BodyScroller"
-            >
-            <pyramidcontrols:CompassControl 
-                x:Name="Compass" 
-                Opacity="0.7" 
-                IsTabStop="False"
-                ClickHandler="CompassControl_ClickHandler"/>
-        </Viewbox>
 
     </RelativePanel>
 </Page>
