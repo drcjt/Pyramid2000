@@ -50,6 +50,56 @@ namespace Pyramid2000.Controls
             Down.Click += Down_Click;
         }
 
+        public void EnableNorthButton(bool enabled)
+        {
+            NorthButton.IsEnabled = enabled;
+        }
+
+        public void EnableSouthButton(bool enabled)
+        {
+            SouthButton.IsEnabled = enabled;
+        }
+
+        public void EnableEastButton(bool enabled)
+        {
+            EastButton.IsEnabled = enabled;
+        }
+
+        public void EnableWestButton(bool enabled)
+        {
+            WestButton.IsEnabled = enabled;
+        }
+
+        public void EnableNorthEastButton(bool enabled)
+        {
+            NorthEastButton.IsEnabled = enabled;
+        }
+
+        public void EnableNorthWestButton(bool enabled)
+        {
+            NorthWestButton.IsEnabled = enabled;
+        }
+
+        public void EnableSouthEastButton(bool enabled)
+        {
+            SouthEastButton.IsEnabled = enabled;
+        }
+
+        public void EnableSouthWestButton(bool enabled)
+        {
+            SouthWestButton.IsEnabled = enabled;
+        }
+
+        public void EnableUpButton(bool enabled)
+        {
+            Up.IsEnabled = enabled;
+        }
+
+        public void EnableDownButton(bool enabled)
+        {
+            Down.IsEnabled = enabled;
+        }
+
         private void ProcessClick(EventHandler eventHandler)
         {
             if (eventHandler != null)
