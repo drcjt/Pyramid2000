@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="27451drcjt.Pyramid2000" Publisher="CN=0E993ABC-D6E6-4655-9242-30DC17674FD0" Version="3.0.0.0" />
+  <Identity Name="27451drcjt.Pyramid2000" Publisher="CN=0E993ABC-D6E6-4655-9242-30DC17674FD0" Version="3.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="47d9b4af-c7cd-4776-8162-b27e5880f7ab" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Pyramid 2000</DisplayName>

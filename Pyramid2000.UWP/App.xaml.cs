@@ -30,12 +30,6 @@ namespace Pyramid2000.UWP
             CacheMaxDuration = _settings.CacheMaxDuration;
             ShowShellBackButton = true;
 
-            // On Mobile set Clear Dialog on Room change to true
-            if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1))
-            {
-                GameSettingsService.Instance.ClearDialogueOnRoomChangeDefault = true;
-            }
-
             // Show compass by default on touch devices
             var touchCapabilities = new TouchCapabilities();
             if (touchCapabilities.TouchPresent > 0)
