@@ -24,18 +24,10 @@ namespace Pyramid2000.UWP
             SplashFactory = (e) => new Views.Splash(e);
 
             #region App settings
-
             var _settings = SettingsService.Instance;
             RequestedTheme = _settings.AppTheme;
             CacheMaxDuration = _settings.CacheMaxDuration;
             ShowShellBackButton = true;
-
-            // Show compass by default on touch devices
-            var touchCapabilities = new TouchCapabilities();
-            if (touchCapabilities.TouchPresent > 0)
-            {
-                SettingsService.Instance.ShowCompassDefault = true;
-            }
             #endregion
         }
 
