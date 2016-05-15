@@ -89,7 +89,7 @@ namespace Pyramid2000EngineTests
             var result = game.State;
 
             // Assert
-            Assert.AreEqual("LOAD ,,,,,_51,_81,,,,_16,,,_2,,_8,_9,_72,_11,,,,_61,,_59,_2,_2,#BOTTLE,,_56,_76,,_73,_68,,,_14,_17,_25,_18,_24,,_71,,room_1,,0,False,310,0", result);
+            Assert.AreEqual("LOAD ,,,,,_51,_81,,,,_16,,,_2,,_8,_9,_72,_11,,,,_61,,_59,_2,_2,#BOTTLE,,_56,_76,,_73,_68,,,_14,_17,_25,_18,_24,,_71,,room_1,,0,False,310", result);
         }
     }
 }
