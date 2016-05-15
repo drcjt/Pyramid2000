@@ -96,7 +96,6 @@
             <RelativePanel x:Name="InventoryPanel"
                            RelativePanel.AlignTopWithPanel="True"
                            RelativePanel.AlignRightWithPanel="True"
-                           RelativePanel.Above="CompassControl"
                            Width="200">
                 <TextBlock x:Name="InventoryHeader" 
                            VerticalAlignment="Center" 
@@ -135,7 +134,7 @@
                  x:Name="Command" HorizontalAlignment="Stretch" 
                  TextWrapping="Wrap" VerticalAlignment="Center" 
                  FontSize="{Binding TextSize}"
-                 KeyUp="Command_KeyUp"/>
+                 KeyDown="Command_KeyDown"/>
 
             <Button x:Name="Restart" 
                 RelativePanel.AlignLeftWithPanel="True"

@@ -108,53 +108,53 @@ namespace Pyramid2000.UWP.Views
         /// <param name="command"></param>
         private void ProcessCommand(string command = null)
         {
-            // Make sure the command is shown in the textbox
             if (command != null)
             {
-                Command.Text = command;
+                // Add the command to the dialogue
+                ViewModel.GamePartViewModel.PrintLn(command);
+
+                // Process the command using the game engine
+                ViewModel.GamePartViewModel.ProcessPlayerInputCommand.Execute(command);
+
+                // Save the application state
+                ApplicationData.Current.LocalSettings.Values["GameState"] = ViewModel.GamePartViewModel.State;
+
+                // If the game is over then show the restart button in place of the command text box
+                if (ViewModel.GamePartViewModel.GameOver)
+                {
+                    Command.Visibility = Visibility.Collapsed;
+                    Restart.Visibility = Visibility.Visible;
+                    Command.IsEnabled = false;
+                    Compass.IsEnabled = false;
+
+                    // Null out application state
+                    ApplicationData.Current.LocalSettings.Values["GameState"] = null;
+                }
+
+                // Set the dialogue header to match the room description which may have changed
+                if (ViewModel.GamePartViewModel.IsRoomLit)
+                {
+                    pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
+                }
+                else
+                {
+                    // TODO: Need to localise this text
+                    pageHeader.Text = "In the dark";
+                }
+
+                // Clear the command text box
+                Command.Text = "";
+
+                // Update the compass exits
+                UpdateCompassExits();
             }
-
-            // Add the command to the dialogue
-            ViewModel.GamePartViewModel.PrintLn(Command.Text);
-
-            // Process the command using the game engine
-            ViewModel.GamePartViewModel.ProcessPlayerInputCommand.Execute(Command.Text);
-
-            // Save the application state
-            ApplicationData.Current.LocalSettings.Values["GameState"] = ViewModel.GamePartViewModel.State;
-
-            // If the game is over then show the restart button in place of the command text box
-            if (ViewModel.GamePartViewModel.GameOver)
-            {
-                Command.Visibility = Visibility.Collapsed;
-                Restart.Visibility = Visibility.Visible;
-                Command.IsEnabled = false;
-                Compass.IsEnabled = false;
-
-                // Null out application state
-                ApplicationData.Current.LocalSettings.Values["GameState"] = null;
-            }
-
-            // Set the dialogue header to match the room description which may have changed
-            if (ViewModel.GamePartViewModel.IsRoomLit)
-            {
-                pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
-            }
-            else
-            {
-                // TODO: Need to localise this text
-                pageHeader.Text = "In the dark";
-            }
-
-            // Clear the command text box
-            Command.Text = "";
-
-            // Update the compass exits
-            UpdateCompassExits();
         }
 
         private void UpdateCompassExits()
         {
+            var commandFocusState = Command.FocusState;
+            Command.IsEnabled = false;
+
             // Really need to get this to work by binding from the VM to the compass control directly
             if (SettingsService.Instance.HidePossibleExitsOnCompass)
             {
@@ -187,6 +187,12 @@ namespace Pyramid2000.UWP.Views
 
                 Compass.EnableUpButton(true);
                 Compass.EnableDownButton(true);
+            }
+
+            Command.IsEnabled = true;
+            if (commandFocusState != FocusState.Unfocused)
+            {
+                Command.Focus(commandFocusState);
             }
         }
 
@@ -236,6 +242,9 @@ namespace Pyramid2000.UWP.Views
 
             // Setup the header text as the initial room decription
             pageHeader.Text = ViewModel.GamePartViewModel.CurrentRoom.ShortDescription;
+
+            // Update the compass exits
+            UpdateCompassExits();
         }
         #endregion
 
@@ -245,11 +254,12 @@ namespace Pyramid2000.UWP.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Command_KeyUp(object sender, KeyRoutedEventArgs e)
+        private void Command_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                ProcessCommand();
+                ProcessCommand(Command.Text);
+                e.Handled = true;
             }
         }
         #endregion
