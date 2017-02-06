@@ -11,7 +11,7 @@ install:
 build_script:
     - choco install "msbuild-sonarqube-runner" -y
     - MSBuild.SonarQube.Runner.exe begin /k:"Pyramid2000" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=4f25726209d441b4d8223ac458fdb72d5710c7ed"
-    - msbuild "Pyramid2000.sln" /verbosity:minimal /p:Configuration=Debug /p:Platform="Any CPU"
+    - msbuild "Pyramid2000.sln" /verbosity:normal /p:Configuration=Debug /p:Platform="Any CPU"
     - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=4f25726209d441b4d8223ac458fdb72d5710c7ed"
 
 test_script:
