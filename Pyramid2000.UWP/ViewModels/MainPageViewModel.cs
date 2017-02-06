@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using Windows.Foundation;
 using Windows.Storage;
 using Pyramid2000.UWP.Services.GameSettingsServices;
+using Pyramid2000.UWP.Services.GameService;
 
 namespace Pyramid2000.UWP.ViewModels
 {
@@ -74,15 +75,26 @@ namespace Pyramid2000.UWP.ViewModels
     public class GamePartViewModel : ViewModelBase
     {
         private IPrinter _printer;
+
+        /*
         private IGameState _gameState;
         private IGame _game;
         private IPlayer _player;
         private IRooms _rooms;
         private IItems _items;
         private IParser _parser;
+        */
+
+        private GameService _gameService = new GameService();
 
         public void SetupGame(IPrinter printer, string state = null)
         {
+            _printer = printer;
+
+            _gameService.PropertyChanged += Instance_PropertyChanged;
+            _gameService.SetupGame(printer, state);
+
+            /*
             IResources resources = new Resources();
             _printer = printer;
             _items = new Items(resources);
@@ -109,6 +121,15 @@ namespace Pyramid2000.UWP.ViewModels
             {
                 _game.Init();
             }
+            */
+        }
+
+        private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "InventoryItems")
+            {
+                UpdateInventoryItems();
+            }
         }
 
         public void PrintLn(string line)
@@ -128,9 +149,10 @@ namespace Pyramid2000.UWP.ViewModels
                     ?? (_processPlayerInputCommand = new DelegateCommand<string>(
                         command =>
                         {
-                            _game.ProcessPlayerInput(command);
-                            UpdateInventoryItems();
-                            UpdateAchievements();
+                            _gameService.ProcessPlayerInput(command);
+                            //_game.ProcessPlayerInput(command);
+                            //UpdateInventoryItems();
+                            //UpdateAchievements();
                         }));
             }
         }
@@ -156,7 +178,7 @@ namespace Pyramid2000.UWP.ViewModels
 
         private void UpdateInventoryItems()
         {
-            var items = _player.Items;
+            var items = _gameService.PlayerItems;
             var toRemove = new List<IItem>();
             foreach (var item in _inventoryItems)
             {
@@ -179,6 +201,7 @@ namespace Pyramid2000.UWP.ViewModels
             }
         }
 
+        /*
         public void UpdateAchievements()
         {
             var achievements = _gameState.GetAchievements();
@@ -204,7 +227,21 @@ namespace Pyramid2000.UWP.ViewModels
                 }
             }
         }
+        */
+        public bool GameOver { get { return _gameService.GameOver; } }
 
+        public string State { get { return _gameService.State; } set { _gameService.State = value; } }
+
+        public bool IsReincarnating { get { return _gameService.IsReincarnating; } }
+
+        public string CurrentRoomName { get { return _gameService.CurrentRoomName; } }
+
+        public IRoom CurrentRoom { get { return _gameService.CurrentRoom; } }
+
+        public bool IsRoomLit { get { return _gameService.IsRoomLit; } }
+
+
+        /*
         public bool GameOver { get { return _gameState.GameOver; } }
 
         public string State { get { return _game.State; } set { _game.State = value; } }
@@ -216,6 +253,7 @@ namespace Pyramid2000.UWP.ViewModels
         public IRoom CurrentRoom { get { return _rooms.GetRoom(_player.CurrentRoom); } }
 
         public bool IsRoomLit { get { return _rooms.IsRoomLit(CurrentRoomName); } }
+        */
 
         public IGameSettings Settings { get { return GameSettingsService.Instance; } }
 
@@ -225,7 +263,7 @@ namespace Pyramid2000.UWP.ViewModels
         private ObservableCollection<IItem> _inventoryItems = new ObservableCollection<IItem>();
         public ObservableCollection<IItem> InventoryItems { get { return _inventoryItems; } }
 
-        public IList<string> GetWords(bool noun) { return _parser.GetWords(noun); }
+        public IList<string> GetWords(bool noun) { return null; /* _parser.GetWords(noun); */ }
     }
 
 }
