@@ -8,10 +8,12 @@ environment:
 install:
     - nuget restore
 
-build:
-  project: Pyramid2000.sln
-  verbosity: minimal
-
+build_script:
+    - choco install "msbuild-sonarqube-runner" -y
+	- MSBuild.SonarQube.Runner.exe begin /k:"Pyramid2000" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=4f25726209d441b4d8223ac458fdb72d5710c7ed"
+	- msbuild "Pyramid2000.sln" /verbosity:minimal
+	- MSBuild.SonarQube.Runner.exe end /d:"sonar.login=4f25726209d441b4d8223ac458fdb72d5710c7ed"
+	
 test_script:
     - packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"nunit3-console.exe" -targetargs:"/domain:single /result:myresults.xml;format=AppVeyor Pyramid2000EngineTests\bin\debug\Pyramid2000EngineTests.dll" -output:coverage.xml -returntargetcode
 
