@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pyramid2000", "Pyramid2000", "{3891ED30-8AEB-40B3-8D14-9E7E39D01BCA}"
 EndProject
@@ -26,6 +26,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyramid2000EngineTests", "Pyramid2000EngineTests\Pyramid2000EngineTests.csproj", "{69641D0B-5C5C-400C-9419-05EC3B9A39C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyramid2000.UWP", "Pyramid2000.UWP\Pyramid2000.UWP.csproj", "{302C45FB-45CD-4485-B246-E71F4D4316DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{0D3FED40-408D-4C96-8F96-9D7B40267AF5}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\Pyramid2000CSharp.ruleset = SonarQube\Pyramid2000CSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

@@ -10,7 +10,7 @@ using Pyramid2000.Engine.Implementation;
 
 namespace Pyramid2000.ConsoleApplication
 {
-    class Pyramid2000
+    static class Pyramid2000
     {
         static void Main(string[] args)
         {

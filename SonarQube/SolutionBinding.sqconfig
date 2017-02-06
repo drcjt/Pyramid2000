@@ -1,0 +1,10 @@
+{
+  "ServerUri": "https://sonarqube.com/",
+  "ProjectKey": "Pyramid2000",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "cs-sonar-way-31865",
+      "ProfileTimestamp": "2017-02-03T12:59:32+00:00"
+    }
+  }
+}
