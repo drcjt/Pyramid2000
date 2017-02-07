@@ -16,7 +16,7 @@ namespace Pyramid2000.Engine
 
         public IList<IAchievement> GetAchievements() { return _awardedAchievements;  }
 
-        private IList<IAchievement> _awardedAchievements = new List<IAchievement>();
+        private readonly IList<IAchievement> _awardedAchievements = new List<IAchievement>();
 
         public void AwardAchievement(IAchievement achievement)
         {

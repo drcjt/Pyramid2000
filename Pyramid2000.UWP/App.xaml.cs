@@ -33,7 +33,7 @@ namespace Pyramid2000.UWP
 
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
         {
-            if (Window.Current.Content as ModalDialog == null)
+            if (!(Window.Current.Content is ModalDialog))
             {
                 // create a new frame 
                 var nav = NavigationServiceFactory(BackButton.Attach, ExistingContent.Include);

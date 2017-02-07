@@ -10,13 +10,10 @@ namespace Pyramid2000.UWP.Services.GameService
 {
     public class GameService : INotifyPropertyChanged
     {
-        private IPrinter _printer;
         private IGameState _gameState;
         private IGame _game;
         private IPlayer _player;
         private IRooms _rooms;
-        private IItems _items;
-        private IParser _parser;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,19 +25,18 @@ namespace Pyramid2000.UWP.Services.GameService
         public void SetupGame(IPrinter printer, string state = null)
         {
             IResources resources = new Resources();
-            _printer = printer;
-            _items = new Items(resources);
-            _player = new Player(_items);
+            var items = new Items(resources);
+            _player = new Player(items);
             _player.CurrentRoom = "room_1";
-            _parser = new Parser(_player, _printer, _items, GameSettingsService.Instance, resources);
-            _rooms = new Rooms(_items, resources);
+            var parser = new Parser(_player, printer, items, GameSettingsService.Instance, resources);
+            _rooms = new Rooms(items, resources);
             _gameState = new GameState();
-            IScripter scripter = new Scripter(_printer, _items, _rooms, _player, _gameState, GameSettingsService.Instance, resources);
+            IScripter scripter = new Scripter(printer, items, _rooms, _player, _gameState, GameSettingsService.Instance, resources);
             _rooms.Scripter = scripter;
 
             IDefaultScripter defaultScripter = new DefaultScripter(resources);
 
-            _game = new Game(_player, _printer, _parser, scripter, _rooms, defaultScripter, _items, _gameState);
+            _game = new Game(_player, printer, parser, scripter, _rooms, defaultScripter, items, _gameState);
 
             if (state != null)
             {

@@ -14,7 +14,7 @@ namespace Pyramid2000.UWP.Services.SettingsServices
             Instance = Instance ?? new SettingsService();
         }
 
-        Template10.Services.SettingsService.ISettingsHelper _helper;
+        readonly Template10.Services.SettingsService.ISettingsHelper _helper;
         private SettingsService()
         {
             _helper = new Template10.Services.SettingsService.SettingsHelper();

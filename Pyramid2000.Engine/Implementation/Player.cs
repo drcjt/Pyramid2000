@@ -6,7 +6,7 @@ namespace Pyramid2000.Engine
 {
     public class Player : IPlayer
     {
-        private IItems _items;
+        private readonly IItems _items;
         public Player(IItems items)
         {
             _items = items;

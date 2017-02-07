@@ -39,8 +39,12 @@ namespace Pyramid2000.UWP.Views
                 var modal = Window.Current.Content as ModalDialog;
                 var view = modal.ModalContent as Busy;
                 if (view == null)
-                    modal.ModalContent = view = new Busy();
-                modal.IsModal = view.IsBusy = busy;
+                {
+                    view = new Busy();
+                    modal.ModalContent = view;
+                }
+                view.IsBusy = busy;
+                modal.IsModal = busy;
                 view.BusyText = text;
             });
         }

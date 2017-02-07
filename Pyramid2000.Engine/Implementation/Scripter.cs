@@ -10,12 +10,12 @@ namespace Pyramid2000.Engine
 {
     public class Scripter : IScripter
     {
-        private IPrinter _printer;
-        private IItems _items;
-        private IRooms _rooms;
-        private IPlayer _player;
-        private IGameState _gameState;
-        private IGameSettings _settings;
+        private readonly IPrinter _printer;
+        private readonly IItems _items;
+        private readonly IRooms _rooms;
+        private readonly IPlayer _player;
+        private readonly IGameState _gameState;
+        private readonly IGameSettings _settings;
 
         private IResources Resources { get; set; }
 
@@ -171,7 +171,7 @@ namespace Pyramid2000.Engine
 
         public void ProcessReincarnation(string input)
         {
-            var trimmedInput = input.Trim().ToUpper();
+            var trimmedInput = input.Trim().ToUpperInvariant();
             if (trimmedInput == "Y" || trimmedInput == "YES")
             {
                 if (_gameState.ReincarnateCount == 1)
@@ -391,34 +391,9 @@ namespace Pyramid2000.Engine
 
                     var room = _rooms.GetRoom(roomName);
                     var commands = room.Commands;
-                    foreach (var key in commands.Keys)
-                    {
-                        if (key == Function.North || key == Function.East || key == Function.South || key == Function.West)
-                        {
-                            var currentKeyIndex = 0;
-                            switch (key)
-                            {
-                                case Function.North: currentKeyIndex = 1; break;
-                                case Function.East: currentKeyIndex = 2; break;
-                                case Function.South: currentKeyIndex = 3; break;
-                                case Function.West: currentKeyIndex = 4; break;
-                            }
-                            var newKeyIndex = currentKeyIndex + random;
-                            newKeyIndex = newKeyIndex & 3;
 
-                            Function newKey = Function.North;
-                            switch (newKeyIndex)
-                            {
-                                case 0: newKey = Function.West; break;
-                                case 1: newKey = Function.North; break;
-                                case 2: newKey = Function.East; break;
-                                case 3: newKey = Function.South; break;
-                            }
+                    RekeyCommands(commands, keysToDelete, reKeyedCommands, random);
 
-                            keysToDelete.Add(key);
-                            reKeyedCommands.Add(newKey, commands[key]);
-                        }
-                    }
                     foreach (var keyToDelete in keysToDelete)
                     {
                         commands.Remove(keyToDelete);
@@ -430,6 +405,38 @@ namespace Pyramid2000.Engine
                 }
             }
             return true;
+        }
+
+        private void RekeyCommands(IDictionary<Function, Script> commands, List<Function> keysToDelete, Dictionary<Function, Script> reKeyedCommands, int random)
+        {
+            foreach (var key in commands.Keys)
+            {
+                if (key == Function.North || key == Function.East || key == Function.South || key == Function.West)
+                {
+                    var currentKeyIndex = 0;
+                    switch (key)
+                    {
+                        case Function.North: currentKeyIndex = 1; break;
+                        case Function.East: currentKeyIndex = 2; break;
+                        case Function.South: currentKeyIndex = 3; break;
+                        case Function.West: currentKeyIndex = 4; break;
+                    }
+                    var newKeyIndex = currentKeyIndex + random;
+                    newKeyIndex = newKeyIndex & 3;
+
+                    Function newKey = Function.North;
+                    switch (newKeyIndex)
+                    {
+                        case 0: newKey = Function.West; break;
+                        case 1: newKey = Function.North; break;
+                        case 2: newKey = Function.East; break;
+                        case 3: newKey = Function.South; break;
+                    }
+
+                    keysToDelete.Add(key);
+                    reKeyedCommands.Add(newKey, commands[key]);
+                }
+            }
         }
 
         public bool AssertRandomIsGreaterThanX(string number)
@@ -531,7 +538,7 @@ namespace Pyramid2000.Engine
 
                 var com = script[ptr++];
 
-                if (!(bool)com(this))
+                if (!com(this))
                 {
                     return false;
                 }

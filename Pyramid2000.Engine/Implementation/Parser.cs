@@ -7,10 +7,10 @@ namespace Pyramid2000.Engine
 {
     public class Parser : IParser
     {
-        private IPrinter _printer;
-        private IItems _items;
-        private IPlayer _player;
-        private IGameSettings _settings;
+        private readonly IPrinter _printer;
+        private readonly IItems _items;
+        private readonly IPlayer _player;
+        private readonly IGameSettings _settings;
 
         private IResources Resources { get; set; }
 
@@ -51,7 +51,7 @@ namespace Pyramid2000.Engine
             public Word Word { get; set; }
         }
 
-        private IDictionary<string, Word> _words = new Dictionary<string, Word>()
+        private readonly IDictionary<string, Word> _words = new Dictionary<string, Word>()
         {
             // Nouns
             { "LAMP", new Word { Grammar = Grammar.noun, Items = new List<string>() { "#LAMP_off", "#LAMP_on", "#LAMP_dead" } } },
@@ -171,13 +171,12 @@ namespace Pyramid2000.Engine
             { "PLUGH", new Word { Grammar = Grammar.alone, Function = Function.Plugh } },
         };
 
-        private IDictionary<string, Word> _trs80words = new Dictionary<string, Word>()
+        private readonly IDictionary<string, Word> _trs80words = new Dictionary<string, Word>()
         {
             { "HELP", new Word { Grammar = Grammar.alone, Function = Function.Help } },
         };
-
-        IList<string> verbs = new List<string> { "N", "E", "S", "W", "NE", "SE", "SW", "NW", "UP", "DOWN", "IN", "OUT", "CROSS", "LEFT", "RIGHT", "JUMP", "CLIMB", "PANEL", "BACK", "SWIM", "ON", "OFF", "QUIT", "STOP", "SCORE", "INVENTORY", "LOOK", "DROP", "WAVE", "POUR", "RUB", "THROW", "FILL", "GET", "OPEN", "ATTACK", "FEED", "EAT", "DRINK", "BREAK", "PLUGH", "HELP" };
-        IList<string> nouns = new List<string> { "LAMP", "BOX", "SCEPTER", "BIRD", "PILLOW", "SERPENT", "SARCOPHAGUS", "MAGAZINES", "FOOD", "BOTTLE", "WATER", "PLANT", "MACHINE", "BATTERIES", "GOLD", "DIAMONDS", "SILVER", "JEWELRY", "COINS", "CHEST", "NEST", "KEY", "VASE", "POTTERY", "EMERALD", "PEARL" };
+        readonly IList<string> verbs = new List<string> { "N", "E", "S", "W", "NE", "SE", "SW", "NW", "UP", "DOWN", "IN", "OUT", "CROSS", "LEFT", "RIGHT", "JUMP", "CLIMB", "PANEL", "BACK", "SWIM", "ON", "OFF", "QUIT", "STOP", "SCORE", "INVENTORY", "LOOK", "DROP", "WAVE", "POUR", "RUB", "THROW", "FILL", "GET", "OPEN", "ATTACK", "FEED", "EAT", "DRINK", "BREAK", "PLUGH", "HELP" };
+        readonly IList<string> nouns = new List<string> { "LAMP", "BOX", "SCEPTER", "BIRD", "PILLOW", "SERPENT", "SARCOPHAGUS", "MAGAZINES", "FOOD", "BOTTLE", "WATER", "PLANT", "MACHINE", "BATTERIES", "GOLD", "DIAMONDS", "SILVER", "JEWELRY", "COINS", "CHEST", "NEST", "KEY", "VASE", "POTTERY", "EMERALD", "PEARL" };
 
         public  IList<string> GetWords(bool getNouns)
         {
@@ -199,7 +198,7 @@ namespace Pyramid2000.Engine
 
         private ParsedWord FindWord(string input)
         {
-            var keyToFind = input.ToUpper();
+            var keyToFind = input.ToUpperInvariant();
             if (keyToFind.Length > 6)
             {
                 keyToFind = keyToFind.Substring(0, 6);

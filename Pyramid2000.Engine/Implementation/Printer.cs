@@ -4,8 +4,8 @@ namespace Pyramid2000.Engine
 {
     public class Printer : IPrinter
     {
-        IPrinter _printer;
-        IGameSettings _settings;
+        readonly IPrinter _printer;
+        readonly IGameSettings _settings;
 
         public Printer(IPrinter printer, IGameSettings settings)
         {
@@ -36,7 +36,7 @@ namespace Pyramid2000.Engine
                 formattedText = formattedText.Replace(". ", ".  ");
                 formattedText = formattedText.Replace("! ", "!  ");
             }
-            if (_settings.AllCaps) formattedText = formattedText.ToUpper();
+            if (_settings.AllCaps) formattedText = formattedText.ToUpperInvariant();
             return formattedText;
         }
     }

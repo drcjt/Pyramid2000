@@ -8,7 +8,7 @@ namespace Pyramid2000.ViewModels
 {
     class SettingsPageViewModel
     {
-        ISettingsService _settings = SettingsService.Instance;
+        readonly ISettingsService _settings = SettingsService.Instance;
 
         public bool ShowCompass
         {
@@ -21,7 +21,7 @@ namespace Pyramid2000.ViewModels
             set { _settings.TextSize = value; }
         }
 
-        IGameSettings _gameSettings = App.GameSettings;
+        readonly IGameSettings _gameSettings = App.GameSettings;
 
         public bool Trs80Mode
         {

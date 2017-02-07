@@ -48,7 +48,6 @@ namespace Pyramid2000.UWP.Views
             if (FocusManager.GetFocusedElement() != Command)
             {
                 Command.Focus(FocusState.Programmatic);
-                //Command.Select(0, Command.Text.Length);
             }
         }
 

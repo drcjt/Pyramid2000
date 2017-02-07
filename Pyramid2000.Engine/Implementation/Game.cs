@@ -2,19 +2,20 @@
 
 using Pyramid2000.Engine.Interfaces;
 using Pyramid2000.Engine.Implementation;
+using System.Text;
 
 namespace Pyramid2000.Engine
 {
     public class Game : IGame
     {
-        private IPlayer _player;
-        private IPrinter _printer;
-        private IParser _parser;
-        private IScripter _scripter;
-        private IRooms _rooms;
-        private IDefaultScripter _defaultScripter;
-        private IItems _items;
-        private IGameState _gameState;
+        private readonly IPlayer _player;
+        private readonly IPrinter _printer;
+        private readonly IParser _parser;
+        private readonly IScripter _scripter;
+        private readonly IRooms _rooms;
+        private readonly IDefaultScripter _defaultScripter;
+        private readonly IItems _items;
+        private readonly IGameState _gameState;
         private IResources Resources { get; set; }
 
         public Game(IPlayer player, IPrinter printer, IParser parser, IScripter scripter, IRooms rooms, IDefaultScripter defaultScripter, IItems items, IGameState gameState, IResources resources = null)
@@ -41,56 +42,57 @@ namespace Pyramid2000.Engine
 
         public void ProcessPlayerInput(string input)
         {
-            if (input != null)
+            if (input == null)
             {
-                if (!_gameState.AskToReincarnate)
+                return;
+            }
+
+            if (_gameState.AskToReincarnate)
+            {
+                _scripter.ProcessReincarnation(input);
+                return;
+            }
+
+            var commands = input.Split(';');
+            foreach (var command in commands)
+            {
+                var parsedCommand = _parser.ParseInput(command);
+                if (parsedCommand == null)
                 {
-                    var commands = input.Split(';');
-                    foreach (var command in commands)
+                    _printer.Print(": ");
+                    return;
+                }
+
+                var handled = false;
+
+                var room = _rooms.GetRoom(_player.CurrentRoom);
+                if (room.Commands != null && room.Commands.ContainsKey(parsedCommand.Function))
+                {
+                    var script = room.Commands[parsedCommand.Function];
+                    handled = _scripter.ParseScript(script, parsedCommand.Item);
+                }
+
+                if (!handled)
+                {
+                    var script = _defaultScripter.GetDefaultScript(parsedCommand.Function);
+                    if (script != null)
                     {
-                        var parsedCommand = _parser.ParseInput(command);
-                        if (parsedCommand == null)
-                        {
-                            _printer.Print(": ");
-                            return;
-                        }
-
-                        var handled = false;
-
-                        var room = _rooms.GetRoom(_player.CurrentRoom);
-                        if (room.Commands != null && room.Commands.ContainsKey(parsedCommand.Function))
-                        {
-                            var script = room.Commands[parsedCommand.Function];
-                            handled = _scripter.ParseScript(script, parsedCommand.Item);
-                        }
-
-                        if (!handled)
-                        {
-                            var script = _defaultScripter.GetDefaultScript(parsedCommand.Function);
-                            if (script != null)
-                            {
-                                handled = _scripter.ParseScript(script, parsedCommand.Item);
-                            }
-                        }
-
-                        if (!handled)
-                        {
-                            _printer.PrintLn(Resources.DontKnowHowToApplyWord);
-                        }
-
-                        DoAfterPlayerTurn();
-                    }
-
-                    // Only print a prompt for more input if the player is not being asked to reincarnate and hasn't died
-                    if (!_gameState.AskToReincarnate && !_gameState.GameOver)
-                    {
-                        _printer.Print(Resources.Prompt);
+                        handled = _scripter.ParseScript(script, parsedCommand.Item);
                     }
                 }
-                else
+
+                if (!handled)
                 {
-                    _scripter.ProcessReincarnation(input);
+                    _printer.PrintLn(Resources.DontKnowHowToApplyWord);
                 }
+
+                DoAfterPlayerTurn();
+            }
+
+            // Only print a prompt for more input if the player is not being asked to reincarnate and hasn't died
+            if (!_gameState.AskToReincarnate && !_gameState.GameOver)
+            {
+                _printer.Print(Resources.Prompt);
             }
         }
 
@@ -160,31 +162,23 @@ namespace Pyramid2000.Engine
 
         private string Save()
         {
-            string state = "";
+            var state = new StringBuilder();
             var items = _items.GetAllItems();
             foreach (var item in items)
             {
                 var locationOfItem = item.Location;
-                if (locationOfItem.IndexOf("room_") == 0)
+                if (locationOfItem.IndexOf("room_", System.StringComparison.Ordinal) == 0)
                 {
                     locationOfItem = locationOfItem.Substring(4);
                 }
-                state += locationOfItem + ",";
+                state.Append(locationOfItem);
+                state.Append(",");
             }
 
-            state = "LOAD " 
-                + state 
-                + _player.CurrentRoom 
-                + "," + _gameState.LastRoom 
-                + "," + _gameState.TurnCount 
-                + "," + _gameState.GameOver 
-                + "," + _gameState.BatteryLife 
-                + "," + _gameState.ReincarnateCount;
-
-            return state;
+            return $"LOAD {state}{_player.CurrentRoom},{_gameState.LastRoom},{_gameState.TurnCount},{_gameState.GameOver},{_gameState.BatteryLife},{_gameState.ReincarnateCount}";
         }
 
-        private bool Load(string state)
+        private void Load(string state)
         {
             // strip off the "LOAD " bit
             state = state.Substring(5);
@@ -219,15 +213,13 @@ namespace Pyramid2000.Engine
             _gameState.TurnCount = Convert.ToInt32(splitstate[index++]);
             _gameState.GameOver = Convert.ToBoolean(splitstate[index++]);
             _gameState.BatteryLife = Convert.ToInt32(splitstate[index++]);
-            _gameState.ReincarnateCount = Convert.ToInt32(splitstate[index++]);
+            _gameState.ReincarnateCount = Convert.ToInt32(splitstate[index]);
 
             _printer.Clear();
 
             _printer.PrintLn("");
             _scripter.Look();
             _printer.Print(Resources.Prompt);
-
-            return true;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Pyramid2000.UWP.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        Services.SettingsServices.SettingsService _SettingService;
+        readonly Services.SettingsServices.SettingsService _SettingService;
 
         public GamePartViewModel GamePartViewModel { get; } = new GamePartViewModel();
 
@@ -27,6 +27,7 @@ namespace Pyramid2000.UWP.ViewModels
             _SettingService = Services.SettingsServices.SettingsService.Instance;
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
+                // designtime
             }
         }
 
@@ -76,16 +77,7 @@ namespace Pyramid2000.UWP.ViewModels
     {
         private IPrinter _printer;
 
-        /*
-        private IGameState _gameState;
-        private IGame _game;
-        private IPlayer _player;
-        private IRooms _rooms;
-        private IItems _items;
-        private IParser _parser;
-        */
-
-        private GameService _gameService = new GameService();
+        private readonly GameService _gameService = new GameService();
 
         public void SetupGame(IPrinter printer, string state = null)
         {
@@ -93,35 +85,6 @@ namespace Pyramid2000.UWP.ViewModels
 
             _gameService.PropertyChanged += Instance_PropertyChanged;
             _gameService.SetupGame(printer, state);
-
-            /*
-            IResources resources = new Resources();
-            _printer = printer;
-            _items = new Items(resources);
-            _player = new Player(_items);
-            _player.CurrentRoom = "room_1";
-            _parser = new Parser(_player, _printer, _items, GameSettingsService.Instance, resources);
-            _rooms = new Rooms(_items, resources);
-            _gameState = new GameState();
-            IScripter scripter = new Scripter(_printer, _items, _rooms, _player, _gameState, GameSettingsService.Instance, resources);
-            _rooms.Scripter = scripter;
-
-            IDefaultScripter defaultScripter = new DefaultScripter(resources);
-
-            _inventoryItems.Clear();
-
-            _game = new Game(_player, _printer, _parser, scripter, _rooms, defaultScripter, _items, _gameState);
-
-            if (state != null)
-            {
-                State = state;
-                UpdateInventoryItems();
-            }
-            else
-            {
-                _game.Init();
-            }
-            */
         }
 
         private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -150,8 +113,6 @@ namespace Pyramid2000.UWP.ViewModels
                         command =>
                         {
                             _gameService.ProcessPlayerInput(command);
-                            //_game.ProcessPlayerInput(command);
-                            //UpdateInventoryItems();
                             //UpdateAchievements();
                         }));
             }
@@ -160,7 +121,6 @@ namespace Pyramid2000.UWP.ViewModels
 
         public void GotoSettings() => NavigationService.Navigate(typeof(Views.SettingsPage), 0);
         public void GotoAbout() => NavigationService.Navigate(typeof(Views.SettingsPage), 1);
-        //public void GotoInstructionsPage() => NavigationService.Navigate(typeof(Views.SettingsPage), Value);
 
         public DelegateCommand _rateAndReviewCommand;
         public DelegateCommand RateAndReviewCommand
@@ -240,27 +200,12 @@ namespace Pyramid2000.UWP.ViewModels
 
         public bool IsRoomLit { get { return _gameService.IsRoomLit; } }
 
-
-        /*
-        public bool GameOver { get { return _gameState.GameOver; } }
-
-        public string State { get { return _game.State; } set { _game.State = value; } }
-
-        public bool IsReincarnating { get { return _gameState.AskToReincarnate; } }
-
-        public string CurrentRoomName { get { return _player.CurrentRoom; } }
-
-        public IRoom CurrentRoom { get { return _rooms.GetRoom(_player.CurrentRoom); } }
-
-        public bool IsRoomLit { get { return _rooms.IsRoomLit(CurrentRoomName); } }
-        */
-
         public IGameSettings Settings { get { return GameSettingsService.Instance; } }
 
-        private ObservableCollection<IAchievement> _achievements = new ObservableCollection<IAchievement>();
+        private readonly ObservableCollection<IAchievement> _achievements = new ObservableCollection<IAchievement>();
         public ObservableCollection<IAchievement> Achievements { get { return _achievements; } }
 
-        private ObservableCollection<IItem> _inventoryItems = new ObservableCollection<IItem>();
+        private readonly ObservableCollection<IItem> _inventoryItems = new ObservableCollection<IItem>();
         public ObservableCollection<IItem> InventoryItems { get { return _inventoryItems; } }
 
         public IList<string> GetWords(bool noun) { return null; /* _parser.GetWords(noun); */ }

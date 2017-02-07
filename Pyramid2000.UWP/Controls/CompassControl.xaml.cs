@@ -100,14 +100,6 @@ namespace Pyramid2000.Controls
             Down.IsEnabled = enabled;
         }
 
-        private void ProcessClick(EventHandler eventHandler)
-        {
-            if (eventHandler != null)
-            {
-                eventHandler(this, new EventArgs());
-            }
-        }
-
         private void Down_Click(object sender, RoutedEventArgs e)
         {
             ClickHandler?.Invoke(this, new CompassClickEventArgs("Down"));

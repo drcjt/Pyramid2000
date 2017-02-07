@@ -21,7 +21,7 @@ namespace Pyramid2000.ViewModels
 
     public class SettingsPartViewModel : INotifyPropertyChanged
     {
-        ISettingsService _settings = SettingsService.Instance;
+        readonly ISettingsService _settings = SettingsService.Instance;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -46,27 +46,26 @@ namespace Pyramid2000.ViewModels
         private IGame _game;
         private IPlayer _player;
         private IRooms _rooms;
-        private IItems _items;
         private IParser _parser;
 
         public void SetupGame(IPrinter printer)
         {
             IResources resources = new Resources();
             _printer = printer;
-            _items = new Items(resources);
-            _player = new Player(_items);
+            var items = new Items(resources);
+            _player = new Player(items);
             _player.CurrentRoom = "room_1";
-            _parser = new Parser(_player, _printer, _items, App.GameSettings, resources);
-            _rooms = new Rooms(_items, resources);
+            _parser = new Parser(_player, _printer, items, App.GameSettings, resources);
+            _rooms = new Rooms(items, resources);
             _gameState = new GameState();
-            IScripter scripter = new Scripter(_printer, _items, _rooms, _player, _gameState, App.GameSettings, resources);
+            IScripter scripter = new Scripter(_printer, items, _rooms, _player, _gameState, App.GameSettings, resources);
             _rooms.Scripter = scripter;
 
             IDefaultScripter defaultScripter = new DefaultScripter(resources);
 
             _inventoryItems.Clear();
 
-            _game = new Game(_player, _printer, _parser, scripter, _rooms, defaultScripter, _items, _gameState);
+            _game = new Game(_player, _printer, _parser, scripter, _rooms, defaultScripter, items, _gameState);
 
             _game.Init();
         }
@@ -178,10 +177,10 @@ namespace Pyramid2000.ViewModels
 
         public IGameSettings Settings { get { return App.GameSettings; } }
 
-        private ObservableCollection<IAchievement> _achievements = new ObservableCollection<IAchievement>();
+        private readonly ObservableCollection<IAchievement> _achievements = new ObservableCollection<IAchievement>();
         public ObservableCollection<IAchievement> Achievements {  get { return _achievements; } }
 
-        private ObservableCollection<IItem> _inventoryItems = new ObservableCollection<IItem>();
+        private readonly ObservableCollection<IItem> _inventoryItems = new ObservableCollection<IItem>();
         public ObservableCollection<IItem> InventoryItems { get { return _inventoryItems; } }
 
         public IList<string> GetWords(bool noun) { return _parser.GetWords(noun); }

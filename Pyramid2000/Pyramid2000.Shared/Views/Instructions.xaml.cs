@@ -70,6 +70,7 @@ namespace Pyramid2000
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            // Method intentionally left empty.
         }
 
         /// <summary>
@@ -82,6 +83,7 @@ namespace Pyramid2000
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+            // Method intentionally left empty.
         }
 
         #region NavigationHelper registration

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pyramid2000.Services
 {
-    public class SettingsService : ISettingsService, INotifyPropertyChanged
+    public class SettingsService : ISettingsService
     {
         public static SettingsService Instance { get; }
         static SettingsService()

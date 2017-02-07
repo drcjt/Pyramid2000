@@ -33,12 +33,12 @@ namespace ZagStudio.Helpers
 
         private static FocusWatcher instance;
 
-        private Run focusedTypeRun;
-		private Run focusedNameRun;
-		private Run focusedContentRun;
-		private Rectangle highlightRectangle;
-        private Popup popup;
-        private DispatcherTimer timer;
+        private readonly Run focusedTypeRun;
+		private readonly Run focusedNameRun;
+		private readonly Run focusedContentRun;
+		private readonly Rectangle highlightRectangle;
+        private readonly Popup popup;
+        private readonly DispatcherTimer timer;
 
         #endregion
 

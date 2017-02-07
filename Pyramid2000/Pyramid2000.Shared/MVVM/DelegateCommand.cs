@@ -20,7 +20,7 @@ namespace Pyramid2000.MVVM
             _canExecute = canExecute ?? (() => true);
         }
 
-        public bool CanExecute(object p = null)
+        public bool CanExecute(object p)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace Pyramid2000.MVVM
             }
         }
 
-        public void Execute(object p = null)
+        public void Execute(object p)
         {
             if (!CanExecute(p))
             {
@@ -64,12 +64,12 @@ namespace Pyramid2000.MVVM
             _canExecute = canExecute ?? (e => true);
         }
 
-        public bool CanExecute(object p = null)
+        public bool CanExecute(object p)
         {
             try
             {
                 var v = (T)Convert.ChangeType(p, typeof(T));
-                return _canExecute == null ? true : _canExecute(v);
+                return _canExecute == null || _canExecute(v);
             }
             catch
             {
@@ -77,7 +77,7 @@ namespace Pyramid2000.MVVM
             }
         }
 
-        public void Execute(object p = null)
+        public void Execute(object p)
         {
             if (!CanExecute(p))
             {

@@ -416,14 +416,6 @@ namespace Pyramid2000.Engine
                 {
                     Function.Plugh, new Script { s => s.JumpToTopOfGameLoop() }
                 },
-                /*
-                {
-                    Function.Load, new Script { s => s.LoadGame() }
-                },
-                {
-                    Function.Save, new Script { s => s.SaveGame() }
-                },
-                */
                 {
                     Function.Help, new Script { s => s.PrintMessageX(Resources.Help) }
                 }

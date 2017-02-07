@@ -14,8 +14,8 @@ namespace Pyramid2000.UWP.ViewModels
 
     public class SettingsPartViewModel : ViewModelBase
     {
-        SettingsService _settings;
-        GameSettingsService _gameSettings;
+        readonly SettingsService _settings;
+        readonly GameSettingsService _gameSettings;
 
         public SettingsPartViewModel()
         {

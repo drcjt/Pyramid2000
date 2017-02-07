@@ -9,7 +9,7 @@ namespace Pyramid2000.Engine
 {
     public class Rooms : IRooms
     {
-        private IItems _items;
+        private readonly IItems _items;
 
         private IResources Resources { get; set; }
 

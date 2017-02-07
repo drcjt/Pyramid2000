@@ -16,7 +16,7 @@ namespace Pyramid2000.UWP.Services.GameSettingsServices
             Instance = Instance ?? new GameSettingsService();
         }
 
-        Template10.Services.SettingsService.ISettingsHelper _helper;
+        readonly Template10.Services.SettingsService.ISettingsHelper _helper;
         private GameSettingsService()
         {
             _helper = new Template10.Services.SettingsService.SettingsHelper();

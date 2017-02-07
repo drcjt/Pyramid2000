@@ -116,7 +116,7 @@ namespace Pyramid2000
 
 #if WINDOWS_PHONE_APP
             // For phone if the compass is visible then make the app bar minimal otherwise compact
-            CommandBar cmdBar = CommandBar as CommandBar;
+            CommandBar cmdBar = CommandBar;
             cmdBar.ClosedDisplayMode = ViewModel.SettingsPartViewModel.ShowCompass ? AppBarClosedDisplayMode.Minimal : AppBarClosedDisplayMode.Compact;
 #endif
         }
