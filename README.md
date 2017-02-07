@@ -20,9 +20,16 @@ The current Pyramid2000 coverage can be viewed here
 
 [Code Coverage via Coveralls](https://coveralls.io/github/drcjt/Pyramid2000?branch=master)
 
+###Quality
+
+The current Pyramid2000 code quality can be viewed here
+
+[Code Quality via SonarQube](https://sonarqube.com/dashboard/index/Pyramid2000)
+
 ###Thanks
 
 I would like to thank
 
 * [AppVeyor](https://ci.appveyor.com/project/drcjt/pyramid2000) for allowing free build CI services for Open Source projects
 * [Coveralls](https://coveralls.io/github/drcjt/pyramid2000) for allowing free services for Open Source projects
+* [SonarQube](https://sonarqube.com/dashboard/index/Pyramid2000) for allowing free code quality analysis for Open Source projects
