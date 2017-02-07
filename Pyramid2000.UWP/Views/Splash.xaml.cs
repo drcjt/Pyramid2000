@@ -16,7 +16,7 @@ namespace Pyramid2000.UWP.Views
 
         private void Resize(SplashScreen splashScreen)
         {
-            if (splashScreen.ImageLocation.Top == 0)
+            if (splashScreen.ImageLocation.Top < double.Epsilon)
             {
                 splashImage.Visibility = Visibility.Collapsed;
                 return;

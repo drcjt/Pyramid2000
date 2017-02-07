@@ -34,7 +34,7 @@ namespace Pyramid2000.UWP.ViewModels
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> suspensionState)
         {
             // Ensure setting changes are respected
-            SettingsChanged(null, null);
+            SettingsChanged();
 
             if (suspensionState.Any())
             {
@@ -58,9 +58,9 @@ namespace Pyramid2000.UWP.ViewModels
             await Task.CompletedTask;
         }
 
-        private void SettingsChanged(Windows.Storage.ApplicationData sender, object args)
+        private void SettingsChanged()
         {
-            RaisePropertyChanged(nameof(TextSize));
+            RaisePropertyChanged();
         }
 
         public void GotoSettings() =>

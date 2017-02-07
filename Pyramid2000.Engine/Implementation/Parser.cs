@@ -284,13 +284,13 @@ namespace Pyramid2000.Engine
             }
 
             // An action command - ignore the noun if any was provided
-            if (verb != null && verb.Word.Grammar == Grammar.alone)
+            if (verb.Word.Grammar == Grammar.alone)
             {
                 return new ParsedCommand() { Function = verb.Word.Function };
             }
 
             // A verb was provided that requires a noun but none was given
-            if (verb != null && noun == null)
+            if (noun == null)
             {
                 _printer.PrintLn(string.Format(Resources.VerbWhat, verb.Original));
                 _heldVerb = verb;

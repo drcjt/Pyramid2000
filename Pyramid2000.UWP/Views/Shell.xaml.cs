@@ -36,7 +36,9 @@ namespace Pyramid2000.UWP.Views
             MyHamburgerMenu.NavigationService = navigationService;
         }
 
+#pragma warning disable S3168 // "async" methods should not return "void"
         private async void RateAndReviewTapped(object sender, RoutedEventArgs e)
+#pragma warning restore S3168 // "async" methods should not return "void"
         {
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=33ddb4b9-5fc5-4a4d-bec3-5adc282c6b3a"));
         }
