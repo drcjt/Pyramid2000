@@ -36,16 +36,6 @@
     <CodeAnalysisRuleSet>Pyramid2000.Engine.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <Content Include="OriginalJS\DEFAULT.js" />
-    <Content Include="OriginalJS\GAME.js" />
-    <Content Include="OriginalJS\MAIN.js" />
-    <Content Include="OriginalJS\OBJS.js" />
-    <Content Include="OriginalJS\PARSE.js" />
-    <Content Include="OriginalJS\ROOMS.js" />
-    <Content Include="OriginalJS\SCRIPTER.js" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Implementation\Achievement.cs" />
     <Compile Include="Implementation\Achievements.cs" />
     <Compile Include="Implementation\DefaultScripter.cs" />
