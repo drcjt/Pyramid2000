@@ -42,6 +42,10 @@
     <Compile Include="Implementation\Game.cs" />
     <Compile Include="Implementation\GameState.cs" />
     <Compile Include="Implementation\Resources.cs" />
+    <Compile Include="Implementation\Rooms_LowerFloor.cs" />
+    <Compile Include="Implementation\Rooms_OutsideThePyramid.cs" />
+    <Compile Include="Implementation\Rooms_TheMaze.cs" />
+    <Compile Include="Implementation\Rooms_UpperFloor.cs" />
     <Compile Include="Interfaces\IAchievement.cs" />
     <Compile Include="Interfaces\IDefaultScripter.cs" />
     <Compile Include="Interfaces\IGame.cs" />
