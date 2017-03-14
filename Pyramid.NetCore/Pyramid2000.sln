@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyramid2000", ".\Pyramid2000\Pyramid2000.csproj", "{5417CF57-6B2B-4595-818F-8A7E7E99C7C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyramid2000.Engine", ".\Pyramid2000.Engine\Pyramid2000.Engine.csproj", "{8EA9F4C9-89DC-4AE9-9FB0-7EE76A105D7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5417CF57-6B2B-4595-818F-8A7E7E99C7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5417CF57-6B2B-4595-818F-8A7E7E99C7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5417CF57-6B2B-4595-818F-8A7E7E99C7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5417CF57-6B2B-4595-818F-8A7E7E99C7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA9F4C9-89DC-4AE9-9FB0-7EE76A105D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA9F4C9-89DC-4AE9-9FB0-7EE76A105D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA9F4C9-89DC-4AE9-9FB0-7EE76A105D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA9F4C9-89DC-4AE9-9FB0-7EE76A105D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
