@@ -184,6 +184,17 @@ namespace Pyramid2000.Engine
                 }
                 if (_gameState.ReincarnateCount < 3)
                 {
+                    // Ensure dead lamp is not in any specific location just in case player
+                    // has run out of batteries and then died
+                    var deadLamp = _items.GetExactItemByName("#LAMP_dead");
+                    deadLamp.Location = "";
+
+                    // Ensure lamp has some battery in case player died due to dead lamp
+                    if (_gameState.BatteryLife == 0)
+                    {
+                        _gameState.BatteryLife = 1;
+                    }
+
                     // Move lamp to room 1
                     var itemX = _items.GetExactItemByName("#LAMP_off");
                     itemX.Location = "room_1";

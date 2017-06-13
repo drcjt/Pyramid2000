@@ -91,5 +91,62 @@ namespace Pyramid2000EngineTests
             // Assert
             Assert.AreEqual("LOAD ,,,,,_51,_81,,,,_16,,,_2,,_8,_9,_72,_11,,,,_61,,_59,_2,_2,#BOTTLE,,_56,_76,,_73,_68,,,_14,_17,_25,_18,_24,,_71,,room_1,,0,False,310,0", result);
         }
+
+        [Test]
+        public void Save_WhenLampHasRunOut_DoesNotThrowException()
+        {
+            // Arrange
+            var resources = new Resources();
+            var settings = new GameSettings();
+            var printer = new Mock<IPrinter>().Object;
+            var items = new Items(resources);
+            var player = new Player(items);
+            player.CurrentRoom = "room_1";
+            var parser = new Parser(player, printer, items, settings, resources);
+            var rooms = new Rooms(items, resources);
+            var gameState = new GameState();
+            var scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
+            var defaultScripter = new DefaultScripter(resources);
+
+            var game = new Game(player, printer, parser, scripter, rooms, defaultScripter, items, gameState, resources);
+
+            // Setup game state with no battery life remaining and lamp on
+            game.State = "LOAD ,,,,,_51,_81,,,,_16,,_0,,_2,_8,_9,_72,_11,,,,_61,,_59,_2,_2,#BOTTLE,,_56,_76,,_73,_68,,,_14,_17,_25,_18,_24,,_71,,room_1,,0,False,1,0";
+
+            // Act
+            game.ProcessPlayerInput("N");
+
+            // Validate getting state after lamp has run out does not result in an exception
+            Assert.DoesNotThrow( delegate { var result = game.State; });
+        }
+
+        [Test]
+        public void Save_WhenLampIsDimAndBatteriesCanBeChanged_DoesNotThrowException()
+        {
+            // Arrange
+            var resources = new Resources();
+            var settings = new GameSettings();
+            var printer = new Mock<IPrinter>().Object;
+            var items = new Items(resources);
+            var player = new Player(items);
+            player.CurrentRoom = "room_1";
+            var parser = new Parser(player, printer, items, settings, resources);
+            var rooms = new Rooms(items, resources);
+            var gameState = new GameState();
+            var scripter = new Scripter(printer, items, rooms, player, gameState, settings, resources);
+            var defaultScripter = new DefaultScripter(resources);
+
+            var game = new Game(player, printer, parser, scripter, rooms, defaultScripter, items, gameState, resources);
+
+            // Setup game state with dim lamp, battery life = 5, lamp on, and fresh batteries in pack
+            game.State = "LOAD ,,,,,_51,_81,,,,_16,,_0,,_2,_8,_9,_72,_11,,,,_61,,_59,_2,_2,#BOTTLE,,_56,_76,,_73,_68,pack,,_14,_17,_25,_18,_24,,_71,,room_1,,0,False,5,0";
+
+            // Act
+            game.ProcessPlayerInput("N");
+
+            // Validate getting state after lamp has run out does not result in an exception
+            Assert.DoesNotThrow(delegate { var result = game.State; });
+        }
+
     }
 }

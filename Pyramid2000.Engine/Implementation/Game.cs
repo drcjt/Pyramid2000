@@ -110,7 +110,7 @@ namespace Pyramid2000.Engine
                     {
                         var lampDead = _items.GetExactItemByName("#LAMP_dead");
                         lampDead.Location = lamp.Location;
-                        lamp.Location = null;
+                        lamp.Location = "";
                         _printer.PrintLn(Resources.LampOutOfPower);
                     }
                 }
@@ -132,7 +132,7 @@ namespace Pyramid2000.Engine
             {
                 _printer.PrintLn(Resources.LampGettingDimChangingBatteries);
                 _gameState.BatteryLife = 310;
-                batteries.Location = null;
+                batteries.Location = "";
                 batteries = _items.GetExactItemByName("#BATTERIES_worn");
                 batteries.Location = "pack";
                 return true;
