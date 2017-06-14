@@ -60,7 +60,7 @@ namespace Pyramid2000.UWP.ViewModels
 
         private void SettingsChanged()
         {
-            RaisePropertyChanged();
+            RaisePropertyChanged(nameof(TextSize));
         }
 
         public void GotoSettings() =>
