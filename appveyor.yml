@@ -4,15 +4,17 @@ os: Visual Studio 2017
 environment:
     COVERALLS_REPO_TOKEN:  
        secure: D3xk3zhufhpC3ZTVEFQT4jGsSmEWWzNJdJsAUu2wK2EARb9Z3LO4Uaubq7HM007j
+    SONARQUBE_TOKEN:
+       secure: wVOI43UFOYwJnCeRekB0RCbnGQsC3CyCyB69tELJkWdX0F1ygmJ4ZUD6iHiEQxuk
 
 install:
     - nuget restore
 
 build_script:
     - choco install "msbuild-sonarqube-runner" -y
-    - MSBuild.SonarQube.Runner.exe begin /k:"Pyramid2000" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=4f25726209d441b4d8223ac458fdb72d5710c7ed"
+    - MSBuild.SonarQube.Runner.exe begin /k:"Pyramid2000" /d:"sonar.host.url=https://sonarqube.com" /d:"sonar.login=%SONARQUBE_TOKEN%" /d:"sonar.organization=drcjt-github"
     - msbuild "Pyramid2000.sln" /verbosity:normal /p:Platform=x64;AppxBundle=Never
-    - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=4f25726209d441b4d8223ac458fdb72d5710c7ed"
+    - MSBuild.SonarQube.Runner.exe end /d:"sonar.login=%SONARQUBE_TOKEN%"
 
 test_script:
     - packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"nunit3-console.exe" -targetargs:"/domain:single /result:myresults.xml;format=AppVeyor Pyramid2000EngineTests\bin\debug\Pyramid2000EngineTests.dll" -output:coverage.xml -returntargetcode
